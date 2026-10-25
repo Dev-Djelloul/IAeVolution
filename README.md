@@ -2,10 +2,10 @@
 
 **Observer l'intelligence artificielle. Comprendre ce qui change. Anticiper ce qui vient.**
 
-IAeVolution est le point de départ d'un espace de veille et de découverte de l'IA,
-conçu pour rendre un sujet complexe plus lisible, utile et accessible. Cette première
-version est un prototype front-end autonome : elle présente des thèmes de démonstration,
-une recherche et des filtres, sans prétendre fournir une veille en temps réel.
+IAeVolution est le point de départ d'un observatoire de l'IA conçu pour rendre un sujet
+complexe plus lisible, utile et accessible. Ce prototype front-end propose une exploration
+thématique et un premier dossier sur les centres de données, avec des angles géographiques,
+économiques, historiques et techniques. Les contenus ne constituent pas une veille en temps réel.
 
 ## Environnement de développement
 

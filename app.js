@@ -65,6 +65,18 @@ const topics = [
     icon: "⌁",
     color: "cyan",
   },
+  {
+    id: "data-centres",
+    category: "Comprendre",
+    filter: "comprendre",
+    number: "07",
+    title: "Centres de données & IA",
+    description: "Les lieux, les coûts, l'histoire et les machines qui rendent l'IA possible.",
+    tags: ["Géographie", "Infrastructure"],
+    icon: "▦",
+    color: "cyan",
+    dossier: true,
+  },
 ];
 
 const grid = document.querySelector("#topic-grid");
@@ -86,7 +98,7 @@ function renderTopics() {
   grid.innerHTML = visibleTopics.map((topic) => `
     <article class="topic-card">
       <div class="card-topline">
-        <span class="card-number">${topic.number} <span>/ 06</span></span>
+        <span class="card-number">${topic.number} <span>/ ${String(topics.length).padStart(2, "0")}</span></span>
         <span class="card-icon icon-${topic.color}" aria-hidden="true">${topic.icon}</span>
       </div>
       <p class="card-category">${topic.category}</p>
@@ -94,7 +106,9 @@ function renderTopics() {
       <p class="card-description">${topic.description}</p>
       <div class="card-bottom">
         <div class="tag-list">${topic.tags.map((tag) => `<span class="topic-tag">${tag}</span>`).join("")}</div>
-        <span class="card-link" aria-hidden="true">↗</span>
+        ${topic.dossier
+    ? `<a class="card-link" href="#dossier-data-centres" aria-label="Ouvrir le dossier : ${topic.title}">↗</a>`
+    : '<span class="card-link" aria-hidden="true">↗</span>'}
       </div>
     </article>
   `).join("");
@@ -116,6 +130,37 @@ filterButtons.forEach((button) => {
     renderTopics();
   });
 });
+
+const dossierTabs = [...document.querySelectorAll("[data-dossier-tab]")];
+const dossierPanels = [...document.querySelectorAll("[data-dossier-panel]")];
+
+function selectDossierTab(selectedTab, moveFocus = false) {
+  dossierTabs.forEach((tab) => {
+    const isSelected = tab === selectedTab;
+    tab.setAttribute("aria-selected", String(isSelected));
+    tab.tabIndex = isSelected ? 0 : -1;
+    dossierPanels.find((panel) => panel.id === tab.getAttribute("aria-controls")).hidden = !isSelected;
+  });
+
+  if (moveFocus) selectedTab.focus();
+}
+
+dossierTabs.forEach((tab, index) => {
+  tab.addEventListener("click", () => selectDossierTab(tab));
+  tab.addEventListener("keydown", (event) => {
+    let nextIndex;
+    if (event.key === "ArrowRight") nextIndex = (index + 1) % dossierTabs.length;
+    if (event.key === "ArrowLeft") nextIndex = (index - 1 + dossierTabs.length) % dossierTabs.length;
+    if (event.key === "Home") nextIndex = 0;
+    if (event.key === "End") nextIndex = dossierTabs.length - 1;
+    if (nextIndex === undefined) return;
+
+    event.preventDefault();
+    selectDossierTab(dossierTabs[nextIndex], true);
+  });
+});
+
+selectDossierTab(dossierTabs[0]);
 
 searchInput.addEventListener("input", renderTopics);
 searchForm.addEventListener("submit", (event) => event.preventDefault());

@@ -69,15 +69,118 @@
         </form>
 
         <div class="filter-row" role="group" aria-label="Filtrer les sujets">
-          <button class="filter-chip is-selected" type="button" data-filter="all" aria-pressed="true">Tout explorer <span>06</span></button>
+          <button class="filter-chip is-selected" type="button" data-filter="all" aria-pressed="true">Tout explorer <span>07</span></button>
           <button class="filter-chip" type="button" data-filter="comprendre" aria-pressed="false">Comprendre</button>
           <button class="filter-chip" type="button" data-filter="explorer" aria-pressed="false">Explorer</button>
           <button class="filter-chip" type="button" data-filter="anticiper" aria-pressed="false">Anticiper</button>
-          <span class="results-label" id="results-label" aria-live="polite">06 sujets</span>
+          <span class="results-label" id="results-label" aria-live="polite">07 sujets</span>
         </div>
 
         <div class="topic-grid" id="topic-grid" aria-live="polite"></div>
         <p class="empty-state" id="empty-state" hidden>Aucun sujet ne correspond à cette recherche. Essayez un autre terme.</p>
+      </section>
+
+      <section class="dossier-section" id="dossier-data-centres" aria-labelledby="dossier-title">
+        <div class="dossier-heading">
+          <div>
+            <p class="eyebrow">DOSSIER 01 <span class="dossier-separator">/</span> INFRASTRUCTURE</p>
+            <h2 id="dossier-title">L'IA a une géographie.</h2>
+            <p class="dossier-intro">Derrière chaque modèle, des bâtiments, des réseaux, des machines et des choix d'investissement. Voici les repères pour lire cette infrastructure.</p>
+          </div>
+          <span class="dossier-version">DOSSIER DE CADRAGE <span>·</span> V 0.1</span>
+        </div>
+
+        <div class="dossier-tabs" role="tablist" aria-label="Angles du dossier sur les centres de données">
+          <button id="tab-geographie" class="dossier-tab" type="button" role="tab" aria-selected="true" aria-controls="panel-geographie" data-dossier-tab>Géographie <span>01</span></button>
+          <button id="tab-economie" class="dossier-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-economie" data-dossier-tab>Économie <span>02</span></button>
+          <button id="tab-histoire" class="dossier-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-histoire" data-dossier-tab>Histoire <span>03</span></button>
+          <button id="tab-technique" class="dossier-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-technique" data-dossier-tab>Fonctionnement <span>04</span></button>
+        </div>
+
+        <div id="panel-geographie" class="dossier-panel" role="tabpanel" aria-labelledby="tab-geographie" data-dossier-panel>
+          <div class="dossier-panel-heading">
+            <p class="eyebrow">01 / GÉOGRAPHIE</p>
+            <h3>Où construire ? Là où plusieurs réseaux se rencontrent.</h3>
+            <p>Un centre de données dépend de ressources locales. La carte n'est pas qu'une carte de bâtiments : elle raconte l'accès à l'électricité, aux télécommunications, au foncier et au refroidissement.</p>
+          </div>
+          <div class="factor-grid">
+            <article class="factor-card"><span class="factor-symbol" aria-hidden="true">ϟ</span><h4>Électricité</h4><p>Puissance disponible, stabilité du réseau et délais de raccordement.</p></article>
+            <article class="factor-card"><span class="factor-symbol" aria-hidden="true">⌁</span><h4>Connectivité</h4><p>Réseaux terrestres et câbles sous-marins relient les centres aux utilisateurs et entre eux.</p></article>
+            <article class="factor-card"><span class="factor-symbol" aria-hidden="true">◌</span><h4>Climat & eau</h4><p>Le climat et les choix de refroidissement influencent les besoins locaux en énergie et en eau.</p></article>
+            <article class="factor-card"><span class="factor-symbol" aria-hidden="true">▤</span><h4>Territoire</h4><p>Foncier, règles d'urbanisme, fiscalité et proximité des activités numériques entrent aussi en jeu.</p></article>
+          </div>
+          <div class="dossier-callout">
+            <span class="callout-mark" aria-hidden="true">↗</span>
+            <p><strong>Explorer la carte réelle des câbles.</strong> TeleGeography publie une carte interactive des câbles sous-marins et de leurs points d'atterrissement. Elle aide à comprendre la connectivité mondiale, sans constituer un inventaire des centres de données.</p>
+            <a class="source-link" href="https://www.submarinecablemap.com/" target="_blank" rel="noopener noreferrer">Ouvrir la carte <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+
+        <div id="panel-economie" class="dossier-panel" role="tabpanel" aria-labelledby="tab-economie" data-dossier-panel hidden>
+          <div class="dossier-panel-heading">
+            <p class="eyebrow">02 / ÉCONOMIE</p>
+            <h3>La croissance numérique se mesure aussi en mégawatts.</h3>
+            <p>La construction d'infrastructures d'IA engage des capitaux à long terme : terrains, raccordement électrique, bâtiments, accélérateurs, réseaux et exploitation.</p>
+          </div>
+          <div class="energy-figure">
+            <div class="energy-figure-heading">
+              <div><span class="figure-label">ÉLECTRICITÉ DES CENTRES DE DONNÉES DANS LE MONDE</span><span class="figure-source">Agence internationale de l'énergie · rapport 2025</span></div>
+              <span class="figure-unit">TWh / an</span>
+            </div>
+            <div class="energy-bars">
+              <div class="energy-bar-row"><span class="energy-year">2024</span><div class="energy-bar-track"><span class="energy-bar energy-bar-2024"></span></div><strong>415 <small>TWh</small></strong><span class="energy-kind">estimation</span></div>
+              <div class="energy-bar-row"><span class="energy-year">2030</span><div class="energy-bar-track"><span class="energy-bar energy-bar-2030"></span></div><strong>945 <small>TWh</small></strong><span class="energy-kind projection-kind">projection</span></div>
+            </div>
+            <p class="figure-caveat">Le chiffre 2030 est une projection du scénario de base de l'AIE, pas une mesure future. Ces valeurs couvrent l'ensemble des centres de données : elles ne représentent pas uniquement l'IA.</p>
+            <a class="source-link" href="https://www.iea.org/reports/energy-and-ai" target="_blank" rel="noopener noreferrer">Lire le rapport Energy and AI <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="economy-notes">
+            <div><span class="note-index">A</span><p><strong>Le calcul a un coût d'exploitation.</strong> L'électricité et le refroidissement pèsent sur les coûts récurrents, tandis que les accélérateurs spécialisés représentent un investissement matériel important.</p></div>
+            <div><span class="note-index">B</span><p><strong>Les lieux et les marchés sont liés.</strong> Disponibilité du réseau, prix de l'énergie, accès au capital et réglementation influencent les projets — et leur calendrier.</p></div>
+          </div>
+        </div>
+
+        <div id="panel-histoire" class="dossier-panel" role="tabpanel" aria-labelledby="tab-histoire" data-dossier-panel hidden>
+          <div class="dossier-panel-heading">
+            <p class="eyebrow">03 / HISTOIRE</p>
+            <h3>Du calcul centralisé aux infrastructures mondiales.</h3>
+            <p>Quelques jalons pour situer le changement d'échelle. Cette chronologie est une porte d'entrée, pas une histoire exhaustive de l'informatique.</p>
+          </div>
+          <div class="timeline">
+            <article class="timeline-item"><span class="timeline-date">1952</span><div><h4>Le calcul dans la salle-machine</h4><p>IBM présente le 701, son premier ordinateur électronique à programme enregistré. Le calcul est rare, centralisé et réservé aux organisations capables d'exploiter ces machines.</p><a class="inline-source" href="https://www.ibm.com/history/700" target="_blank" rel="noopener noreferrer">IBM 700 Series <span aria-hidden="true">↗</span></a></div></article>
+            <article class="timeline-item"><span class="timeline-date">2006</span><div><h4>Le calcul devient un service à la demande</h4><p>Amazon lance EC2 en bêta publique : les organisations peuvent louer de la capacité informatique au lieu de posséder chaque serveur nécessaire.</p><a class="inline-source" href="https://aws.amazon.com/about-aws/our-origins/" target="_blank" rel="noopener noreferrer">Les origines d'AWS <span aria-hidden="true">↗</span></a></div></article>
+            <article class="timeline-item"><span class="timeline-date">Aujourd'hui</span><div><h4>L'infrastructure se spécialise pour l'IA</h4><p>L'entraînement et l'utilisation des modèles s'appuient sur des accélérateurs, des réseaux rapides entre machines, une alimentation dense et des solutions de refroidissement adaptées.</p><a class="inline-source" href="https://www.iea.org/reports/energy-and-ai" target="_blank" rel="noopener noreferrer">AIE, Energy and AI <span aria-hidden="true">↗</span></a></div></article>
+          </div>
+        </div>
+
+        <div id="panel-technique" class="dossier-panel" role="tabpanel" aria-labelledby="tab-technique" data-dossier-panel hidden>
+          <div class="dossier-panel-heading">
+            <p class="eyebrow">04 / FONCTIONNEMENT</p>
+            <h3>Une usine numérique, avec de la chaleur à évacuer.</h3>
+            <p>Pour entraîner ou servir un modèle, une infrastructure coordonne les composants suivants. C'est leur équilibre qui rend le calcul disponible.</p>
+          </div>
+          <div class="system-flow" aria-label="Flux simplifié d'un centre de données">
+            <div class="system-node"><span>01</span><strong>Réseau électrique</strong><small>Arrivée, conversion<br>et secours</small></div>
+            <span class="flow-arrow" aria-hidden="true">→</span>
+            <div class="system-node"><span>02</span><strong>Serveurs IA</strong><small>CPU, GPU<br>et accélérateurs</small></div>
+            <span class="flow-arrow" aria-hidden="true">→</span>
+            <div class="system-node"><span>03</span><strong>Réseau & stockage</strong><small>Relier les machines<br>et les données</small></div>
+            <span class="flow-arrow" aria-hidden="true">→</span>
+            <div class="system-node"><span>04</span><strong>Refroidissement</strong><small>Évacuer la chaleur<br>des équipements</small></div>
+          </div>
+          <div class="pue-explainer">
+            <div class="pue-equation"><span>PUE</span><strong>=</strong><span>Énergie totale du site</span><strong>/</strong><span>Énergie des équipements IT</span></div>
+            <p>Le PUE mesure l'efficacité énergétique de l'infrastructure d'un centre de données. Plus il se rapproche de 1, moins le site consomme d'énergie en plus des équipements informatiques. Il ne mesure ni l'empreinte carbone totale, ni l'efficacité du modèle d'IA.</p>
+            <a class="source-link" href="https://journal.uptimeinstitute.com/global-pues-are-they-going-anywhere/" target="_blank" rel="noopener noreferrer">Uptime Institute : comprendre le PUE <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="dossier-callout technical-callout">
+            <span class="callout-mark" aria-hidden="true">i</span>
+            <p><strong>Un exemple d'architecture réseau.</strong> Google décrit Jupiter, son réseau de centre de données, conçu pour relier des dizaines de milliers de serveurs et faire évoluer la capacité de calcul à grande échelle.</p>
+            <a class="source-link" href="https://cloud.google.com/blog/topics/systems/the-evolution-of-googles-jupiter-data-center-network" target="_blank" rel="noopener noreferrer">Voir l'explication technique <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+
+        <p class="dossier-disclaimer">Les chiffres et projections sont attribués à leurs sources. Les explications générales sont une synthèse introductive, pas un inventaire exhaustif des sites ou des opérateurs.</p>
       </section>
 
       <section class="manifesto" id="boussole" aria-labelledby="manifesto-title">
