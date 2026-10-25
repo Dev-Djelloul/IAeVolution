@@ -79,6 +79,57 @@ const topics = [
   },
 ];
 
+const assistantKnowledge = [
+  {
+    title: "La demande électrique mondiale",
+    answer: "L'AIE estime la consommation électrique des centres de données à environ 415 TWh en 2024, soit près de 1,5 % de l'électricité mondiale. Dans son scénario de base, elle projette environ 945 TWh en 2030. Cette projection porte sur l'ensemble des centres de données, pas uniquement sur les charges d'IA.",
+    keywords: ["electricite", "energie", "consommation", "centre", "donnee", "twh", "2030", "2024", "aie", "iea", "mondiale", "projection"],
+    source: { name: "AIE · Energy and AI", url: "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai" },
+  },
+  {
+    title: "Pourquoi la Virginie du Nord concentre des centres de données",
+    answer: "L'étude de la commission législative de Virginie cite plusieurs facteurs : un réseau fibre solide, un accès à une énergie fiable, des terrains disponibles, la proximité des grands clients nationaux et des incitations fiscales. Selon le périmètre de l'étude, la région représente 13 % de la capacité opérationnelle mondiale recensée.",
+    keywords: ["virginie", "nord", "northern", "geographie", "fibre", "terrain", "energie", "clients", "marche", "capacite", "13", "pourcent"],
+    source: { name: "JLARC · Data Centers in Virginia", url: "https://rga.lis.virginia.gov/Published/2025/RD206" },
+  },
+  {
+    title: "Les principaux marchés européens",
+    answer: "Le rapport 2025 de l'association européenne EUDCA désigne les marchés FLAP-D — Francfort, Londres, Amsterdam, Paris et Dublin — parmi les grands hubs européens. Il décrit aussi une extension vers des régions nordiques et méridionales. Il s'agit d'une vue sectorielle, pas d'un inventaire exhaustif des sites.",
+    keywords: ["europe", "europeen", "flap", "francfort", "londres", "amsterdam", "paris", "dublin", "nordique", "sud", "regions", "hub", "marche"],
+    source: { name: "EUDCA · State of European Data Centres 2025", url: "https://www.eudca.org/state-of-european-data-centres-2025" },
+  },
+  {
+    title: "La stratégie de Singapour",
+    answer: "La feuille de route Green Data Centre de 2024 prévoit au moins 300 MW de capacité supplémentaire à court terme, avec une capacité potentiellement accrue si davantage d'énergie verte est mobilisée. Les projets sont associés à des exigences de durabilité : ce chiffre n'est pas une capacité déjà construite.",
+    keywords: ["singapour", "singapore", "asie", "300", "mw", "capacite", "verte", "durable", "roadmap", "feuille", "route"],
+    source: { name: "IMDA · Green Data Centre Roadmap", url: "https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/factsheets/2024/charting-green-growth-for-data-centres-in-sg" },
+  },
+  {
+    title: "Les étapes de la chaîne de valeur",
+    answer: "Le dossier distingue cinq couches interdépendantes : ressources physiques, semi-conducteurs, centres de données et cloud, données et modèles, puis produits et usages. C'est un schéma de lecture, pas une mesure du partage des revenus. L'OCDE étudie les enjeux de concurrence autour de ces infrastructures.",
+    keywords: ["chaine", "valeur", "economique", "economie", "semi", "conducteur", "puce", "cloud", "modele", "revenu", "acteurs", "concurrence", "ocde", "industrie"],
+    source: { name: "OCDE · Competition in AI Infrastructure", url: "https://www.oecd.org/en/publications/competition-in-artificial-intelligence-infrastructure_623d1874-en/full-report.html" },
+  },
+  {
+    title: "Entraînement et inférence",
+    answer: "L'entraînement ajuste les paramètres d'un modèle à partir d'exemples. L'inférence désigne son exécution pour traiter une requête et produire une sortie ; pour un modèle de langage, celle-ci est souvent générée token par token. Les deux phases utilisent du calcul, mais répondent à des besoins d'usage différents.",
+    keywords: ["entrainement", "entrainer", "apprentissage", "inference", "repondre", "reponse", "difference", "modele", "token", "requete", "generation"],
+    source: { name: "Google AI · tokens et tokenisation", url: "https://ai.google.dev/gemini-api/docs/tokens" },
+  },
+  {
+    title: "Le PUE d'un centre de données",
+    answer: "Le PUE est le rapport entre l'énergie totale consommée par le site et celle utilisée par les équipements informatiques. Plus il est proche de 1, plus la part d'énergie supplémentaire du site est faible. Il ne mesure pas à lui seul les émissions de carbone, l'eau consommée ou l'efficacité d'un modèle.",
+    keywords: ["pue", "efficacite", "energie", "refroidissement", "centre", "donnee", "carbone", "eau", "mesurer", "mesure"],
+    source: { name: "Uptime Institute · Global PUEs", url: "https://journal.uptimeinstitute.com/global-pues-are-they-going-anywhere/" },
+  },
+  {
+    title: "Le rôle du Transformer",
+    answer: "L'article « Attention Is All You Need » (2017) propose une architecture appelée Transformer, fondée sur des mécanismes d'attention plutôt que sur la récurrence ou les convolutions. Les auteurs soulignent notamment sa parallélisabilité pour les tâches de traduction étudiées.",
+    keywords: ["transformer", "attention", "architecture", "2017", "neurips", "reseau", "parallele"],
+    source: { name: "NeurIPS · Attention Is All You Need", url: "https://proceedings.neurips.cc/paper/7181-attention-is-all-you-need" },
+  },
+];
+
 const grid = document.querySelector("#topic-grid");
 const searchForm = document.querySelector(".search-form");
 const searchInput = document.querySelector("#search-input");
@@ -128,6 +179,106 @@ filterButtons.forEach((button) => {
       item.setAttribute("aria-pressed", String(isSelected));
     });
     renderTopics();
+  });
+});
+
+const assistantForm = document.querySelector("#assistant-form");
+const assistantQuery = document.querySelector("#assistant-query");
+const assistantResults = document.querySelector("#assistant-results");
+const suggestedQuestions = [...document.querySelectorAll("[data-assistant-prompt]")];
+const assistantStopWords = new Set([
+  "avec", "dans", "des", "elle", "elles", "est", "et", "la", "le", "les",
+  "leur", "leurs", "mais", "mon", "ou", "pour", "pourquoi", "que", "quel",
+  "quelle", "quels", "quelles", "qui", "sont", "sur", "un", "une", "entre",
+  "combien", "comment", "du", "au", "aux", "en", "ce", "ces", "fait",
+]);
+const assistantGenericTerms = new Set(["centre", "donnee", "modele"]);
+
+function normalizeText(value) {
+  return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("fr");
+}
+
+function createCitationLink(source) {
+  const link = document.createElement("a");
+  link.href = source.url;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.textContent = `Lire la source : ${source.name} ↗`;
+  return link;
+}
+
+function renderAssistantResults(question) {
+  const queryTerms = [...new Set(
+    normalizeText(question)
+      .split(/[^a-z0-9]+/)
+      .filter((term) => term.length >= 3
+        && !assistantStopWords.has(term)
+        && !assistantGenericTerms.has(term.replace(/s$/, ""))),
+  )];
+
+  assistantResults.replaceChildren();
+  const heading = document.createElement("p");
+  heading.className = "assistant-results-heading";
+  heading.textContent = "REPÈRES RETROUVÉS DANS LE DOSSIER";
+  assistantResults.append(heading);
+
+  const matches = assistantKnowledge
+    .map((item) => {
+      const matchedTerms = queryTerms.filter((term) => item.keywords.some((keyword) => {
+        const normalizedKeyword = normalizeText(keyword);
+        return normalizedKeyword === term
+          || (term.length >= 4 && normalizedKeyword.startsWith(term))
+          || (normalizedKeyword.length >= 4 && term.startsWith(normalizedKeyword));
+      }));
+      return { item, score: matchedTerms.length };
+    })
+    .filter((match) => match.score > 0)
+    .sort((left, right) => right.score - left.score)
+    .slice(0, 3);
+
+  if (matches.length === 0) {
+    const emptyMessage = document.createElement("p");
+    emptyMessage.className = "assistant-empty";
+    emptyMessage.textContent = "Je n'ai pas trouvé de réponse dans les sources actuellement indexées. Essaie une question sur l'énergie, les régions, le cloud, le PUE, l'entraînement ou le Transformer.";
+    assistantResults.append(emptyMessage);
+    return;
+  }
+
+  const answerList = document.createElement("div");
+  answerList.className = "assistant-answer-list";
+
+  matches.forEach(({ item }) => {
+    const card = document.createElement("article");
+    card.className = "assistant-answer";
+
+    const title = document.createElement("h3");
+    title.textContent = item.title;
+
+    const answer = document.createElement("p");
+    answer.textContent = item.answer;
+
+    const citation = document.createElement("div");
+    citation.className = "assistant-citation";
+    citation.append(createCitationLink(item.source));
+
+    card.append(title, answer, citation);
+    answerList.append(card);
+  });
+
+  assistantResults.append(answerList);
+}
+
+assistantForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const question = assistantQuery.value.trim();
+  if (question) renderAssistantResults(question);
+});
+
+suggestedQuestions.forEach((button) => {
+  button.addEventListener("click", () => {
+    assistantQuery.value = button.dataset.assistantPrompt;
+    renderAssistantResults(assistantQuery.value);
+    assistantQuery.focus();
   });
 });
 

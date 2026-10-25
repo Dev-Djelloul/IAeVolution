@@ -9,7 +9,10 @@ thématique et un premier dossier sur les centres de données, avec des angles g
 régionaux documentés ; le volet économique visualise les couches de la chaîne de valeur
 de l'IA ; le volet historique relie des jalons de l'informatique, du cloud et de l'IA ;
 le volet technique distingue entraînement, inférence, infrastructure et évaluation.
-Les contenus ne constituent pas une veille en temps réel.
+Les contenus ne constituent pas une veille en temps réel. Un assistant documentaire
+permet aussi de retrouver localement quelques réponses éditorialisées et leurs sources.
+Il n'utilise pas de modèle génératif, n'envoie pas les questions à un service externe et
+répond qu'il ne sait pas lorsque le dossier indexé ne couvre pas la question.
 
 ## Environnement de développement
 
