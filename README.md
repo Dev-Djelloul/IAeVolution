@@ -7,7 +7,8 @@ complexe plus lisible, utile et accessible. Ce prototype front-end propose une e
 thématique et un premier dossier sur les centres de données, avec des angles géographiques,
 économiques, historiques et techniques. Le volet géographique compare trois exemples
 régionaux documentés ; le volet économique visualise les couches de la chaîne de valeur
-de l'IA ; le volet historique relie des jalons de l'informatique, du cloud et de l'IA.
+de l'IA ; le volet historique relie des jalons de l'informatique, du cloud et de l'IA ;
+le volet technique distingue entraînement, inférence, infrastructure et évaluation.
 Les contenus ne constituent pas une veille en temps réel.
 
 ## Environnement de développement

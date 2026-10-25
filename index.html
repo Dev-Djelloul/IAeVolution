@@ -293,22 +293,66 @@
         <div id="panel-technique" class="dossier-panel" role="tabpanel" aria-labelledby="tab-technique" data-dossier-panel hidden>
           <div class="dossier-panel-heading">
             <p class="eyebrow">04 / FONCTIONNEMENT</p>
-            <h3>Une usine numérique, avec de la chaleur à évacuer.</h3>
-            <p>Pour entraîner ou servir un modèle, une infrastructure coordonne les composants suivants. C'est leur équilibre qui rend le calcul disponible.</p>
+            <h3>Du courant électrique à une réponse de modèle.</h3>
+            <p>Un assistant est la partie visible d'une chaîne plus large : des données et des méthodes d'entraînement, des composants matériels et logiciels, puis un service qui produit et vérifie ses réponses.</p>
           </div>
-          <div class="system-flow" aria-label="Flux simplifié d'un centre de données">
-            <div class="system-node"><span>01</span><strong>Réseau électrique</strong><small>Arrivée, conversion<br>et secours</small></div>
+          <div class="system-flow" aria-label="Flux physique d'un centre de données">
+            <div class="system-node"><span>01 / ALIMENTER</span><strong>Réseau électrique</strong><small>Puissance, conversion<br>et systèmes de secours</small></div>
             <span class="flow-arrow" aria-hidden="true">→</span>
-            <div class="system-node"><span>02</span><strong>Serveurs IA</strong><small>CPU, GPU<br>et accélérateurs</small></div>
+            <div class="system-node"><span>02 / CALCULER</span><strong>Serveurs IA</strong><small>CPU, GPU ou autres<br>accélérateurs</small></div>
             <span class="flow-arrow" aria-hidden="true">→</span>
-            <div class="system-node"><span>03</span><strong>Réseau & stockage</strong><small>Relier les machines<br>et les données</small></div>
+            <div class="system-node"><span>03 / ÉCHANGER</span><strong>Réseau & stockage</strong><small>Relier les machines<br>et fournir les données</small></div>
             <span class="flow-arrow" aria-hidden="true">→</span>
-            <div class="system-node"><span>04</span><strong>Refroidissement</strong><small>Évacuer la chaleur<br>des équipements</small></div>
+            <div class="system-node"><span>04 / REFROIDIR</span><strong>Gestion thermique</strong><small>Évacuer la chaleur<br>des équipements</small></div>
+          </div>
+          <div class="technical-subheading">
+            <p class="eyebrow">COMMENT UN MODÈLE APPREND — ET RÉPOND</p>
+            <span>Deux phases différentes, un même socle de calcul</span>
+          </div>
+          <div class="training-inference-grid">
+            <article class="process-card">
+              <div class="process-card-heading"><span class="process-index">A</span><div><span class="process-kicker">PHASE 1</span><h4>Entraîner le modèle</h4></div></div>
+              <p>Des exemples sont transformés en données exploitables. L'entraînement ajuste progressivement les paramètres du modèle pour réduire une erreur mesurée par un objectif d'apprentissage.</p>
+              <ol class="process-steps">
+                <li><span>01</span>Préparer et filtrer les données</li>
+                <li><span>02</span>Calculer les prédictions et l'erreur</li>
+                <li><span>03</span>Mettre à jour les paramètres</li>
+                <li><span>04</span>Évaluer sur des tâches distinctes</li>
+              </ol>
+              <span class="process-output">Résultat : un modèle avec des paramètres appris</span>
+            </article>
+            <article class="process-card inference-card">
+              <div class="process-card-heading"><span class="process-index">B</span><div><span class="process-kicker">PHASE 2</span><h4>Exécuter l'inférence</h4></div></div>
+              <p>Une requête est découpée en unités appelées tokens. Le modèle traite le contexte et produit une sortie, souvent token par token, pendant que le service gère le débit et la latence.</p>
+              <ol class="process-steps">
+                <li><span>01</span>Recevoir et tokeniser le contexte</li>
+                <li><span>02</span>Calculer la suite probable</li>
+                <li><span>03</span>Générer puis décoder la sortie</li>
+                <li><span>04</span>Appliquer les contrôles du produit</li>
+              </ol>
+              <span class="process-output">Résultat : une réponse pour cette requête</span>
+            </article>
+          </div>
+          <div class="model-layers" aria-label="Composants d'un système d'IA conversationnelle">
+            <div class="model-layer"><span class="layer-number">01</span><div><h4>Le modèle</h4><p>Architecture, paramètres appris et limites de capacité.</p></div><span class="layer-tag">CALCUL</span></div>
+            <div class="model-layer"><span class="layer-number">02</span><div><h4>Le contexte</h4><p>Conversation, consignes et documents transmis au modèle. Des outils peuvent aussi être appelés.</p></div><span class="layer-tag">DONNÉES</span></div>
+            <div class="model-layer"><span class="layer-number">03</span><div><h4>Le service</h4><p>Routage, sécurité, disponibilité, latence, coûts et expérience utilisateur.</p></div><span class="layer-tag">PRODUIT</span></div>
+            <div class="model-layer"><span class="layer-number">04</span><div><h4>L'évaluation</h4><p>Tests de qualité, robustesse, sécurité et suivi des erreurs après déploiement.</p></div><span class="layer-tag">CONFIANCE</span></div>
+          </div>
+          <div class="technical-reading">
+            <span class="reading-symbol" aria-hidden="true">↗</span>
+            <p><strong>Un modèle n'est pas tout le produit.</strong> Une réponse dépend aussi du contexte fourni, des outils disponibles, des règles du service et des évaluations. Le NIST propose un cadre de gestion des risques couvrant la conception, le développement, l'utilisation et l'évaluation des systèmes d'IA.</p>
+            <a class="source-link" href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener noreferrer">Lire le cadre NIST AI RMF <span aria-hidden="true">↗</span></a>
           </div>
           <div class="pue-explainer">
             <div class="pue-equation"><span>PUE</span><strong>=</strong><span>Énergie totale du site</span><strong>/</strong><span>Énergie des équipements IT</span></div>
             <p>Le PUE mesure l'efficacité énergétique de l'infrastructure d'un centre de données. Plus il se rapproche de 1, moins le site consomme d'énergie en plus des équipements informatiques. Il ne mesure ni l'empreinte carbone totale, ni l'efficacité du modèle d'IA.</p>
             <a class="source-link" href="https://journal.uptimeinstitute.com/global-pues-are-they-going-anywhere/" target="_blank" rel="noopener noreferrer">Uptime Institute : comprendre le PUE <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="technical-sources">
+            <span>POUR ALLER PLUS LOIN</span>
+            <a class="inline-source" href="https://proceedings.neurips.cc/paper/7181-attention-is-all-you-need" target="_blank" rel="noopener noreferrer">NeurIPS · Transformer <span aria-hidden="true">↗</span></a>
+            <a class="inline-source" href="https://ai.google.dev/gemini-api/docs/tokens" target="_blank" rel="noopener noreferrer">Google AI · tokens et tokenisation <span aria-hidden="true">↗</span></a>
           </div>
           <div class="dossier-callout technical-callout">
             <span class="callout-mark" aria-hidden="true">i</span>
