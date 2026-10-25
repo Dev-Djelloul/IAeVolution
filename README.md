@@ -6,7 +6,8 @@ IAeVolution est le point de départ d'un observatoire de l'IA conçu pour rendre
 complexe plus lisible, utile et accessible. Ce prototype front-end propose une exploration
 thématique et un premier dossier sur les centres de données, avec des angles géographiques,
 économiques, historiques et techniques. Le volet géographique compare trois exemples
-régionaux documentés. Les contenus ne constituent pas une veille en temps réel.
+régionaux documentés ; le volet économique visualise les couches de la chaîne de valeur
+de l'IA. Les contenus ne constituent pas une veille en temps réel.
 
 ## Environnement de développement
 

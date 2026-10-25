@@ -421,6 +421,28 @@ h2 {
 .economy-notes p { margin: 0; color: #929eaa; font-size: 10px; line-height: 1.7; }
 .economy-notes strong { color: #d6dddc; font-weight: 600; }
 
+.value-chain-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; margin: 32px 0 15px; }
+.value-chain-heading .eyebrow { margin-bottom: 8px; color: var(--lime); font-size: 9px; }
+.value-chain-heading h4 { margin: 0; font-family: var(--display); font-size: 19px; font-weight: 500; letter-spacing: -.5px; }
+.value-chain-heading > p { max-width: 310px; margin: 0; color: #7f8c97; font-size: 9px; line-height: 1.6; text-align: right; }
+.value-chain { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin: 0; padding: 0; list-style: none; counter-reset: value-chain; }
+.value-chain-stage { position: relative; display: flex; min-height: 205px; flex-direction: column; padding: 15px 13px; border: 1px solid #2d3944; border-radius: 3px; background: linear-gradient(145deg, rgba(23,32,40,.98), rgba(18,26,34,.8)); counter-increment: value-chain; }
+.value-chain-stage:not(:last-child)::after { position: absolute; z-index: 1; top: 43px; right: -9px; display: grid; width: 17px; height: 17px; place-items: center; border: 1px solid #46553d; border-radius: 50%; background: #151d23; color: var(--lime); content: "›"; font-size: 12px; }
+.stage-number { color: var(--lime); font-family: var(--mono); font-size: 9px; }
+.stage-number span { margin-left: 3px; color: #74818c; font-size: 7px; letter-spacing: .7px; }
+.value-chain-stage h5 { margin: 17px 0 8px; font-family: var(--display); font-size: 14px; font-weight: 500; }
+.value-chain-stage > p { margin: 0 0 13px; color: #929eaa; font-size: 9px; line-height: 1.65; }
+.stage-economics { margin-top: auto; padding-top: 9px; border-top: 1px solid #2a3640; color: #87939e; font-size: 8px; line-height: 1.5; }
+.stage-economics strong { color: #b4c0c4; font-weight: 500; }
+.economy-insight-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
+.economy-insight { display: flex; gap: 12px; padding: 16px; border: 1px solid #2b3741; border-radius: 3px; background: rgba(22,30,39,.55); }
+.insight-symbol { display: grid; width: 29px; height: 29px; flex: 0 0 auto; place-items: center; border: 1px solid #637348; border-radius: 50%; color: var(--lime); font-size: 14px; }
+.economy-insight h5 { margin: 2px 0 7px; font-family: var(--display); font-size: 13px; font-weight: 500; }
+.economy-insight p { margin: 0; color: #929eaa; font-size: 9px; line-height: 1.7; }
+.economy-callout { grid-template-columns: 30px 1fr auto; }
+.economy-sources { display: flex; flex-direction: column; gap: 8px; }
+.economy-sources .source-link { font-size: 9px; }
+
 .timeline { position: relative; display: grid; gap: 0; margin-top: 4px; }
 .timeline::before { position: absolute; top: 12px; bottom: 14px; left: 51px; width: 1px; background: #3d4b46; content: ""; }
 .timeline-item { position: relative; display: grid; grid-template-columns: 103px 1fr; gap: 15px; padding: 0 0 24px; }
@@ -483,6 +505,9 @@ h2 {
   .dossier-heading { align-items: flex-start; flex-direction: column; gap: 14px; }
   .region-grid { grid-template-columns: 1fr; }
   .region-card { min-height: 0; }
+  .value-chain { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .value-chain-stage { min-height: 190px; }
+  .value-chain-stage:nth-child(3)::after { display: none; }
 }
 
 @media (max-width: 600px) {
@@ -537,6 +562,20 @@ h2 {
   .energy-kind { grid-column: 2 / -1; margin-top: -5px; text-align: right; }
   .energy-bar-row strong { font-size: 15px; }
   .economy-notes { grid-template-columns: 1fr; gap: 7px; }
+  .value-chain-heading { align-items: flex-start; flex-direction: column; gap: 8px; margin-top: 25px; }
+  .value-chain-heading h4 { font-size: 17px; }
+  .value-chain-heading > p { text-align: left; }
+  .value-chain { grid-template-columns: 1fr; gap: 7px; }
+  .value-chain-stage { min-height: 0; padding: 13px; }
+  .value-chain-stage:not(:last-child)::after { top: auto; right: 16px; bottom: -13px; transform: rotate(90deg); }
+  .value-chain-stage:nth-child(3)::after { display: grid; }
+  .value-chain-stage h5 { margin: 11px 0 5px; }
+  .value-chain-stage > p { margin-bottom: 10px; }
+  .stage-economics { padding-top: 7px; }
+  .economy-insight-grid { grid-template-columns: 1fr; gap: 7px; }
+  .economy-insight { padding: 13px; }
+  .economy-callout { grid-template-columns: 27px 1fr; }
+  .economy-sources { grid-column: 2; flex-direction: row; flex-wrap: wrap; gap: 12px; }
   .timeline::before { left: 44px; }
   .timeline-item { grid-template-columns: 85px 1fr; gap: 9px; }
   .timeline-item h4 { font-size: 14px; }
