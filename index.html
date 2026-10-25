@@ -225,14 +225,69 @@
         <div id="panel-histoire" class="dossier-panel" role="tabpanel" aria-labelledby="tab-histoire" data-dossier-panel hidden>
           <div class="dossier-panel-heading">
             <p class="eyebrow">03 / HISTOIRE</p>
-            <h3>Du calcul centralisé aux infrastructures mondiales.</h3>
-            <p>Quelques jalons pour situer le changement d'échelle. Cette chronologie est une porte d'entrée, pas une histoire exhaustive de l'informatique.</p>
+            <h3>Les percées s'appuient sur des couches qui s'accumulent.</h3>
+            <p>Calcul, réseaux, accélérateurs et architectures d'IA se sont développés à des rythmes différents. Ces jalons montrent quelques croisements importants, sans prétendre résumer toute l'histoire de l'informatique.</p>
           </div>
           <div class="timeline">
-            <article class="timeline-item"><span class="timeline-date">1952</span><div><h4>Le calcul dans la salle-machine</h4><p>IBM présente le 701, son premier ordinateur électronique à programme enregistré. Le calcul est rare, centralisé et réservé aux organisations capables d'exploiter ces machines.</p><a class="inline-source" href="https://www.ibm.com/history/700" target="_blank" rel="noopener noreferrer">IBM 700 Series <span aria-hidden="true">↗</span></a></div></article>
-            <article class="timeline-item"><span class="timeline-date">2006</span><div><h4>Le calcul devient un service à la demande</h4><p>Amazon lance EC2 en bêta publique : les organisations peuvent louer de la capacité informatique au lieu de posséder chaque serveur nécessaire.</p><a class="inline-source" href="https://aws.amazon.com/about-aws/our-origins/" target="_blank" rel="noopener noreferrer">Les origines d'AWS <span aria-hidden="true">↗</span></a></div></article>
-            <article class="timeline-item"><span class="timeline-date">Aujourd'hui</span><div><h4>L'infrastructure se spécialise pour l'IA</h4><p>L'entraînement et l'utilisation des modèles s'appuient sur des accélérateurs, des réseaux rapides entre machines, une alimentation dense et des solutions de refroidissement adaptées.</p><a class="inline-source" href="https://www.iea.org/reports/energy-and-ai" target="_blank" rel="noopener noreferrer">AIE, Energy and AI <span aria-hidden="true">↗</span></a></div></article>
+            <article class="timeline-item">
+              <span class="timeline-date">1952</span>
+              <div>
+                <span class="timeline-theme">MACHINES</span>
+                <h4>Le calcul électronique se centralise</h4>
+                <p>IBM annonce le 701, un ordinateur électronique destiné au calcul scientifique. Les grandes machines sont installées et opérées par des organisations disposant des moyens nécessaires.</p>
+                <a class="inline-source" href="https://www.ibm.com/history/700" target="_blank" rel="noopener noreferrer">IBM · histoire de la série 700 <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <span class="timeline-date">1989–1990</span>
+              <div>
+                <span class="timeline-theme">RÉSEAUX</span>
+                <h4>Le Web relie les documents et les chercheurs</h4>
+                <p>À partir de 1989 au CERN, Tim Berners-Lee conçoit le World Wide Web. En 1990, le premier serveur et le premier navigateur rendent le système concret.</p>
+                <a class="inline-source" href="https://home.cern/science/computing/the-birth-of-the-web/short-history-web/" target="_blank" rel="noopener noreferrer">CERN · une brève histoire du Web <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <span class="timeline-date">2006</span>
+              <div>
+                <span class="timeline-theme">ACCÈS AU CALCUL</span>
+                <h4>Le cloud et le GPU programmable élargissent l'accès</h4>
+                <p>Amazon lance AWS avec des services de stockage et de calcul à la demande. La même année, NVIDIA introduit CUDA, qui permet d'utiliser ses GPU pour des calculs généraux, au-delà du rendu graphique.</p>
+                <div class="timeline-sources">
+                  <a class="inline-source" href="https://aws.amazon.com/about-aws/our-origins/" target="_blank" rel="noopener noreferrer">AWS · origines du cloud <span aria-hidden="true">↗</span></a>
+                  <a class="inline-source" href="https://blogs.nvidia.com/blog/what-is-cuda-2/" target="_blank" rel="noopener noreferrer">NVIDIA · CUDA, lancé en 2006 <span aria-hidden="true">↗</span></a>
+                </div>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <span class="timeline-date">2012</span>
+              <div>
+                <span class="timeline-theme">APPRENTISSAGE PROFOND</span>
+                <h4>AlexNet montre la puissance des réseaux profonds sur GPU</h4>
+                <p>Une équipe entraîne un grand réseau convolutif pour classer des images ImageNet à l'aide d'une implémentation GPU efficace, illustrant l'intérêt pratique du calcul parallèle pour l'apprentissage profond.</p>
+                <a class="inline-source" href="https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html" target="_blank" rel="noopener noreferrer">NeurIPS · ImageNet Classification with Deep CNNs <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <span class="timeline-date">2017</span>
+              <div>
+                <span class="timeline-theme">ARCHITECTURES</span>
+                <h4>Le Transformer propose une autre voie</h4>
+                <p>« Attention Is All You Need » présente une architecture fondée sur l'attention, sans récurrence ni convolution, et met en avant une meilleure parallélisation pour les tâches étudiées.</p>
+                <a class="inline-source" href="https://proceedings.neurips.cc/paper/7181-attention-is-all-you-need" target="_blank" rel="noopener noreferrer">NeurIPS · article de recherche <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <span class="timeline-date">2022</span>
+              <div>
+                <span class="timeline-theme">USAGES PUBLICS</span>
+                <h4>Le dialogue avec les modèles devient une interface grand public</h4>
+                <p>OpenAI présente ChatGPT comme aperçu de recherche le 30 novembre. L'interface conversationnelle rend les interactions avec un modèle de langage directement accessibles à un large public.</p>
+                <a class="inline-source" href="https://openai.com/index/chatgpt/" target="_blank" rel="noopener noreferrer">OpenAI · présentation de ChatGPT <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
           </div>
+          <p class="timeline-note">Repères choisis pour éclairer l'histoire technique et l'accès aux usages de l'IA. Ils ne sont ni exhaustifs, ni les seuls jalons possibles.</p>
         </div>
 
         <div id="panel-technique" class="dossier-panel" role="tabpanel" aria-labelledby="tab-technique" data-dossier-panel hidden>
