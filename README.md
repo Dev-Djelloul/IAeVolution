@@ -10,9 +10,10 @@ régionaux documentés ; le volet économique visualise les couches de la chaîn
 de l'IA ; le volet historique relie des jalons de l'informatique, du cloud et de l'IA ;
 le volet technique distingue entraînement, inférence, infrastructure et évaluation.
 Les contenus ne constituent pas une veille en temps réel. Un assistant documentaire
-permet aussi de retrouver localement quelques réponses éditorialisées et leurs sources.
-Il n'utilise pas de modèle génératif, n'envoie pas les questions à un service externe et
-répond qu'il ne sait pas lorsque le dossier indexé ne couvre pas la question.
+permet aussi de retrouver localement quelques réponses éditorialisées et leurs sources,
+sur les centres de données et les premiers repères de l'IA générative. Il n'utilise pas de
+modèle génératif, n'envoie pas les questions à un service externe et répond qu'il ne sait
+pas lorsque le corpus indexé ne couvre pas la question.
 
 ## Environnement de développement
 

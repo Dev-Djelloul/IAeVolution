@@ -128,6 +128,30 @@ const assistantKnowledge = [
     keywords: ["transformer", "attention", "architecture", "2017", "neurips", "reseau", "parallele"],
     source: { name: "NeurIPS · Attention Is All You Need", url: "https://proceedings.neurips.cc/paper/7181-attention-is-all-you-need" },
   },
+  {
+    title: "Ce que désigne l'IA générative",
+    answer: "L'IA générative désigne des systèmes capables de produire du contenu — par exemple du texte, des images, de l'audio ou du code — à partir de régularités apprises dans des données. Le résultat est une génération du modèle, pas une garantie que chaque élément soit exact ou vérifié.",
+    keywords: ["generative", "generatif", "generer", "creation", "creer", "produire", "contenu", "texte", "image", "audio", "video", "definition", "fonctionne"],
+    source: { name: "NIST · Generative AI Profile", url: "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf" },
+  },
+  {
+    title: "Tokens et traitement du texte",
+    answer: "Les modèles de langage ne traitent pas directement les phrases comme des mots entiers : un texte est découpé en tokens, qui peuvent correspondre à un mot, une partie de mot ou un caractère. La tokenisation influence la façon dont le modèle reçoit et génère le texte, ainsi que le comptage de son entrée et de sa sortie.",
+    keywords: ["token", "tokens", "tokenisation", "tokenization", "mot", "mots", "texte", "decoupage", "langage", "compter", "limite", "contexte"],
+    source: { name: "Google AI · tokens et tokenisation", url: "https://ai.google.dev/gemini-api/docs/tokens" },
+  },
+  {
+    title: "Pourquoi un modèle peut produire une information fausse",
+    answer: "Un modèle génératif peut produire une réponse plausible mais inexacte, parfois appelée hallucination ou confabulation. La fluidité d'une réponse ne prouve donc pas sa véracité : pour un fait important, il faut vérifier les affirmations et leurs sources.",
+    keywords: ["hallucination", "hallucinations", "confabulation", "erreur", "faux", "fausse", "inexact", "fiabilite", "verite", "verifier", "verification", "plausible", "inventer", "invente", "reponse"],
+    source: { name: "NIST · Generative AI Profile", url: "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf" },
+  },
+  {
+    title: "Évaluer les risques d'un système d'IA générative",
+    answer: "Le profil du NIST recommande d'intégrer la gestion des risques tout au long du cycle de vie : définir le contexte d'usage, mesurer et documenter les résultats, tester les limites, puis suivre le système après son déploiement. Une seule note ou démonstration ne suffit pas à établir qu'un système est fiable dans tous les contextes.",
+    keywords: ["evaluation", "evaluer", "risque", "risques", "tester", "test", "mesurer", "deploiement", "suivi", "responsable", "nist", "fiabilite"],
+    source: { name: "NIST · AI Risk Management Framework: Generative AI Profile", url: "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf" },
+  },
 ];
 
 const grid = document.querySelector("#topic-grid");
@@ -219,7 +243,7 @@ function renderAssistantResults(question) {
   assistantResults.replaceChildren();
   const heading = document.createElement("p");
   heading.className = "assistant-results-heading";
-  heading.textContent = "REPÈRES RETROUVÉS DANS LE DOSSIER";
+  heading.textContent = "REPÈRES RETROUVÉS DANS LE CORPUS";
   assistantResults.append(heading);
 
   const matches = assistantKnowledge
@@ -239,7 +263,7 @@ function renderAssistantResults(question) {
   if (matches.length === 0) {
     const emptyMessage = document.createElement("p");
     emptyMessage.className = "assistant-empty";
-    emptyMessage.textContent = "Je n'ai pas trouvé de réponse dans les sources actuellement indexées. Essaie une question sur l'énergie, les régions, le cloud, le PUE, l'entraînement ou le Transformer.";
+    emptyMessage.textContent = "Je n'ai pas trouvé de réponse dans les sources actuellement indexées. Essaie une question sur l'énergie, les régions, le cloud, le PUE, l'IA générative, les tokens ou la fiabilité des modèles.";
     assistantResults.append(emptyMessage);
     return;
   }
