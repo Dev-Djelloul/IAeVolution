@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#10151d">
+    <meta name="description" content="IAeVolution vous aide à suivre, comprendre et explorer l'intelligence artificielle.">
+    <title>IAeVolution — Comprendre l'IA qui change</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="IAeVolution, accueil">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>IA<span class="brand-accent">e</span>Volution</span>
+      </a>
+      <nav class="main-nav" aria-label="Navigation principale">
+        <a class="nav-link is-active" href="#explorer">Explorer</a>
+        <a class="nav-link" href="#boussole">Notre boussole</a>
+      </nav>
+      <a class="header-link" href="#explorer">La veille, autrement <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main id="contenu">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="status-dot"></span> LE MONDE DE L'IA, EN CLAIR</p>
+          <h1 id="hero-title">L'IA évolue.<br><span>Comprenez ce qui change.</span></h1>
+          <p class="hero-description">Un espace pour suivre les avancées, décoder les idées et explorer les usages qui façonnent déjà demain.</p>
+          <a class="button button-primary" href="#explorer">Explorer les sujets <span aria-hidden="true">↘</span></a>
+        </div>
+        <div class="hero-orbit" aria-hidden="true">
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="orbit orbit-three"></div>
+          <div class="orbit-core"><span>IA</span><i></i></div>
+          <span class="orbit-label label-one">COMPRENDRE</span>
+          <span class="orbit-label label-two">EXPLORER</span>
+          <span class="orbit-label label-three">ANTICIPER</span>
+          <span class="orbit-spark spark-one"></span>
+          <span class="orbit-spark spark-two"></span>
+          <span class="orbit-spark spark-three"></span>
+        </div>
+        <div class="hero-foot">
+          <span>UNE TECHNOLOGIE, MILLE PERSPECTIVES</span>
+          <span class="hero-foot-right">UN ESPACE DE VEILLE À CONSTRUIRE ENSEMBLE <span aria-hidden="true">↓</span></span>
+        </div>
+      </section>
+
+      <section class="explore-section" id="explorer" aria-labelledby="explore-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">VOTRE POINT DE DÉPART</p>
+            <h2 id="explore-title">L'IA, sous tous ses angles.</h2>
+          </div>
+          <p class="section-note"><span class="demo-badge">PROTO</span> Une première sélection à explorer</p>
+        </div>
+
+        <form class="search-form" role="search">
+          <label class="search-label" for="search-input">Rechercher un sujet</label>
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input id="search-input" type="search" placeholder="Un sujet, une technologie, une question…" autocomplete="off">
+          <kbd class="search-shortcut" aria-hidden="true">⌘ K</kbd>
+        </form>
+
+        <div class="filter-row" role="group" aria-label="Filtrer les sujets">
+          <button class="filter-chip is-selected" type="button" data-filter="all" aria-pressed="true">Tout explorer <span>06</span></button>
+          <button class="filter-chip" type="button" data-filter="comprendre" aria-pressed="false">Comprendre</button>
+          <button class="filter-chip" type="button" data-filter="explorer" aria-pressed="false">Explorer</button>
+          <button class="filter-chip" type="button" data-filter="anticiper" aria-pressed="false">Anticiper</button>
+          <span class="results-label" id="results-label" aria-live="polite">06 sujets</span>
+        </div>
+
+        <div class="topic-grid" id="topic-grid" aria-live="polite"></div>
+        <p class="empty-state" id="empty-state" hidden>Aucun sujet ne correspond à cette recherche. Essayez un autre terme.</p>
+      </section>
+
+      <section class="manifesto" id="boussole" aria-labelledby="manifesto-title">
+        <div class="manifesto-index">01 <span>/ NOTRE BOUSSOLE</span></div>
+        <div>
+          <h2 id="manifesto-title">La technologie avance vite.<br><span>La compréhension doit suivre.</span></h2>
+          <p>Notre ambition : rendre l'intelligence artificielle plus lisible pour tout le monde — sans simplifier les enjeux, ni perdre la précision.</p>
+        </div>
+        <a class="manifesto-link" href="#explorer" aria-label="Revenir à l'exploration">↗</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand footer-brand" href="#" aria-label="IAeVolution, accueil">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>IA<span class="brand-accent">e</span>Volution</span>
+      </a>
+      <p>Veille, idées et perspectives sur l'intelligence artificielle.</p>
+      <span class="footer-note">UN PROJET EN ÉVOLUTION <span aria-hidden="true">✳</span></span>
+    </footer>
+  </body>
+</html>
