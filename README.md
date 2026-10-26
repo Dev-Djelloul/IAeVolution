@@ -12,9 +12,10 @@ données, avec des angles géographiques, économiques, historiques et technique
 géographique compare trois exemples régionaux documentés ; le volet économique visualise
 les couches de la chaîne de valeur de l'IA ; le volet historique relie des jalons de
 l'informatique, du cloud et de l'IA ; le volet technique distingue entraînement, inférence,
-infrastructure et évaluation. L'accueil propose maintenant trois scènes illustrées
-interactives — infrastructures, robotique et réseaux — réalisées en SVG isométrique ; c'est
-un premier langage visuel léger, pas encore une scène 3D temps réel.
+infrastructure et évaluation. L'accueil propose une maquette de centre de données en CSS
+3D, que l'on peut faire tourner et explorer par zones sourcées, avec une vue illustrée de
+repli. Les angles robotique et réseaux restent des scènes SVG interactives. La maquette est
+pédagogique, non à l'échelle, et n'utilise ni WebGL ni bibliothèque 3D.
 Un registre éditorial structuré présente un premier ensemble de sources institutionnelles,
 scientifiques, sectorielles et techniques ; il peut être recherché et filtré par famille.
 Ses fiches sont maintenues dans `sources.json` : chaque source porte un identifiant stable,
@@ -45,13 +46,12 @@ Le prototype ne dépend pas encore d'un backend, d'une base de données ou d'une
 
 ## Cadrage technique
 
-La prochaine étape est de faire tester ce prototype visuel, puis de décider si une scène 3D
-temps réel apporte assez de valeur pour justifier sa complexité, avant l'intégration de la
-voix ou de services externes. L'architecture cible est progressive et indépendante d'un
-fournisseur : expérience visuelle, données traçables, recherche séparée dans le corpus
-éditorial et sur le Web, puis assistant vocal et génération
-éventuelle sous contrôle. Le schéma, les flux, les garde-fous et les décisions ouvertes
-sont détaillés dans [le cadrage technique](docs/architecture-technique.md).
+La prochaine étape est de faire tester la maquette sur différents appareils et de vérifier
+son accessibilité et ses performances avant d'envisager un moteur 3D temps réel ou d'étendre
+la scène. L'architecture cible est progressive et indépendante d'un fournisseur :
+expérience visuelle, données traçables, recherche séparée dans le corpus éditorial et sur
+le Web, puis assistant vocal et génération éventuelle sous contrôle. Le schéma, les flux,
+les garde-fous et les décisions ouvertes sont détaillés dans [le cadrage technique](docs/architecture-technique.md).
 
 ## Cap proposé
 

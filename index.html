@@ -133,18 +133,97 @@
                 <text x="26" y="21">SYSTÈME EN ÉVOLUTION</text>
               </g>
             </svg>
-            <div class="scene-coordinate coordinate-top"><span>48°51' N</span><span>01°53' E</span></div>
-            <div class="scene-coordinate coordinate-bottom"><span class="scene-live-dot"></span> EXPLORATION VISUELLE <span id="scene-index">01 / 03</span></div>
+            <div class="datacenter-scene" id="datacenter-scene">
+              <div class="datacenter-stage" role="group" tabindex="0" aria-label="Maquette 3D d'un centre de données. Utilisez les flèches gauche et droite pour tourner, et la touche Début pour réinitialiser.">
+                <div class="datacenter-world" id="datacenter-world" data-zone="compute">
+                  <div class="facility-ground"></div>
+                  <div class="facility facility-platform">
+                    <div class="cuboid" style="--box-width: 430px; --box-height: 14px; --box-depth: 274px; --box-half-width: 215px; --box-half-height: 7px; --box-half-depth: 137px;">
+                      <i class="face front"></i><i class="face back"></i><i class="face right"></i><i class="face left"></i><i class="face top"></i><i class="face bottom"></i>
+                    </div>
+                  </div>
+                  <div class="facility facility-hall">
+                    <div class="cuboid" style="--box-width: 246px; --box-height: 110px; --box-depth: 150px; --box-half-width: 123px; --box-half-height: 55px; --box-half-depth: 75px;">
+                      <i class="face front"></i><i class="face back"></i><i class="face right"></i><i class="face left"></i><i class="face top"></i><i class="face bottom"></i>
+                      <div class="hall-window-grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                      <div class="hall-door"></div>
+                    </div>
+                  </div>
+                  <div class="facility facility-rack rack-one">
+                    <div class="cuboid" style="--box-width: 34px; --box-height: 108px; --box-depth: 44px; --box-half-width: 17px; --box-half-height: 54px; --box-half-depth: 22px;">
+                      <i class="face front"></i><i class="face back"></i><i class="face right"></i><i class="face left"></i><i class="face top"></i><i class="face bottom"></i>
+                      <div class="rack-slots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                    </div>
+                  </div>
+                  <div class="facility facility-rack rack-two">
+                    <div class="cuboid" style="--box-width: 34px; --box-height: 108px; --box-depth: 44px; --box-half-width: 17px; --box-half-height: 54px; --box-half-depth: 22px;">
+                      <i class="face front"></i><i class="face back"></i><i class="face right"></i><i class="face left"></i><i class="face top"></i><i class="face bottom"></i>
+                      <div class="rack-slots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                    </div>
+                  </div>
+                  <div class="facility facility-rack rack-three">
+                    <div class="cuboid" style="--box-width: 34px; --box-height: 108px; --box-depth: 44px; --box-half-width: 17px; --box-half-height: 54px; --box-half-depth: 22px;">
+                      <i class="face front"></i><i class="face back"></i><i class="face right"></i><i class="face left"></i><i class="face top"></i><i class="face bottom"></i>
+                      <div class="rack-slots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                    </div>
+                  </div>
+                  <div class="facility facility-rack rack-four">
+                    <div class="cuboid" style="--box-width: 34px; --box-height: 108px; --box-depth: 44px; --box-half-width: 17px; --box-half-height: 54px; --box-half-depth: 22px;">
+                      <i class="face front"></i><i class="face back"></i><i class="face right"></i><i class="face left"></i><i class="face top"></i><i class="face bottom"></i>
+                      <div class="rack-slots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                    </div>
+                  </div>
+                  <div class="facility facility-cooling cooling-one">
+                    <div class="cuboid" style="--box-width: 72px; --box-height: 44px; --box-depth: 54px; --box-half-width: 36px; --box-half-height: 22px; --box-half-depth: 27px;">
+                      <i class="face front"></i><i class="face back"></i><i class="face right"></i><i class="face left"></i><i class="face top"></i><i class="face bottom"></i>
+                      <div class="cooling-fan"><i></i><i></i><i></i><i></i></div>
+                    </div>
+                  </div>
+                  <div class="facility facility-cooling cooling-two">
+                    <div class="cuboid" style="--box-width: 72px; --box-height: 44px; --box-depth: 54px; --box-half-width: 36px; --box-half-height: 22px; --box-half-depth: 27px;">
+                      <i class="face front"></i><i class="face back"></i><i class="face right"></i><i class="face left"></i><i class="face top"></i><i class="face bottom"></i>
+                      <div class="cooling-fan"><i></i><i></i><i></i><i></i></div>
+                    </div>
+                  </div>
+                  <div class="facility facility-power">
+                    <div class="cuboid" style="--box-width: 78px; --box-height: 58px; --box-depth: 62px; --box-half-width: 39px; --box-half-height: 29px; --box-half-depth: 31px;">
+                      <i class="face front"></i><i class="face back"></i><i class="face right"></i><i class="face left"></i><i class="face top"></i><i class="face bottom"></i>
+                      <div class="power-light"></div>
+                    </div>
+                  </div>
+                  <div class="facility facility-cable cable-one"></div>
+                  <div class="facility facility-cable cable-two"></div>
+                  <div class="facility facility-cable cable-three"></div>
+                </div>
+                <div class="datacenter-hotspots" role="group" aria-label="Explorer les zones du centre de données">
+                  <button class="datacenter-hotspot hotspot-compute is-active" type="button" data-zone="compute" aria-pressed="true"><span>01</span> Calcul</button>
+                  <button class="datacenter-hotspot hotspot-energy" type="button" data-zone="energy" aria-pressed="false"><span>02</span> Énergie</button>
+                  <button class="datacenter-hotspot hotspot-cooling" type="button" data-zone="cooling" aria-pressed="false"><span>03</span> Refroidissement</button>
+                  <button class="datacenter-hotspot hotspot-network" type="button" data-zone="network" aria-pressed="false"><span>04</span> Réseau</button>
+                </div>
+                <div class="datacenter-controls" role="group" aria-label="Contrôles de la maquette 3D">
+                  <span>FAIRE TOURNER</span>
+                  <button type="button" data-camera-turn="-1" aria-label="Tourner la scène vers la gauche">↶</button>
+                  <button type="button" data-camera-turn="1" aria-label="Tourner la scène vers la droite">↷</button>
+                  <button type="button" data-camera-reset aria-label="Réinitialiser la vue">Réinitialiser</button>
+                  <button type="button" id="toggle-scene-view" aria-label="Basculer vers la vue illustrée">Vue illustrée</button>
+                </div>
+                <p class="datacenter-instruction">Faites glisser pour tourner · sélectionnez une zone pour en savoir plus</p>
+              </div>
+            </div>
+            <div class="scene-coordinate coordinate-top"><span>SCHÉMA DE PRINCIPE</span><span>NON À L'ÉCHELLE</span></div>
+            <div class="scene-coordinate coordinate-bottom"><span class="scene-live-dot"></span> MAQUETTE PÉDAGOGIQUE <span id="scene-index">01 / 03</span></div>
             <div class="scene-data data-top"><span class="data-spark" aria-hidden="true">✳</span><span><span id="scene-context-title">INFRASTRUCTURES</span><br><strong id="scene-context-detail">Énergie · calcul · réseau</strong></span></div>
-            <div class="scene-data data-bottom"><span class="data-index">01</span><span id="scene-stat-label">LE SOCLE MATÉRIEL</span></div>
+            <div class="scene-data data-bottom"><span class="data-index">01</span><span id="scene-stat-label">LE COEUR DU CALCUL</span></div>
           </div>
           <div class="scene-caption">
             <div>
               <p class="eyebrow">CHOISIR UN ANGLE</p>
-              <h2 id="scene-title">L'infrastructure</h2>
-              <p id="scene-description" aria-live="polite">Des bâtiments et des machines qui rendent l'IA possible.</p>
+              <h2 id="scene-title" aria-live="polite">Le calcul</h2>
+              <p id="scene-description" aria-live="polite">Les serveurs hébergent les accélérateurs, la mémoire et le stockage utilisés par les services d'IA.</p>
             </div>
             <a class="scene-link" id="scene-link" href="#dossier-data-centres">Explorer le dossier <span aria-hidden="true">↗</span></a>
+            <a class="scene-source" id="scene-source" href="https://www.oecd.org/en/publications/competition-in-artificial-intelligence-infrastructure_623d1874-en/full-report.html" target="_blank" rel="noopener noreferrer">Source : OCDE ↗</a>
           </div>
           <div class="scene-switcher" role="group" aria-label="Choisir une scène à explorer">
             <button class="scene-choice is-active" type="button" data-scene-choice="infrastructure" aria-pressed="true"><span>01</span> Infrastructures</button>

@@ -230,14 +230,62 @@ const sceneContextTitle = document.querySelector("#scene-context-title");
 const sceneContextDetail = document.querySelector("#scene-context-detail");
 const sceneStatLabel = document.querySelector("#scene-stat-label");
 const sceneIndex = document.querySelector("#scene-index");
+const sceneCanvas = document.querySelector(".scene-canvas");
+const datacenterScene = document.querySelector("#datacenter-scene");
+const datacenterStage = document.querySelector(".datacenter-stage");
+const datacenterWorld = document.querySelector("#datacenter-world");
+const dataCenterZones = [...document.querySelectorAll("[data-zone]")];
+const cameraTurnButtons = [...document.querySelectorAll("[data-camera-turn]")];
+const cameraResetButton = document.querySelector("[data-camera-reset]");
+const toggleSceneViewButton = document.querySelector("#toggle-scene-view");
+const dataCenterZoneDetails = {
+  compute: {
+    title: "Le calcul",
+    description: "Les serveurs hébergent les accélérateurs, la mémoire et le stockage utilisés par les services d'IA.",
+    contextTitle: "SERVEURS",
+    contextDetail: "Calcul · mémoire · stockage",
+    stat: "LE COEUR DU CALCUL",
+    sourceName: "OCDE · Infrastructure IA",
+    sourceUrl: "https://www.oecd.org/en/publications/competition-in-artificial-intelligence-infrastructure_623d1874-en/full-report.html",
+  },
+  energy: {
+    title: "L'alimentation électrique",
+    description: "Le site dépend d'une puissance disponible, de systèmes de conversion et de solutions de secours adaptées.",
+    contextTitle: "ÉNERGIE",
+    contextDetail: "Réseau · conversion · secours",
+    stat: "ALIMENTER LE CALCUL",
+    sourceName: "AIE · Energy and AI",
+    sourceUrl: "https://www.iea.org/reports/energy-and-ai",
+  },
+  cooling: {
+    title: "Le refroidissement",
+    description: "Évacuer la chaleur des équipements demande des choix techniques qui dépendent aussi du climat et des ressources locales.",
+    contextTitle: "REFROIDISSEMENT",
+    contextDetail: "Chaleur · air · eau",
+    stat: "MAÎTRISER LA CHALEUR",
+    sourceName: "AIE · Energy and AI",
+    sourceUrl: "https://www.iea.org/reports/energy-and-ai",
+  },
+  network: {
+    title: "Le réseau & le stockage",
+    description: "Les réseaux et le stockage relient les machines, les données et les services aux utilisateurs.",
+    contextTitle: "INTERCONNEXION",
+    contextDetail: "Réseaux · données · échanges",
+    stat: "RELIER LES SYSTÈMES",
+    sourceName: "OCDE · Infrastructure IA",
+    sourceUrl: "https://www.oecd.org/en/publications/competition-in-artificial-intelligence-infrastructure_623d1874-en/full-report.html",
+  },
+};
 const scenes = {
   infrastructure: {
-    title: "L'infrastructure",
-    description: "Des bâtiments et des machines qui rendent l'IA possible.",
+    title: dataCenterZoneDetails.compute.title,
+    description: dataCenterZoneDetails.compute.description,
     contextTitle: "INFRASTRUCTURES",
     contextDetail: "Énergie · calcul · réseau",
-    stat: "LE SOCLE MATÉRIEL",
+    stat: dataCenterZoneDetails.compute.stat,
     link: "#dossier-data-centres",
+    sourceName: dataCenterZoneDetails.compute.sourceName,
+    sourceUrl: dataCenterZoneDetails.compute.sourceUrl,
   },
   robotique: {
     title: "La robotique",
@@ -246,6 +294,8 @@ const scenes = {
     contextDetail: "Perception · mouvement · action",
     stat: "L'IA DANS LE MONDE RÉEL",
     link: "#explorer",
+    sourceName: "OCDE · Infrastructure IA",
+    sourceUrl: "https://www.oecd.org/en/publications/competition-in-artificial-intelligence-infrastructure_623d1874-en/full-report.html",
   },
   reseaux: {
     title: "Les réseaux",
@@ -254,9 +304,92 @@ const scenes = {
     contextDetail: "Données · modèles · usages",
     stat: "UN ÉCOSYSTÈME RELIÉ",
     link: "#explorer",
+    sourceName: "OCDE · Infrastructure IA",
+    sourceUrl: "https://www.oecd.org/en/publications/competition-in-artificial-intelligence-infrastructure_623d1874-en/full-report.html",
   },
 };
 const sceneOrder = Object.keys(scenes);
+let cameraYaw = -36;
+
+function renderSceneDetails(details) {
+  sceneTitle.textContent = details.title;
+  sceneDescription.textContent = details.description;
+  sceneContextTitle.textContent = details.contextTitle;
+  sceneContextDetail.textContent = details.contextDetail;
+  sceneStatLabel.textContent = details.stat;
+  sceneSource.textContent = `Source : ${details.sourceName} ↗`;
+  sceneSource.href = details.sourceUrl;
+}
+
+function setCameraYaw(nextYaw) {
+  cameraYaw = ((nextYaw + 180) % 360 + 360) % 360 - 180;
+  datacenterWorld.style.setProperty("--camera-yaw", `${cameraYaw}deg`);
+}
+
+const sceneSource = document.querySelector("#scene-source");
+
+function selectDataCenterZone(button) {
+  const details = dataCenterZoneDetails[button.dataset.zone];
+  if (!details) return;
+  dataCenterZones.forEach((zone) => {
+    const isSelected = zone === button;
+    zone.classList.toggle("is-active", isSelected);
+    zone.setAttribute("aria-pressed", String(isSelected));
+  });
+  datacenterWorld.dataset.zone = button.dataset.zone;
+  renderSceneDetails(details);
+}
+
+dataCenterZones.forEach((button) => {
+  button.addEventListener("click", () => selectDataCenterZone(button));
+});
+
+cameraTurnButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    setCameraYaw(cameraYaw + Number(button.dataset.cameraTurn) * 22);
+  });
+});
+
+cameraResetButton.addEventListener("click", () => setCameraYaw(-36));
+
+toggleSceneViewButton.addEventListener("click", () => {
+  const showIllustration = !datacenterScene.hidden;
+  datacenterScene.hidden = showIllustration;
+  datacenterScene.inert = showIllustration;
+  datacenterScene.setAttribute("aria-hidden", String(showIllustration));
+  sceneCanvas.dataset.illustrated = String(showIllustration);
+  toggleSceneViewButton.textContent = showIllustration ? "Vue 3D" : "Vue illustrée";
+  toggleSceneViewButton.setAttribute("aria-label", showIllustration ? "Revenir à la vue 3D" : "Basculer vers la vue illustrée");
+});
+
+let dragStart = null;
+datacenterStage.addEventListener("pointerdown", (event) => {
+  if (event.target.closest("button")) return;
+  dragStart = { x: event.clientX, yaw: cameraYaw, pointerId: event.pointerId };
+  datacenterStage.setPointerCapture(event.pointerId);
+});
+
+datacenterStage.addEventListener("pointermove", (event) => {
+  if (!dragStart || dragStart.pointerId !== event.pointerId) return;
+  setCameraYaw(dragStart.yaw + (event.clientX - dragStart.x) * 0.55);
+});
+
+function finishSceneDrag(event) {
+  if (dragStart?.pointerId === event.pointerId) dragStart = null;
+}
+datacenterStage.addEventListener("pointerup", finishSceneDrag);
+datacenterStage.addEventListener("pointercancel", finishSceneDrag);
+
+datacenterStage.addEventListener("keydown", (event) => {
+  if (event.target.closest("button")) return;
+  if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+    event.preventDefault();
+    setCameraYaw(cameraYaw + (event.key === "ArrowLeft" ? -22 : 22));
+  } else if (event.key === "Home") {
+    event.preventDefault();
+    setCameraYaw(-36);
+  }
+});
 
 sceneChoices.forEach((button) => {
   button.addEventListener("click", () => {
@@ -265,16 +398,20 @@ sceneChoices.forEach((button) => {
     if (!scene) return;
 
     visualExperience.dataset.activeScene = selectedScene;
+    const showDataCenter = selectedScene === "infrastructure";
+    datacenterScene.inert = !showDataCenter || datacenterScene.hidden;
+    datacenterScene.setAttribute("aria-hidden", String(!showDataCenter || datacenterScene.hidden));
+    sceneSource.hidden = !showDataCenter;
     sceneChoices.forEach((choice) => {
       const isSelected = choice === button;
       choice.classList.toggle("is-active", isSelected);
       choice.setAttribute("aria-pressed", String(isSelected));
     });
-    sceneTitle.textContent = scene.title;
-    sceneDescription.textContent = scene.description;
-    sceneContextTitle.textContent = scene.contextTitle;
-    sceneContextDetail.textContent = scene.contextDetail;
-    sceneStatLabel.textContent = scene.stat;
+    if (showDataCenter) {
+      selectDataCenterZone(dataCenterZones.find((zone) => zone.dataset.zone === "compute"));
+    } else {
+      renderSceneDetails(scene);
+    }
     sceneLink.href = scene.link;
     sceneIndex.textContent = `${String(sceneOrder.indexOf(selectedScene) + 1).padStart(2, "0")} / ${String(sceneOrder.length).padStart(2, "0")}`;
   });
