@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#10151d">
-    <meta name="description" content="IAeVolution vous aide à suivre, comprendre et explorer l'intelligence artificielle.">
+    <meta name="description" content="Explorez l'intelligence artificielle à travers ses infrastructures, ses réseaux, ses robots et des contenus sourcés.">
     <title>IAeVolution — Comprendre l'IA qui change</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,32 +24,137 @@
         <a class="nav-link" href="#sources">Sources</a>
         <a class="nav-link" href="#boussole">Notre boussole</a>
       </nav>
-      <a class="header-link" href="#assistant">Assistant documentaire <span aria-hidden="true">↗</span></a>
+      <a class="header-link" href="#assistant">Explorer les dossiers <span aria-hidden="true">↗</span></a>
     </header>
 
     <main id="contenu">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <p class="eyebrow"><span class="status-dot"></span> LE MONDE DE L'IA, EN CLAIR</p>
-          <h1 id="hero-title">L'IA évolue.<br><span>Comprenez ce qui change.</span></h1>
-          <p class="hero-description">Un espace pour suivre les avancées, décoder les idées et explorer les usages qui façonnent déjà demain.</p>
-          <a class="button button-primary" href="#explorer">Explorer les sujets <span aria-hidden="true">↘</span></a>
+          <p class="eyebrow"><span class="status-dot"></span> UN MONDE À EXPLORER</p>
+          <h1 id="hero-title">L'IA prend forme.<br><span>Entrez dans ses coulisses.</span></h1>
+          <p class="hero-description">Des centres de données aux robots, découvrez les machines, les idées et les forces qui façonnent l'intelligence artificielle.</p>
+          <a class="button button-primary" href="#explorer">Commencer l'exploration <span aria-hidden="true">↘</span></a>
+          <p class="hero-trust"><span aria-hidden="true">✳</span> Des repères documentés pour garder les pieds sur terre.</p>
         </div>
-        <div class="hero-orbit" aria-hidden="true">
-          <div class="orbit orbit-one"></div>
-          <div class="orbit orbit-two"></div>
-          <div class="orbit orbit-three"></div>
-          <div class="orbit-core"><span>IA</span><i></i></div>
-          <span class="orbit-label label-one">COMPRENDRE</span>
-          <span class="orbit-label label-two">EXPLORER</span>
-          <span class="orbit-label label-three">ANTICIPER</span>
-          <span class="orbit-spark spark-one"></span>
-          <span class="orbit-spark spark-two"></span>
-          <span class="orbit-spark spark-three"></span>
+        <div class="hero-visual" id="visual-experience" data-active-scene="infrastructure">
+          <div class="scene-canvas">
+            <svg class="scene-art" viewBox="0 0 560 520" aria-hidden="true" focusable="false">
+              <defs>
+                <linearGradient id="scene-glow" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0" stop-color="#c5f36b" stop-opacity=".72"></stop>
+                  <stop offset="1" stop-color="#48b9a0" stop-opacity=".08"></stop>
+                </linearGradient>
+                <linearGradient id="rack-front" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0" stop-color="#34463f"></stop>
+                  <stop offset="1" stop-color="#17221f"></stop>
+                </linearGradient>
+                <filter id="soft-glow" x="-100%" y="-100%" width="300%" height="300%">
+                  <feGaussianBlur stdDeviation="8"></feGaussianBlur>
+                </filter>
+              </defs>
+              <g class="scene-grid">
+                <path d="M280 70 500 190 280 310 60 190 280 70Z"></path>
+                <path d="m60 190 220 120 220-120M100 168l220 120m20-142 180 98M140 146l220 120m20-142 140 76M180 124l220 120m20-142 100 54M220 102l220 120m20-142 60 32M60 190v145l220 120V310m220-120v145L280 455"></path>
+                <path d="m100 212 220 120m180-98L280 354m-140-186v145m180-31V77m40 120v145m40-167v145m40-167v145m40-167v145"></path>
+              </g>
+              <ellipse class="scene-halo" cx="284" cy="280" rx="170" ry="108"></ellipse>
+              <g class="scene-layer" data-visual-scene="infrastructure">
+                <path class="scene-shadow" d="m100 316 182-99 180 98-183 101-179-100Z"></path>
+                <path class="scene-platform" d="m108 290 174-96 173 96-174 97-173-97Z"></path>
+                <path class="scene-platform-edge" d="M108 290v23l173 98v-24L108 290Zm347 0v23l-174 98v-24l174-97Z"></path>
+                <g class="server-building">
+                  <path class="building-side" d="m282 132 99 54v145l-99-55V132Z"></path>
+                  <path class="building-front" d="m189 186 93-54v144l-93 54V186Z"></path>
+                  <path class="building-roof" d="m189 186 93-54 99 54-99 55-93-55Z"></path>
+                  <path class="building-glass" d="m202 190 80-46v124l-80 47V190Z"></path>
+                  <path class="building-side-glass" d="m292 146 77 42v124l-77-43V146Z"></path>
+                  <path class="building-seam" d="m282 241 99-55m-99 79 99-55m-99 79 99-55"></path>
+                  <path class="building-seam" d="m209 207 67-39m-67 66 67-39m-67 65 67-39"></path>
+                  <path class="scene-highlight" d="m189 186 93-54 99 54-99 55-93-55Z"></path>
+                </g>
+                <g class="rack-group">
+                  <path class="rack-side" d="m130 291 16-9v53l-16 9v-53Z"></path>
+                  <path class="rack-front" d="m105 277 25 14v53l-25-14v-53Z"></path>
+                  <path class="rack-top" d="m105 277 17-10 24 15-16 9-25-14Z"></path>
+                  <path class="rack-lights" d="m111 290 13 7m-13 8 13 7m-13 8 13 7"></path>
+                  <path class="rack-side" d="m174 316 16-9v53l-16 9v-53Z"></path>
+                  <path class="rack-front" d="m149 302 25 14v53l-25-14v-53Z"></path>
+                  <path class="rack-top" d="m149 302 17-10 24 15-16 9-25-14Z"></path>
+                  <path class="rack-lights" d="m155 315 13 7m-13 8 13 7m-13 8 13 7"></path>
+                  <path class="rack-side" d="m365 313 16-9v53l-16 9v-53Z"></path>
+                  <path class="rack-front" d="m340 299 25 14v53l-25-14v-53Z"></path>
+                  <path class="rack-top" d="m340 299 17-10 24 15-16 9-25-14Z"></path>
+                  <path class="rack-lights" d="m346 312 13 7m-13 8 13 7m-13 8 13 7"></path>
+                  <path class="rack-side" d="m409 289 16-9v53l-16 9v-53Z"></path>
+                  <path class="rack-front" d="m384 275 25 14v53l-25-14v-53Z"></path>
+                  <path class="rack-top" d="m384 275 17-10 24 15-16 9-25-14Z"></path>
+                  <path class="rack-lights" d="m390 288 13 7m-13 8 13 7m-13 8 13 7"></path>
+                </g>
+                <circle class="scene-node node-pulse" cx="280" cy="123" r="4"></circle>
+                <path class="scene-connector" d="m280 123 47-39"></path>
+              </g>
+              <g class="scene-layer" data-visual-scene="robotique">
+                <path class="scene-shadow" d="m115 368 166-92 202 110-167 92-201-110Z"></path>
+                <path class="scene-platform" d="m115 340 166-92 202 110-167 92-201-110Z"></path>
+                <path class="scene-platform-edge" d="M115 340v25l201 110v-25L115 340Zm368 18v25L316 475v-25l167-92Z"></path>
+                <path class="robot-cable" d="M281 285v-33m0 0c0-17 17-24 29-15"></path>
+                <path class="robot-joint" d="m265 333-22 46 31 18 17-34m-26-30 38 11 25 37-20 15-20-31-30-7"></path>
+                <path class="robot-body" d="m257 286 42 7 15 49-43 23-29-37 15-42Z"></path>
+                <path class="robot-neck" d="m268 270 25 4-4 17-27-4 6-17Z"></path>
+                <path class="robot-head" d="m267 229 43 7 7 39-43 8-14-27 7-27Z"></path>
+                <path class="robot-face" d="m271 246 33 5 3 12-33-5-3-12Z"></path>
+                <circle class="robot-eye" cx="282" cy="252" r="3"></circle>
+                <circle class="robot-eye" cx="298" cy="255" r="3"></circle>
+                <path class="robot-arm" d="m306 304 28 29-17 32m-4-59 20 20 20-9"></path>
+                <circle class="robot-joint-dot" cx="334" cy="333" r="6"></circle>
+                <circle class="robot-joint-dot" cx="317" cy="365" r="6"></circle>
+                <path class="robot-leg" d="m280 362-8 48-34 24m54-57 23 38 28 12"></path>
+                <circle class="scene-node node-pulse" cx="324" cy="218" r="4"></circle>
+                <path class="scene-connector" d="m324 218 62-29"></path>
+              </g>
+              <g class="scene-layer" data-visual-scene="reseaux">
+                <path class="scene-shadow" d="m89 353 191-105 195 107-193 107-193-109Z"></path>
+                <path class="scene-platform" d="m89 328 191-105 195 107-193 107-193-109Z"></path>
+                <path class="scene-platform-edge" d="M89 328v25l193 109v-25L89 328Zm386 2v25L282 462v-25l193-107Z"></path>
+                <path class="network-link" d="m157 302 68-71 62 25 54-66 69 50 34-12m-287 74 67 36 79-45 53 64 76-41m-195-124 6 134 95-60 56 95 57-141m-214 44 168 27"></path>
+                <g class="network-node">
+                  <circle cx="157" cy="302" r="8"></circle><circle cx="225" cy="231" r="7"></circle>
+                  <circle cx="287" cy="256" r="10"></circle><circle cx="341" cy="190" r="7"></circle>
+                  <circle cx="410" cy="240" r="9"></circle><circle cx="444" cy="228" r="6"></circle>
+                  <circle cx="224" cy="338" r="6"></circle><circle cx="303" cy="293" r="8"></circle>
+                  <circle cx="356" cy="357" r="7"></circle><circle cx="432" cy="316" r="8"></circle>
+                  <circle cx="163" cy="258" r="5"></circle><circle cx="388" cy="275" r="5"></circle>
+                </g>
+                <circle class="scene-node node-pulse" cx="287" cy="256" r="16"></circle>
+              </g>
+              <g class="scene-label" transform="translate(326 60)">
+                <rect width="143" height="34" rx="3"></rect>
+                <circle cx="15" cy="17" r="3"></circle>
+                <text x="26" y="21">SYSTÈME EN ÉVOLUTION</text>
+              </g>
+            </svg>
+            <div class="scene-coordinate coordinate-top"><span>48°51' N</span><span>01°53' E</span></div>
+            <div class="scene-coordinate coordinate-bottom"><span class="scene-live-dot"></span> EXPLORATION VISUELLE <span id="scene-index">01 / 03</span></div>
+            <div class="scene-data data-top"><span class="data-spark" aria-hidden="true">✳</span><span><span id="scene-context-title">INFRASTRUCTURES</span><br><strong id="scene-context-detail">Énergie · calcul · réseau</strong></span></div>
+            <div class="scene-data data-bottom"><span class="data-index">01</span><span id="scene-stat-label">LE SOCLE MATÉRIEL</span></div>
+          </div>
+          <div class="scene-caption">
+            <div>
+              <p class="eyebrow">CHOISIR UN ANGLE</p>
+              <h2 id="scene-title">L'infrastructure</h2>
+              <p id="scene-description" aria-live="polite">Des bâtiments et des machines qui rendent l'IA possible.</p>
+            </div>
+            <a class="scene-link" id="scene-link" href="#dossier-data-centres">Explorer le dossier <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="scene-switcher" role="group" aria-label="Choisir une scène à explorer">
+            <button class="scene-choice is-active" type="button" data-scene-choice="infrastructure" aria-pressed="true"><span>01</span> Infrastructures</button>
+            <button class="scene-choice" type="button" data-scene-choice="robotique" aria-pressed="false"><span>02</span> Robotique</button>
+            <button class="scene-choice" type="button" data-scene-choice="reseaux" aria-pressed="false"><span>03</span> Réseaux</button>
+          </div>
         </div>
         <div class="hero-foot">
           <span>UNE TECHNOLOGIE, MILLE PERSPECTIVES</span>
-          <span class="hero-foot-right">UN ESPACE DE VEILLE À CONSTRUIRE ENSEMBLE <span aria-hidden="true">↓</span></span>
+          <span class="hero-foot-right">OBSERVER · COMPRENDRE · EXPLORER <span aria-hidden="true">↓</span></span>
         </div>
       </section>
 

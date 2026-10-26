@@ -56,6 +56,9 @@ ou un service vocal nécessitant un secret depuis le navigateur.
 - Faire évoluer le site vers une expérience éditoriale visuelle : illustrations originales,
   visualisations spatiales et, si elles apportent une vraie compréhension, scènes 3D
   manipulables autour des modèles, centres de données et robots.
+- Le premier prototype prend la forme de trois scènes SVG isométriques interactives
+  (infrastructures, robotique et réseaux). Elles valident un langage visuel léger, mais ne
+  constituent pas encore de la 3D temps réel.
 - Conserver une lecture 2D et un parcours textuel complets, une navigation clavier, des
   contrastes adaptés et une alternative aux mouvements/animations. La 3D est une
   amélioration progressive, jamais une condition d'accès au contenu.
@@ -210,8 +213,9 @@ Ces décisions restent ouvertes jusqu'au prototypage et à des essais utilisateu
    explicite est recommandée.
 4. Quels budgets de performance 3D, de latence vocale et de coût par session sont acceptables ?
 
-**Prochaine tranche recommandée :** créer un prototype visuel court avec une scène 3D
-simple, une alternative sans 3D et un mini-parcours éditorial. En parallèle, conserver le
-contrat de données et le workflow manuel comme fondation. Ne pas brancher voix, recherche
-Web ni modèle avant d'avoir validé les parcours, les exigences de confidentialité et les
-budgets avec l'utilisateur.
+**Prochaine tranche recommandée :** faire tester les trois scènes illustrées, valider le
+langage visuel et le parcours éditorial, puis comparer une scène 3D temps réel à cette
+alternative légère avant de choisir une technologie. En parallèle, conserver le contrat de
+données et le workflow manuel comme fondation. Ne pas brancher voix, recherche Web ni modèle
+avant d'avoir validé les parcours, les exigences de confidentialité et les budgets avec
+l'utilisateur.

@@ -220,6 +220,66 @@ const sourceReviewStatus = document.querySelector("#sources-review-status");
 const sourceEmpty = document.querySelector("#source-empty");
 const sourceFilterButtons = [...document.querySelectorAll("[data-source-filter]")];
 let activeSourceFilter = "all";
+
+const visualExperience = document.querySelector("#visual-experience");
+const sceneChoices = [...document.querySelectorAll("[data-scene-choice]")];
+const sceneTitle = document.querySelector("#scene-title");
+const sceneDescription = document.querySelector("#scene-description");
+const sceneLink = document.querySelector("#scene-link");
+const sceneContextTitle = document.querySelector("#scene-context-title");
+const sceneContextDetail = document.querySelector("#scene-context-detail");
+const sceneStatLabel = document.querySelector("#scene-stat-label");
+const sceneIndex = document.querySelector("#scene-index");
+const scenes = {
+  infrastructure: {
+    title: "L'infrastructure",
+    description: "Des bâtiments et des machines qui rendent l'IA possible.",
+    contextTitle: "INFRASTRUCTURES",
+    contextDetail: "Énergie · calcul · réseau",
+    stat: "LE SOCLE MATÉRIEL",
+    link: "#dossier-data-centres",
+  },
+  robotique: {
+    title: "La robotique",
+    description: "Quand les modèles quittent l'écran pour agir dans le monde physique.",
+    contextTitle: "ROBOTIQUE",
+    contextDetail: "Perception · mouvement · action",
+    stat: "L'IA DANS LE MONDE RÉEL",
+    link: "#explorer",
+  },
+  reseaux: {
+    title: "Les réseaux",
+    description: "Des modèles, des données et des machines reliés à l'échelle du monde.",
+    contextTitle: "SYSTÈMES CONNECTÉS",
+    contextDetail: "Données · modèles · usages",
+    stat: "UN ÉCOSYSTÈME RELIÉ",
+    link: "#explorer",
+  },
+};
+const sceneOrder = Object.keys(scenes);
+
+sceneChoices.forEach((button) => {
+  button.addEventListener("click", () => {
+    const selectedScene = button.dataset.sceneChoice;
+    const scene = scenes[selectedScene];
+    if (!scene) return;
+
+    visualExperience.dataset.activeScene = selectedScene;
+    sceneChoices.forEach((choice) => {
+      const isSelected = choice === button;
+      choice.classList.toggle("is-active", isSelected);
+      choice.setAttribute("aria-pressed", String(isSelected));
+    });
+    sceneTitle.textContent = scene.title;
+    sceneDescription.textContent = scene.description;
+    sceneContextTitle.textContent = scene.contextTitle;
+    sceneContextDetail.textContent = scene.contextDetail;
+    sceneStatLabel.textContent = scene.stat;
+    sceneLink.href = scene.link;
+    sceneIndex.textContent = `${String(sceneOrder.indexOf(selectedScene) + 1).padStart(2, "0")} / ${String(sceneOrder.length).padStart(2, "0")}`;
+  });
+});
+
 const assistantStopWords = new Set([
   "avec", "dans", "des", "elle", "elles", "est", "et", "la", "le", "les",
   "leur", "leurs", "mais", "mon", "ou", "pour", "pourquoi", "que", "quel",

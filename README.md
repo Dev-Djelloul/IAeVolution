@@ -12,7 +12,9 @@ données, avec des angles géographiques, économiques, historiques et technique
 géographique compare trois exemples régionaux documentés ; le volet économique visualise
 les couches de la chaîne de valeur de l'IA ; le volet historique relie des jalons de
 l'informatique, du cloud et de l'IA ; le volet technique distingue entraînement, inférence,
-infrastructure et évaluation.
+infrastructure et évaluation. L'accueil propose maintenant trois scènes illustrées
+interactives — infrastructures, robotique et réseaux — réalisées en SVG isométrique ; c'est
+un premier langage visuel léger, pas encore une scène 3D temps réel.
 Un registre éditorial structuré présente un premier ensemble de sources institutionnelles,
 scientifiques, sectorielles et techniques ; il peut être recherché et filtré par famille.
 Ses fiches sont maintenues dans `sources.json` : chaque source porte un identifiant stable,
@@ -22,8 +24,8 @@ absentes et les thèmes ; cette métadonnée ne constitue pas un contrôle autom
 Le registre inclut aussi une méthode de vérification et des rythmes proposés, non automatisés.
 Les contenus ne constituent pas une veille en temps réel ni une couverture exhaustive du Web.
 Un assistant documentaire permet aussi de retrouver localement quelques réponses
-éditorialisées et leurs sources,
-sur les centres de données et les premiers repères de l'IA générative. Il n'utilise pas de
+éditorialisées et leurs sources sur les centres de données et les premiers repères de l'IA
+générative. Il n'utilise pas de
 modèle génératif, n'envoie pas les questions à un service externe et répond qu'il ne sait
 pas lorsque le corpus indexé ne couvre pas la question.
 
@@ -43,10 +45,11 @@ Le prototype ne dépend pas encore d'un backend, d'une base de données ou d'une
 
 ## Cadrage technique
 
-La prochaine étape recommandée est un prototype visuel accessible et performant, avant
-l'intégration de la 3D, de la voix ou de services externes. L'architecture cible est
-progressive et indépendante d'un fournisseur : expérience visuelle, données traçables,
-recherche séparée dans le corpus éditorial et sur le Web, puis assistant vocal et génération
+La prochaine étape est de faire tester ce prototype visuel, puis de décider si une scène 3D
+temps réel apporte assez de valeur pour justifier sa complexité, avant l'intégration de la
+voix ou de services externes. L'architecture cible est progressive et indépendante d'un
+fournisseur : expérience visuelle, données traçables, recherche séparée dans le corpus
+éditorial et sur le Web, puis assistant vocal et génération
 éventuelle sous contrôle. Le schéma, les flux, les garde-fous et les décisions ouvertes
 sont détaillés dans [le cadrage technique](docs/architecture-technique.md).
 
