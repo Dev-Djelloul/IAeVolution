@@ -36,6 +36,13 @@ production, utilisez `npm run build`, puis `npm run preview`.
 
 Le prototype ne dépend pas encore d'un backend, d'une base de données ou d'une clé API.
 
+## Cadrage technique
+
+L'architecture cible est progressive et indépendante d'un fournisseur : catalogue et
+preuves traçables, collecte préparatoire soumise à validation éditoriale, puis recherche
+documentaire évaluée avant toute génération. Le schéma, les flux, les garde-fous et les
+décisions ouvertes sont détaillés dans [le cadrage technique](docs/architecture-technique.md).
+
 ## Cap proposé
 
 - **Suivre** les avancées, acteurs, modèles et usages de l'IA, avec des sources datées.
