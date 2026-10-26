@@ -212,6 +212,7 @@ const assistantForm = document.querySelector("#assistant-form");
 const assistantQuery = document.querySelector("#assistant-query");
 const assistantResults = document.querySelector("#assistant-results");
 const suggestedQuestions = [...document.querySelectorAll("[data-assistant-prompt]")];
+const backToTop = document.querySelector("#back-to-top");
 const sourceRegister = document.querySelector("#source-register");
 const sourceSearchInput = document.querySelector("#source-search-input");
 const sourceCount = document.querySelector("#source-count");
@@ -409,6 +410,13 @@ sourceFilterButtons.forEach((button) => {
 
 sourceSearchInput.addEventListener("input", renderSourceCatalog);
 renderSourceCatalog();
+
+function updateBackToTopVisibility() {
+  backToTop.hidden = window.scrollY < 500;
+}
+
+window.addEventListener("scroll", updateBackToTopVisibility, { passive: true });
+updateBackToTopVisibility();
 
 const dossierTabs = [...document.querySelectorAll("[data-dossier-tab]")];
 const dossierPanels = [...document.querySelectorAll("[data-dossier-panel]")];
