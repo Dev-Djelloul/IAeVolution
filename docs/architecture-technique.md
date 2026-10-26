@@ -7,35 +7,62 @@ les réponses de l'assistant et le catalogue `sources.json` sont éditorialisés
 dépôt. Il n'existe ni API, ni base de données, ni collecte programmée, ni appel à un
 modèle génératif.
 
-Le cap proposé est d'évoluer par étapes vers un observatoire traçable et révisable, sans
-confondre une page publiée avec une veille automatisée. La validation éditoriale reste un
-acte humain ; l'automatisation prépare et signale les changements, mais ne publie pas de
-faits sensibles de sa propre initiative.
+La vision produit est celle d'une expérience visuelle et immersive pour donner à voir
+l'IA : images, scènes 3D, robotique, formes et esthétique technologique, en plus des
+dossiers éditoriaux. L'assistant à venir sera vocal et permettra d'explorer ensemble le
+corpus IAeVolution et des ressources accessibles sur le Web, en gardant les sources et les
+limites visibles. L'expérience ne doit pas être réduite à un tableau de bord de veille
+textuel.
+
+Le cap technique est donc double : concevoir d'abord un langage visuel distinctif,
+accessible et performant ; construire en parallèle des données traçables pour alimenter
+les expériences et une recherche multimodale à terme. L'assistant vocal devra interroger
+les contenus IAeVolution et rechercher sur le Web quand cela est demandé ou pertinent,
+sans prétendre connaître « tout le Web » : les pages non indexées, privées, payantes,
+bloquées ou indisponibles resteront hors de portée. Il devra séparer clairement le corpus
+éditorial des résultats Web, citer ses sources et signaler ce qu'il ne peut pas vérifier.
+
+La validation éditoriale reste un acte humain ; l'automatisation prépare et signale les
+changements, mais ne publie pas de faits sensibles de sa propre initiative.
 
 ## Architecture cible, par responsabilités
 
 ```mermaid
 flowchart LR
-  Visitor[Lecteur] --> Web[Interface Vite]
-  Web --> API[API applicative]
-  API --> Catalog[(Catalogue et versions éditoriales)]
-  API --> Search[Recherche documentaire]
-  Search --> Evidence[(Extraits approuvés et citations)]
+  Visitor[Visiteur] --> Experience[Expérience visuelle, image et 3D]
+  Visitor --> Voice[Assistant vocal et interface texte]
+  Experience --> API[API applicative]
+  Voice --> API
+  API --> Catalog[(Corpus éditorial validé et versionné)]
+  API --> InternalSearch[Recherche dans IAeVolution]
+  InternalSearch --> Evidence[(Passages approuvés et citations)]
+  API --> WebSearch[Recherche Web bornée]
+  WebSearch --> WebEvidence[(Pages accessibles et citations)]
+  API --> Speech[Reconnaissance et synthèse vocales]
+  API --> Model[Orchestration de modèle, étape ultérieure]
   Scheduler[Planificateur] --> Connectors[Connecteurs de sources]
   Connectors --> Candidates[(Documents candidats)]
   Candidates --> Review[Validation éditoriale]
   Review --> Catalog
   Review --> Evidence
-  API --> Model[Service de modèle, étape ultérieure]
 ```
 
 Ce schéma est logique, pas un choix d'hébergeur ni une architecture déjà déployée. Le
-prototype ne doit pas appeler directement un fournisseur de modèle depuis le navigateur.
+prototype ne doit pas appeler directement un fournisseur de modèle, un moteur de recherche
+ou un service vocal nécessitant un secret depuis le navigateur.
 
 ### Interface
 
-- Conserver Vite et l'expérience actuelle pendant le cadrage et le premier MVP.
-- Consommer une API versionnée lorsque le catalogue sortira du dépôt.
+- Faire évoluer le site vers une expérience éditoriale visuelle : illustrations originales,
+  visualisations spatiales et, si elles apportent une vraie compréhension, scènes 3D
+  manipulables autour des modèles, centres de données et robots.
+- Conserver une lecture 2D et un parcours textuel complets, une navigation clavier, des
+  contrastes adaptés et une alternative aux mouvements/animations. La 3D est une
+  amélioration progressive, jamais une condition d'accès au contenu.
+- Prévoir une dégradation élégante sur mobiles ou appareils peu puissants : chargement à
+  la demande, budget de taille/rendu, pause hors écran et image de remplacement.
+- Garder Vite pendant le prototypage visuel ; consommer une API versionnée lorsque les
+  contenus éditoriaux sortent du dépôt.
 - Rendre explicites les états de chargement, de source indisponible et de corpus incomplet.
 - Ne jamais embarquer de secret, clé fournisseur ou identifiant d'accès dans les assets web.
 
@@ -82,17 +109,27 @@ nécessitent. Le scraping généraliste n'est pas le point de départ.
 ### Recherche et assistant
 
 - **MVP sans génération :** recherche lexicale dans les affirmations et extraits validés,
-  réponses éditorialisées avec liens et références exactes.
-- **Étape RAG :** recherche hybride (texte puis sémantique si utile) uniquement dans les
-  preuves approuvées, avec identifiants de documents et passages conservés dans chaque
-  résultat.
+  réponses éditorialisées avec liens et références exactes. Préparer les résultats sous
+  forme de passages citables, sans imposer de modèle.
+- **Étape recherche Web :** ajouter un service de recherche configuré qui retourne des
+  résultats accessibles avec URL, titre et date disponible ; récupérer seulement des pages
+  nécessaires, respecter les politiques et conditions des sites et ne pas contourner un
+  accès privé, payant ou bloqué.
+- **Étape RAG :** recherche hybride (texte puis sémantique si utile) dans les preuves
+  approuvées du corpus, séparément des résultats Web. Le moteur doit conserver les
+  identifiants de documents et passages dans chaque résultat.
+- **Voix :** l'interface doit accepter la parole et lire les réponses, mais offrir toujours
+  texte, sous-titres/transcription, commande d'arrêt et confirmation visuelle. Le choix entre
+  capacités natives du navigateur et services vocaux côté serveur est à évaluer selon la
+  compatibilité, la confidentialité et les coûts.
 - **Génération éventuelle :** appel au modèle depuis l'API serveur ; le modèle ne remplace
   ni le corpus ni la validation des sources.
-- Chaque réponse doit citer les passages qui l'étayent, distinguer les dates et
-  qualifications des chiffres, et s'abstenir si les preuves sont insuffisantes ou
-  contradictoires.
-- L'ingestion, la recherche et la réponse restent des composants indépendants. Cela permet
-  de comparer plusieurs modèles ou de rester en mode sans génération.
+- Chaque réponse doit distinguer les sources internes des sources Web, citer les passages
+  qui l'étayent, afficher les dates disponibles et les qualifications des chiffres, puis
+  s'abstenir si les preuves sont insuffisantes ou contradictoires.
+- L'ingestion, la recherche interne, la recherche Web, la voix et la génération restent des
+  composants indépendants. Cela permet de les évaluer, désactiver ou remplacer sans perdre
+  l'accès au site et à ses contenus.
 
 ## Contrat minimal de publication
 
@@ -113,6 +150,11 @@ commit ou d'une simple collecte automatique.
 
 - Les questions de l'assistant ne sont pas conservées par défaut ; ne stocker aucune
   conversation sans choix explicite, finalité annoncée et durée de conservation définie.
+- Avant l'activation du micro, expliquer la capture vocale et son traitement, demander une
+  action claire et offrir une alternative texte. Ne transmettre l'audio à un tiers que si le
+  traitement et le fournisseur sont explicitement indiqués.
+- Présenter les résultats Web comme des contenus externes non vérifiés par défaut ; séparer
+  clairement publicité éventuelle, résultats éditoriaux IAeVolution et résultats de recherche.
 - Minimiser les journaux techniques et exclure les questions et contenus personnels des
   traces par défaut.
 - Limiter la collecte à des hôtes configurés en HTTPS ; vérifier chaque redirection et
@@ -129,12 +171,14 @@ commit ou d'une simple collecte automatique.
 
 | Étape | Livrable | Critère de sortie |
 |---|---|---|
-| 1. Contrat éditorial | Schéma versionné des sources, documents, preuves, affirmations et revues | Les données actuelles peuvent être migrées sans inventer de métadonnées |
-| 2. Workflow manuel | Ajout, comparaison, revue et publication d'un document candidat | Une mise à jour est retraçable et ne paraît pas avant validation |
-| 3. Persistance et API | Catalogue durable, historique et API en lecture seule pour le site | L'interface lit le même contenu publié que l'assistant |
-| 4. Collecte limitée | Un ou deux connecteurs officiels, planification et rapport d'erreurs | Les nouvelles versions sont détectées, comparées et laissées en attente d'approbation |
+| 1. Prototype d'expérience | Direction visuelle, une scène ou visualisation interactive, alternatives 2D et budgets de performance | La scène est compréhensible, accessible, fluide sur mobile récent et se dégrade proprement sans 3D |
+| 2. Contrat éditorial | Schéma versionné des sources, documents, preuves, affirmations et revues | Les données actuelles peuvent être migrées sans inventer de métadonnées |
+| 3. Workflow manuel | Ajout, comparaison, revue et publication d'un document candidat | Une mise à jour est retraçable et ne paraît pas avant validation |
+| 4. Persistance et API | Catalogue durable, historique et API en lecture seule pour le site | L'interface lit le même contenu publié que l'assistant |
 | 5. Recherche évaluée | Corpus approuvé, jeu de questions de référence et mesure des citations | Les réponses pertinentes citent les bonnes preuves et les cas inconnus s'abstiennent |
-| 6. Génération contrôlée | Prototype RAG derrière l'API, désactivable et plafonné | Qualité, confidentialité, coûts et limites sont mesurés avant une ouverture plus large |
+| 6. Recherche Web contrôlée | Recherche Web explicite ou déclenchée par intention, résultats séparés du corpus interne | Sources accessibles et citées ; aucune affirmation de couverture exhaustive du Web |
+| 7. Assistant vocal | Parcours vocal et textuel avec transcription, arrêt, lecture et refus traçable | Le parcours reste utilisable sans micro et fonctionne avec des sources internes et Web distinctes |
+| 8. Génération contrôlée | Prototype RAG derrière l'API, désactivable et plafonné | Qualité, confidentialité, coûts et limites sont mesurés avant une ouverture plus large |
 
 ## Décisions à prendre avant l'étape 2
 
@@ -152,6 +196,22 @@ donc volontairement ouvertes dans ce cadrage :
 5. **Comptes lecteurs :** aucun compte ni historique personnel n'est nécessaire au MVP
    public ; confirmer si des fonctions privées sont envisagées.
 
-**Prochaine tranche recommandée :** définir et valider un schéma éditorial versionné, puis
-concevoir un workflow manuel de revue. Ne pas démarrer la collecte automatique ou les
-appels à un modèle avant d'avoir résolu les décisions qui les conditionnent.
+## Décisions à prendre pour la nouvelle direction
+
+Ces décisions restent ouvertes jusqu'au prototypage et à des essais utilisateurs :
+
+1. Quelle première scène 3D raconte le mieux l'IA : un centre de données, un réseau de
+   modèles, un robot, ou un espace abstrait qui relie ces dimensions ?
+2. La voix doit-elle être conversationnelle en continu, ou activée uniquement par un bouton
+   « parler » ? Le mode activé à la demande est le meilleur point de départ pour maîtriser
+   confidentialité, coût et accessibilité.
+3. La recherche Web doit-elle être lancée à chaque question, ou seulement lorsque le corpus
+   interne est insuffisant / que la question demande de l'actualité ? Une stratégie hybride
+   explicite est recommandée.
+4. Quels budgets de performance 3D, de latence vocale et de coût par session sont acceptables ?
+
+**Prochaine tranche recommandée :** créer un prototype visuel court avec une scène 3D
+simple, une alternative sans 3D et un mini-parcours éditorial. En parallèle, conserver le
+contrat de données et le workflow manuel comme fondation. Ne pas brancher voix, recherche
+Web ni modèle avant d'avoir validé les parcours, les exigences de confidentialité et les
+budgets avec l'utilisateur.
