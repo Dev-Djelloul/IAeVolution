@@ -36,7 +36,7 @@
           <a class="button button-primary" href="#explorer">Commencer l'exploration <span aria-hidden="true">↘</span></a>
           <p class="hero-trust"><span aria-hidden="true">✳</span> Des repères documentés pour garder les pieds sur terre.</p>
         </div>
-        <div class="hero-visual" id="visual-experience" data-active-scene="infrastructure">
+        <div class="hero-visual" id="visual-experience" data-active-scene="infrastructure" data-robot-zone="perception">
           <div class="scene-canvas">
             <svg class="scene-art" viewBox="0 0 560 520" aria-hidden="true" focusable="false">
               <defs>
@@ -133,6 +133,12 @@
                 <text x="26" y="21">SYSTÈME EN ÉVOLUTION</text>
               </g>
             </svg>
+            <div class="robot-hotspots" role="group" aria-label="Explorer les fonctions du robot">
+              <button class="robot-hotspot robot-hotspot-perception is-active" type="button" data-robot-zone="perception" aria-pressed="true" aria-label="01 Perception, capteurs et environnement">01</button>
+              <button class="robot-hotspot robot-hotspot-control" type="button" data-robot-zone="control" aria-pressed="false" aria-label="02 Décision et contrôle">02</button>
+              <button class="robot-hotspot robot-hotspot-action" type="button" data-robot-zone="action" aria-pressed="false" aria-label="03 Action et mouvement">03</button>
+              <button class="robot-hotspot robot-hotspot-safety" type="button" data-robot-zone="safety" aria-pressed="false" aria-label="04 Sécurité et environnement humain">04</button>
+            </div>
             <div class="datacenter-scene" id="datacenter-scene">
               <div class="datacenter-stage" role="group" tabindex="0" aria-label="Maquette 3D d'un centre de données. Utilisez les flèches gauche et droite pour tourner, et la touche Début pour réinitialiser.">
                 <div class="datacenter-world" id="datacenter-world" data-zone="compute">
@@ -201,15 +207,15 @@
                   <button class="datacenter-hotspot hotspot-cooling" type="button" data-zone="cooling" aria-pressed="false"><span>03</span> Refroidissement</button>
                   <button class="datacenter-hotspot hotspot-network" type="button" data-zone="network" aria-pressed="false"><span>04</span> Réseau</button>
                 </div>
-                <div class="datacenter-controls" role="group" aria-label="Contrôles de la maquette 3D">
-                  <span>FAIRE TOURNER</span>
-                  <button type="button" data-camera-turn="-1" aria-label="Tourner la scène vers la gauche">↶</button>
-                  <button type="button" data-camera-turn="1" aria-label="Tourner la scène vers la droite">↷</button>
-                  <button type="button" data-camera-reset aria-label="Réinitialiser la vue">Réinitialiser</button>
-                  <button type="button" id="toggle-scene-view" aria-label="Basculer vers la vue illustrée">Vue illustrée</button>
-                </div>
-                <p class="datacenter-instruction">Faites glisser pour tourner · sélectionnez une zone pour en savoir plus</p>
               </div>
+              <div class="datacenter-controls" role="group" aria-label="Contrôles de la maquette 3D">
+                <span>FAIRE TOURNER</span>
+                <button type="button" data-camera-turn="-1" aria-label="Tourner la scène vers la gauche">↶</button>
+                <button type="button" data-camera-turn="1" aria-label="Tourner la scène vers la droite">↷</button>
+                <button type="button" data-camera-reset aria-label="Réinitialiser la vue">Réinitialiser</button>
+                <button type="button" id="toggle-scene-view" aria-label="Basculer vers la vue illustrée">Vue illustrée</button>
+              </div>
+              <p class="datacenter-instruction">Faites glisser pour tourner · sélectionnez une zone pour en savoir plus</p>
             </div>
             <div class="scene-coordinate coordinate-top"><span>SCHÉMA DE PRINCIPE</span><span>NON À L'ÉCHELLE</span></div>
             <div class="scene-coordinate coordinate-bottom"><span class="scene-live-dot"></span> MAQUETTE PÉDAGOGIQUE <span id="scene-index">01 / 03</span></div>

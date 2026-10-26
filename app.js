@@ -238,6 +238,7 @@ const dataCenterZones = [...document.querySelectorAll(".datacenter-hotspot[data-
 const cameraTurnButtons = [...document.querySelectorAll("[data-camera-turn]")];
 const cameraResetButton = document.querySelector("[data-camera-reset]");
 const toggleSceneViewButton = document.querySelector("#toggle-scene-view");
+const robotZones = [...document.querySelectorAll(".robot-hotspot[data-robot-zone]")];
 const dataCenterZoneDetails = {
   compute: {
     title: "Le calcul",
@@ -276,6 +277,44 @@ const dataCenterZoneDetails = {
     sourceUrl: "https://www.oecd.org/en/publications/competition-in-artificial-intelligence-infrastructure_623d1874-en/full-report.html",
   },
 };
+const robotZoneDetails = {
+  perception: {
+    title: "Percevoir le monde",
+    description: "Caméras, lidar et autres capteurs transforment un environnement incomplet en mesures. Les algorithmes en tirent une représentation, toujours soumise à l'incertitude.",
+    contextTitle: "PERCEPTION",
+    contextDetail: "Capteurs · mesures · incertitude",
+    stat: "OBSERVER AVANT D'AGIR",
+    sourceName: "NIST · Perception des robots",
+    sourceUrl: "https://www.nist.gov/programs-projects/perception-performance-robotic-systems",
+  },
+  control: {
+    title: "Décider et contrôler",
+    description: "Le système combine ses observations avec un objectif et des contraintes pour choisir une action. Une partie du contrôle peut rester déterministe : toute robotique n'est pas pilotée par un modèle génératif.",
+    contextTitle: "DÉCISION & CONTRÔLE",
+    contextDetail: "Objectif · planification · commande",
+    stat: "TRADUIRE UN OBJECTIF",
+    sourceName: "NIST · Robotique",
+    sourceUrl: "https://www.nist.gov/programs-projects/robotics",
+  },
+  action: {
+    title: "Agir dans le monde",
+    description: "Les moteurs et actionneurs convertissent des commandes en mouvement : saisir, déplacer ou se réorienter. Le résultat dépend aussi des limites mécaniques et de la calibration.",
+    contextTitle: "ACTION",
+    contextDetail: "Commandes · moteurs · mouvement",
+    stat: "TRANSFORMER LE SIGNAL",
+    sourceName: "NIST · Robotique",
+    sourceUrl: "https://www.nist.gov/programs-projects/robotics",
+  },
+  safety: {
+    title: "Partager l'espace en sécurité",
+    description: "La vitesse, les forces, les distances d'arrêt et la présence de personnes comptent dans le déploiement. La sécurité repose sur la conception et l'évaluation de tout le système, pas sur l'IA seule.",
+    contextTitle: "SÉCURITÉ",
+    contextDetail: "Personnes · limites · validation",
+    stat: "SÉCURISER L'USAGE",
+    sourceName: "OSHA · Sécurité robotique",
+    sourceUrl: "https://www.osha.gov/robotics",
+  },
+};
 const scenes = {
   infrastructure: {
     title: dataCenterZoneDetails.compute.title,
@@ -288,14 +327,8 @@ const scenes = {
     sourceUrl: dataCenterZoneDetails.compute.sourceUrl,
   },
   robotique: {
-    title: "La robotique",
-    description: "Quand les modèles quittent l'écran pour agir dans le monde physique.",
-    contextTitle: "ROBOTIQUE",
-    contextDetail: "Perception · mouvement · action",
-    stat: "L'IA DANS LE MONDE RÉEL",
+    ...robotZoneDetails.perception,
     link: "#explorer",
-    sourceName: "OCDE · Infrastructure IA",
-    sourceUrl: "https://www.oecd.org/en/publications/competition-in-artificial-intelligence-infrastructure_623d1874-en/full-report.html",
   },
   reseaux: {
     title: "Les réseaux",
@@ -340,8 +373,24 @@ function selectDataCenterZone(button) {
   renderSceneDetails(details);
 }
 
+function selectRobotZone(button) {
+  const details = robotZoneDetails[button.dataset.robotZone];
+  if (!details) return;
+  robotZones.forEach((zone) => {
+    const isSelected = zone === button;
+    zone.classList.toggle("is-active", isSelected);
+    zone.setAttribute("aria-pressed", String(isSelected));
+  });
+  visualExperience.dataset.robotZone = button.dataset.robotZone;
+  renderSceneDetails(details);
+}
+
 dataCenterZones.forEach((button) => {
   button.addEventListener("click", () => selectDataCenterZone(button));
+});
+
+robotZones.forEach((button) => {
+  button.addEventListener("click", () => selectRobotZone(button));
 });
 
 cameraTurnButtons.forEach((button) => {
@@ -353,10 +402,10 @@ cameraTurnButtons.forEach((button) => {
 cameraResetButton.addEventListener("click", () => setCameraYaw(-36));
 
 toggleSceneViewButton.addEventListener("click", () => {
-  const showIllustration = !datacenterScene.hidden;
-  datacenterScene.hidden = showIllustration;
-  datacenterScene.inert = showIllustration;
-  datacenterScene.setAttribute("aria-hidden", String(showIllustration));
+  const showIllustration = sceneCanvas.dataset.illustrated !== "true";
+  datacenterStage.hidden = showIllustration;
+  datacenterStage.inert = showIllustration;
+  datacenterStage.setAttribute("aria-hidden", String(showIllustration));
   sceneCanvas.dataset.illustrated = String(showIllustration);
   toggleSceneViewButton.textContent = showIllustration ? "Vue 3D" : "Vue illustrée";
   toggleSceneViewButton.setAttribute("aria-label", showIllustration ? "Revenir à la vue 3D" : "Basculer vers la vue illustrée");
@@ -399,9 +448,15 @@ sceneChoices.forEach((button) => {
 
     visualExperience.dataset.activeScene = selectedScene;
     const showDataCenter = selectedScene === "infrastructure";
-    datacenterScene.inert = !showDataCenter || datacenterScene.hidden;
-    datacenterScene.setAttribute("aria-hidden", String(!showDataCenter || datacenterScene.hidden));
-    sceneSource.hidden = !showDataCenter;
+    const showRobot = selectedScene === "robotique";
+    const showIllustration = sceneCanvas.dataset.illustrated === "true";
+    datacenterScene.hidden = !showDataCenter;
+    datacenterScene.inert = !showDataCenter;
+    datacenterScene.setAttribute("aria-hidden", String(!showDataCenter));
+    datacenterStage.hidden = !showDataCenter || showIllustration;
+    datacenterStage.inert = !showDataCenter || showIllustration;
+    datacenterStage.setAttribute("aria-hidden", String(!showDataCenter || showIllustration));
+    sceneSource.hidden = !showDataCenter && !showRobot;
     sceneChoices.forEach((choice) => {
       const isSelected = choice === button;
       choice.classList.toggle("is-active", isSelected);
@@ -409,6 +464,8 @@ sceneChoices.forEach((button) => {
     });
     if (showDataCenter) {
       selectDataCenterZone(dataCenterZones.find((zone) => zone.dataset.zone === "compute"));
+    } else if (showRobot) {
+      selectRobotZone(robotZones.find((zone) => zone.dataset.robotZone === "perception"));
     } else {
       renderSceneDetails(scene);
     }

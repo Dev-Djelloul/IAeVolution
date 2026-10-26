@@ -14,8 +14,10 @@ les couches de la chaîne de valeur de l'IA ; le volet historique relie des jalo
 l'informatique, du cloud et de l'IA ; le volet technique distingue entraînement, inférence,
 infrastructure et évaluation. L'accueil propose une maquette de centre de données en CSS
 3D, que l'on peut faire tourner et explorer par zones sourcées, avec une vue illustrée de
-repli. Les angles robotique et réseaux restent des scènes SVG interactives. La maquette est
-pédagogique, non à l'échelle, et n'utilise ni WebGL ni bibliothèque 3D.
+repli. La scène robotique permet d'explorer quatre fonctions — perception, contrôle, action
+et sécurité — avec des explications et des sources institutionnelles ; les réseaux restent
+une scène SVG. Les maquettes sont pédagogiques, et le centre de données n'est pas à l'échelle
+et n'utilise ni WebGL ni bibliothèque 3D.
 Un registre éditorial structuré présente un premier ensemble de sources institutionnelles,
 scientifiques, sectorielles et techniques ; il peut être recherché et filtré par famille.
 Ses fiches sont maintenues dans `sources.json` : chaque source porte un identifiant stable,

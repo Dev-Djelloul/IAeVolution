@@ -57,9 +57,12 @@ ou un service vocal nécessitant un secret depuis le navigateur.
   visualisations spatiales et, si elles apportent une vraie compréhension, scènes 3D
   manipulables autour des modèles, centres de données et robots.
 - Le prototype associe une maquette CSS 3D manipulable d'un centre de données (rotation,
-  quatre zones explicatives et sources) à une vue SVG de repli. Robotique et réseaux restent
-  des scènes SVG. Cette maquette pédagogique n'est ni à l'échelle ni un rendu WebGL ; elle
-  valide le parcours et le langage visuel avant l'adoption éventuelle d'un moteur 3D.
+  quatre zones explicatives et sources) à une vue SVG de repli. La scène SVG de robotique
+  propose quatre points d'exploration sourcés : perception, contrôle, action et sécurité ;
+  les réseaux restent une scène SVG. Ces maquettes pédagogiques valident le parcours et le
+  langage visuel avant l'adoption éventuelle d'un moteur 3D.
+- Pour la robotique, distinguer explicitement perception, planification/contrôle, action et
+  sécurité ; ne pas laisser entendre que tout robot est piloté par un modèle génératif.
 - Conserver une lecture 2D et un parcours textuel complets, une navigation clavier, des
   contrastes adaptés et une alternative aux mouvements/animations. La 3D est une
   amélioration progressive, jamais une condition d'accès au contenu.
