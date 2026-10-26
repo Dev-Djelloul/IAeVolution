@@ -79,6 +79,89 @@ const topics = [
   },
 ];
 
+const sourceCatalog = [
+  {
+    name: "Agence internationale de l'énergie",
+    domain: "Énergie & données",
+    family: "public",
+    publisherType: "Institution publique internationale",
+    description: "Demande énergétique, centres de données et scénarios liés à l'IA. Distinguer les mesures observées des projections et vérifier le périmètre couvert.",
+    review: "À chaque nouvelle édition",
+    linkLabel: "Rapport Energy and AI",
+    url: "https://www.iea.org/reports/energy-and-ai",
+  },
+  {
+    name: "OCDE",
+    domain: "Économie & marchés",
+    family: "public",
+    publisherType: "Organisation intergouvernementale",
+    description: "Concurrence, marchés et chaînes de valeur de l'IA. Croiser les analyses avec des données sectorielles et préciser les limites des comparaisons.",
+    review: "trimestrielle",
+    linkLabel: "Étude sur l'infrastructure IA",
+    url: "https://www.oecd.org/en/publications/competition-in-artificial-intelligence-infrastructure_623d1874-en/full-report.html",
+  },
+  {
+    name: "JLARC · Virginie",
+    domain: "Territoires",
+    family: "public",
+    publisherType: "Organisme public de recherche",
+    description: "Études sur les centres de données en Virginie : capacité, énergie, fiscalité et effets locaux. Les chiffres sont liés au périmètre défini par chaque rapport.",
+    review: "À chaque nouvelle étude",
+    linkLabel: "Étude sur les centres de données",
+    url: "https://rga.lis.virginia.gov/Published/2025/RD206",
+  },
+  {
+    name: "EUDCA",
+    domain: "Territoires",
+    family: "sector",
+    publisherType: "Association professionnelle européenne",
+    description: "Rapports sur l'écosystème européen des centres de données. Source sectorielle utile pour les tendances, à lire en tenant compte de son point de vue professionnel.",
+    review: "annuelle",
+    linkLabel: "État des centres européens",
+    url: "https://www.eudca.org/state-of-european-data-centres-2025",
+  },
+  {
+    name: "IMDA",
+    domain: "Territoires & durabilité",
+    family: "public",
+    publisherType: "Autorité publique · Singapour",
+    description: "Politique numérique et feuille de route des centres de données durables à Singapour. Séparer les capacités visées des capacités effectivement construites.",
+    review: "À chaque mise à jour de politique",
+    linkLabel: "Feuille de route des centres verts",
+    url: "https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/factsheets/2024/charting-green-growth-for-data-centres-in-sg",
+  },
+  {
+    name: "NIST",
+    domain: "Risques & normes",
+    family: "public",
+    publisherType: "Institut public de normalisation",
+    description: "Cadres de gestion des risques, dont un profil dédié à l'IA générative. Ce sont des ressources de référence, pas une certification automatique des systèmes.",
+    review: "À chaque nouvelle version",
+    linkLabel: "Profil NIST pour l'IA générative",
+    url: "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf",
+  },
+  {
+    name: "NeurIPS",
+    domain: "Recherche scientifique",
+    family: "research",
+    publisherType: "Actes de conférence scientifique",
+    description: "Articles de recherche évalués par les pairs, utiles pour remonter aux résultats et méthodes originaux plutôt qu'aux seuls résumés médiatiques.",
+    review: "À chaque édition pertinente",
+    linkLabel: "Article sur l'architecture Transformer",
+    url: "https://proceedings.neurips.cc/paper/7181-attention-is-all-you-need",
+  },
+  {
+    name: "Google AI",
+    domain: "Documentation technique",
+    family: "publisher",
+    publisherType: "Documentation d'un éditeur",
+    description: "Documentation sur les tokens et les interfaces de modèles. Pratique pour les détails d'implémentation, mais spécifique aux produits décrits par leur éditeur.",
+    review: "Lors d'un changement documenté",
+    linkLabel: "Guide sur les tokens",
+    url: "https://ai.google.dev/gemini-api/docs/tokens",
+  },
+];
+
 const assistantKnowledge = [
   {
     title: "La demande électrique mondiale",
@@ -210,6 +293,12 @@ const assistantForm = document.querySelector("#assistant-form");
 const assistantQuery = document.querySelector("#assistant-query");
 const assistantResults = document.querySelector("#assistant-results");
 const suggestedQuestions = [...document.querySelectorAll("[data-assistant-prompt]")];
+const sourceRegister = document.querySelector("#source-register");
+const sourceSearchInput = document.querySelector("#source-search-input");
+const sourceCount = document.querySelector("#source-count");
+const sourceEmpty = document.querySelector("#source-empty");
+const sourceFilterButtons = [...document.querySelectorAll("[data-source-filter]")];
+let activeSourceFilter = "all";
 const assistantStopWords = new Set([
   "avec", "dans", "des", "elle", "elles", "est", "et", "la", "le", "les",
   "leur", "leurs", "mais", "mon", "ou", "pour", "pourquoi", "que", "quel",
@@ -220,6 +309,66 @@ const assistantGenericTerms = new Set(["centre", "donnee", "modele"]);
 
 function normalizeText(value) {
   return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("fr");
+}
+
+function renderSourceCatalog() {
+  const query = normalizeText(sourceSearchInput.value.trim());
+  const visibleSources = sourceCatalog.filter((source) => {
+    const matchesFilter = activeSourceFilter === "all" || source.family === activeSourceFilter;
+    const searchableText = normalizeText([
+      source.name,
+      source.domain,
+      source.publisherType,
+      source.description,
+      source.review,
+      source.linkLabel,
+    ].join(" "));
+    return matchesFilter && searchableText.includes(query);
+  });
+
+  sourceRegister.replaceChildren();
+  visibleSources.forEach((source) => {
+    const card = document.createElement("article");
+    card.className = "source-card";
+
+    const metadata = document.createElement("div");
+    metadata.className = "source-card-meta";
+    const domain = document.createElement("span");
+    domain.textContent = source.domain;
+    const publisherType = document.createElement("span");
+    publisherType.textContent = source.publisherType;
+    metadata.append(domain, publisherType);
+
+    const title = document.createElement("h3");
+    title.textContent = source.name;
+
+    const description = document.createElement("p");
+    description.textContent = source.description;
+
+    const footer = document.createElement("div");
+    footer.className = "source-card-footer";
+    const review = document.createElement("span");
+    review.textContent = `Relecture proposée : ${source.review}`;
+
+    const link = document.createElement("a");
+    link.href = source.url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.append(document.createTextNode(source.linkLabel));
+    const externalIcon = document.createElement("span");
+    externalIcon.setAttribute("aria-hidden", "true");
+    externalIcon.textContent = "↗";
+    link.append(externalIcon);
+
+    footer.append(review, link);
+    card.append(metadata, title, description, footer);
+    sourceRegister.append(card);
+  });
+
+  const count = String(visibleSources.length).padStart(2, "0");
+  sourceCount.textContent = `${count} ${visibleSources.length > 1 || visibleSources.length === 0 ? "sources" : "source"}`;
+  sourceEmpty.hidden = visibleSources.length > 0;
+  sourceRegister.hidden = visibleSources.length === 0;
 }
 
 function createCitationLink(source) {
@@ -305,6 +454,21 @@ suggestedQuestions.forEach((button) => {
     assistantQuery.focus();
   });
 });
+
+sourceFilterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    activeSourceFilter = button.dataset.sourceFilter;
+    sourceFilterButtons.forEach((filterButton) => {
+      const isSelected = filterButton === button;
+      filterButton.classList.toggle("is-selected", isSelected);
+      filterButton.setAttribute("aria-pressed", String(isSelected));
+    });
+    renderSourceCatalog();
+  });
+});
+
+sourceSearchInput.addEventListener("input", renderSourceCatalog);
+renderSourceCatalog();
 
 const dossierTabs = [...document.querySelectorAll("[data-dossier-tab]")];
 const dossierPanels = [...document.querySelectorAll("[data-dossier-panel]")];

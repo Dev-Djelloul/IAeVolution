@@ -375,56 +375,20 @@
           <span class="sources-status"><span aria-hidden="true">●</span> REGISTRE DE CADRAGE</span>
         </div>
 
-        <div class="source-register" aria-label="Registre des sources de référence">
-          <article class="source-card">
-            <div class="source-card-meta"><span>ÉNERGIE & DONNÉES</span><span>Institution publique internationale</span></div>
-            <h3>Agence internationale de l'énergie</h3>
-            <p>Demande énergétique, centres de données et scénarios liés à l'IA. Distinguer les mesures observées des projections et vérifier le périmètre couvert.</p>
-            <div class="source-card-footer"><span>Relecture proposée : à chaque nouvelle édition</span><a href="https://www.iea.org/reports/energy-and-ai" target="_blank" rel="noopener noreferrer">Rapport Energy and AI <span aria-hidden="true">↗</span></a></div>
-          </article>
-          <article class="source-card">
-            <div class="source-card-meta"><span>ÉCONOMIE & MARCHÉS</span><span>Organisation intergouvernementale</span></div>
-            <h3>OCDE</h3>
-            <p>Concurrence, marchés et chaînes de valeur de l'IA. Croiser les analyses avec des données sectorielles et préciser les limites des comparaisons.</p>
-            <div class="source-card-footer"><span>Relecture proposée : trimestrielle</span><a href="https://www.oecd.org/en/publications/competition-in-artificial-intelligence-infrastructure_623d1874-en/full-report.html" target="_blank" rel="noopener noreferrer">Étude sur l'infrastructure IA <span aria-hidden="true">↗</span></a></div>
-          </article>
-          <article class="source-card">
-            <div class="source-card-meta"><span>TERRITOIRES</span><span>Organisme public de recherche</span></div>
-            <h3>JLARC · Virginie</h3>
-            <p>Études sur les centres de données en Virginie : capacité, énergie, fiscalité et effets locaux. Les chiffres sont liés au périmètre défini par chaque rapport.</p>
-            <div class="source-card-footer"><span>Relecture proposée : à chaque nouvelle étude</span><a href="https://rga.lis.virginia.gov/Published/2025/RD206" target="_blank" rel="noopener noreferrer">Étude sur les centres de données <span aria-hidden="true">↗</span></a></div>
-          </article>
-          <article class="source-card">
-            <div class="source-card-meta"><span>TERRITOIRES</span><span>Association professionnelle européenne</span></div>
-            <h3>EUDCA</h3>
-            <p>Rapports sur l'écosystème européen des centres de données. Source sectorielle utile pour les tendances, à lire en tenant compte de son point de vue professionnel.</p>
-            <div class="source-card-footer"><span>Relecture proposée : annuelle</span><a href="https://www.eudca.org/state-of-european-data-centres-2025" target="_blank" rel="noopener noreferrer">État des centres européens <span aria-hidden="true">↗</span></a></div>
-          </article>
-          <article class="source-card">
-            <div class="source-card-meta"><span>TERRITOIRES & DURABILITÉ</span><span>Autorité publique · Singapour</span></div>
-            <h3>IMDA</h3>
-            <p>Politique numérique et feuille de route des centres de données durables à Singapour. Séparer les capacités visées des capacités effectivement construites.</p>
-            <div class="source-card-footer"><span>Relecture proposée : à chaque mise à jour de politique</span><a href="https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/factsheets/2024/charting-green-growth-for-data-centres-in-sg" target="_blank" rel="noopener noreferrer">Feuille de route des centres verts <span aria-hidden="true">↗</span></a></div>
-          </article>
-          <article class="source-card">
-            <div class="source-card-meta"><span>RISQUES & NORMES</span><span>Institut public de normalisation</span></div>
-            <h3>NIST</h3>
-            <p>Cadres de gestion des risques, dont un profil dédié à l'IA générative. Ce sont des ressources de référence, pas une certification automatique des systèmes.</p>
-            <div class="source-card-footer"><span>Relecture proposée : à chaque nouvelle version</span><a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf" target="_blank" rel="noopener noreferrer">Profil NIST pour l'IA générative <span aria-hidden="true">↗</span></a></div>
-          </article>
-          <article class="source-card">
-            <div class="source-card-meta"><span>RECHERCHE SCIENTIFIQUE</span><span>Actes de conférence scientifique</span></div>
-            <h3>NeurIPS</h3>
-            <p>Articles de recherche évalués par les pairs, utiles pour remonter aux résultats et méthodes originaux plutôt qu'aux seuls résumés médiatiques.</p>
-            <div class="source-card-footer"><span>Relecture proposée : à chaque édition pertinente</span><a href="https://proceedings.neurips.cc/paper/7181-attention-is-all-you-need" target="_blank" rel="noopener noreferrer">Article sur l'architecture Transformer <span aria-hidden="true">↗</span></a></div>
-          </article>
-          <article class="source-card">
-            <div class="source-card-meta"><span>DOCUMENTATION TECHNIQUE</span><span>Documentation d'un éditeur</span></div>
-            <h3>Google AI</h3>
-            <p>Documentation sur les tokens et les interfaces de modèles. Pratique pour les détails d'implémentation, mais spécifique aux produits décrits par leur éditeur.</p>
-            <div class="source-card-footer"><span>Relecture proposée : lors d'un changement documenté</span><a href="https://ai.google.dev/gemini-api/docs/tokens" target="_blank" rel="noopener noreferrer">Guide sur les tokens <span aria-hidden="true">↗</span></a></div>
-          </article>
+        <form class="source-search" role="search">
+          <label for="source-search-input">Rechercher une source ou un thème</label>
+          <input id="source-search-input" type="search" placeholder="Ex. énergie, recherche, risques…" autocomplete="off">
+        </form>
+        <div class="source-filter-row" role="group" aria-label="Filtrer les sources par famille">
+          <button class="source-filter is-selected" type="button" data-source-filter="all" aria-pressed="true">Toutes</button>
+          <button class="source-filter" type="button" data-source-filter="public" aria-pressed="false">Institutions publiques</button>
+          <button class="source-filter" type="button" data-source-filter="sector" aria-pressed="false">Secteur</button>
+          <button class="source-filter" type="button" data-source-filter="research" aria-pressed="false">Recherche</button>
+          <button class="source-filter" type="button" data-source-filter="publisher" aria-pressed="false">Documentation éditeur</button>
+          <span class="source-count" id="source-count" aria-live="polite">08 sources</span>
         </div>
+        <div class="source-register" id="source-register" aria-label="Registre des sources de référence" aria-live="polite"></div>
+        <p class="source-empty" id="source-empty" hidden>Aucune source ne correspond à cette recherche. Essayez un autre terme ou une autre famille.</p>
 
         <div class="source-method">
           <div class="source-method-heading">

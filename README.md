@@ -9,9 +9,9 @@ thématique et un premier dossier sur les centres de données, avec des angles g
 régionaux documentés ; le volet économique visualise les couches de la chaîne de valeur
 de l'IA ; le volet historique relie des jalons de l'informatique, du cloud et de l'IA ;
 le volet technique distingue entraînement, inférence, infrastructure et évaluation.
-Un registre éditorial présente un premier ensemble de sources institutionnelles,
-scientifiques, sectorielles et techniques, avec une méthode de vérification et des
-rythmes de relecture proposés. Ces rythmes ne sont pas automatisés.
+Un registre éditorial structuré présente un premier ensemble de sources institutionnelles,
+scientifiques, sectorielles et techniques ; il peut être recherché et filtré par famille.
+Il inclut une méthode de vérification et des rythmes de relecture proposés, non automatisés.
 Les contenus ne constituent pas une veille en temps réel. Un assistant documentaire
 permet aussi de retrouver localement quelques réponses éditorialisées et leurs sources,
 sur les centres de données et les premiers repères de l'IA générative. Il n'utilise pas de
