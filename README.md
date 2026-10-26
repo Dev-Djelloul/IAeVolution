@@ -11,7 +11,11 @@ de l'IA ; le volet historique relie des jalons de l'informatique, du cloud et de
 le volet technique distingue entraînement, inférence, infrastructure et évaluation.
 Un registre éditorial structuré présente un premier ensemble de sources institutionnelles,
 scientifiques, sectorielles et techniques ; il peut être recherché et filtré par famille.
-Il inclut une méthode de vérification et des rythmes de relecture proposés, non automatisés.
+Ses fiches sont maintenues dans `sources.json` : chaque source porte un identifiant stable,
+des thèmes, une cadence de relecture proposée et un champ `lastReviewedAt` (date ISO `YYYY-MM-DD`
+ou `null` si aucune revue éditoriale n'a été consignée). L'interface rend visibles les dates
+absentes et les thèmes ; cette métadonnée ne constitue pas un contrôle automatique des liens.
+Le registre inclut aussi une méthode de vérification et des rythmes proposés, non automatisés.
 Les contenus ne constituent pas une veille en temps réel. Un assistant documentaire
 permet aussi de retrouver localement quelques réponses éditorialisées et leurs sources,
 sur les centres de données et les premiers repères de l'IA générative. Il n'utilise pas de
@@ -40,6 +44,6 @@ Le prototype ne dépend pas encore d'un backend, d'une base de données ou d'une
 - **Garder du recul** sur les enjeux de fiabilité, de vie privée, d'énergie et de société.
 
 Les contenus et le registre actuellement affichés sont éditoriaux et statiques : les
-sources ne sont pas surveillées automatiquement et aucune date de dernière vérification
-n'est enregistrée. Une prochaine étape pourra structurer ces métadonnées et concevoir la
-collecte, la validation et l'historique nécessaires à une véritable veille.
+sources ne sont pas surveillées automatiquement et aucune revue éditoriale n'est encore
+datée dans le catalogue. Une prochaine étape pourra concevoir la collecte, la validation
+et l'historique nécessaires à une véritable veille.
