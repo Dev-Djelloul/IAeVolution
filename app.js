@@ -506,6 +506,58 @@ function clearTourTimer() {
   }
 }
 
+const speechLocales = {
+  fr: "fr-FR",
+  en: "en-US",
+  es: "es-ES",
+  nl: "nl-NL",
+  de: "de-DE",
+  "zh-CN": "zh-CN",
+  pt: "pt-PT",
+  ar: "ar-SA",
+  hi: "hi-IN",
+  ja: "ja-JP",
+  ru: "ru-RU",
+  it: "it-IT",
+};
+
+async function getPreferredSpeechVoice(locale) {
+  if (!window.speechSynthesis) return undefined;
+  const requestedLocale = speechLocales[locale] || locale || speechLocales.fr;
+  const languagePrefix = requestedLocale.toLocaleLowerCase().split("-")[0];
+  let availableVoices = window.speechSynthesis.getVoices();
+  if (availableVoices.length === 0) {
+    availableVoices = await new Promise((resolve) => {
+      const synthesis = window.speechSynthesis;
+      const timeout = window.setTimeout(() => {
+        synthesis.removeEventListener("voiceschanged", handleVoicesChanged);
+        resolve(synthesis.getVoices());
+      }, 1500);
+      const handleVoicesChanged = () => {
+        window.clearTimeout(timeout);
+        synthesis.removeEventListener("voiceschanged", handleVoicesChanged);
+        resolve(synthesis.getVoices());
+      };
+      synthesis.addEventListener("voiceschanged", handleVoicesChanged, { once: true });
+    });
+  }
+  const candidates = availableVoices.filter((voice) => voice.localService
+    && voice.lang.toLocaleLowerCase().startsWith(languagePrefix));
+  const qualityMarkers = ["natural", "neural", "premium", "enhanced", "high quality"];
+  const compactMarkers = ["compact", "basic", "legacy"];
+
+  return candidates.sort((left, right) => {
+    const score = (voice) => {
+      const details = `${voice.name} ${voice.voiceURI}`.toLocaleLowerCase();
+      const qualityScore = qualityMarkers.reduce((total, marker) => total + (details.includes(marker) ? 2 : 0), 0);
+      const compactPenalty = compactMarkers.reduce((total, marker) => total + (details.includes(marker) ? 2 : 0), 0);
+      const exactLocaleBonus = voice.lang.toLocaleLowerCase() === requestedLocale.toLocaleLowerCase() ? 1 : 0;
+      return qualityScore + exactLocaleBonus + Number(voice.default) - compactPenalty;
+    };
+    return score(right) - score(left);
+  })[0];
+}
+
 function cancelTourSpeech() {
   if (window.speechSynthesis) window.speechSynthesis.cancel();
   tourUtterance = null;
@@ -603,10 +655,14 @@ async function speakTourStep() {
   if (!tourVoiceEnabled || tourState !== "playing" || guidedTourSteps[tourIndex] !== step) return;
   const utterance = new SpeechSynthesisUtterance(narration);
   utterance.lang = narrationLocale;
-  utterance.rate = 0.94;
-  const localePrefix = narrationLocale.toLocaleLowerCase().split("-")[0];
-  const languageVoice = window.speechSynthesis.getVoices().find((voice) => voice.lang.toLocaleLowerCase().startsWith(localePrefix));
-  if (languageVoice) utterance.voice = languageVoice;
+  utterance.rate = 1;
+  const languageVoice = await getPreferredSpeechVoice(narrationLocale);
+  if (!languageVoice) {
+    tourStatus.textContent = "Aucune voix locale compatible · la visite continue avec le texte à l'écran.";
+    finishTourStepWithoutVoice();
+    return;
+  }
+  utterance.voice = languageVoice;
   tourUtterance = utterance;
   utterance.onend = () => {
     if (tourUtterance !== utterance || tourState !== "playing") return;
@@ -1010,13 +1066,17 @@ function setAssistantVoiceStatus(message) {
   assistantVoiceStatus.textContent = message;
 }
 
-function speakAssistantResults(matches) {
+let assistantSpeechRequest = 0;
+
+async function speakAssistantResults(matches) {
   if (!window.speechSynthesis || !("SpeechSynthesisUtterance" in window)) {
     setAssistantVoiceStatus(getLocalizedText("La lecture vocale n'est pas disponible sur ce navigateur."));
     return;
   }
 
+  const speechRequest = ++assistantSpeechRequest;
   activeAssistantUtterance = null;
+  assistantVoiceStopSpeaking.hidden = true;
   window.speechSynthesis.cancel();
   const spokenText = matches.length === 0
     ? assistantResults.querySelector(".assistant-empty")?.textContent ?? ""
@@ -1032,11 +1092,14 @@ function speakAssistantResults(matches) {
       .slice(0, 2200);
   const utterance = new SpeechSynthesisUtterance(spokenText);
   const language = document.documentElement.lang || "fr";
-  const speechLocales = { fr: "fr-FR", en: "en-US", es: "es-ES", nl: "nl-NL", de: "de-DE", "zh-CN": "zh-CN", pt: "pt-PT", ar: "ar-SA", hi: "hi-IN", ja: "ja-JP", ru: "ru-RU", it: "it-IT" };
   utterance.lang = speechLocales[language] || "fr-FR";
-  const languagePrefix = utterance.lang.toLowerCase().split("-")[0];
-  const voice = window.speechSynthesis.getVoices().find((item) => item.lang.toLowerCase().startsWith(languagePrefix));
-  if (voice) utterance.voice = voice;
+  const voice = await getPreferredSpeechVoice(language);
+  if (speechRequest !== assistantSpeechRequest) return;
+  if (!voice) {
+    setAssistantVoiceStatus(getLocalizedText("Aucune voix locale compatible avec cette langue n'est disponible sur l'appareil."));
+    return;
+  }
+  utterance.voice = voice;
   activeAssistantUtterance = utterance;
   utterance.onend = () => {
     if (activeAssistantUtterance !== utterance) return;
@@ -1060,7 +1123,7 @@ async function processAssistantQuestion(question, speakAnswer = false) {
   currentAssistantQuestion = await translateToFrench(question);
   if (request !== assistantRequest) return;
   const matches = renderAssistantResults(currentAssistantQuestion);
-  if (speakAnswer) speakAssistantResults(matches);
+  if (speakAnswer) await speakAssistantResults(matches);
 }
 
 assistantForm.addEventListener("submit", async (event) => {

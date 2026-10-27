@@ -162,6 +162,10 @@ nécessitent. Le scraping généraliste n'est pas le point de départ.
   Worker API, Durable Object ni historique de conversation n'est activé. La compatibilité
   dépend du navigateur ; celui-ci peut transmettre l'audio à son propre fournisseur, ce qui
   est indiqué avant l'activation du micro. La saisie texte reste toujours disponible.
+  La visite et l'assistant choisissent automatiquement une voix locale correspondant à la
+  langue, en privilégiant les voix identifiées comme naturelles/améliorées ; la qualité
+  réelle dépend du navigateur et des voix installées. Si aucune voix locale compatible n'est
+  disponible, la visite reste lisible à l'écran et l'assistant n'active pas de voix distante.
 - **Génération éventuelle :** appel au modèle depuis l'API serveur ; le modèle ne remplace
   ni le corpus ni la validation des sources.
 - Chaque réponse doit distinguer les sources internes des sources Web, citer les passages

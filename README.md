@@ -14,6 +14,8 @@ navigateur, l'audio peut être traité par son fournisseur ; IAeVolution ne cons
 l'audio ni les transcriptions. La recherche et les réponses restent limitées au corpus
 éditorial du site, et la lecture vocale utilise la synthèse du navigateur. Les commandes
 vocales ne sont pas disponibles dans tous les navigateurs ; la saisie texte reste accessible.
+L'assistant et la visite guidée partagent une sélection automatique de la meilleure voix
+locale disponible pour la langue choisie ; le rendu dépend des voix installées sur l'appareil.
 
 L'interface propose douze langues : français, anglais, espagnol, néerlandais, allemand,
 chinois simplifié, portugais, arabe, hindi, japonais, russe et italien. Les traductions
