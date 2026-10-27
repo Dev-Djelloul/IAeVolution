@@ -2,10 +2,9 @@
 
 ## Objectif et état actuel
 
-IAeVolution est aujourd'hui un site statique servi et construit par Vite. Les dossiers,
-les réponses de l'assistant et le catalogue `sources.json` sont éditorialisés dans le
-dépôt. Il n'existe ni API, ni base de données, ni collecte programmée, ni appel à un
-modèle génératif.
+IAeVolution est construit avec Vite. Les dossiers, les réponses de l'assistant et le
+catalogue `sources.json` sont éditorialisés dans le dépôt ; il n'existe ni base de données,
+ni collecte programmée, ni appel à un modèle génératif ou à un service de traduction.
 
 La vision produit est celle d'une expérience visuelle et immersive pour donner à voir
 l'IA : images, scènes 3D, robotique, formes et esthétique technologique, en plus des
@@ -53,9 +52,29 @@ ou un service vocal nécessitant un secret depuis le navigateur.
 
 ### Interface
 
+- Faire de l'accueil une visite narrative avant d'exposer le catalogue : le prototype de
+  l'acte 1 suit électricité, machines et chaleur. Une idée à retenir, un fait contextualisé,
+  un texte de narration et une source primaire restent visibles à chaque étape ; les
+  commandes permettent de lancer, mettre en pause, reprendre, avancer, revenir, arrêter et
+  désactiver la voix. La synthèse utilise l'API du navigateur après une action explicite ;
+  le texte demeure disponible si la synthèse vocale est indisponible. La préférence de
+  réduction des animations remplace l'avancement automatique par une progression manuelle.
+- Garder la manipulation des zones et les scènes robotique/réseaux dans un parcours
+  d'exploration facultatif afin que les contrôles détaillés ne concurrencent pas la visite
+  principale.
 - Faire évoluer le site vers une expérience éditoriale visuelle : illustrations originales,
   visualisations spatiales et, si elles apportent une vraie compréhension, scènes 3D
   manipulables autour des modèles, centres de données et robots.
+- Rendre chaque carte de la grille de découverte navigable vers un dossier avec une
+  destination et un contenu réels ; les liens internes restent utilisables au clavier et
+  les dossiers renvoient au catalogue. Le registre de sources référence également les
+  nouvelles sources mobilisées par ces dossiers.
+- Utiliser la boussole comme navigation éditoriale transversale : science, infrastructure,
+  histoire, économie et société. Rendre explicite le statut des affirmations (mesure,
+  estimation, projection ou analyse) et relier la méthode au registre de sources.
+- La page `reseaux-mondiaux.html` relie le schéma des grands corridors sous-marins à la
+  carte interactive de TeleGeography et aux ressources de résilience de l'UIT, référencées
+  dans `sources.json`.
 - Le prototype associe une maquette CSS 3D manipulable d'un centre de données (rotation,
   quatre zones explicatives et sources) à une vue SVG de repli. La scène SVG de robotique
   propose quatre points d'exploration sourcés : perception, contrôle, action et sécurité ;
@@ -72,6 +91,13 @@ ou un service vocal nécessitant un secret depuis le navigateur.
   contenus éditoriaux sortent du dépôt.
 - Rendre explicites les états de chargement, de source indisponible et de corpus incomplet.
 - Ne jamais embarquer de secret, clé fournisseur ou identifiant d'accès dans les assets web.
+- Le sélecteur propose douze langues : français, anglais, espagnol, néerlandais, allemand,
+  chinois simplifié, portugais, arabe, hindi, japonais, russe et italien. Les traductions
+  disponibles sont intégrées dans `translation.js` et restent locales ; les textes sans
+  entrée correspondante demeurent en français.
+- Aucune requête, question ou chaîne d'interface n'est envoyée à un service de traduction.
+  Les recherches sont effectuées dans la langue saisie ; la couverture du catalogue local
+  pourra être étendue ultérieurement par des traductions éditoriales vérifiées.
 
 ### Catalogue éditorial et historique
 

@@ -2,35 +2,17 @@
 
 **Observer l'intelligence artificielle. Comprendre ce qui change. Anticiper ce qui vient.**
 
-IAeVolution est le point de départ d'un observatoire de l'IA conçu pour rendre un sujet
-complexe plus lisible, utile et accessible. L'ambition est d'en faire une expérience
-visuelle et immersive — images, 3D, robotique et esthétique technologique — soutenue par
-des contenus éditoriaux sourcés et, à terme, un assistant vocal capable de guider
-l'exploration du corpus IAeVolution et de ressources accessibles sur le Web. Ce prototype
-front-end propose une exploration thématique et un premier dossier sur les centres de
-données, avec des angles géographiques, économiques, historiques et techniques. Le volet
-géographique compare trois exemples régionaux documentés ; le volet économique visualise
-les couches de la chaîne de valeur de l'IA ; le volet historique relie des jalons de
-l'informatique, du cloud et de l'IA ; le volet technique distingue entraînement, inférence,
-infrastructure et évaluation. L'accueil propose une maquette de centre de données en CSS
-3D, que l'on peut faire tourner et explorer par zones sourcées, avec une vue illustrée de
-repli. La scène robotique permet d'explorer quatre fonctions — perception, contrôle, action
-et sécurité — avec des explications et des sources institutionnelles ; les réseaux restent
-une scène SVG. Les maquettes sont pédagogiques, et le centre de données n'est pas à l'échelle
-et n'utilise ni WebGL ni bibliothèque 3D.
-Un registre éditorial structuré présente un premier ensemble de sources institutionnelles,
-scientifiques, sectorielles et techniques ; il peut être recherché et filtré par famille.
-Ses fiches sont maintenues dans `sources.json` : chaque source porte un identifiant stable,
-des thèmes, une cadence de relecture proposée et un champ `lastReviewedAt` (date ISO `YYYY-MM-DD`
-ou `null` si aucune revue éditoriale n'a été consignée). L'interface rend visibles les dates
-absentes et les thèmes ; cette métadonnée ne constitue pas un contrôle automatique des liens.
-Le registre inclut aussi une méthode de vérification et des rythmes proposés, non automatisés.
-Les contenus ne constituent pas une veille en temps réel ni une couverture exhaustive du Web.
-Un assistant documentaire permet aussi de retrouver localement quelques réponses
-éditorialisées et leurs sources sur les centres de données et les premiers repères de l'IA
-générative. Il n'utilise pas de
-modèle génératif, n'envoie pas les questions à un service externe et répond qu'il ne sait
-pas lorsque le corpus indexé ne couvre pas la question.
+IAeVolution est un observatoire éditorial de l'IA, conçu pour rendre le sujet plus lisible,
+utile et accessible. Le site propose une visite guidée, une boussole à cinq angles, sept
+dossiers thématiques, un registre de sources et une page dédiée aux réseaux mondiaux.
+Les contenus sont éditorialisés et sourcés ; l'assistant documentaire effectue une recherche
+locale dans un corpus restreint et ne fait pas appel à un modèle génératif.
+
+L'interface propose douze langues : français, anglais, espagnol, néerlandais, allemand,
+chinois simplifié, portugais, arabe, hindi, japonais, russe et italien. Les traductions
+disponibles sont intégrées localement au projet : aucune clé API, aucun compte cloud et
+aucun service de traduction externe ne sont nécessaires. Les textes absents du catalogue
+restent en français ; les requêtes de recherche ne sont pas traduites automatiquement.
 
 ## Environnement de développement
 
@@ -41,10 +23,35 @@ npm install
 npm run dev
 ```
 
-Vite affiche l'adresse locale à ouvrir dans le navigateur. Pour vérifier la version de
-production, utilisez `npm run build`, puis `npm run preview`.
+Vite affiche l'adresse locale dans le terminal. Les deux pages (`index.html` et
+`reseaux-mondiaux.html`) sont construites avec :
 
-Le prototype ne dépend pas encore d'un backend, d'une base de données ou d'une clé API.
+```sh
+npm run build
+npm run preview
+```
+
+`npm start` démarre l'aperçu de production après le build.
+
+## Déploiement Cloudflare
+
+Le site est servi comme un site statique par **Cloudflare Workers Static Assets** ;
+aucun serveur applicatif ni ressource Cloudflare supplémentaire n'est requis.
+La configuration de déploiement est définie dans `wrangler.jsonc`.
+
+Wrangler est installé comme dépendance du projet. Authentifiez-vous une seule fois sur votre compte Cloudflare :
+
+```sh
+npx wrangler login
+```
+
+Pour vérifier l'empaquetage sans publier, puis déployer sur l'URL `workers.dev` du Worker :
+
+```sh
+npm run build
+npx wrangler deploy --dry-run
+npx wrangler deploy
+```
 
 ## Cadrage technique
 
@@ -63,8 +70,7 @@ les garde-fous et les décisions ouvertes sont détaillés dans [le cadrage tech
 - **Comparer** les outils selon leurs usages, leur accessibilité et leurs limites.
 - **Garder du recul** sur les enjeux de fiabilité, de vie privée, d'énergie et de société.
 
-Les contenus et le registre actuellement affichés sont éditoriaux et statiques : les
-sources ne sont pas surveillées automatiquement et aucune revue éditoriale n'est encore
-datée dans le catalogue. Une prochaine étape pourra concevoir la collecte, la validation
-et l'historique nécessaires à une véritable veille. L'assistant actuel est une recherche
-locale limitée, pas un assistant vocal ou un moteur de recherche Web.
+Les contenus et le registre affichés sont éditoriaux et statiques : les sources ne sont pas
+surveillées automatiquement et aucune revue éditoriale n'est encore datée dans le catalogue.
+Une prochaine étape pourra concevoir la collecte, la validation et l'historique nécessaires
+à une véritable veille.

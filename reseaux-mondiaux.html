@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#245d95">
+    <meta name="description" content="Une exploration visuelle du rôle des câbles sous-marins dans les réseaux mondiaux qui soutiennent l'IA et les services numériques.">
+    <title>Réseaux mondiaux — IAeVolution</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="reseaux-mondiaux.js"></script>
+  </head>
+  <body class="networks-page" id="top">
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="IAeVolution, accueil">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>IA<span class="brand-accent">e</span>Volution</span>
+      </a>
+      <nav class="main-nav" aria-label="Navigation principale">
+        <a class="nav-link" href="index.html#boussole">Notre boussole</a>
+        <a class="nav-link" href="index.html#explorer">Explorer</a>
+        <a class="nav-link is-active" href="#carte" aria-current="page">Réseaux mondiaux</a>
+      </nav>
+      <div class="language-control">
+        <label for="language-select">Langue</label>
+        <select id="language-select" aria-label="Langue d’affichage">
+          <option value="fr">Français</option>
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="nl">Nederlands</option>
+          <option value="de">Deutsch</option>
+          <option value="zh-CN">中文</option>
+          <option value="pt">Português</option>
+          <option value="ar">العربية</option>
+          <option value="hi">हिन्दी</option>
+          <option value="ja">日本語</option>
+          <option value="ru">Русский</option>
+          <option value="it">Italiano</option>
+        </select>
+      </div>
+      <a class="header-link" href="index.html">Retour à l’observatoire <span aria-hidden="true">↗</span></a>
+    </header>
+    <main id="contenu">
+      <section class="networks-hero" aria-labelledby="networks-title">
+        <div class="networks-hero-copy">
+          <p class="networks-eyebrow"><span></span> INFRASTRUCTURES NUMÉRIQUES <span class="networks-divider">/</span> DOSSIER VISUEL</p>
+          <h1 id="networks-title">L’IA voyage aussi<br>au fond des océans</h1>
+          <p>Entre centres de données, services cloud et utilisateurs, une partie essentielle des échanges traverse les océans dans des câbles de fibre optique. Voici une lecture des grandes connexions qui soutiennent l’internet mondial.</p>
+          <a class="networks-hero-link" href="#carte">Explorer le schéma <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="networks-hero-aside" aria-label="Repère mondial">
+          <span class="networks-orbit orbit-one"></span>
+          <span class="networks-orbit orbit-two"></span>
+          <span class="networks-orbit orbit-three"></span>
+          <span class="networks-orbit-core"></span>
+          <span class="networks-aside-label">RÉSEAU<br>INTERCONTINENTAL</span>
+          <span class="networks-aside-caption">Des liaisons physiques<br>pour des usages immatériels</span>
+        </div>
+        <span class="networks-hero-index">IAeVOLUTION <span>·</span> 01 — INFRASTRUCTURE</span>
+      </section>
+
+      <section class="network-map-section" id="carte" aria-labelledby="network-map-title">
+        <div class="network-section-heading">
+          <div>
+            <p class="network-kicker">UN SYSTÈME SOUS LA SURFACE</p>
+            <h2 id="network-map-title">Des continents reliés par des corridors</h2>
+          </div>
+          <p>Les câbles forment un maillage physique, complété par des réseaux terrestres, des stations d’atterrissement et des centres d’interconnexion.</p>
+        </div>
+
+        <figure class="network-map-card">
+          <div class="network-map-toolbar">
+            <span>GRANDS CORRIDORS <span>·</span> VUE D’ENSEMBLE</span>
+            <div class="network-map-controls" role="group" aria-label="Mode d’affichage du schéma">
+              <button type="button" class="network-map-mode is-active" data-map-mode="corridors" aria-pressed="true">Corridors</button>
+              <button type="button" class="network-map-mode" data-map-mode="resilience" aria-pressed="false">Redondance</button>
+              <a class="network-map-external" href="https://www.submarinecablemap.com/" target="_blank" rel="noopener noreferrer">Carte interactive <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <svg class="network-map" data-map-mode="corridors" viewBox="0 0 1000 540" role="img" aria-labelledby="map-svg-title map-svg-description">
+            <title id="map-svg-title">Grands corridors intercontinentaux de câbles sous-marins</title>
+            <desc id="map-svg-description">Des arcs colorés relient les grandes régions du monde à travers les océans.</desc>
+            <defs>
+              <pattern id="map-grid" width="50" height="50" patternUnits="userSpaceOnUse">
+                <path d="M50 0H0V50" fill="none" stroke="#86a9bd" stroke-opacity=".13" stroke-width="1"></path>
+              </pattern>
+              <linearGradient id="map-land" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0" stop-color="#d5e5dd"></stop>
+                <stop offset="1" stop-color="#b6d2ca"></stop>
+              </linearGradient>
+            </defs>
+            <rect width="1000" height="540" fill="#174d7e"></rect>
+            <rect width="1000" height="540" fill="url(#map-grid)"></rect>
+            <g class="map-latitudes" fill="none" stroke="#9ac4d5" stroke-opacity=".17">
+              <path d="M0 135Q500 205 1000 135"></path>
+              <path d="M0 270Q500 340 1000 270"></path>
+              <path d="M0 405Q500 475 1000 405"></path>
+            </g>
+            <g class="map-corridors" fill="none" stroke-linecap="round">
+              <path class="corridor-main corridor-atlantic" d="M276 205C360 170 432 184 499 218S612 253 680 210"></path>
+              <path class="corridor-main corridor-pacific" d="M118 237C208 170 276 189 339 235S466 305 531 260 652 194 737 228"></path>
+              <path class="corridor-main corridor-south" d="M379 318C460 276 546 282 612 322S746 356 829 296"></path>
+              <path class="corridor-secondary corridor-atlantic" d="M276 231C358 199 435 209 500 243S613 278 680 236"></path>
+              <path class="corridor-secondary corridor-pacific" d="M120 263C208 198 278 215 339 261S466 331 532 286 654 220 738 255"></path>
+              <path class="corridor-secondary corridor-south" d="M380 343C461 304 546 309 612 348S746 382 829 322"></path>
+              <path class="corridor-secondary corridor-connector" d="M499 218C505 254 520 278 546 298"></path>
+            </g>
+            <g class="map-continents" fill="url(#map-land)" stroke="#e5f0e8" stroke-opacity=".72" stroke-width="1.4">
+              <path d="M89 109 130 84 180 92 203 113 246 119 275 151 263 178 231 188 219 219 185 237 158 218 140 190 112 180 96 151 77 137Z"></path>
+              <path d="M242 252 270 268 283 302 270 339 261 374 239 414 221 397 217 356 202 326 211 294Z"></path>
+              <path d="M443 143 467 127 494 137 502 155 482 168 456 165Z"></path>
+              <path d="M461 182 495 174 528 192 540 221 527 252 511 284 491 313 475 289 468 252 448 222Z"></path>
+              <path d="M518 135 555 114 609 109 638 129 684 132 704 155 681 178 645 173 625 193 591 185 570 163 542 172 519 157Z"></path>
+              <path d="M672 282 704 268 739 278 753 300 739 321 708 325 682 313Z"></path>
+              <path d="M753 363 782 355 805 371 801 397 777 404 759 389Z"></path>
+            </g>
+            <g class="map-region-labels" fill="#e5f1ed" font-family="DM Mono, monospace" font-size="12" letter-spacing="1.3">
+              <text x="131" y="129">AMÉRIQUES</text>
+              <text x="451" y="119">EUROPE</text>
+              <text x="476" y="326">AFRIQUE</text>
+              <text x="595" y="102">ASIE</text>
+              <text x="719" y="348">OCÉANIE</text>
+            </g>
+            <g class="map-label map-label-atlantic" font-family="DM Sans, sans-serif" font-size="12">
+              <rect x="350" y="213" width="90" height="24" rx="12"></rect>
+              <text x="395" y="229" text-anchor="middle">Atlantique</text>
+            </g>
+            <g class="map-label map-label-pacific" font-family="DM Sans, sans-serif" font-size="12">
+              <rect x="272" y="261" width="73" height="24" rx="12"></rect>
+              <text x="308" y="277" text-anchor="middle">Pacifique</text>
+            </g>
+            <g class="map-label map-label-south" font-family="DM Sans, sans-serif" font-size="12">
+              <rect x="630" y="335" width="75" height="24" rx="12"></rect>
+              <text x="667" y="351" text-anchor="middle">Sud global</text>
+            </g>
+          </svg>
+          <figcaption class="network-map-caption" id="network-map-caption">Les échanges internationaux s’appuient sur un réseau dense de liaisons transocéaniques.</figcaption>
+        </figure>
+      </section>
+
+      <section class="network-facts-section" aria-labelledby="network-facts-title">
+        <div class="network-facts-intro">
+          <p class="network-kicker">LA MATIÈRE DU NUMÉRIQUE</p>
+          <h2 id="network-facts-title">L’infrastructure est physique. La résilience se construit.</h2>
+          <p>Le cloud et l’IA semblent accessibles partout ; leurs échanges dépendent pourtant de câbles, d’équipements et d’opérations de maintenance dans plusieurs juridictions.</p>
+        </div>
+        <div class="network-facts-grid">
+          <article class="network-fact-card fact-cyan">
+            <span class="network-fact-index">01 <span>· TRANSMISSION</span></span>
+            <h3>La fibre transporte les données entre les continents</h3>
+            <p>Les câbles optiques sous-marins constituent une infrastructure majeure des communications internationales, aux côtés des réseaux terrestres et des liaisons satellitaires.</p>
+          </article>
+          <article class="network-fact-card fact-coral">
+            <span class="network-fact-index">02 <span>· CONTINUITÉ</span></span>
+            <h3>Une liaison n’est pas un réseau redondant</h3>
+            <p>La diversité des chemins, les capacités de bascule et la coordination des réparations contribuent à maintenir les échanges lorsqu’un lien devient indisponible.</p>
+          </article>
+          <article class="network-fact-card fact-amber">
+            <span class="network-fact-index">03 <span>· MAINTENANCE</span></span>
+            <h3>La continuité dépend aussi d’opérations humaines</h3>
+            <p>La résilience repose sur la prévention, la surveillance, les équipes de maintenance et la coopération entre acteurs et autorités.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="network-stat-band" aria-label="Repère de résilience">
+        <div>
+          <p class="network-kicker">UN INDICATEUR DE MAINTENANCE</p>
+          <strong>+170</strong>
+          <span>réparations signalées dans le monde en 2025, soit près de quatre par semaine</span>
+        </div>
+        <p>La maintenance et la coordination internationales font partie intégrante de la continuité des réseaux numériques.</p>
+        <a href="https://www.itu.int/en/mediacentre/backgrounders/Pages/submarine-cable-resilience.aspx" target="_blank" rel="noreferrer">Source : UIT <span aria-hidden="true">↗</span></a>
+      </section>
+
+      <section class="network-ai-section" aria-labelledby="network-ai-title">
+        <p class="network-kicker">DU RÉSEAU À L’INTELLIGENCE ARTIFICIELLE</p>
+        <h2 id="network-ai-title">Quand une IA répond, le réseau fait le lien</h2>
+        <div class="network-flow" aria-label="Parcours schématique d'une requête à un service d'intelligence artificielle">
+          <article><span>01</span><h3>Une question</h3><p>Une personne envoie une requête depuis un terminal.</p></article>
+          <span class="network-flow-arrow" aria-hidden="true">→</span>
+          <article><span>02</span><h3>Des réseaux</h3><p>Des réseaux d’accès et des liaisons longue distance acheminent les données.</p></article>
+          <span class="network-flow-arrow" aria-hidden="true">→</span>
+          <article><span>03</span><h3>Un service IA</h3><p>Des serveurs traitent la requête ; la réponse emprunte à nouveau le réseau.</p></article>
+        </div>
+      </section>
+
+      <section class="network-sources-section" aria-labelledby="network-sources-title">
+        <div>
+          <p class="network-kicker">CARTOGRAPHIE ET RÉSILIENCE</p>
+          <h2 id="network-sources-title">Explorer le réseau mondial</h2>
+          <p>La carte de TeleGeography permet d’explorer les systèmes de câbles et les stations d’atterrissement. Les repères de résilience s’appuient sur les travaux de l’Union internationale des télécommunications.</p>
+          <a class="network-source-secondary" href="https://www.itu.int/en/mediacentre/backgrounders/Pages/submarine-cable-resilience.aspx" target="_blank" rel="noopener noreferrer">UIT · Résilience des câbles sous-marins <span aria-hidden="true">↗</span></a>
+        </div>
+        <a class="network-source-card" href="https://www.submarinecablemap.com/" target="_blank" rel="noopener noreferrer">
+          <span>TELEGEOGRAPHY <span>·</span> CARTE MONDIALE</span>
+          <strong>Carte interactive des câbles sous-marins</strong>
+          <span class="network-source-action">Explorer les câbles et stations <span aria-hidden="true">↗</span></span>
+        </a>
+      </section>
+    </main>
+
+    <footer class="network-footer">
+      <a class="brand" href="index.html" aria-label="IAeVolution, accueil">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>IA<span class="brand-accent">e</span>Volution</span>
+      </a>
+      <a href="index.html#explorer">Revenir aux sept dossiers <span aria-hidden="true">↗</span></a>
+    </footer>
+  </body>
+</html>

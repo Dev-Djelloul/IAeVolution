@@ -1,4 +1,6 @@
 import sourceCatalog from "./sources.json";
+import { getSuggestedAnswer } from "./assistant-locales.js";
+import { getLocalizedText, initializeTranslation, translateText, translateToFrench } from "./translation.js";
 
 const topics = [
   {
@@ -11,6 +13,7 @@ const topics = [
     tags: ["Modèles", "Repères"],
     icon: "✳",
     color: "violet",
+    target: "dossier-ia-generative",
   },
   {
     id: "ai-agents",
@@ -22,6 +25,7 @@ const topics = [
     tags: ["Usages", "En exploration"],
     icon: "⌘",
     color: "blue",
+    target: "dossier-agents-ia",
   },
   {
     id: "open-models",
@@ -33,6 +37,7 @@ const topics = [
     tags: ["Écosystème", "Modèles"],
     icon: "◈",
     color: "mint",
+    target: "dossier-modeles-ouverts",
   },
   {
     id: "responsible-ai",
@@ -44,6 +49,7 @@ const topics = [
     tags: ["Éthique", "Société"],
     icon: "◎",
     color: "amber",
+    target: "dossier-ia-responsable",
   },
   {
     id: "ai-at-work",
@@ -55,6 +61,7 @@ const topics = [
     tags: ["Pratique", "Débuter"],
     icon: "↗",
     color: "rose",
+    target: "dossier-ia-quotidien",
   },
   {
     id: "ai-outlook",
@@ -66,6 +73,7 @@ const topics = [
     tags: ["Tendances", "Prospective"],
     icon: "⌁",
     color: "cyan",
+    target: "dossier-prospective",
   },
   {
     id: "data-centres",
@@ -77,7 +85,7 @@ const topics = [
     tags: ["Géographie", "Infrastructure"],
     icon: "▦",
     color: "cyan",
-    dossier: true,
+    target: "dossier-data-centres",
   },
 ];
 
@@ -164,16 +172,26 @@ const emptyState = document.querySelector("#empty-state");
 const filterButtons = [...document.querySelectorAll(".filter-chip")];
 let activeFilter = "all";
 
-function renderTopics() {
-  const query = searchInput.value.trim().toLocaleLowerCase("fr");
+function renderTopics(queryValue = searchInput.value) {
+  const locale = document.documentElement.lang || "fr";
+  const query = queryValue.trim().toLocaleLowerCase(locale);
   const visibleTopics = topics.filter((topic) => {
     const matchesFilter = activeFilter === "all" || topic.filter === activeFilter;
-    const searchableText = `${topic.title} ${topic.description} ${topic.category} ${topic.tags.join(" ")}`.toLocaleLowerCase("fr");
+    const searchableText = [
+      topic.title,
+      topic.description,
+      topic.category,
+      ...topic.tags,
+      getLocalizedText(topic.title, locale),
+      getLocalizedText(topic.description, locale),
+      getLocalizedText(topic.category, locale),
+      ...topic.tags.map((tag) => getLocalizedText(tag, locale)),
+    ].join(" ").toLocaleLowerCase(locale);
     return matchesFilter && searchableText.includes(query);
   });
 
   grid.innerHTML = visibleTopics.map((topic) => `
-    <article class="topic-card">
+    <a class="topic-card topic-card-${topic.color}" data-topic-id="${topic.id}" href="#${topic.target}" aria-label="Ouvrir le dossier : ${topic.title}">
       <div class="card-topline">
         <span class="card-number">${topic.number} <span>/ ${String(topics.length).padStart(2, "0")}</span></span>
         <span class="card-icon icon-${topic.color}" aria-hidden="true">${topic.icon}</span>
@@ -183,15 +201,14 @@ function renderTopics() {
       <p class="card-description">${topic.description}</p>
       <div class="card-bottom">
         <div class="tag-list">${topic.tags.map((tag) => `<span class="topic-tag">${tag}</span>`).join("")}</div>
-        ${topic.dossier
-    ? `<a class="card-link" href="#dossier-data-centres" aria-label="Ouvrir le dossier : ${topic.title}">↗</a>`
-    : '<span class="card-link" aria-hidden="true">↗</span>'}
+        <span class="card-link" aria-hidden="true">↗</span>
       </div>
-    </article>
+    </a>
   `).join("");
 
   const count = String(visibleTopics.length).padStart(2, "0");
-  resultsLabel.textContent = `${count} ${visibleTopics.length > 1 ? "sujets" : "sujet"}`;
+  const countLabel = getLocalizedText(visibleTopics.length > 1 ? "sujets" : "sujet", locale);
+  resultsLabel.textContent = `${count} ${countLabel}`;
   emptyState.hidden = visibleTopics.length > 0;
   grid.hidden = visibleTopics.length === 0;
 }
@@ -239,6 +256,25 @@ const cameraTurnButtons = [...document.querySelectorAll("[data-camera-turn]")];
 const cameraResetButton = document.querySelector("[data-camera-reset]");
 const toggleSceneViewButton = document.querySelector("#toggle-scene-view");
 const robotZones = [...document.querySelectorAll(".robot-hotspot[data-robot-zone]")];
+const actPlayer = document.querySelector(".act-player");
+const tourStartButton = document.querySelector("[data-tour-start]");
+const tourVoiceButton = document.querySelector("[data-tour-voice]");
+const tourPauseButton = document.querySelector("[data-tour-pause]");
+const tourPreviousButton = document.querySelector("[data-tour-previous]");
+const tourNextButton = document.querySelector("[data-tour-next]");
+const tourStopButton = document.querySelector("[data-tour-stop]");
+const tourStatus = document.querySelector("[data-tour-status]");
+const tourDossierLink = document.querySelector("[data-tour-dossier]");
+const tourSteps = [...document.querySelectorAll("[data-tour-step]")];
+const tourStepKicker = document.querySelector("#act-step-kicker");
+const tourStepTitle = document.querySelector("#act-step-title");
+const tourStepSummary = document.querySelector("#act-step-summary");
+const tourFactValue = document.querySelector("#act-fact-value");
+const tourFactNote = document.querySelector("#act-fact-note");
+const tourNarrationText = document.querySelector("#act-narration-text");
+const tourSource = document.querySelector("#act-source");
+const sceneExplorer = document.querySelector(".scene-explorer");
+const heroSection = document.querySelector(".hero");
 const dataCenterZoneDetails = {
   compute: {
     title: "Le calcul",
@@ -344,6 +380,54 @@ const scenes = {
 const sceneOrder = Object.keys(scenes);
 let cameraYaw = -36;
 
+const guidedTourSteps = [
+  {
+    beat: "energy",
+    zone: "energy",
+    name: "Électricité",
+    title: "Tout commence par le courant",
+    summary: "Avant de produire une réponse, une IA a besoin de machines alimentées en électricité.",
+    factValue: "≈ 415 TWh",
+    factNote: "d'électricité consommés par les centres de données dans le monde en 2024 — pas par l'IA seule.",
+    narration: "Une réponse d'intelligence artificielle paraît immatérielle. Pourtant, avant l'écran, il faut d'abord alimenter des machines. En 2024, les centres de données dans le monde ont consommé environ 415 térawattheures. Ce chiffre englobe tous les centres de données, pas seulement ceux dédiés à l'intelligence artificielle.",
+    sourceName: "AIE · Energy and AI",
+    sourceUrl: "https://www.iea.org/reports/energy-and-ai",
+  },
+  {
+    beat: "compute",
+    zone: "compute",
+    name: "Machines",
+    title: "Des puces calculent dans des serveurs",
+    summary: "Les serveurs rassemblent des puces spécialisées, de la mémoire et du stockage pour exécuter les modèles.",
+    factValue: "Puces · mémoire · stockage",
+    factNote: "Les composants travaillent ensemble ; aucun ne suffit à lui seul à faire fonctionner un service d'IA.",
+    narration: "L'électricité arrive dans un centre de données. À l'intérieur, des serveurs regroupent les composants informatiques. Des puces spécialisées effectuent les calculs ; la mémoire et le stockage gardent les données nécessaires au service.",
+    sourceName: "OCDE · Infrastructure IA",
+    sourceUrl: "https://www.oecd.org/en/publications/competition-in-artificial-intelligence-infrastructure_623d1874-en/full-report.html",
+  },
+  {
+    beat: "heat",
+    zone: "cooling",
+    name: "Chaleur",
+    title: "Le calcul produit aussi de la chaleur",
+    summary: "Alimenter, refroidir et relier les machines fait partie du fonctionnement d'un centre de données.",
+    factValue: "Énergie → calcul → chaleur",
+    factNote: "L'emplacement, le climat et les choix de refroidissement influencent les besoins du site.",
+    narration: "Quand les puces calculent, elles consomment de l'électricité et dégagent de la chaleur. Le centre doit donc aussi évacuer cette chaleur et relier ses machines aux réseaux. L'énergie, le refroidissement et la connectivité font partie de l'infrastructure de l'IA.",
+    sourceName: "AIE · Energy and AI",
+    sourceUrl: "https://www.iea.org/reports/energy-and-ai",
+  },
+];
+let tourIndex = 0;
+let tourState = "ready";
+let tourVoiceEnabled = true;
+let tourUtterance = null;
+let tourTimer = null;
+let tourDeadline = 0;
+let tourRemainingMs = 0;
+let tourWaitingForAdvance = false;
+const tourMotionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+
 function renderSceneDetails(details) {
   sceneTitle.textContent = details.title;
   sceneDescription.textContent = details.description;
@@ -409,6 +493,277 @@ toggleSceneViewButton.addEventListener("click", () => {
   sceneCanvas.dataset.illustrated = String(showIllustration);
   toggleSceneViewButton.textContent = showIllustration ? "Vue 3D" : "Vue illustrée";
   toggleSceneViewButton.setAttribute("aria-label", showIllustration ? "Revenir à la vue 3D" : "Basculer vers la vue illustrée");
+});
+
+function clearTourTimer() {
+  if (tourTimer !== null) {
+    window.clearTimeout(tourTimer);
+    tourTimer = null;
+  }
+}
+
+function cancelTourSpeech() {
+  if (window.speechSynthesis) window.speechSynthesis.cancel();
+  tourUtterance = null;
+}
+
+function setTourState(nextState) {
+  tourState = nextState;
+  actPlayer.dataset.tourState = nextState;
+  visualExperience.dataset.tourState = nextState;
+  tourStartButton.hidden = nextState === "playing" || nextState === "paused";
+  tourPauseButton.hidden = nextState !== "playing" && nextState !== "paused";
+  tourPreviousButton.hidden = nextState !== "playing" && nextState !== "paused";
+  tourNextButton.hidden = nextState !== "playing" && nextState !== "paused";
+  tourStopButton.hidden = nextState !== "playing" && nextState !== "paused";
+  tourDossierLink.hidden = nextState !== "complete";
+  tourPauseButton.textContent = nextState === "paused" ? "Reprendre" : "Pause";
+  tourStartButton.childNodes[0].textContent = nextState === "complete" ? "Revoir l’acte " : "Lancer la visite ";
+  tourStartButton.querySelector("span").textContent = nextState === "complete" ? "↻" : "▶";
+  if (nextState === "complete") {
+    clearTourTimer();
+    cancelTourSpeech();
+  }
+}
+
+function setTourStep(index, { speak = tourState === "playing" } = {}) {
+  tourIndex = Math.max(0, Math.min(index, guidedTourSteps.length - 1));
+  tourWaitingForAdvance = false;
+  const step = guidedTourSteps[tourIndex];
+  tourStepKicker.textContent = `ÉTAPE ${tourIndex + 1} / ${guidedTourSteps.length} · ${step.name.toLocaleUpperCase("fr")}`;
+  tourStepTitle.textContent = step.title;
+  tourStepSummary.textContent = step.summary;
+  tourFactValue.textContent = step.factValue;
+  tourFactNote.textContent = step.factNote;
+  tourNarrationText.textContent = `« ${step.narration} »`;
+  tourSource.textContent = `Source : ${step.sourceName} ↗`;
+  tourSource.href = step.sourceUrl;
+  visualExperience.dataset.storyBeat = step.beat;
+  datacenterWorld.dataset.zone = step.zone;
+  tourSteps.forEach((button, buttonIndex) => {
+    if (buttonIndex === tourIndex) {
+      button.classList.add("is-current");
+      button.setAttribute("aria-current", "step");
+    } else {
+      button.classList.remove("is-current");
+      button.removeAttribute("aria-current");
+    }
+  });
+  tourPreviousButton.disabled = tourIndex === 0;
+  tourNextButton.disabled = false;
+  tourNextButton.setAttribute("aria-label", tourIndex === guidedTourSteps.length - 1 ? "Terminer l'acte" : "Passer à l'étape suivante");
+  if (tourState === "paused") {
+    clearTourTimer();
+    cancelTourSpeech();
+  } else if (speak) {
+    speakTourStep();
+  }
+}
+
+function scheduleTourAdvance(delay) {
+  clearTourTimer();
+  tourWaitingForAdvance = true;
+  tourRemainingMs = delay;
+  tourDeadline = Date.now() + delay;
+  if (tourMotionPreference.matches || tourState !== "playing") return;
+  tourTimer = window.setTimeout(() => {
+    tourTimer = null;
+    advanceTour();
+  }, delay);
+}
+
+function finishTourStepWithoutVoice() {
+  const estimatedReadTime = Math.max(9000, guidedTourSteps[tourIndex].narration.split(/\s+/).length * 390);
+  if (tourMotionPreference.matches) {
+    tourStatus.textContent = "Narration indisponible · utilisez les flèches pour avancer à votre rythme.";
+    return;
+  }
+  scheduleTourAdvance(estimatedReadTime);
+}
+
+async function speakTourStep() {
+  clearTourTimer();
+  cancelTourSpeech();
+  tourWaitingForAdvance = false;
+  const step = guidedTourSteps[tourIndex];
+  if (!tourVoiceEnabled || !window.speechSynthesis || !("SpeechSynthesisUtterance" in window)) {
+    finishTourStepWithoutVoice();
+    return;
+  }
+
+  const locale = document.documentElement.lang || "fr";
+  let narration = step.narration;
+  let narrationLocale = locale;
+  narration = await translateText(step.narration, locale);
+  if (narration === step.narration) narrationLocale = "fr";
+  if (!tourVoiceEnabled || tourState !== "playing" || guidedTourSteps[tourIndex] !== step) return;
+  const utterance = new SpeechSynthesisUtterance(narration);
+  utterance.lang = narrationLocale;
+  utterance.rate = 0.94;
+  const localePrefix = narrationLocale.toLocaleLowerCase().split("-")[0];
+  const languageVoice = window.speechSynthesis.getVoices().find((voice) => voice.lang.toLocaleLowerCase().startsWith(localePrefix));
+  if (languageVoice) utterance.voice = languageVoice;
+  tourUtterance = utterance;
+  utterance.onend = () => {
+    if (tourUtterance !== utterance || tourState !== "playing") return;
+    tourUtterance = null;
+    tourWaitingForAdvance = true;
+    if (tourMotionPreference.matches) {
+      tourStatus.textContent = "Étape terminée · avancez quand vous le souhaitez.";
+      return;
+    }
+    scheduleTourAdvance(3500);
+  };
+  utterance.onerror = () => {
+    if (tourUtterance !== utterance || tourState !== "playing") return;
+    tourUtterance = null;
+    tourStatus.textContent = "Voix indisponible · la visite continue avec le texte à l'écran.";
+    finishTourStepWithoutVoice();
+  };
+  tourStatus.textContent = "Écoutez la narration · vous pouvez mettre la visite en pause.";
+  try {
+    window.speechSynthesis.speak(utterance);
+  } catch {
+    tourUtterance = null;
+    tourStatus.textContent = "Voix indisponible · la visite continue avec le texte à l'écran.";
+    finishTourStepWithoutVoice();
+  }
+}
+
+function advanceTour() {
+  if (tourState === "paused") {
+    if (tourIndex === guidedTourSteps.length - 1) {
+      setTourState("complete");
+      tourStatus.textContent = "Fin de l'acte 1 · vous pouvez revoir le parcours ou explorer le dossier détaillé.";
+      return;
+    }
+    setTourStep(tourIndex + 1, { speak: false });
+    tourStatus.textContent = `En pause · étape ${tourIndex + 1} sélectionnée. Reprenez ou avancez à votre rythme.`;
+    return;
+  }
+  if (tourState !== "playing") return;
+  if (tourIndex === guidedTourSteps.length - 1) {
+    clearTourTimer();
+    cancelTourSpeech();
+    setTourState("complete");
+    tourStatus.textContent = "Fin de l'acte 1 · vous pouvez revoir le parcours ou explorer le dossier détaillé.";
+    return;
+  }
+  setTourStep(tourIndex + 1);
+}
+
+tourSteps.forEach((button) => {
+  button.addEventListener("click", () => {
+    if (tourState === "complete") setTourState("ready");
+    setTourStep(Number(button.dataset.tourStep));
+    if (tourState !== "playing" && tourState !== "paused") {
+      tourStatus.textContent = `Étape ${tourIndex + 1} sélectionnée · lancez la visite pour écouter la narration.`;
+    }
+  });
+});
+
+tourStartButton.addEventListener("click", () => {
+  if (tourState === "paused") {
+    tourPauseButton.click();
+    return;
+  }
+  if (tourState === "complete") setTourStep(0, { speak: false });
+  setTourState("playing");
+  tourStatus.textContent = "La visite commence · la narration peut être mise en pause.";
+  speakTourStep();
+});
+
+tourVoiceButton.addEventListener("click", () => {
+  tourVoiceEnabled = !tourVoiceEnabled;
+  tourVoiceButton.setAttribute("aria-pressed", String(tourVoiceEnabled));
+  tourVoiceButton.classList.toggle("is-enabled", tourVoiceEnabled);
+  tourVoiceButton.textContent = tourVoiceEnabled ? "Voix activée" : "Voix désactivée";
+  if (tourState === "ready" || tourState === "complete") {
+    tourStatus.textContent = tourVoiceEnabled
+      ? "Voix activée · la narration démarre lorsque vous lancez la visite."
+      : "Voix désactivée · le texte affiché guide la visite.";
+  }
+  if (tourState === "playing") {
+    if (tourVoiceEnabled) {
+      speakTourStep();
+    } else {
+      cancelTourSpeech();
+      tourStatus.textContent = "Voix désactivée · le texte reste affiché et la visite continue.";
+      finishTourStepWithoutVoice();
+    }
+  } else if (tourState === "paused") {
+    if (tourVoiceEnabled) {
+      tourWaitingForAdvance = false;
+    } else {
+      cancelTourSpeech();
+      tourWaitingForAdvance = true;
+      tourRemainingMs = 9000;
+    }
+  }
+});
+
+tourPauseButton.addEventListener("click", () => {
+  if (tourState === "playing") {
+    tourRemainingMs = Math.max(0, tourDeadline - Date.now());
+    clearTourTimer();
+    if (tourUtterance && window.speechSynthesis) window.speechSynthesis.pause();
+    setTourState("paused");
+    tourStatus.textContent = "Visite en pause · reprenez ou avancez manuellement.";
+  } else if (tourState === "paused") {
+    setTourState("playing");
+    if (tourUtterance && window.speechSynthesis) {
+      window.speechSynthesis.resume();
+      tourStatus.textContent = "La narration reprend.";
+    } else if (tourWaitingForAdvance) {
+      if (!tourMotionPreference.matches) scheduleTourAdvance(tourRemainingMs || 1000);
+      tourStatus.textContent = tourMotionPreference.matches
+        ? "La narration est terminée · avancez avec la flèche quand vous le souhaitez."
+        : "La visite reprend · utilisez pause à tout moment.";
+    } else {
+      speakTourStep();
+    }
+  }
+});
+
+tourPreviousButton.addEventListener("click", () => {
+  if (tourIndex === 0) return;
+  if (tourState === "complete") setTourState("ready");
+  setTourStep(tourIndex - 1);
+});
+
+tourNextButton.addEventListener("click", advanceTour);
+
+tourStopButton.addEventListener("click", () => {
+  clearTourTimer();
+  cancelTourSpeech();
+  setTourState("ready");
+  tourStatus.textContent = "Visite arrêtée · relancez-la quand vous le souhaitez.";
+});
+
+sceneExplorer.addEventListener("toggle", () => {
+  const isOpen = sceneExplorer.open;
+  heroSection.dataset.exploration = isOpen ? "open" : "closed";
+  datacenterStage.inert = !isOpen;
+  datacenterStage.setAttribute("aria-hidden", String(!isOpen));
+  dataCenterZones.forEach((button) => {
+    button.tabIndex = isOpen ? 0 : -1;
+  });
+  cameraTurnButtons.forEach((button) => {
+    button.tabIndex = isOpen ? 0 : -1;
+  });
+  cameraResetButton.tabIndex = isOpen ? 0 : -1;
+  toggleSceneViewButton.tabIndex = isOpen ? 0 : -1;
+});
+
+tourMotionPreference.addEventListener("change", () => {
+  if (tourState !== "playing") return;
+  if (tourMotionPreference.matches) {
+    tourRemainingMs = Math.max(0, tourDeadline - Date.now());
+    clearTourTimer();
+    tourStatus.textContent = "Réduction des animations activée · la narration continue, avancez entre les étapes avec les flèches.";
+  } else if (tourWaitingForAdvance) {
+    scheduleTourAdvance(tourRemainingMs || 1000);
+  }
 });
 
 let dragStart = null;
@@ -486,8 +841,10 @@ function normalizeText(value) {
   return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("fr");
 }
 
-function renderSourceCatalog() {
-  const query = normalizeText(sourceSearchInput.value.trim());
+let sourceSearchFrenchQuery = "";
+
+function renderSourceCatalog(queryValue = sourceSearchFrenchQuery) {
+  const query = normalizeText(queryValue.trim());
   const unreviewedCount = sourceCatalog.filter((source) => !source.lastReviewedAt).length;
   sourceReviewStatus.textContent = `${String(unreviewedCount).padStart(2, "0")} fiches sans revue datée`;
   const visibleSources = sourceCatalog.filter((source) => {
@@ -539,7 +896,7 @@ function renderSourceCatalog() {
     const lastReviewed = document.createElement("span");
     if (source.lastReviewedAt) {
       const reviewedDate = new Date(`${source.lastReviewedAt}T00:00:00`);
-      lastReviewed.textContent = `Dernière revue éditoriale : ${reviewedDate.toLocaleDateString("fr-FR")}`;
+      lastReviewed.textContent = `Dernière revue éditoriale : ${reviewedDate.toLocaleDateString(document.documentElement.lang)}`;
     } else {
       lastReviewed.textContent = "Dernière revue éditoriale : non renseignée";
     }
@@ -571,9 +928,11 @@ function createCitationLink(source) {
   link.href = source.url;
   link.target = "_blank";
   link.rel = "noopener noreferrer";
-  link.textContent = `Lire la source : ${source.name} ↗`;
+  link.textContent = `${getLocalizedText("Lire la source : ").trimEnd()} ${source.name} ↗`;
   return link;
 }
+
+let currentAssistantQuestion = "";
 
 function renderAssistantResults(question) {
   const queryTerms = [...new Set(
@@ -619,11 +978,12 @@ function renderAssistantResults(question) {
     const card = document.createElement("article");
     card.className = "assistant-answer";
 
+    const localizedAnswer = getSuggestedAnswer(item.title, document.documentElement.lang || "fr");
     const title = document.createElement("h3");
-    title.textContent = item.title;
+    title.textContent = localizedAnswer?.title ?? getLocalizedText(item.title);
 
     const answer = document.createElement("p");
-    answer.textContent = item.answer;
+    answer.textContent = localizedAnswer?.answer ?? getLocalizedText(item.answer);
 
     const citation = document.createElement("div");
     citation.className = "assistant-citation";
@@ -636,17 +996,20 @@ function renderAssistantResults(question) {
   assistantResults.append(answerList);
 }
 
-assistantForm.addEventListener("submit", (event) => {
+assistantForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const question = assistantQuery.value.trim();
-  if (question) renderAssistantResults(question);
+  if (!question) return;
+  currentAssistantQuestion = await translateToFrench(question);
+  renderAssistantResults(currentAssistantQuestion);
 });
 
 suggestedQuestions.forEach((button) => {
-  button.addEventListener("click", () => {
+  button.addEventListener("click", async () => {
     assistantQuery.value = button.dataset.assistantPrompt;
-    renderAssistantResults(assistantQuery.value);
     assistantQuery.focus();
+    currentAssistantQuestion = await translateToFrench(assistantQuery.value);
+    renderAssistantResults(currentAssistantQuestion);
   });
 });
 
@@ -662,7 +1025,18 @@ sourceFilterButtons.forEach((button) => {
   });
 });
 
-sourceSearchInput.addEventListener("input", renderSourceCatalog);
+let sourceSearchRequest = 0;
+let sourceSearchTimer;
+sourceSearchInput.addEventListener("input", () => {
+  const request = ++sourceSearchRequest;
+  window.clearTimeout(sourceSearchTimer);
+  sourceSearchTimer = window.setTimeout(async () => {
+    const query = await translateToFrench(sourceSearchInput.value);
+    if (request !== sourceSearchRequest) return;
+    sourceSearchFrenchQuery = query;
+    renderSourceCatalog(query);
+  }, 250);
+});
 renderSourceCatalog();
 
 function updateBackToTopVisibility() {
@@ -701,10 +1075,41 @@ dossierTabs.forEach((tab, index) => {
   });
 });
 
+document.querySelectorAll("[data-compass-tab]").forEach((link) => {
+  link.addEventListener("click", () => {
+    const targetTab = dossierTabs.find((tab) => tab.id === link.dataset.compassTab);
+    if (targetTab) selectDossierTab(targetTab);
+  });
+});
+
 selectDossierTab(dossierTabs[0]);
 
-searchInput.addEventListener("input", renderTopics);
+let topicSearchRequest = 0;
+let topicSearchTimer;
+searchInput.addEventListener("input", () => {
+  const request = ++topicSearchRequest;
+  window.clearTimeout(topicSearchTimer);
+  topicSearchTimer = window.setTimeout(async () => {
+    const query = await translateToFrench(searchInput.value);
+    if (request === topicSearchRequest) renderTopics(query);
+  }, 250);
+});
 searchForm.addEventListener("submit", (event) => event.preventDefault());
+
+document.addEventListener("iaevolution:languagechange", async () => {
+  if (currentAssistantQuestion) renderAssistantResults(currentAssistantQuestion);
+  const topicRequest = ++topicSearchRequest;
+  const sourceRequest = ++sourceSearchRequest;
+  const [topicQuery, sourceQuery] = await Promise.all([
+    translateToFrench(searchInput.value),
+    translateToFrench(sourceSearchInput.value),
+  ]);
+  if (topicRequest === topicSearchRequest) renderTopics(topicQuery);
+  if (sourceRequest === sourceSearchRequest) {
+    sourceSearchFrenchQuery = sourceQuery;
+    renderSourceCatalog(sourceQuery);
+  }
+});
 
 document.addEventListener("keydown", (event) => {
   if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
@@ -714,3 +1119,4 @@ document.addEventListener("keydown", (event) => {
 });
 
 renderTopics();
+initializeTranslation();
