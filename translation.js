@@ -1,0 +1,1179 @@
+const languages = {
+  fr: { name: "Français", direction: "ltr" },
+  en: { name: "English", direction: "ltr" },
+  es: { name: "Español", direction: "ltr" },
+  nl: { name: "Nederlands", direction: "ltr" },
+  de: { name: "Deutsch", direction: "ltr" },
+  "zh-CN": { name: "中文", direction: "ltr" },
+  pt: { name: "Português", direction: "ltr" },
+  ar: { name: "العربية", direction: "rtl" },
+  hi: { name: "हिन्दी", direction: "ltr" },
+  ja: { name: "日本語", direction: "ltr" },
+  ru: { name: "Русский", direction: "ltr" },
+  it: { name: "Italiano", direction: "ltr" },
+};
+
+const dictionaries = {
+  fr: {},
+  en: {
+    "Aller au contenu": "Skip to content", "Navigation principale": "Main navigation",
+    "Notre boussole": "Our compass", Explorer: "Explore", Sources: "Sources",
+    "Langue": "Language", "Langue d’affichage": "Display language",
+    "Réseaux mondiaux": "Global networks", "Retour à l’observatoire": "Back to the observatory",
+    "Cinq axes · sept dossiers": "Five perspectives · seven dossiers",
+    "Comprendre l’IA au-delà des modèles": "Understanding AI beyond models",
+    "Lire l’IA": "Reading AI", "en mouvement": "in motion",
+    "Explorer les cinq axes": "Explore five perspectives", "Voir les sept dossiers": "View seven dossiers",
+    "Choisissez votre angle d’entrée": "Choose your point of entry",
+    "Comment ça fonctionne ?": "How does it work?", "Sur quoi repose l’IA ?": "What makes AI possible?",
+    "Quelles ruptures l’ont façonnée ?": "Which breakthroughs shaped it?",
+    "Qui investit et capte la valeur ?": "Who invests and captures value?",
+    "Quels effets et quelles limites ?": "What are its effects and limits?",
+    "LIRE LES AFFIRMATIONS": "HOW TO READ CLAIMS",
+    "Mesure": "Measurement", "Estimation": "Estimate", "Projection": "Projection", "Analyse": "Analysis",
+    "Consulter le registre des sources et la méthode éditoriale": "View the source register and editorial method",
+    "L’IA, du courant": "AI, from power", "au calcul": "to computation",
+    "Lancer la visite": "Start the tour", "Voix activée": "Voice on", "Voix désactivée": "Voice off",
+    "Rechercher un sujet": "Search topics", "Tout explorer": "Explore all",
+    "Comprendre": "Understand", "Anticiper": "Anticipate", "sujet": "topic", "sujets": "topics",
+    "Aucune source ne correspond à cette recherche. Essayez un autre terme ou une autre famille.": "No sources match this search. Try another term or category.",
+    "Rechercher une source ou un thème": "Search sources or topics",
+    "Toutes": "All", "Institutions publiques": "Public institutions", "Secteur": "Industry",
+    "Recherche": "Research", "Documentation éditeur": "Vendor documentation",
+    "Votre question": "Your question", Chercher: "Search",
+    "Exemples de questions": "Suggested questions", "ESSAYEZ PAR EXEMPLE": "TRY ONE OF THESE",
+    "DOSSIER VISUEL · INFRASTRUCTURES": "VISUAL DOSSIER · INFRASTRUCTURE",
+    "Explorer le schéma des connexions": "Explore the connection map",
+    "Mode d’affichage du schéma": "Map display mode", Corridors: "Corridors", Redondance: "Redundancy",
+    "Carte interactive": "Interactive map", "Ouvrir la carte": "Open the map",
+  },
+  es: {
+    "Aller au contenu": "Saltar al contenido", "Navigation principale": "Navegación principal",
+    "Notre boussole": "Nuestra brújula", Explorer: "Explorar", Sources: "Fuentes",
+    "Langue": "Idioma", "Langue d’affichage": "Idioma de visualización",
+    "Réseaux mondiaux": "Redes mundiales", "Retour à l’observatoire": "Volver al observatorio",
+    "Cinq axes · sept dossiers": "Cinco perspectivas · siete dossiers",
+    "Comprendre l’IA au-delà des modèles": "Comprender la IA más allá de los modelos",
+    "Lire l’IA": "Leer la IA", "en mouvement": "en movimiento",
+    "Explorer les cinq axes": "Explorar cinco perspectivas", "Voir les sept dossiers": "Ver los siete dossiers",
+    "Choisissez votre angle d’entrée": "Elige por dónde empezar",
+    "Comment ça fonctionne ?": "¿Cómo funciona?", "Sur quoi repose l’IA ?": "¿Qué hace posible la IA?",
+    "Quelles ruptures l’ont façonnée ?": "¿Qué avances la definieron?",
+    "Qui investit et capte la valeur ?": "¿Quién invierte y obtiene valor?",
+    "Quels effets et quelles limites ?": "¿Qué efectos y límites tiene?",
+    "LIRE LES AFFIRMATIONS": "CÓMO LEER LAS AFIRMACIONES",
+    "Mesure": "Medición", "Estimation": "Estimación", "Projection": "Proyección", "Analyse": "Análisis",
+    "Consulter le registre des sources et la méthode éditoriale": "Consultar las fuentes y el método editorial",
+    "L’IA, du courant": "La IA: de la electricidad", "au calcul": "al cálculo",
+    "Lancer la visite": "Iniciar el recorrido", "Voix activée": "Voz activada", "Voix désactivée": "Voz desactivada",
+    "Rechercher un sujet": "Buscar temas", "Tout explorer": "Explorar todo",
+    "Comprendre": "Comprender", "Anticiper": "Anticipar", "sujet": "tema", "sujets": "temas",
+    "Aucune source ne correspond à cette recherche. Essayez un autre terme ou une autre famille.": "No hay fuentes que coincidan. Prueba otro término o categoría.",
+    "Rechercher une source ou un thème": "Buscar fuentes o temas",
+    "Toutes": "Todas", "Institutions publiques": "Instituciones públicas", "Secteur": "Sector",
+    "Recherche": "Investigación", "Documentation éditeur": "Documentación del proveedor",
+    "Votre question": "Tu pregunta", Chercher: "Buscar",
+    "Exemples de questions": "Preguntas sugeridas", "ESSAYEZ PAR EXEMPLE": "PRUEBA CON",
+    "DOSSIER VISUEL · INFRASTRUCTURES": "DOSSIER VISUAL · INFRAESTRUCTURA",
+    "Explorer le schéma des connexions": "Explorar el mapa de conexiones",
+    "Mode d’affichage du schéma": "Modo de visualización del mapa", Corridors: "Corredores", Redondance: "Redundancia",
+    "Carte interactive": "Mapa interactivo", "Ouvrir la carte": "Abrir el mapa",
+  },
+  nl: {
+    "Aller au contenu": "Ga naar de inhoud", "Navigation principale": "Hoofdnavigatie",
+    "Notre boussole": "Ons kompas", Explorer: "Verkennen", Sources: "Bronnen",
+    "Langue": "Taal", "Langue d’affichage": "Weergavetaal",
+    "Réseaux mondiaux": "Wereldwijde netwerken", "Retour à l’observatoire": "Terug naar het observatorium",
+    "Cinq axes · sept dossiers": "Vijf perspectieven · zeven dossiers",
+    "Comprendre l’IA au-delà des modèles": "AI begrijpen voorbij de modellen",
+    "Lire l’IA": "AI lezen", "en mouvement": "in beweging",
+    "Explorer les cinq axes": "Verken vijf perspectieven", "Voir les sept dossiers": "Bekijk de zeven dossiers",
+    "Choisissez votre angle d’entrée": "Kies waar je begint",
+    "Comment ça fonctionne ?": "Hoe werkt het?", "Sur quoi repose l’IA ?": "Waarop is AI gebaseerd?",
+    "Quelles ruptures l’ont façonnée ?": "Welke doorbraken vormden AI?",
+    "Qui investit et capte la valeur ?": "Wie investeert en ontvangt de waarde?",
+    "Quels effets et quelles limites ?": "Wat zijn de effecten en grenzen?",
+    "LIRE LES AFFIRMATIONS": "BEWERINGEN LEZEN",
+    "Mesure": "Meting", "Estimation": "Schatting", "Projection": "Prognose", "Analyse": "Analyse",
+    "Consulter le registre des sources et la méthode éditoriale": "Bekijk het bronnenregister en de redactionele methode",
+    "L’IA, du courant": "AI: van stroom", "au calcul": "naar berekening",
+    "Lancer la visite": "Start de rondleiding", "Voix activée": "Gesproken tekst aan", "Voix désactivée": "Gesproken tekst uit",
+    "Rechercher un sujet": "Onderwerpen zoeken", "Tout explorer": "Alles verkennen",
+    "Comprendre": "Begrijpen", "Anticiper": "Vooruitkijken", "sujet": "onderwerp", "sujets": "onderwerpen",
+    "Aucune source ne correspond à cette recherche. Essayez un autre terme ou une autre famille.": "Geen bronnen gevonden. Probeer een andere term of categorie.",
+    "Rechercher une source ou un thème": "Bronnen of onderwerpen zoeken",
+    "Toutes": "Alle", "Institutions publiques": "Overheidsinstellingen", "Secteur": "Sector",
+    "Recherche": "Onderzoek", "Documentation éditeur": "Documentatie van leveranciers",
+    "Votre question": "Je vraag", Chercher: "Zoeken",
+    "Exemples de questions": "Voorbeeldvragen", "ESSAYEZ PAR EXEMPLE": "PROBEER BIJVOORBEELD",
+    "DOSSIER VISUEL · INFRASTRUCTURES": "VISUEEL DOSSIER · INFRASTRUCTUUR",
+    "Explorer le schéma des connexions": "Verken de verbindingskaart",
+    "Mode d’affichage du schéma": "Weergavemodus van de kaart", Corridors: "Corridors", Redondance: "Redundantie",
+    "Carte interactive": "Interactieve kaart", "Ouvrir la carte": "Kaart openen",
+  },
+  de: {
+    "Aller au contenu": "Zum Inhalt springen", "Navigation principale": "Hauptnavigation",
+    "Notre boussole": "Unser Kompass", Explorer: "Entdecken", Sources: "Quellen",
+    "Langue": "Sprache", "Langue d’affichage": "Anzeigesprache",
+    "Réseaux mondiaux": "Globale Netzwerke", "Retour à l’observatoire": "Zurück zum Observatorium",
+    "Cinq axes · sept dossiers": "Fünf Perspektiven · sieben Dossiers",
+    "Comprendre l’IA au-delà des modèles": "KI über Modelle hinaus verstehen",
+    "Lire l’IA": "KI lesen", "en mouvement": "im Wandel",
+    "Explorer les cinq axes": "Fünf Perspektiven erkunden", "Voir les sept dossiers": "Sieben Dossiers ansehen",
+    "Choisissez votre angle d’entrée": "Wählen Sie Ihren Einstieg",
+    "Comment ça fonctionne ?": "Wie funktioniert es?", "Sur quoi repose l’IA ?": "Worauf basiert KI?",
+    "Quelles ruptures l’ont façonnée ?": "Welche Durchbrüche prägten sie?",
+    "Qui investit et capte la valeur ?": "Wer investiert und schöpft den Wert ab?",
+    "Quels effets et quelles limites ?": "Welche Auswirkungen und Grenzen gibt es?",
+    "LIRE LES AFFIRMATIONS": "AUSSAGEN EINORDNEN",
+    "Mesure": "Messung", "Estimation": "Schätzung", "Projection": "Prognose", "Analyse": "Analyse",
+    "Consulter le registre des sources et la méthode éditoriale": "Quellenverzeichnis und redaktionelle Methode ansehen",
+    "L’IA, du courant": "KI: vom Strom", "au calcul": "zur Berechnung",
+    "Lancer la visite": "Rundgang starten", "Voix activée": "Sprachausgabe an", "Voix désactivée": "Sprachausgabe aus",
+    "Rechercher un sujet": "Themen suchen", "Tout explorer": "Alles erkunden",
+    "Comprendre": "Verstehen", "Anticiper": "Vorausschauen", "sujet": "Thema", "sujets": "Themen",
+    "Aucune source ne correspond à cette recherche. Essayez un autre terme ou une autre famille.": "Keine passenden Quellen. Versuchen Sie einen anderen Begriff oder eine andere Kategorie.",
+    "Rechercher une source ou un thème": "Quellen oder Themen suchen",
+    "Toutes": "Alle", "Institutions publiques": "Öffentliche Institutionen", "Secteur": "Branche",
+    "Recherche": "Forschung", "Documentation éditeur": "Herstellerdokumentation",
+    "Votre question": "Ihre Frage", Chercher: "Suchen",
+    "Exemples de questions": "Beispielfragen", "ESSAYEZ PAR EXEMPLE": "ZUM BEISPIEL",
+    "DOSSIER VISUEL · INFRASTRUCTURES": "VISUELLES DOSSIER · INFRASTRUKTUR",
+    "Explorer le schéma des connexions": "Verbindungskarte erkunden",
+    "Mode d’affichage du schéma": "Kartenansicht", Corridors: "Korridore", Redondance: "Redundanz",
+    "Carte interactive": "Interaktive Karte", "Ouvrir la carte": "Karte öffnen",
+  },
+  "zh-CN": {
+    "Aller au contenu": "跳转至正文", "Navigation principale": "主导航",
+    "Notre boussole": "探索指南", Explorer: "探索", Sources: "资料来源",
+    "Langue": "语言", "Langue d’affichage": "显示语言",
+    "Réseaux mondiaux": "全球网络", "Retour à l’observatoire": "返回观察站",
+    "Cinq axes · sept dossiers": "五个视角 · 七个专题",
+    "Comprendre l’IA au-delà des modèles": "超越模型，理解人工智能",
+    "Lire l’IA": "读懂人工智能", "en mouvement": "的演进",
+    "Explorer les cinq axes": "探索五个视角", "Voir les sept dossiers": "查看七个专题",
+    "Choisissez votre angle d’entrée": "选择切入视角",
+    "Comment ça fonctionne ?": "人工智能如何运作？", "Sur quoi repose l’IA ?": "人工智能依靠什么？",
+    "Quelles ruptures l’ont façonnée ?": "哪些突破塑造了它？",
+    "Qui investit et capte la valeur ?": "谁在投资并获取价值？",
+    "Quels effets et quelles limites ?": "它带来哪些影响与局限？",
+    "LIRE LES AFFIRMATIONS": "理解不同类型的论述",
+    "Mesure": "测量", "Estimation": "估算", "Projection": "预测", "Analyse": "分析",
+    "Consulter le registre des sources et la méthode éditoriale": "查看资料目录与编辑方法",
+    "L’IA, du courant": "人工智能：从电力", "au calcul": "到计算",
+    "Lancer la visite": "开始导览", "Voix activée": "语音已开启", "Voix désactivée": "语音已关闭",
+    "Rechercher un sujet": "搜索主题", "Tout explorer": "浏览全部",
+    "Comprendre": "理解", "Anticiper": "展望", "sujet": "个主题", "sujets": "个主题",
+    "Aucune source ne correspond à cette recherche. Essayez un autre terme ou une autre famille.": "没有找到匹配的资料。请尝试其他关键词或类别。",
+    "Rechercher une source ou un thème": "搜索资料或主题",
+    "Toutes": "全部", "Institutions publiques": "公共机构", "Secteur": "行业",
+    "Recherche": "研究", "Documentation éditeur": "厂商文档",
+    "Votre question": "您的问题", Chercher: "搜索",
+    "Exemples de questions": "问题示例", "ESSAYEZ PAR EXEMPLE": "例如",
+    "DOSSIER VISUEL · INFRASTRUCTURES": "视觉专题 · 基础设施",
+    "Explorer le schéma des connexions": "探索连接示意图",
+    "Mode d’affichage du schéma": "示意图显示模式", Corridors: "主要通道", Redondance: "冗余路线",
+    "Carte interactive": "交互地图", "Ouvrir la carte": "打开地图",
+  },
+  pt: {
+    "Aller au contenu": "Ir para o conteúdo", "Navigation principale": "Navegação principal",
+    "Notre boussole": "Nossa bússola", Explorer: "Explorar", Sources: "Fontes",
+    "Langue": "Idioma", "Langue d’affichage": "Idioma de exibição",
+    "Réseaux mondiaux": "Redes globais", "Retour à l’observatoire": "Voltar ao observatório",
+    "Cinq axes · sept dossiers": "Cinco perspectivas · sete dossiês",
+    "Comprendre l’IA au-delà des modèles": "Compreender a IA para além dos modelos",
+    "Lire l’IA": "Ler a IA", "en mouvement": "em movimento",
+    "Explorer les cinq axes": "Explorar cinco perspectivas", "Voir les sept dossiers": "Ver os sete dossiês",
+    "Choisissez votre angle d’entrée": "Escolha por onde começar",
+    "Comment ça fonctionne ?": "Como funciona?", "Sur quoi repose l’IA ?": "O que torna a IA possível?",
+    "Quelles ruptures l’ont façonnée ?": "Que avanços a moldaram?",
+    "Qui investit et capte la valeur ?": "Quem investe e captura valor?",
+    "Quels effets et quelles limites ?": "Quais são os efeitos e limites?",
+    "LIRE LES AFFIRMATIONS": "COMO LER AS AFIRMAÇÕES",
+    "Mesure": "Medição", "Estimation": "Estimativa", "Projection": "Projeção", "Analyse": "Análise",
+    "Consulter le registre des sources et la méthode éditoriale": "Consultar o registo de fontes e o método editorial",
+    "L’IA, du courant": "IA: da energia elétrica", "au calcul": "ao cálculo",
+    "Lancer la visite": "Iniciar a visita", "Voix activée": "Voz ativada", "Voix désactivée": "Voz desativada",
+    "Rechercher un sujet": "Pesquisar temas", "Tout explorer": "Explorar tudo",
+    "Comprendre": "Compreender", "Anticiper": "Antecipar", "sujet": "tema", "sujets": "temas",
+    "Aucune source ne correspond à cette recherche. Essayez un autre terme ou une autre famille.": "Nenhuma fonte corresponde. Experimente outro termo ou categoria.",
+    "Rechercher une source ou un thème": "Pesquisar fontes ou temas",
+    "Toutes": "Todas", "Institutions publiques": "Instituições públicas", "Secteur": "Setor",
+    "Recherche": "Investigação", "Documentation éditeur": "Documentação do fornecedor",
+    "Votre question": "A sua pergunta", Chercher: "Pesquisar",
+    "Exemples de questions": "Perguntas sugeridas", "ESSAYEZ PAR EXEMPLE": "EXPERIMENTE",
+    "DOSSIER VISUEL · INFRASTRUCTURES": "DOSSIÊ VISUAL · INFRAESTRUTURA",
+    "Explorer le schéma des connexions": "Explorar o mapa de ligações",
+    "Mode d’affichage du schéma": "Modo de visualização do mapa", Corridors: "Corredores", Redondance: "Redundância",
+    "Carte interactive": "Mapa interativo", "Ouvrir la carte": "Abrir o mapa",
+  },
+  ar: {
+    "Aller au contenu": "انتقل إلى المحتوى", "Navigation principale": "التنقل الرئيسي",
+    "Notre boussole": "بوصلتنا", Explorer: "استكشف", Sources: "المصادر",
+    "Langue": "اللغة", "Langue d’affichage": "لغة العرض",
+    "Réseaux mondiaux": "الشبكات العالمية", "Retour à l’observatoire": "العودة إلى المرصد",
+    "Cinq axes · sept dossiers": "خمسة محاور · سبعة ملفات",
+    "Comprendre l’IA au-delà des modèles": "فهم الذكاء الاصطناعي إلى ما وراء النماذج",
+    "Lire l’IA": "قراءة الذكاء الاصطناعي", "en mouvement": "في تطور",
+    "Explorer les cinq axes": "استكشف المحاور الخمسة", "Voir les sept dossiers": "اعرض الملفات السبعة",
+    "Choisissez votre angle d’entrée": "اختر نقطة البداية",
+    "Comment ça fonctionne ?": "كيف يعمل؟", "Sur quoi repose l’IA ?": "على ماذا يعتمد الذكاء الاصطناعي؟",
+    "Quelles ruptures l’ont façonnée ?": "ما التحولات التي شكلته؟",
+    "Qui investit et capte la valeur ?": "من يستثمر ويحصل على القيمة؟",
+    "Quels effets et quelles limites ?": "ما آثاره وحدوده؟",
+    "LIRE LES AFFIRMATIONS": "قراءة الادعاءات",
+    "Mesure": "قياس", "Estimation": "تقدير", "Projection": "توقع", "Analyse": "تحليل",
+    "Consulter le registre des sources et la méthode éditoriale": "راجع سجل المصادر والمنهج التحريري",
+    "L’IA, du courant": "الذكاء الاصطناعي: من الكهرباء", "au calcul": "إلى الحوسبة",
+    "Lancer la visite": "ابدأ الجولة", "Voix activée": "الصوت مفعّل", "Voix désactivée": "الصوت متوقف",
+    "Rechercher un sujet": "ابحث في الموضوعات", "Tout explorer": "استكشف الكل",
+    "Comprendre": "فهم", "Anticiper": "استشراف", "sujet": "موضوع", "sujets": "موضوعات",
+    "Aucune source ne correspond à cette recherche. Essayez un autre terme ou une autre famille.": "لا توجد مصادر مطابقة. جرّب مصطلحًا أو فئة أخرى.",
+    "Rechercher une source ou un thème": "ابحث عن مصدر أو موضوع",
+    "Toutes": "الكل", "Institutions publiques": "مؤسسات عامة", "Secteur": "القطاع",
+    "Recherche": "البحث", "Documentation éditeur": "وثائق الشركات",
+    "Votre question": "سؤالك", Chercher: "بحث",
+    "Exemples de questions": "أسئلة مقترحة", "ESSAYEZ PAR EXEMPLE": "جرّب مثلًا",
+    "DOSSIER VISUEL · INFRASTRUCTURES": "ملف بصري · البنية التحتية",
+    "Explorer le schéma des connexions": "استكشف خريطة الاتصالات",
+    "Mode d’affichage du schéma": "طريقة عرض الخريطة", Corridors: "الممرات", Redondance: "المسارات البديلة",
+    "Carte interactive": "خريطة تفاعلية", "Ouvrir la carte": "افتح الخريطة",
+  },
+  hi: {
+    "Aller au contenu": "मुख्य सामग्री पर जाएँ", "Navigation principale": "मुख्य नेविगेशन",
+    "Notre boussole": "हमारा दिशासूचक", Explorer: "खोजें", Sources: "स्रोत",
+    "Langue": "भाषा", "Langue d’affichage": "प्रदर्शन भाषा",
+    "Réseaux mondiaux": "वैश्विक नेटवर्क", "Retour à l’observatoire": "वेधशाला पर लौटें",
+    "Cinq axes · sept dossiers": "पाँच दृष्टिकोण · सात विषय",
+    "Comprendre l’IA au-delà des modèles": "मॉडलों से आगे AI को समझें",
+    "Lire l’IA": "AI को समझें", "en mouvement": "बदलते रूप में",
+    "Explorer les cinq axes": "पाँच दृष्टिकोण देखें", "Voir les sept dossiers": "सात विषय देखें",
+    "Choisissez votre angle d’entrée": "अपनी शुरुआत चुनें",
+    "Comment ça fonctionne ?": "यह कैसे काम करता है?", "Sur quoi repose l’IA ?": "AI किस आधार पर काम करता है?",
+    "Quelles ruptures l’ont façonnée ?": "किन बदलावों ने इसे आकार दिया?",
+    "Qui investit et capte la valeur ?": "कौन निवेश करता और मूल्य प्राप्त करता है?",
+    "Quels effets et quelles limites ?": "इसके प्रभाव और सीमाएँ क्या हैं?",
+    "LIRE LES AFFIRMATIONS": "दावों को समझें",
+    "Mesure": "मापन", "Estimation": "अनुमान", "Projection": "प्रक्षेपण", "Analyse": "विश्लेषण",
+    "Consulter le registre des sources et la méthode éditoriale": "स्रोत सूची और संपादकीय पद्धति देखें",
+    "L’IA, du courant": "AI: बिजली से", "au calcul": "कंप्यूटिंग तक",
+    "Lancer la visite": "दौरा शुरू करें", "Voix activée": "आवाज़ चालू", "Voix désactivée": "आवाज़ बंद",
+    "Rechercher un sujet": "विषय खोजें", "Tout explorer": "सभी देखें",
+    "Comprendre": "समझें", "Anticiper": "आगे देखें", "sujet": "विषय", "sujets": "विषय",
+    "Aucune source ne correspond à cette recherche. Essayez un autre terme ou une autre famille.": "कोई स्रोत नहीं मिला। कोई दूसरा शब्द या श्रेणी आज़माएँ।",
+    "Rechercher une source ou un thème": "स्रोत या विषय खोजें",
+    "Toutes": "सभी", "Institutions publiques": "सार्वजनिक संस्थाएँ", "Secteur": "उद्योग",
+    "Recherche": "अनुसंधान", "Documentation éditeur": "विक्रेता दस्तावेज़",
+    "Votre question": "आपका प्रश्न", Chercher: "खोजें",
+    "Exemples de questions": "उदाहरण प्रश्न", "ESSAYEZ PAR EXEMPLE": "उदाहरण के लिए",
+    "DOSSIER VISUEL · INFRASTRUCTURES": "दृश्य विषय · बुनियादी ढाँचा",
+    "Explorer le schéma des connexions": "नेटवर्क मानचित्र देखें",
+    "Mode d’affichage du schéma": "मानचित्र प्रदर्शन", Corridors: "मार्ग", Redondance: "वैकल्पिक मार्ग",
+    "Carte interactive": "इंटरैक्टिव मानचित्र", "Ouvrir la carte": "मानचित्र खोलें",
+  },
+  ja: {
+    "Aller au contenu": "本文へ移動", "Navigation principale": "メインナビゲーション",
+    "Notre boussole": "探求の指針", Explorer: "探る", Sources: "出典",
+    "Langue": "言語", "Langue d’affichage": "表示言語",
+    "Réseaux mondiaux": "世界のネットワーク", "Retour à l’observatoire": "観測所に戻る",
+    "Cinq axes · sept dossiers": "5つの視点 · 7つのテーマ",
+    "Comprendre l’IA au-delà des modèles": "モデルの先にあるAIを理解する",
+    "Lire l’IA": "AIを読み解く", "en mouvement": "その変化を",
+    "Explorer les cinq axes": "5つの視点を探る", "Voir les sept dossiers": "7つのテーマを見る",
+    "Choisissez votre angle d’entrée": "関心のある入口を選ぶ",
+    "Comment ça fonctionne ?": "どのように動くのか？", "Sur quoi repose l’IA ?": "AIを支えるものは？",
+    "Quelles ruptures l’ont façonnée ?": "どのような転換が形づくったのか？",
+    "Qui investit et capte la valeur ?": "誰が投資し、価値を得るのか？",
+    "Quels effets et quelles limites ?": "どのような影響と限界があるのか？",
+    "LIRE LES AFFIRMATIONS": "主張の読み解き方",
+    "Mesure": "測定", "Estimation": "推定", "Projection": "予測", "Analyse": "分析",
+    "Consulter le registre des sources et la méthode éditoriale": "出典一覧と編集方針を見る",
+    "L’IA, du courant": "AI：電力から", "au calcul": "計算へ",
+    "Lancer la visite": "ガイドを開始", "Voix activée": "音声オン", "Voix désactivée": "音声オフ",
+    "Rechercher un sujet": "テーマを検索", "Tout explorer": "すべて見る",
+    "Comprendre": "理解する", "Anticiper": "展望する", "sujet": "テーマ", "sujets": "テーマ",
+    "Aucune source ne correspond à cette recherche. Essayez un autre terme ou une autre famille.": "該当する出典がありません。別の語句や分類をお試しください。",
+    "Rechercher une source ou un thème": "出典またはテーマを検索",
+    "Toutes": "すべて", "Institutions publiques": "公的機関", "Secteur": "産業",
+    "Recherche": "研究", "Documentation éditeur": "開発元のドキュメント",
+    "Votre question": "質問", Chercher: "検索",
+    "Exemples de questions": "質問例", "ESSAYEZ PAR EXEMPLE": "たとえば",
+    "DOSSIER VISUEL · INFRASTRUCTURES": "ビジュアルテーマ · インフラ",
+    "Explorer le schéma des connexions": "接続図を見る",
+    "Mode d’affichage du schéma": "表示モード", Corridors: "主要経路", Redondance: "冗長経路",
+    "Carte interactive": "インタラクティブマップ", "Ouvrir la carte": "地図を開く",
+  },
+  ru: {
+    "Aller au contenu": "Перейти к содержанию", "Navigation principale": "Главная навигация",
+    "Notre boussole": "Наш ориентир", Explorer: "Изучить", Sources: "Источники",
+    "Langue": "Язык", "Langue d’affichage": "Язык интерфейса",
+    "Réseaux mondiaux": "Глобальные сети", "Retour à l’observatoire": "Вернуться в обсерваторию",
+    "Cinq axes · sept dossiers": "Пять направлений · семь тем",
+    "Comprendre l’IA au-delà des modèles": "Понять ИИ за пределами моделей",
+    "Lire l’IA": "Понять ИИ", "en mouvement": "в развитии",
+    "Explorer les cinq axes": "Изучить пять направлений", "Voir les sept dossiers": "Посмотреть семь тем",
+    "Choisissez votre angle d’entrée": "Выберите точку входа",
+    "Comment ça fonctionne ?": "Как это работает?", "Sur quoi repose l’IA ?": "На чём основан ИИ?",
+    "Quelles ruptures l’ont façonnée ?": "Какие прорывы сформировали его?",
+    "Qui investit et capte la valeur ?": "Кто инвестирует и получает выгоду?",
+    "Quels effets et quelles limites ?": "Каковы последствия и ограничения?",
+    "LIRE LES AFFIRMATIONS": "КАК ЧИТАТЬ УТВЕРЖДЕНИЯ",
+    "Mesure": "Измерение", "Estimation": "Оценка", "Projection": "Прогноз", "Analyse": "Анализ",
+    "Consulter le registre des sources et la méthode éditoriale": "Открыть реестр источников и редакционную методику",
+    "L’IA, du courant": "ИИ: от электричества", "au calcul": "к вычислениям",
+    "Lancer la visite": "Начать экскурсию", "Voix activée": "Озвучивание включено", "Voix désactivée": "Озвучивание выключено",
+    "Rechercher un sujet": "Поиск по темам", "Tout explorer": "Изучить всё",
+    "Comprendre": "Понять", "Anticiper": "Заглянуть вперёд", "sujet": "тема", "sujets": "темы",
+    "Aucune source ne correspond à cette recherche. Essayez un autre terme ou une autre famille.": "Источники не найдены. Попробуйте другой запрос или категорию.",
+    "Rechercher une source ou un thème": "Поиск источников и тем",
+    "Toutes": "Все", "Institutions publiques": "Государственные учреждения", "Secteur": "Отрасль",
+    "Recherche": "Исследования", "Documentation éditeur": "Документация разработчиков",
+    "Votre question": "Ваш вопрос", Chercher: "Найти",
+    "Exemples de questions": "Примеры вопросов", "ESSAYEZ PAR EXEMPLE": "НАПРИМЕР",
+    "DOSSIER VISUEL · INFRASTRUCTURES": "ВИЗУАЛЬНЫЙ ОБЗОР · ИНФРАСТРУКТУРА",
+    "Explorer le schéma des connexions": "Изучить схему соединений",
+    "Mode d’affichage du schéma": "Режим отображения", Corridors: "Коридоры", Redondance: "Резервирование",
+    "Carte interactive": "Интерактивная карта", "Ouvrir la carte": "Открыть карту",
+  },
+  it: {
+    "Aller au contenu": "Vai al contenuto", "Navigation principale": "Navigazione principale",
+    "Notre boussole": "La nostra bussola", Explorer: "Esplora", Sources: "Fonti",
+    "Langue": "Lingua", "Langue d’affichage": "Lingua di visualizzazione",
+    "Réseaux mondiaux": "Reti globali", "Retour à l’observatoire": "Torna all’osservatorio",
+    "Cinq axes · sept dossiers": "Cinque prospettive · sette dossier",
+    "Comprendre l’IA au-delà des modèles": "Capire l’IA oltre i modelli",
+    "Lire l’IA": "Leggere l’IA", "en mouvement": "in evoluzione",
+    "Explorer les cinq axes": "Esplora cinque prospettive", "Voir les sept dossiers": "Vedi i sette dossier",
+    "Choisissez votre angle d’entrée": "Scegli da dove iniziare",
+    "Comment ça fonctionne ?": "Come funziona?", "Sur quoi repose l’IA ?": "Su cosa si basa l’IA?",
+    "Quelles ruptures l’ont façonnée ?": "Quali svolte l’hanno plasmata?",
+    "Qui investit et capte la valeur ?": "Chi investe e acquisisce valore?",
+    "Quels effets et quelles limites ?": "Quali effetti e limiti presenta?",
+    "LIRE LES AFFIRMATIONS": "COME LEGGERE LE AFFERMAZIONI",
+    "Mesure": "Misura", "Estimation": "Stima", "Projection": "Proiezione", "Analyse": "Analisi",
+    "Consulter le registre des sources et la méthode éditoriale": "Consulta il registro delle fonti e il metodo editoriale",
+    "L’IA, du courant": "L’IA: dall’elettricità", "au calcul": "al calcolo",
+    "Lancer la visite": "Avvia il percorso", "Voix activée": "Voce attiva", "Voix désactivée": "Voce disattivata",
+    "Rechercher un sujet": "Cerca argomenti", "Tout explorer": "Esplora tutto",
+    "Comprendre": "Capire", "Anticiper": "Anticipare", "sujet": "argomento", "sujets": "argomenti",
+    "Aucune source ne correspond à cette recherche. Essayez un autre terme ou une autre famille.": "Nessuna fonte corrisponde. Prova un altro termine o una categoria.",
+    "Rechercher une source ou un thème": "Cerca fonti o argomenti",
+    "Toutes": "Tutte", "Institutions publiques": "Istituzioni pubbliche", "Secteur": "Settore",
+    "Recherche": "Ricerca", "Documentation éditeur": "Documentazione del fornitore",
+    "Votre question": "La tua domanda", Chercher: "Cerca",
+    "Exemples de questions": "Esempi di domande", "ESSAYEZ PAR EXEMPLE": "PROVA, AD ESEMPIO",
+    "DOSSIER VISUEL · INFRASTRUCTURES": "DOSSIER VISIVO · INFRASTRUTTURE",
+    "Explorer le schéma des connexions": "Esplora la mappa delle connessioni",
+    "Mode d’affichage du schéma": "Modalità di visualizzazione", Corridors: "Corridoi", Redondance: "Ridondanza",
+    "Carte interactive": "Mappa interattiva", "Ouvrir la carte": "Apri la mappa",
+  },
+};
+
+const topicSectionTranslations = {
+  en: {
+    "VOTRE POINT DE DÉPART": "YOUR STARTING POINT",
+    "L'IA, sous tous ses angles": "AI, from every angle",
+    "07 dossiers · sélectionner un axe": "07 dossiers · choose a perspective",
+    "Rechercher un sujet": "Search topics",
+    "Un sujet, une technologie, une question…": "A topic, a technology, a question…",
+    "Filtrer les sujets": "Filter topics", "Tout explorer": "Explore all",
+    "L'IA générative": "Generative AI", "Comment des modèles créent du texte, des images ou du code — et ce qu'ils ne savent pas faire.": "How models create text, images, or code — and what they cannot do.",
+    "Les agents IA": "AI agents", "Des systèmes qui enchaînent des actions et des outils pour accomplir une tâche.": "Systems that chain actions and tools to complete a task.",
+    "Les modèles ouverts": "Open models", "Poids ouverts, modèles propriétaires : comprendre les différences et leurs conséquences.": "Open weights, proprietary models: understand the differences and their implications.",
+    "IA responsable": "Responsible AI", "Fiabilité, biais, vie privée : les questions à poser avant de déployer une IA.": "Reliability, bias, privacy: questions to ask before deploying AI.",
+    "L'IA au quotidien": "AI in everyday life", "Des cas d'usage concrets pour travailler, apprendre et créer avec discernement.": "Practical ways to work, learn, and create with AI thoughtfully.",
+    "La suite de l'IA": "What comes next for AI", "Repérer les signaux émergents et distinguer les tendances durables du bruit.": "Spot emerging signals and distinguish lasting trends from noise.",
+    "Centres de données & IA": "Data centers & AI", "Les lieux, les coûts, l'histoire et les machines qui rendent l'IA possible.": "The places, costs, history, and machines that make AI possible.",
+    "Modèles": "Models", "Repères": "Key concepts", Usages: "Applications", "En exploration": "In development",
+    "Écosystème": "Ecosystem", Éthique: "Ethics", Société: "Society", Pratique: "Practical",
+    Débuter: "Getting started", Tendances: "Trends", Prospective: "Futures", Géographie: "Geography",
+    Infrastructure: "Infrastructure",
+  },
+  es: {
+    "VOTRE POINT DE DÉPART": "TU PUNTO DE PARTIDA",
+    "L'IA, sous tous ses angles": "La IA, desde todos sus ángulos",
+    "07 dossiers · sélectionner un axe": "07 dossiers · elige una perspectiva",
+    "Rechercher un sujet": "Buscar temas", "Un sujet, une technologie, une question…": "Un tema, una tecnología, una pregunta…",
+    "Filtrer les sujets": "Filtrar temas", "Tout explorer": "Explorar todo",
+    "L'IA générative": "IA generativa", "Comment des modèles créent du texte, des images ou du code — et ce qu'ils ne savent pas faire.": "Cómo los modelos crean texto, imágenes o código — y qué no pueden hacer.",
+    "Les agents IA": "Agentes de IA", "Des systèmes qui enchaînent des actions et des outils pour accomplir une tâche.": "Sistemas que encadenan acciones y herramientas para completar una tarea.",
+    "Les modèles ouverts": "Modelos abiertos", "Poids ouverts, modèles propriétaires : comprendre les différences et leurs conséquences.": "Pesos abiertos, modelos propietarios: diferencias y consecuencias.",
+    "IA responsable": "IA responsable", "Fiabilité, biais, vie privée : les questions à poser avant de déployer une IA.": "Fiabilidad, sesgos y privacidad: preguntas antes de implementar una IA.",
+    "L'IA au quotidien": "La IA en la vida diaria", "Des cas d'usage concrets pour travailler, apprendre et créer avec discernement.": "Usos concretos para trabajar, aprender y crear con criterio.",
+    "La suite de l'IA": "El futuro de la IA", "Repérer les signaux émergents et distinguer les tendances durables du bruit.": "Detectar señales emergentes y distinguir tendencias duraderas del ruido.",
+    "Centres de données & IA": "Centros de datos e IA", "Les lieux, les coûts, l'histoire et les machines qui rendent l'IA possible.": "Los lugares, costes, historia y máquinas que hacen posible la IA.",
+    "Modèles": "Modelos", "Repères": "Conceptos clave", Usages: "Usos", "En exploration": "En exploración",
+    "Écosystème": "Ecosistema", Éthique: "Ética", Société: "Sociedad", Pratique: "Práctica",
+    Débuter: "Primeros pasos", Tendances: "Tendencias", Prospective: "Futuro", Géographie: "Geografía",
+    Infrastructure: "Infraestructura",
+  },
+  nl: {
+    "VOTRE POINT DE DÉPART": "JOUW STARTPUNT",
+    "L'IA, sous tous ses angles": "AI vanuit alle invalshoeken",
+    "07 dossiers · sélectionner un axe": "07 dossiers · kies een perspectief",
+    "Rechercher un sujet": "Onderwerpen zoeken", "Un sujet, une technologie, une question…": "Een onderwerp, technologie of vraag…",
+    "Filtrer les sujets": "Onderwerpen filteren", "Tout explorer": "Alles verkennen",
+    "L'IA générative": "Generatieve AI", "Comment des modèles créent du texte, des images ou du code — et ce qu'ils ne savent pas faire.": "Hoe modellen tekst, beelden of code maken — en wat ze niet kunnen.",
+    "Les agents IA": "AI-agenten", "Des systèmes qui enchaînent des actions et des outils pour accomplir une tâche.": "Systemen die acties en hulpmiddelen combineren om een taak uit te voeren.",
+    "Les modèles ouverts": "Open modellen", "Poids ouverts, modèles propriétaires : comprendre les différences et leurs conséquences.": "Open gewichten, propriëtaire modellen: verschillen en gevolgen.",
+    "IA responsable": "Verantwoorde AI", "Fiabilité, biais, vie privée : les questions à poser avant de déployer une IA.": "Betrouwbaarheid, vooroordelen en privacy: vragen vóór inzet van AI.",
+    "L'IA au quotidien": "AI in het dagelijks leven", "Des cas d'usage concrets pour travailler, apprendre et créer avec discernement.": "Praktische toepassingen om bewust met AI te werken, leren en creëren.",
+    "La suite de l'IA": "Wat volgt voor AI?", "Repérer les signaux émergents et distinguer les tendances durables du bruit.": "Nieuwe signalen herkennen en blijvende trends onderscheiden van ruis.",
+    "Centres de données & IA": "Datacenters & AI", "Les lieux, les coûts, l'histoire et les machines qui rendent l'IA possible.": "De locaties, kosten, geschiedenis en machines achter AI.",
+    "Modèles": "Modellen", "Repères": "Kernbegrippen", Usages: "Toepassingen", "En exploration": "In ontwikkeling",
+    "Écosystème": "Ecosysteem", Éthique: "Ethiek", Société: "Samenleving", Pratique: "Praktisch",
+    Débuter: "Beginnen", Tendances: "Trends", Prospective: "Toekomst", Géographie: "Geografie",
+    Infrastructure: "Infrastructuur",
+  },
+  de: {
+    "VOTRE POINT DE DÉPART": "DEIN EINSTIEG",
+    "L'IA, sous tous ses angles": "KI aus allen Blickwinkeln",
+    "07 dossiers · sélectionner un axe": "07 Dossiers · Perspektive wählen",
+    "Rechercher un sujet": "Themen suchen", "Un sujet, une technologie, une question…": "Thema, Technologie oder Frage…",
+    "Filtrer les sujets": "Themen filtern", "Tout explorer": "Alles erkunden",
+    "L'IA générative": "Generative KI", "Comment des modèles créent du texte, des images ou du code — et ce qu'ils ne savent pas faire.": "Wie Modelle Texte, Bilder oder Code erzeugen — und was sie nicht können.",
+    "Les agents IA": "KI-Agenten", "Des systèmes qui enchaînent des actions et des outils pour accomplir une tâche.": "Systeme, die Aktionen und Werkzeuge verknüpfen, um Aufgaben zu erledigen.",
+    "Les modèles ouverts": "Offene Modelle", "Poids ouverts, modèles propriétaires : comprendre les différences et leurs conséquences.": "Offene Gewichte, proprietäre Modelle: Unterschiede und Folgen verstehen.",
+    "IA responsable": "Verantwortungsvolle KI", "Fiabilité, biais, vie privée : les questions à poser avant de déployer une IA.": "Zuverlässigkeit, Verzerrungen, Datenschutz: Fragen vor dem KI-Einsatz.",
+    "L'IA au quotidien": "KI im Alltag", "Des cas d'usage concrets pour travailler, apprendre et créer avec discernement.": "Konkrete Anwendungen für bewusstes Arbeiten, Lernen und Gestalten mit KI.",
+    "La suite de l'IA": "Wie geht es mit KI weiter?", "Repérer les signaux émergents et distinguer les tendances durables du bruit.": "Neue Signale erkennen und nachhaltige Trends von Rauschen unterscheiden.",
+    "Centres de données & IA": "Rechenzentren & KI", "Les lieux, les coûts, l'histoire et les machines qui rendent l'IA possible.": "Orte, Kosten, Geschichte und Maschinen, die KI ermöglichen.",
+    "Modèles": "Modelle", "Repères": "Grundlagen", Usages: "Anwendungen", "En exploration": "In Entwicklung",
+    "Écosystème": "Ökosystem", Éthique: "Ethik", Société: "Gesellschaft", Pratique: "Praxis",
+    Débuter: "Einstieg", Tendances: "Trends", Prospective: "Zukunft", Géographie: "Geografie",
+    Infrastructure: "Infrastruktur",
+  },
+  "zh-CN": {
+    "VOTRE POINT DE DÉPART": "从这里开始",
+    "L'IA, sous tous ses angles": "从多个角度认识人工智能",
+    "07 dossiers · sélectionner un axe": "07 个专题 · 选择一个视角",
+    "Rechercher un sujet": "搜索主题", "Un sujet, une technologie, une question…": "主题、技术或问题…",
+    "Filtrer les sujets": "筛选主题", "Tout explorer": "浏览全部",
+    "L'IA générative": "生成式人工智能", "Comment des modèles créent du texte, des images ou du code — et ce qu'ils ne savent pas faire.": "了解模型如何生成文本、图像或代码，以及它们的能力边界。",
+    "Les agents IA": "人工智能智能体", "Des systèmes qui enchaînent des actions et des outils pour accomplir une tâche.": "通过连续调用操作和工具来完成任务的系统。",
+    "Les modèles ouverts": "开放模型", "Poids ouverts, modèles propriétaires : comprendre les différences et leurs conséquences.": "理解开放权重与专有模型的区别及其影响。",
+    "IA responsable": "负责任的人工智能", "Fiabilité, biais, vie privée : les questions à poser avant de déployer une IA.": "部署人工智能前应考虑可靠性、偏见与隐私问题。",
+    "L'IA au quotidien": "日常生活中的人工智能", "Des cas d'usage concrets pour travailler, apprendre et créer avec discernement.": "了解如何审慎地使用人工智能工作、学习和创作。",
+    "La suite de l'IA": "人工智能的未来", "Repérer les signaux émergents et distinguer les tendances durables du bruit.": "识别新兴信号，区分长期趋势与短暂噪声。",
+    "Centres de données & IA": "数据中心与人工智能", "Les lieux, les coûts, l'histoire et les machines qui rendent l'IA possible.": "了解人工智能背后的地点、成本、历史和机器。",
+    "Modèles": "模型", "Repères": "基础概念", Usages: "应用", "En exploration": "探索中",
+    "Écosystème": "生态", Éthique: "伦理", Société: "社会", Pratique: "实践",
+    Débuter: "入门", Tendances: "趋势", Prospective: "未来展望", Géographie: "地理",
+    Infrastructure: "基础设施",
+  },
+  pt: {
+    "VOTRE POINT DE DÉPART": "O SEU PONTO DE PARTIDA",
+    "L'IA, sous tous ses angles": "A IA, sob todos os ângulos",
+    "07 dossiers · sélectionner un axe": "07 dossiês · escolha uma perspetiva",
+    "Rechercher un sujet": "Pesquisar temas", "Un sujet, une technologie, une question…": "Um tema, uma tecnologia, uma pergunta…",
+    "Filtrer les sujets": "Filtrar temas", "Tout explorer": "Explorar tudo",
+    "L'IA générative": "IA generativa", "Comment des modèles créent du texte, des images ou du code — et ce qu'ils ne savent pas faire.": "Como os modelos criam texto, imagens ou código — e o que não conseguem fazer.",
+    "Les agents IA": "Agentes de IA", "Des systèmes qui enchaînent des actions et des outils pour accomplir une tâche.": "Sistemas que encadeiam ações e ferramentas para realizar uma tarefa.",
+    "Les modèles ouverts": "Modelos abertos", "Poids ouverts, modèles propriétaires : comprendre les différences et leurs conséquences.": "Pesos abertos e modelos proprietários: diferenças e consequências.",
+    "IA responsable": "IA responsável", "Fiabilité, biais, vie privée : les questions à poser avant de déployer une IA.": "Fiabilidade, enviesamento e privacidade: questões antes de implementar IA.",
+    "L'IA au quotidien": "IA no quotidiano", "Des cas d'usage concrets pour travailler, apprendre et créer avec discernement.": "Usos concretos para trabalhar, aprender e criar com discernimento.",
+    "La suite de l'IA": "O futuro da IA", "Repérer les signaux émergents et distinguer les tendances durables du bruit.": "Identificar sinais emergentes e distinguir tendências duradouras do ruído.",
+    "Centres de données & IA": "Centros de dados e IA", "Les lieux, les coûts, l'histoire et les machines qui rendent l'IA possible.": "Os locais, custos, história e máquinas que tornam a IA possível.",
+    "Modèles": "Modelos", "Repères": "Conceitos-chave", Usages: "Usos", "En exploration": "Em exploração",
+    "Écosystème": "Ecossistema", Éthique: "Ética", Société: "Sociedade", Pratique: "Prática",
+    Débuter: "Começar", Tendances: "Tendências", Prospective: "Futuro", Géographie: "Geografia",
+    Infrastructure: "Infraestrutura",
+  },
+  ar: {
+    "VOTRE POINT DE DÉPART": "نقطة البداية",
+    "L'IA, sous tous ses angles": "الذكاء الاصطناعي من زوايا متعددة",
+    "07 dossiers · sélectionner un axe": "٧ ملفات · اختر منظورًا",
+    "Rechercher un sujet": "ابحث في الموضوعات", "Un sujet, une technologie, une question…": "موضوع أو تقنية أو سؤال…",
+    "Filtrer les sujets": "تصفية الموضوعات", "Tout explorer": "استكشف الكل",
+    "L'IA générative": "الذكاء الاصطناعي التوليدي", "Comment des modèles créent du texte, des images ou du code — et ce qu'ils ne savent pas faire.": "كيف تنشئ النماذج النصوص والصور والرموز، وما حدود قدراتها.",
+    "Les agents IA": "وكلاء الذكاء الاصطناعي", "Des systèmes qui enchaînent des actions et des outils pour accomplir une tâche.": "أنظمة تنفذ سلسلة من الإجراءات وتستخدم الأدوات لإنجاز مهمة.",
+    "Les modèles ouverts": "النماذج المفتوحة", "Poids ouverts, modèles propriétaires : comprendre les différences et leurs conséquences.": "فهم الفرق بين الأوزان المفتوحة والنماذج المملوكة وآثاره.",
+    "IA responsable": "ذكاء اصطناعي مسؤول", "Fiabilité, biais, vie privée : les questions à poser avant de déployer une IA.": "الموثوقية والتحيز والخصوصية: أسئلة قبل نشر الذكاء الاصطناعي.",
+    "L'IA au quotidien": "الذكاء الاصطناعي في الحياة اليومية", "Des cas d'usage concrets pour travailler, apprendre et créer avec discernement.": "استخدامات عملية للعمل والتعلم والإبداع بوعي.",
+    "La suite de l'IA": "مستقبل الذكاء الاصطناعي", "Repérer les signaux émergents et distinguer les tendances durables du bruit.": "رصد الإشارات الجديدة وتمييز الاتجاهات المستدامة من الضجيج.",
+    "Centres de données & IA": "مراكز البيانات والذكاء الاصطناعي", "Les lieux, les coûts, l'histoire et les machines qui rendent l'IA possible.": "المواقع والتكاليف والتاريخ والآلات التي تجعل الذكاء الاصطناعي ممكنًا.",
+    "Modèles": "النماذج", "Repères": "مفاهيم أساسية", Usages: "استخدامات", "En exploration": "قيد الاستكشاف",
+    "Écosystème": "منظومة", Éthique: "أخلاقيات", Société: "المجتمع", Pratique: "تطبيقات",
+    Débuter: "للمبتدئين", Tendances: "اتجاهات", Prospective: "استشراف", Géographie: "جغرافيا",
+    Infrastructure: "بنية تحتية",
+  },
+  hi: {
+    "VOTRE POINT DE DÉPART": "यहाँ से शुरुआत करें",
+    "L'IA, sous tous ses angles": "कई दृष्टिकोणों से AI",
+    "07 dossiers · sélectionner un axe": "07 विषय · एक दृष्टिकोण चुनें",
+    "Rechercher un sujet": "विषय खोजें", "Un sujet, une technologie, une question…": "विषय, तकनीक या सवाल…",
+    "Filtrer les sujets": "विषय फ़िल्टर करें", "Tout explorer": "सभी देखें",
+    "L'IA générative": "जनरेटिव AI", "Comment des modèles créent du texte, des images ou du code — et ce qu'ils ne savent pas faire.": "मॉडल पाठ, चित्र और कोड कैसे बनाते हैं — और उनकी सीमाएँ क्या हैं।",
+    "Les agents IA": "AI एजेंट", "Des systèmes qui enchaînent des actions et des outils pour accomplir une tâche.": "किसी काम को पूरा करने के लिए कार्रवाइयों और टूल का क्रम चलाने वाली प्रणालियाँ।",
+    "Les modèles ouverts": "ओपन मॉडल", "Poids ouverts, modèles propriétaires : comprendre les différences et leurs conséquences.": "ओपन वेट और स्वामित्व वाले मॉडल के अंतर और प्रभाव समझें।",
+    "IA responsable": "ज़िम्मेदार AI", "Fiabilité, biais, vie privée : les questions à poser avant de déployer une IA.": "AI लागू करने से पहले विश्वसनीयता, पक्षपात और निजता पर सवाल करें।",
+    "L'IA au quotidien": "रोज़मर्रा की AI", "Des cas d'usage concrets pour travailler, apprendre et créer avec discernement.": "समझदारी से काम, सीखने और रचना के लिए व्यावहारिक उपयोग।",
+    "La suite de l'IA": "AI का अगला दौर", "Repérer les signaux émergents et distinguer les tendances durables du bruit.": "उभरते संकेत पहचानें और टिकाऊ रुझानों को शोर से अलग करें।",
+    "Centres de données & IA": "डेटा सेंटर और AI", "Les lieux, les coûts, l'histoire et les machines qui rendent l'IA possible.": "वे स्थान, लागत, इतिहास और मशीनें जो AI को संभव बनाती हैं।",
+    "Modèles": "मॉडल", "Repères": "मुख्य बातें", Usages: "उपयोग", "En exploration": "खोज जारी",
+    "Écosystème": "परितंत्र", Éthique: "नैतिकता", Société: "समाज", Pratique: "व्यावहारिक",
+    Débuter: "शुरुआत", Tendances: "रुझान", Prospective: "भविष्य", Géographie: "भूगोल",
+    Infrastructure: "बुनियादी ढाँचा",
+  },
+  ja: {
+    "VOTRE POINT DE DÉPART": "ここから始める",
+    "L'IA, sous tous ses angles": "あらゆる角度から見るAI",
+    "07 dossiers · sélectionner un axe": "7つのテーマ · 視点を選ぶ",
+    "Rechercher un sujet": "テーマを検索", "Un sujet, une technologie, une question…": "テーマ、技術、質問…",
+    "Filtrer les sujets": "テーマを絞り込む", "Tout explorer": "すべて見る",
+    "L'IA générative": "生成AI", "Comment des modèles créent du texte, des images ou du code — et ce qu'ils ne savent pas faire.": "モデルが文章・画像・コードを生成する仕組みと、その限界。",
+    "Les agents IA": "AIエージェント", "Des systèmes qui enchaînent des actions et des outils pour accomplir une tâche.": "タスク達成のために複数の操作やツールを連携するシステム。",
+    "Les modèles ouverts": "オープンモデル", "Poids ouverts, modèles propriétaires : comprendre les différences et leurs conséquences.": "公開ウェイトとプロプライエタリモデルの違いと影響。",
+    "IA responsable": "責任あるAI", "Fiabilité, biais, vie privée : les questions à poser avant de déployer une IA.": "AI導入前に確認したい信頼性、バイアス、プライバシー。",
+    "L'IA au quotidien": "日常のAI", "Des cas d'usage concrets pour travailler, apprendre et créer avec discernement.": "AIを慎重に活用して働き、学び、創作する具体例。",
+    "La suite de l'IA": "AIのこれから", "Repérer les signaux émergents et distinguer les tendances durables du bruit.": "新たな兆候を捉え、持続的な傾向と一時的な話題を見分ける。",
+    "Centres de données & IA": "データセンターとAI", "Les lieux, les coûts, l'histoire et les machines qui rendent l'IA possible.": "AIを支える場所、コスト、歴史、コンピューター。",
+    "Modèles": "モデル", "Repères": "基礎知識", Usages: "活用", "En exploration": "探究中",
+    "Écosystème": "エコシステム", Éthique: "倫理", Société: "社会", Pratique: "実践",
+    Débuter: "入門", Tendances: "動向", Prospective: "未来展望", Géographie: "地理",
+    Infrastructure: "インフラ",
+  },
+  ru: {
+    "VOTRE POINT DE DÉPART": "С ЧЕГО НАЧАТЬ",
+    "L'IA, sous tous ses angles": "ИИ со всех сторон",
+    "07 dossiers · sélectionner un axe": "07 тем · выберите направление",
+    "Rechercher un sujet": "Поиск по темам", "Un sujet, une technologie, une question…": "Тема, технология или вопрос…",
+    "Filtrer les sujets": "Фильтр тем", "Tout explorer": "Изучить всё",
+    "L'IA générative": "Генеративный ИИ", "Comment des modèles créent du texte, des images ou du code — et ce qu'ils ne savent pas faire.": "Как модели создают текст, изображения и код — и чего они не умеют.",
+    "Les agents IA": "ИИ-агенты", "Des systèmes qui enchaînent des actions et des outils pour accomplir une tâche.": "Системы, которые объединяют действия и инструменты для выполнения задач.",
+    "Les modèles ouverts": "Открытые модели", "Poids ouverts, modèles propriétaires : comprendre les différences et leurs conséquences.": "Различия и последствия открытых весов и проприетарных моделей.",
+    "IA responsable": "Ответственный ИИ", "Fiabilité, biais, vie privée : les questions à poser avant de déployer une IA.": "Надёжность, предвзятость и конфиденциальность: что проверить до внедрения ИИ.",
+    "L'IA au quotidien": "ИИ в повседневной жизни", "Des cas d'usage concrets pour travailler, apprendre et créer avec discernement.": "Практические способы осознанно работать, учиться и создавать с ИИ.",
+    "La suite de l'IA": "Что дальше для ИИ", "Repérer les signaux émergents et distinguer les tendances durables du bruit.": "Замечать новые сигналы и отличать устойчивые тенденции от шума.",
+    "Centres de données & IA": "ЦОД и ИИ", "Les lieux, les coûts, l'histoire et les machines qui rendent l'IA possible.": "Места, расходы, история и машины, благодаря которым возможен ИИ.",
+    "Modèles": "Модели", "Repères": "Основы", Usages: "Применение", "En exploration": "В разработке",
+    "Écosystème": "Экосистема", Éthique: "Этика", Société: "Общество", Pratique: "Практика",
+    Débuter: "Начало", Tendances: "Тенденции", Prospective: "Будущее", Géographie: "География",
+    Infrastructure: "Инфраструктура",
+  },
+  it: {
+    "VOTRE POINT DE DÉPART": "IL TUO PUNTO DI PARTENZA",
+    "L'IA, sous tous ses angles": "L'IA, da ogni prospettiva",
+    "07 dossiers · sélectionner un axe": "07 dossier · scegli una prospettiva",
+    "Rechercher un sujet": "Cerca argomenti", "Un sujet, une technologie, une question…": "Un argomento, una tecnologia, una domanda…",
+    "Filtrer les sujets": "Filtra gli argomenti", "Tout explorer": "Esplora tutto",
+    "L'IA générative": "IA generativa", "Comment des modèles créent du texte, des images ou du code — et ce qu'ils ne savent pas faire.": "Come i modelli creano testo, immagini o codice — e cosa non sanno fare.",
+    "Les agents IA": "Agenti IA", "Des systèmes qui enchaînent des actions et des outils pour accomplir une tâche.": "Sistemi che concatenano azioni e strumenti per svolgere un compito.",
+    "Les modèles ouverts": "Modelli aperti", "Poids ouverts, modèles propriétaires : comprendre les différences et leurs conséquences.": "Pesi aperti e modelli proprietari: differenze e conseguenze.",
+    "IA responsable": "IA responsabile", "Fiabilité, biais, vie privée : les questions à poser avant de déployer une IA.": "Affidabilità, pregiudizi e privacy: cosa chiedersi prima di adottare l'IA.",
+    "L'IA au quotidien": "L'IA nella vita quotidiana", "Des cas d'usage concrets pour travailler, apprendre et créer avec discernement.": "Esempi concreti per lavorare, imparare e creare con consapevolezza.",
+    "La suite de l'IA": "Il futuro dell'IA", "Repérer les signaux émergents et distinguer les tendances durables du bruit.": "Individuare i segnali emergenti e distinguere le tendenze durature dal rumore.",
+    "Centres de données & IA": "Centri dati e IA", "Les lieux, les coûts, l'histoire et les machines qui rendent l'IA possible.": "Luoghi, costi, storia e macchine che rendono possibile l'IA.",
+    "Modèles": "Modelli", "Repères": "Concetti chiave", Usages: "Usi", "En exploration": "In esplorazione",
+    "Écosystème": "Ecosistema", Éthique: "Etica", Société: "Società", Pratique: "Pratica",
+    Débuter: "Per iniziare", Tendances: "Tendenze", Prospective: "Futuro", Géographie: "Geografia",
+    Infrastructure: "Infrastruttura",
+  },
+};
+
+const topicCardTranslations = {
+  en: {
+    "L'IA générative": "Generative AI",
+    "Comment des modèles créent du texte, des images ou du code — et ce qu'ils ne savent pas faire.": "How models create text, images, or code — and what they cannot do.",
+    "Les agents IA": "AI agents",
+    "Des systèmes qui enchaînent des actions et des outils pour accomplir une tâche.": "Systems that combine actions and tools to complete a task.",
+    "Les modèles ouverts": "Open models",
+    "Poids ouverts, modèles propriétaires : comprendre les différences et leurs conséquences.": "Open weights and proprietary models: understand the differences and their implications.",
+    "IA responsable": "Responsible AI",
+    "Fiabilité, biais, vie privée : les questions à poser avant de déployer une IA.": "Reliability, bias, and privacy: questions to ask before deploying AI.",
+    "L'IA au quotidien": "AI in everyday life",
+    "Des cas d'usage concrets pour travailler, apprendre et créer avec discernement.": "Practical ways to work, learn, and create with AI thoughtfully.",
+    "La suite de l'IA": "What's next for AI",
+    "Repérer les signaux émergents et distinguer les tendances durables du bruit.": "Spot emerging signals and distinguish lasting trends from hype.",
+    "Centres de données & IA": "Data centers & AI",
+    "Les lieux, les coûts, l'histoire et les machines qui rendent l'IA possible.": "The places, costs, history, and machines that make AI possible.",
+  },
+  es: {
+    "L'IA générative": "IA generativa",
+    "Comment des modèles créent du texte, des images ou du code — et ce qu'ils ne savent pas faire.": "Cómo los modelos crean texto, imágenes o código, y qué no pueden hacer.",
+    "Les agents IA": "Agentes de IA",
+    "Des systèmes qui enchaînent des actions et des outils pour accomplir une tâche.": "Sistemas que combinan acciones y herramientas para completar una tarea.",
+    "Les modèles ouverts": "Modelos abiertos",
+    "Poids ouverts, modèles propriétaires : comprendre les différences et leurs conséquences.": "Pesos abiertos y modelos propietarios: diferencias y consecuencias.",
+    "IA responsable": "IA responsable",
+    "Fiabilité, biais, vie privée : les questions à poser avant de déployer une IA.": "Fiabilidad, sesgos y privacidad: preguntas que conviene plantear antes de desplegar una IA.",
+    "L'IA au quotidien": "La IA en la vida cotidiana",
+    "Des cas d'usage concrets pour travailler, apprendre et créer avec discernement.": "Usos concretos para trabajar, aprender y crear con criterio.",
+    "La suite de l'IA": "El futuro de la IA",
+    "Repérer les signaux émergents et distinguer les tendances durables du bruit.": "Detectar señales emergentes y distinguir las tendencias duraderas del ruido.",
+    "Centres de données & IA": "Centros de datos e IA",
+    "Les lieux, les coûts, l'histoire et les machines qui rendent l'IA possible.": "Los lugares, costes, historia y máquinas que hacen posible la IA.",
+  },
+  nl: {
+    "L'IA générative": "Generatieve AI",
+    "Comment des modèles créent du texte, des images ou du code — et ce qu'ils ne savent pas faire.": "Hoe modellen tekst, afbeeldingen of code maken — en wat ze niet kunnen.",
+    "Les agents IA": "AI-agenten",
+    "Des systèmes qui enchaînent des actions et des outils pour accomplir une tâche.": "Systemen die acties en hulpmiddelen combineren om een taak uit te voeren.",
+    "Les modèles ouverts": "Open modellen",
+    "Poids ouverts, modèles propriétaires : comprendre les différences et leurs conséquences.": "Open gewichten en propriëtaire modellen: begrijp de verschillen en gevolgen.",
+    "IA responsable": "Verantwoorde AI",
+    "Fiabilité, biais, vie privée : les questions à poser avant de déployer une IA.": "Betrouwbaarheid, vooroordelen en privacy: vragen om te stellen voordat je AI inzet.",
+    "L'IA au quotidien": "AI in het dagelijks leven",
+    "Des cas d'usage concrets pour travailler, apprendre et créer avec discernement.": "Praktische toepassingen om bewust met AI te werken, leren en creëren.",
+    "La suite de l'IA": "De toekomst van AI",
+    "Repérer les signaux émergents et distinguer les tendances durables du bruit.": "Nieuwe signalen herkennen en blijvende trends onderscheiden van ruis.",
+    "Centres de données & IA": "Datacenters en AI",
+    "Les lieux, les coûts, l'histoire et les machines qui rendent l'IA possible.": "De locaties, kosten, geschiedenis en machines die AI mogelijk maken.",
+  },
+  de: {
+    "L'IA générative": "Generative KI",
+    "Comment des modèles créent du texte, des images ou du code — et ce qu'ils ne savent pas faire.": "Wie Modelle Texte, Bilder oder Code erzeugen — und was sie nicht können.",
+    "Les agents IA": "KI-Agenten",
+    "Des systèmes qui enchaînent des actions et des outils pour accomplir une tâche.": "Systeme, die Aktionen und Werkzeuge kombinieren, um eine Aufgabe zu erledigen.",
+    "Les modèles ouverts": "Offene Modelle",
+    "Poids ouverts, modèles propriétaires : comprendre les différences et leurs conséquences.": "Offene Gewichte und proprietäre Modelle: Unterschiede und Folgen verstehen.",
+    "IA responsable": "Verantwortungsvolle KI",
+    "Fiabilité, biais, vie privée : les questions à poser avant de déployer une IA.": "Zuverlässigkeit, Verzerrungen und Datenschutz: Fragen vor dem Einsatz von KI.",
+    "L'IA au quotidien": "KI im Alltag",
+    "Des cas d'usage concrets pour travailler, apprendre et créer avec discernement.": "Konkrete Anwendungen, um bewusst mit KI zu arbeiten, zu lernen und zu gestalten.",
+    "La suite de l'IA": "Wie geht es mit KI weiter?",
+    "Repérer les signaux émergents et distinguer les tendances durables du bruit.": "Neue Signale erkennen und dauerhafte Trends von kurzlebigem Hype unterscheiden.",
+    "Centres de données & IA": "Rechenzentren und KI",
+    "Les lieux, les coûts, l'histoire et les machines qui rendent l'IA possible.": "Standorte, Kosten, Geschichte und Maschinen, die KI möglich machen.",
+  },
+  "zh-CN": {
+    "L'IA générative": "生成式人工智能",
+    "Comment des modèles créent du texte, des images ou du code — et ce qu'ils ne savent pas faire.": "了解模型如何生成文本、图像或代码，以及它们做不到什么。",
+    "Les agents IA": "人工智能智能体",
+    "Des systèmes qui enchaînent des actions et des outils pour accomplir une tâche.": "通过组合连续操作与工具来完成任务的系统。",
+    "Les modèles ouverts": "开放模型",
+    "Poids ouverts, modèles propriétaires : comprendre les différences et leurs conséquences.": "开放权重与专有模型：理解两者的差异及其影响。",
+    "IA responsable": "负责任的人工智能",
+    "Fiabilité, biais, vie privée : les questions à poser avant de déployer une IA.": "部署人工智能前应关注的问题：可靠性、偏见与隐私。",
+    "L'IA au quotidien": "日常生活中的人工智能",
+    "Des cas d'usage concrets pour travailler, apprendre et créer avec discernement.": "以审慎的方式运用人工智能进行工作、学习与创作。",
+    "La suite de l'IA": "人工智能的未来",
+    "Repérer les signaux émergents et distinguer les tendances durables du bruit.": "识别新兴信号，区分长期趋势与短暂喧嚣。",
+    "Centres de données & IA": "数据中心与人工智能",
+    "Les lieux, les coûts, l'histoire et les machines qui rendent l'IA possible.": "了解人工智能背后的地点、成本、发展历程与机器。",
+  },
+  pt: {
+    "L'IA générative": "IA generativa",
+    "Comment des modèles créent du texte, des images ou du code — et ce qu'ils ne savent pas faire.": "Como os modelos criam texto, imagens ou código — e o que não conseguem fazer.",
+    "Les agents IA": "Agentes de IA",
+    "Des systèmes qui enchaînent des actions et des outils pour accomplir une tâche.": "Sistemas que combinam ações e ferramentas para concluir uma tarefa.",
+    "Les modèles ouverts": "Modelos abertos",
+    "Poids ouverts, modèles propriétaires : comprendre les différences et leurs conséquences.": "Pesos abertos e modelos proprietários: diferenças e consequências.",
+    "IA responsable": "IA responsável",
+    "Fiabilité, biais, vie privée : les questions à poser avant de déployer une IA.": "Fiabilidade, enviesamento e privacidade: questões a considerar antes de implementar IA.",
+    "L'IA au quotidien": "IA no quotidiano",
+    "Des cas d'usage concrets pour travailler, apprendre et créer avec discernement.": "Formas concretas de trabalhar, aprender e criar com IA de modo consciente.",
+    "La suite de l'IA": "O futuro da IA",
+    "Repérer les signaux émergents et distinguer les tendances durables du bruit.": "Identificar sinais emergentes e distinguir tendências duradouras do ruído.",
+    "Centres de données & IA": "Centros de dados e IA",
+    "Les lieux, les coûts, l'histoire et les machines qui rendent l'IA possible.": "Os locais, custos, história e máquinas que tornam a IA possível.",
+  },
+  ar: {
+    "L'IA générative": "الذكاء الاصطناعي التوليدي",
+    "Comment des modèles créent du texte, des images ou du code — et ce qu'ils ne savent pas faire.": "كيف تنشئ النماذج النصوص والصور والبرمجيات، وما الذي لا تستطيع فعله.",
+    "Les agents IA": "وكلاء الذكاء الاصطناعي",
+    "Des systèmes qui enchaînent des actions et des outils pour accomplir une tâche.": "أنظمة تجمع بين الإجراءات والأدوات لإنجاز مهمة.",
+    "Les modèles ouverts": "النماذج المفتوحة",
+    "Poids ouverts, modèles propriétaires : comprendre les différences et leurs conséquences.": "الأوزان المفتوحة والنماذج المملوكة: فهم الاختلافات والآثار.",
+    "IA responsable": "ذكاء اصطناعي مسؤول",
+    "Fiabilité, biais, vie privée : les questions à poser avant de déployer une IA.": "الموثوقية والتحيز والخصوصية: أسئلة ينبغي طرحها قبل نشر الذكاء الاصطناعي.",
+    "L'IA au quotidien": "الذكاء الاصطناعي في الحياة اليومية",
+    "Des cas d'usage concrets pour travailler, apprendre et créer avec discernement.": "استخدامات عملية للعمل والتعلم والإبداع بوعي.",
+    "La suite de l'IA": "مستقبل الذكاء الاصطناعي",
+    "Repérer les signaux émergents et distinguer les tendances durables du bruit.": "رصد الإشارات الناشئة وتمييز الاتجاهات المستدامة من الضجيج.",
+    "Centres de données & IA": "مراكز البيانات والذكاء الاصطناعي",
+    "Les lieux, les coûts, l'histoire et les machines qui rendent l'IA possible.": "المواقع والتكاليف والتاريخ والآلات التي تجعل الذكاء الاصطناعي ممكناً.",
+  },
+  hi: {
+    "L'IA générative": "जनरेटिव एआई",
+    "Comment des modèles créent du texte, des images ou du code — et ce qu'ils ne savent pas faire.": "मॉडल टेक्स्ट, चित्र या कोड कैसे बनाते हैं — और वे क्या नहीं कर सकते।",
+    "Les agents IA": "एआई एजेंट",
+    "Des systèmes qui enchaînent des actions et des outils pour accomplir une tâche.": "ऐसी प्रणालियाँ जो किसी काम को पूरा करने के लिए कई कार्रवाइयों और औज़ारों का उपयोग करती हैं।",
+    "Les modèles ouverts": "ओपन मॉडल",
+    "Poids ouverts, modèles propriétaires : comprendre les différences et leurs conséquences.": "ओपन वेट और मालिकाना मॉडल: उनके अंतर और प्रभाव समझें।",
+    "IA responsable": "जिम्मेदार एआई",
+    "Fiabilité, biais, vie privée : les questions à poser avant de déployer une IA.": "एआई लागू करने से पहले विश्वसनीयता, पक्षपात और निजता पर विचार करें।",
+    "L'IA au quotidien": "रोज़मर्रा की ज़िंदगी में एआई",
+    "Des cas d'usage concrets pour travailler, apprendre et créer avec discernement.": "समझदारी से काम करने, सीखने और रचनात्मकता के लिए व्यावहारिक उपयोग।",
+    "La suite de l'IA": "एआई का आगे का रास्ता",
+    "Repérer les signaux émergents et distinguer les tendances durables du bruit.": "उभरते संकेतों को पहचानें और टिकाऊ रुझानों को शोर से अलग करें।",
+    "Centres de données & IA": "डेटा सेंटर और एआई",
+    "Les lieux, les coûts, l'histoire et les machines qui rendent l'IA possible.": "वे स्थान, लागत, इतिहास और मशीनें जो एआई को संभव बनाती हैं।",
+  },
+  ja: {
+    "L'IA générative": "生成AI",
+    "Comment des modèles créent du texte, des images ou du code — et ce qu'ils ne savent pas faire.": "モデルが文章・画像・コードを生成する仕組みと、できないこと。",
+    "Les agents IA": "AIエージェント",
+    "Des systèmes qui enchaînent des actions et des outils pour accomplir une tâche.": "複数の操作やツールを組み合わせてタスクを実行するシステム。",
+    "Les modèles ouverts": "オープンモデル",
+    "Poids ouverts, modèles propriétaires : comprendre les différences et leurs conséquences.": "オープンウェイトと独自モデルの違いと影響を理解する。",
+    "IA responsable": "責任あるAI",
+    "Fiabilité, biais, vie privée : les questions à poser avant de déployer une IA.": "AI導入前に考えるべき信頼性、バイアス、プライバシー。",
+    "L'IA au quotidien": "日常生活のAI",
+    "Des cas d'usage concrets pour travailler, apprendre et créer avec discernement.": "AIを活用して、慎重に働き、学び、創作するための具体例。",
+    "La suite de l'IA": "AIのこれから",
+    "Repérer les signaux émergents et distinguer les tendances durables du bruit.": "新たな兆しを捉え、長く続く動向と一時的な話題を見分ける。",
+    "Centres de données & IA": "データセンターとAI",
+    "Les lieux, les coûts, l'histoire et les machines qui rendent l'IA possible.": "AIを支える場所、コスト、歴史、そして機械。",
+  },
+  ru: {
+    "L'IA générative": "Генеративный ИИ",
+    "Comment des modèles créent du texte, des images ou du code — et ce qu'ils ne savent pas faire.": "Как модели создают тексты, изображения и код — и чего они не умеют.",
+    "Les agents IA": "ИИ-агенты",
+    "Des systèmes qui enchaînent des actions et des outils pour accomplir une tâche.": "Системы, которые объединяют действия и инструменты для выполнения задачи.",
+    "Les modèles ouverts": "Открытые модели",
+    "Poids ouverts, modèles propriétaires : comprendre les différences et leurs conséquences.": "Открытые веса и проприетарные модели: различия и последствия.",
+    "IA responsable": "Ответственный ИИ",
+    "Fiabilité, biais, vie privée : les questions à poser avant de déployer une IA.": "Надёжность, предвзятость и конфиденциальность: что проверить перед внедрением ИИ.",
+    "L'IA au quotidien": "ИИ в повседневной жизни",
+    "Des cas d'usage concrets pour travailler, apprendre et créer avec discernement.": "Практические способы осознанно работать, учиться и создавать с помощью ИИ.",
+    "La suite de l'IA": "Будущее ИИ",
+    "Repérer les signaux émergents et distinguer les tendances durables du bruit.": "Замечать новые сигналы и отличать долгосрочные тенденции от шума.",
+    "Centres de données & IA": "Центры обработки данных и ИИ",
+    "Les lieux, les coûts, l'histoire et les machines qui rendent l'IA possible.": "Места, затраты, история и машины, благодаря которым возможен ИИ.",
+  },
+  it: {
+    "L'IA générative": "IA generativa",
+    "Comment des modèles créent du texte, des images ou du code — et ce qu'ils ne savent pas faire.": "Come i modelli creano testi, immagini o codice e cosa non sono in grado di fare.",
+    "Les agents IA": "Agenti IA",
+    "Des systèmes qui enchaînent des actions et des outils pour accomplir une tâche.": "Sistemi che combinano azioni e strumenti per completare un'attività.",
+    "Les modèles ouverts": "Modelli aperti",
+    "Poids ouverts, modèles propriétaires : comprendre les différences et leurs conséquences.": "Pesi aperti e modelli proprietari: differenze e conseguenze.",
+    "IA responsable": "IA responsabile",
+    "Fiabilité, biais, vie privée : les questions à poser avant de déployer une IA.": "Affidabilità, distorsioni e privacy: cosa chiedersi prima di adottare l'IA.",
+    "L'IA au quotidien": "L'IA nella vita quotidiana",
+    "Des cas d'usage concrets pour travailler, apprendre et créer avec discernement.": "Esempi pratici per lavorare, imparare e creare con consapevolezza.",
+    "La suite de l'IA": "Il futuro dell'IA",
+    "Repérer les signaux émergents et distinguer les tendances durables du bruit.": "Riconoscere i segnali emergenti e distinguere le tendenze durature dal rumore.",
+    "Centres de données & IA": "Centri dati e IA",
+    "Les lieux, les coûts, l'histoire et les machines qui rendent l'IA possible.": "I luoghi, i costi, la storia e le macchine che rendono possibile l'IA.",
+  },
+};
+
+const assistantSectionTranslations = {
+  en: {
+    "EXPLORATION SOURCÉE": "SOURCE-BASED EXPLORATION",
+    "Une question. Des sources. Pas d'invention": "A question. Sources. No fabrication.",
+    "Interrogez les dossiers IAeVolution. Ce prototype retrouve des repères éditorialisés et affiche leurs sources — il ne génère pas encore de réponse avec un modèle d'IA.": "Explore IAeVolution's dossiers. This prototype finds editorially prepared information and shows its sources — it does not yet generate answers with an AI model.",
+    "RECHERCHE LOCALE": "LOCAL SEARCH",
+    "Votre question": "Your question",
+    "Ex. Combien d'électricité consomment les centres de données ?": "e.g. How much electricity do data centers consume?",
+    "Chercher": "Search",
+    "Exemples de questions": "Suggested questions",
+    "ESSAYEZ PAR EXEMPLE": "TRY ONE OF THESE",
+    "Consommation électrique": "Electricity use",
+    "Pourquoi la Virginie du Nord ?": "Why Northern Virginia?",
+    "Entraînement ou inférence ?": "Training or inference?",
+    "IA générative": "Generative AI",
+    "Fiabilité des réponses": "Answer reliability",
+    "Périmètre actuel : centres de données, infrastructure et premiers repères sur l'IA générative. Si les sources disponibles ne couvrent pas votre question, l'assistant le dira plutôt que de compléter au hasard.": "Current scope: data centers, infrastructure, and introductory information about generative AI. If the available sources do not cover your question, the assistant will say so rather than guess.",
+    "REPÈRES RETROUVÉS DANS LE CORPUS": "INFORMATION FOUND IN THE CORPUS",
+    "Je n'ai pas trouvé de réponse dans les sources actuellement indexées. Essaie une question sur l'énergie, les régions, le cloud, le PUE, l'IA générative, les tokens ou la fiabilité des modèles.": "I couldn't find an answer in the currently indexed sources. Try asking about energy, regions, cloud, PUE, generative AI, tokens, or model reliability.",
+    "Lire la source : ": "Read source: ",
+  },
+  es: {
+    "EXPLORATION SOURCÉE": "EXPLORACIÓN CON FUENTES",
+    "Une question. Des sources. Pas d'invention": "Una pregunta. Fuentes. Sin inventar.",
+    "Interrogez les dossiers IAeVolution. Ce prototype retrouve des repères éditorialisés et affiche leurs sources — il ne génère pas encore de réponse avec un modèle d'IA.": "Consulta los dossiers de IAeVolution. Este prototipo encuentra información editorial y muestra sus fuentes; todavía no genera respuestas con un modelo de IA.",
+    "RECHERCHE LOCALE": "BÚSQUEDA LOCAL",
+    "Votre question": "Tu pregunta",
+    "Ex. Combien d'électricité consomment les centres de données ?": "Ej.: ¿Cuánta electricidad consumen los centros de datos?",
+    "Chercher": "Buscar",
+    "Exemples de questions": "Preguntas sugeridas",
+    "ESSAYEZ PAR EXEMPLE": "PRUEBA, POR EJEMPLO",
+    "Consommation électrique": "Consumo eléctrico",
+    "Pourquoi la Virginie du Nord ?": "¿Por qué el norte de Virginia?",
+    "Entraînement ou inférence ?": "¿Entrenamiento o inferencia?",
+    "IA générative": "IA generativa",
+    "Fiabilité des réponses": "Fiabilidad de las respuestas",
+    "Périmètre actuel : centres de données, infrastructure et premiers repères sur l'IA générative. Si les sources disponibles ne couvrent pas votre question, l'assistant le dira plutôt que de compléter au hasard.": "Alcance actual: centros de datos, infraestructura y conceptos iniciales de IA generativa. Si las fuentes disponibles no cubren tu pregunta, el asistente lo indicará en lugar de improvisar.",
+    "REPÈRES RETROUVÉS DANS LE CORPUS": "INFORMACIÓN ENCONTRADA EN EL CORPUS",
+    "Je n'ai pas trouvé de réponse dans les sources actuellement indexées. Essaie une question sur l'énergie, les régions, le cloud, le PUE, l'IA générative, les tokens ou la fiabilité des modèles.": "No he encontrado una respuesta en las fuentes indexadas. Prueba con una pregunta sobre energía, regiones, la nube, el PUE, la IA generativa, los tokens o la fiabilidad de los modelos.",
+    "Lire la source : ": "Leer la fuente: ",
+  },
+  nl: {
+    "EXPLORATION SOURCÉE": "VERKENNING MET BRONNEN",
+    "Une question. Des sources. Pas d'invention": "Een vraag. Bronnen. Geen verzinsels.",
+    "Interrogez les dossiers IAeVolution. Ce prototype retrouve des repères éditorialisés et affiche leurs sources — il ne génère pas encore de réponse avec un modèle d'IA.": "Doorzoek de dossiers van IAeVolution. Dit prototype vindt redactioneel voorbereide informatie en toont de bronnen — het genereert nog geen antwoorden met een AI-model.",
+    "RECHERCHE LOCALE": "LOKALE ZOEKOPDRACHT",
+    "Votre question": "Je vraag",
+    "Ex. Combien d'électricité consomment les centres de données ?": "Bijv. Hoeveel elektriciteit verbruiken datacenters?",
+    "Chercher": "Zoeken",
+    "Exemples de questions": "Voorbeeldvragen",
+    "ESSAYEZ PAR EXEMPLE": "PROBEER BIJVOORBEELD",
+    "Consommation électrique": "Elektriciteitsverbruik",
+    "Pourquoi la Virginie du Nord ?": "Waarom Noord-Virginia?",
+    "Entraînement ou inférence ?": "Training of inferentie?",
+    "IA générative": "Generatieve AI",
+    "Fiabilité des réponses": "Betrouwbaarheid van antwoorden",
+    "Périmètre actuel : centres de données, infrastructure et premiers repères sur l'IA générative. Si les sources disponibles ne couvrent pas votre question, l'assistant le dira plutôt que de compléter au hasard.": "Huidige reikwijdte: datacenters, infrastructuur en basisinformatie over generatieve AI. Als de beschikbare bronnen je vraag niet behandelen, zegt de assistent dat in plaats van iets te verzinnen.",
+    "REPÈRES RETROUVÉS DANS LE CORPUS": "INFORMATIE GEVONDEN IN HET CORPUS",
+    "Je n'ai pas trouvé de réponse dans les sources actuellement indexées. Essaie une question sur l'énergie, les régions, le cloud, le PUE, l'IA générative, les tokens ou la fiabilité des modèles.": "Ik vond geen antwoord in de bronnen. Probeer een vraag over energie, regio's, de cloud, PUE, generatieve AI, tokens of modelbetrouwbaarheid.",
+    "Lire la source : ": "Bron lezen: ",
+  },
+  de: {
+    "EXPLORATION SOURCÉE": "QUELLENGESTÜTZTE ERKUNDUNG",
+    "Une question. Des sources. Pas d'invention": "Eine Frage. Quellen. Keine Erfindungen.",
+    "Interrogez les dossiers IAeVolution. Ce prototype retrouve des repères éditorialisés et affiche leurs sources — il ne génère pas encore de réponse avec un modèle d'IA.": "Durchsuche die IAeVolution-Dossiers. Dieser Prototyp findet redaktionell aufbereitete Informationen und zeigt ihre Quellen — er erzeugt noch keine Antworten mit einem KI-Modell.",
+    "RECHERCHE LOCALE": "LOKALE SUCHE",
+    "Votre question": "Ihre Frage",
+    "Ex. Combien d'électricité consomment les centres de données ?": "Z. B. Wie viel Strom verbrauchen Rechenzentren?",
+    "Chercher": "Suchen",
+    "Exemples de questions": "Beispielfragen",
+    "ESSAYEZ PAR EXEMPLE": "ZUM BEISPIEL",
+    "Consommation électrique": "Stromverbrauch",
+    "Pourquoi la Virginie du Nord ?": "Warum Nord-Virginia?",
+    "Entraînement ou inférence ?": "Training oder Inferenz?",
+    "IA générative": "Generative KI",
+    "Fiabilité des réponses": "Zuverlässigkeit von Antworten",
+    "Périmètre actuel : centres de données, infrastructure et premiers repères sur l'IA générative. Si les sources disponibles ne couvrent pas votre question, l'assistant le dira plutôt que de compléter au hasard.": "Aktueller Umfang: Rechenzentren, Infrastruktur und Grundlagen zur generativen KI. Wenn die verfügbaren Quellen Ihre Frage nicht abdecken, sagt der Assistent das, statt zu raten.",
+    "REPÈRES RETROUVÉS DANS LE CORPUS": "INFORMATIONEN IM KORPUS GEFUNDEN",
+    "Je n'ai pas trouvé de réponse dans les sources actuellement indexées. Essaie une question sur l'énergie, les régions, le cloud, le PUE, l'IA générative, les tokens ou la fiabilité des modèles.": "In den derzeit indexierten Quellen wurde keine Antwort gefunden. Fragen Sie zum Beispiel nach Energie, Regionen, Cloud, PUE, generativer KI, Tokens oder der Zuverlässigkeit von Modellen.",
+    "Lire la source : ": "Quelle lesen: ",
+  },
+  "zh-CN": {
+    "EXPLORATION SOURCÉE": "基于来源的探索",
+    "Une question. Des sources. Pas d'invention": "提出问题，查阅来源，不作编造。",
+    "Interrogez les dossiers IAeVolution. Ce prototype retrouve des repères éditorialisés et affiche leurs sources — il ne génère pas encore de réponse avec un modèle d'IA.": "查询 IAeVolution 专题。本原型检索经过编辑整理的信息并展示来源，尚未使用人工智能模型生成答案。",
+    "RECHERCHE LOCALE": "本地搜索",
+    "Votre question": "您的问题",
+    "Ex. Combien d'électricité consomment les centres de données ?": "例如：数据中心消耗多少电力？",
+    "Chercher": "搜索",
+    "Exemples de questions": "问题示例",
+    "ESSAYEZ PAR EXEMPLE": "例如",
+    "Consommation électrique": "电力消耗",
+    "Pourquoi la Virginie du Nord ?": "为什么是北弗吉尼亚？",
+    "Entraînement ou inférence ?": "训练还是推理？",
+    "IA générative": "生成式人工智能",
+    "Fiabilité des réponses": "答案的可靠性",
+    "Périmètre actuel : centres de données, infrastructure et premiers repères sur l'IA générative. Si les sources disponibles ne couvrent pas votre question, l'assistant le dira plutôt que de compléter au hasard.": "当前范围：数据中心、基础设施及生成式人工智能入门信息。如果现有来源无法回答您的问题，助手会如实说明，而不会随意补全。",
+    "REPÈRES RETROUVÉS DANS LE CORPUS": "在资料库中找到的信息",
+    "Je n'ai pas trouvé de réponse dans les sources actuellement indexées. Essaie une question sur l'énergie, les régions, le cloud, le PUE, l'IA générative, les tokens ou la fiabilité des modèles.": "当前索引的来源中没有找到答案。您可以询问能源、地区、云计算、PUE、生成式人工智能、词元或模型可靠性。",
+    "Lire la source : ": "阅读来源：",
+  },
+  pt: {
+    "EXPLORATION SOURCÉE": "EXPLORAÇÃO COM FONTES",
+    "Une question. Des sources. Pas d'invention": "Uma pergunta. Fontes. Sem invenções.",
+    "Interrogez les dossiers IAeVolution. Ce prototype retrouve des repères éditorialisés et affiche leurs sources — il ne génère pas encore de réponse avec un modèle d'IA.": "Consulte os dossiês da IAeVolution. Este protótipo encontra informação editorial e apresenta as fontes — ainda não gera respostas com um modelo de IA.",
+    "RECHERCHE LOCALE": "PESQUISA LOCAL",
+    "Votre question": "A sua pergunta",
+    "Ex. Combien d'électricité consomment les centres de données ?": "Ex.: Quanta eletricidade consomem os centros de dados?",
+    "Chercher": "Pesquisar",
+    "Exemples de questions": "Perguntas sugeridas",
+    "ESSAYEZ PAR EXEMPLE": "EXPERIMENTE",
+    "Consommation électrique": "Consumo de eletricidade",
+    "Pourquoi la Virginie du Nord ?": "Porquê o norte da Virgínia?",
+    "Entraînement ou inférence ?": "Treino ou inferência?",
+    "IA générative": "IA generativa",
+    "Fiabilité des réponses": "Fiabilidade das respostas",
+    "Périmètre actuel : centres de données, infrastructure et premiers repères sur l'IA générative. Si les sources disponibles ne couvrent pas votre question, l'assistant le dira plutôt que de compléter au hasard.": "Âmbito atual: centros de dados, infraestrutura e noções iniciais sobre IA generativa. Se as fontes disponíveis não responderem à pergunta, o assistente indicá-lo-á em vez de improvisar.",
+    "REPÈRES RETROUVÉS DANS LE CORPUS": "INFORMAÇÃO ENCONTRADA NO CORPUS",
+    "Je n'ai pas trouvé de réponse dans les sources actuellement indexées. Essaie une question sur l'énergie, les régions, le cloud, le PUE, l'IA générative, les tokens ou la fiabilité des modèles.": "Não encontrei resposta nas fontes indexadas. Experimente perguntar sobre energia, regiões, cloud, PUE, IA generativa, tokens ou fiabilidade dos modelos.",
+    "Lire la source : ": "Ler a fonte: ",
+  },
+  ar: {
+    "EXPLORATION SOURCÉE": "استكشاف موثق بالمصادر",
+    "Une question. Des sources. Pas d'invention": "سؤال. مصادر. بلا اختلاق.",
+    "Interrogez les dossiers IAeVolution. Ce prototype retrouve des repères éditorialisés et affiche leurs sources — il ne génère pas encore de réponse avec un modèle d'IA.": "استكشف ملفات IAeVolution. يعثر هذا النموذج الأولي على معلومات محررة ويعرض مصادرها؛ ولا ينشئ إجابات باستخدام نموذج ذكاء اصطناعي بعد.",
+    "RECHERCHE LOCALE": "بحث محلي",
+    "Votre question": "سؤالك",
+    "Ex. Combien d'électricité consomment les centres de données ?": "مثال: كم تستهلك مراكز البيانات من الكهرباء؟",
+    "Chercher": "بحث",
+    "Exemples de questions": "أسئلة مقترحة",
+    "ESSAYEZ PAR EXEMPLE": "جرّب مثلًا",
+    "Consommation électrique": "استهلاك الكهرباء",
+    "Pourquoi la Virginie du Nord ?": "لماذا شمال فرجينيا؟",
+    "Entraînement ou inférence ?": "التدريب أم الاستدلال؟",
+    "IA générative": "الذكاء الاصطناعي التوليدي",
+    "Fiabilité des réponses": "موثوقية الإجابات",
+    "Périmètre actuel : centres de données, infrastructure et premiers repères sur l'IA générative. Si les sources disponibles ne couvrent pas votre question, l'assistant le dira plutôt que de compléter au hasard.": "النطاق الحالي: مراكز البيانات والبنية التحتية ومبادئ أولية عن الذكاء الاصطناعي التوليدي. إذا لم تتناول المصادر المتاحة سؤالك، فسيخبرك المساعد بذلك بدلًا من التخمين.",
+    "REPÈRES RETROUVÉS DANS LE CORPUS": "معلومات عُثر عليها في المحتوى",
+    "Je n'ai pas trouvé de réponse dans les sources actuellement indexées. Essaie une question sur l'énergie, les régions, le cloud, le PUE, l'IA générative, les tokens ou la fiabilité des modèles.": "لم أعثر على إجابة في المصادر المفهرسة حاليًا. جرّب السؤال عن الطاقة أو المناطق أو السحابة أو PUE أو الذكاء الاصطناعي التوليدي أو الرموز أو موثوقية النماذج.",
+    "Lire la source : ": "اقرأ المصدر: ",
+  },
+  hi: {
+    "EXPLORATION SOURCÉE": "स्रोतों के साथ खोज",
+    "Une question. Des sources. Pas d'invention": "एक सवाल। स्रोत। कोई मनगढ़ंत जवाब नहीं।",
+    "Interrogez les dossiers IAeVolution. Ce prototype retrouve des repères éditorialisés et affiche leurs sources — il ne génère pas encore de réponse avec un modèle d'IA.": "IAeVolution के विषयों में खोजें। यह प्रोटोटाइप संपादकीय रूप से तैयार जानकारी और उसके स्रोत दिखाता है — अभी AI मॉडल से उत्तर नहीं बनाता।",
+    "RECHERCHE LOCALE": "स्थानीय खोज",
+    "Votre question": "आपका सवाल",
+    "Ex. Combien d'électricité consomment les centres de données ?": "उदाहरण: डेटा सेंटर कितनी बिजली इस्तेमाल करते हैं?",
+    "Chercher": "खोजें",
+    "Exemples de questions": "सुझाए गए सवाल",
+    "ESSAYEZ PAR EXEMPLE": "उदाहरण के लिए",
+    "Consommation électrique": "बिजली की खपत",
+    "Pourquoi la Virginie du Nord ?": "उत्तरी वर्जीनिया क्यों?",
+    "Entraînement ou inférence ?": "प्रशिक्षण या अनुमान?",
+    "IA générative": "जनरेटिव AI",
+    "Fiabilité des réponses": "जवाबों की विश्वसनीयता",
+    "Périmètre actuel : centres de données, infrastructure et premiers repères sur l'IA générative. Si les sources disponibles ne couvrent pas votre question, l'assistant le dira plutôt que de compléter au hasard.": "वर्तमान दायरा: डेटा सेंटर, बुनियादी ढाँचा और जनरेटिव AI की शुरुआती जानकारी। उपलब्ध स्रोत आपके सवाल का जवाब न दें तो सहायक अनुमान लगाने के बजाय यह बताएगा।",
+    "REPÈRES RETROUVÉS DANS LE CORPUS": "संग्रह में मिली जानकारी",
+    "Je n'ai pas trouvé de réponse dans les sources actuellement indexées. Essaie une question sur l'énergie, les régions, le cloud, le PUE, l'IA générative, les tokens ou la fiabilité des modèles.": "मौजूदा स्रोतों में जवाब नहीं मिला। ऊर्जा, क्षेत्रों, क्लाउड, PUE, जनरेटिव AI, टोकन या मॉडल की विश्वसनीयता के बारे में पूछें।",
+    "Lire la source : ": "स्रोत पढ़ें: ",
+  },
+  ja: {
+    "EXPLORATION SOURCÉE": "出典に基づく探索",
+    "Une question. Des sources. Pas d'invention": "問い、出典、作り話のない回答。",
+    "Interrogez les dossiers IAeVolution. Ce prototype retrouve des repères éditorialisés et affiche leurs sources — il ne génère pas encore de réponse avec un modèle d'IA.": "IAeVolutionの特集を検索できます。この試作版は編集済みの情報と出典を表示します。AIモデルによる回答生成はまだ行いません。",
+    "RECHERCHE LOCALE": "ローカル検索",
+    "Votre question": "質問",
+    "Ex. Combien d'électricité consomment les centres de données ?": "例：データセンターの電力消費量は？",
+    "Chercher": "検索",
+    "Exemples de questions": "質問例",
+    "ESSAYEZ PAR EXEMPLE": "たとえば",
+    "Consommation électrique": "電力消費",
+    "Pourquoi la Virginie du Nord ?": "なぜ北バージニア？",
+    "Entraînement ou inférence ?": "学習と推論の違いは？",
+    "IA générative": "生成AI",
+    "Fiabilité des réponses": "回答の信頼性",
+    "Périmètre actuel : centres de données, infrastructure et premiers repères sur l'IA générative. Si les sources disponibles ne couvrent pas votre question, l'assistant le dira plutôt que de compléter au hasard.": "現在の対象：データセンター、インフラ、生成AIの基礎情報。資料に回答がない場合、推測で補わず、その旨をお知らせします。",
+    "REPÈRES RETROUVÉS DANS LE CORPUS": "資料内で見つかった情報",
+    "Je n'ai pas trouvé de réponse dans les sources actuellement indexées. Essaie une question sur l'énergie, les régions, le cloud, le PUE, l'IA générative, les tokens ou la fiabilité des modèles.": "現在の資料から回答が見つかりません。エネルギー、地域、クラウド、PUE、生成AI、トークン、モデルの信頼性について質問してみてください。",
+    "Lire la source : ": "出典を読む：",
+  },
+  ru: {
+    "EXPLORATION SOURCÉE": "ИЗУЧЕНИЕ С ИСТОЧНИКАМИ",
+    "Une question. Des sources. Pas d'invention": "Вопрос. Источники. Без выдумок.",
+    "Interrogez les dossiers IAeVolution. Ce prototype retrouve des repères éditorialisés et affiche leurs sources — il ne génère pas encore de réponse avec un modèle d'IA.": "Изучайте материалы IAeVolution. Этот прототип находит подготовленные редакцией сведения и показывает источники — он пока не генерирует ответы с помощью ИИ-модели.",
+    "RECHERCHE LOCALE": "ЛОКАЛЬНЫЙ ПОИСК",
+    "Votre question": "Ваш вопрос",
+    "Ex. Combien d'électricité consomment les centres de données ?": "Например: сколько электроэнергии потребляют центры обработки данных?",
+    "Chercher": "Найти",
+    "Exemples de questions": "Примеры вопросов",
+    "ESSAYEZ PAR EXEMPLE": "НАПРИМЕР",
+    "Consommation électrique": "Потребление электроэнергии",
+    "Pourquoi la Virginie du Nord ?": "Почему Северная Вирджиния?",
+    "Entraînement ou inférence ?": "Обучение или инференс?",
+    "IA générative": "Генеративный ИИ",
+    "Fiabilité des réponses": "Надёжность ответов",
+    "Périmètre actuel : centres de données, infrastructure et premiers repères sur l'IA générative. Si les sources disponibles ne couvrent pas votre question, l'assistant le dira plutôt que de compléter au hasard.": "Сейчас рассматриваются центры обработки данных, инфраструктура и основы генеративного ИИ. Если источники не отвечают на вопрос, ассистент сообщит об этом, а не станет угадывать.",
+    "REPÈRES RETROUVÉS DANS LE CORPUS": "НАЙДЕННЫЕ В КОРПУСЕ СВЕДЕНИЯ",
+    "Je n'ai pas trouvé de réponse dans les sources actuellement indexées. Essaie une question sur l'énergie, les régions, le cloud, le PUE, l'IA générative, les tokens ou la fiabilité des modèles.": "В индексированных источниках ответа нет. Попробуйте спросить об энергии, регионах, облаке, PUE, генеративном ИИ, токенах или надёжности моделей.",
+    "Lire la source : ": "Читать источник: ",
+  },
+  it: {
+    "EXPLORATION SOURCÉE": "ESPLORAZIONE CON FONTI",
+    "Une question. Des sources. Pas d'invention": "Una domanda. Le fonti. Niente invenzioni.",
+    "Interrogez les dossiers IAeVolution. Ce prototype retrouve des repères éditorialisés et affiche leurs sources — il ne génère pas encore de réponse avec un modèle d'IA.": "Consulta i dossier IAeVolution. Questo prototipo trova informazioni curate dalla redazione e ne mostra le fonti — non genera ancora risposte con un modello di IA.",
+    "RECHERCHE LOCALE": "RICERCA LOCALE",
+    "Votre question": "La tua domanda",
+    "Ex. Combien d'électricité consomment les centres de données ?": "Es.: quanta elettricità consumano i centri dati?",
+    "Chercher": "Cerca",
+    "Exemples de questions": "Domande suggerite",
+    "ESSAYEZ PAR EXEMPLE": "PROVA, AD ESEMPIO",
+    "Consommation électrique": "Consumo elettrico",
+    "Pourquoi la Virginie du Nord ?": "Perché la Virginia del Nord?",
+    "Entraînement ou inférence ?": "Addestramento o inferenza?",
+    "IA générative": "IA generativa",
+    "Fiabilité des réponses": "Affidabilità delle risposte",
+    "Périmètre actuel : centres de données, infrastructure et premiers repères sur l'IA générative. Si les sources disponibles ne couvrent pas votre question, l'assistant le dira plutôt que de compléter au hasard.": "Ambito attuale: centri dati, infrastrutture e nozioni introduttive sull'IA generativa. Se le fonti disponibili non rispondono alla domanda, l'assistente lo dirà invece di inventare.",
+    "REPÈRES RETROUVÉS DANS LE CORPUS": "INFORMAZIONI TROVATE NEL CORPUS",
+    "Je n'ai pas trouvé de réponse dans les sources actuellement indexées. Essaie une question sur l'énergie, les régions, le cloud, le PUE, l'IA générative, les tokens ou la fiabilité des modèles.": "Non ho trovato una risposta nelle fonti indicizzate. Prova a chiedere di energia, regioni, cloud, PUE, IA generativa, token o affidabilità dei modelli.",
+    "Lire la source : ": "Leggi la fonte: ",
+  },
+};
+
+for (const [language, translations] of Object.entries(assistantSectionTranslations)) {
+  Object.assign(dictionaries[language], translations);
+}
+
+for (const [language, translations] of Object.entries(topicCardTranslations)) {
+  Object.assign(dictionaries[language], translations);
+}
+
+for (const [language, translations] of Object.entries(topicSectionTranslations)) {
+  Object.assign(dictionaries[language], translations);
+}
+
+const languageSelect = document.querySelector("#language-select");
+const records = new WeakMap();
+let locale = "fr";
+
+function lookup(value, language = locale) {
+  const catalog = dictionaries[language];
+  if (catalog?.[value] !== undefined) return catalog[value];
+  const dossierPrefix = "Ouvrir le dossier : ";
+  if (value.startsWith(dossierPrefix)) {
+    const translatedPrefix = {
+      en: "Open dossier: ",
+      es: "Abrir dossier: ",
+      nl: "Dossier openen: ",
+      de: "Dossier öffnen: ",
+      "zh-CN": "打开专题：",
+      pt: "Abrir dossiê: ",
+      ar: "افتح الملف: ",
+      hi: "विषय खोलें: ",
+      ja: "テーマを開く：",
+      ru: "Открыть тему: ",
+      it: "Apri dossier: ",
+    }[language];
+    if (translatedPrefix) return `${translatedPrefix}${lookup(value.slice(dossierPrefix.length), language)}`;
+  }
+  return value;
+}
+
+function lookupText(value, language = locale) {
+  const match = value.match(/^(\s*)([\s\S]*?)(\s*)$/);
+  if (!match) return lookup(value, language);
+  const [, leading, text, trailing] = match;
+  return `${leading}${lookup(text, language)}${trailing}`;
+}
+
+function setNodeValue(node, value, record) {
+  if (node.nodeValue === value) return;
+  record.translated = value;
+  node.nodeValue = value;
+}
+
+function setAttributeValue(element, attribute, value, record) {
+  if (element.getAttribute(attribute) !== value) element.setAttribute(attribute, value);
+  record.translated = value;
+}
+
+function translateNode(node) {
+  if (!node.nodeValue?.trim()) return;
+  const parent = node.parentElement;
+  if (!parent || parent.closest("script, style, noscript, template, [aria-hidden='true'], [data-no-translate], .brand")) return;
+  let record = records.get(node);
+  if (!record) {
+    record = { source: node.nodeValue };
+    records.set(node, record);
+  } else if (node.nodeValue !== record.translated && node.nodeValue !== record.source) {
+    record.source = node.nodeValue;
+  }
+  if (locale === "fr") {
+    setNodeValue(node, record.source, record);
+    return;
+  }
+  const localTranslation = lookupText(record.source);
+  if (localTranslation !== record.source) {
+    setNodeValue(node, localTranslation, record);
+    return;
+  }
+  setNodeValue(node, record.source, record);
+}
+
+const attributes = ["aria-label", "title", "placeholder", "alt", "data-assistant-prompt"];
+
+function translateAttribute(element, attribute) {
+  const value = element.getAttribute(attribute);
+  if (!value) return;
+  let elementRecords = records.get(element);
+  if (!elementRecords) {
+    elementRecords = new Map();
+    records.set(element, elementRecords);
+  }
+  let record = elementRecords.get(attribute);
+  if (!record) {
+    record = { source: value };
+    elementRecords.set(attribute, record);
+  } else if (value !== record.translated && value !== record.source) {
+    record.source = value;
+  }
+  if (locale === "fr") {
+    setAttributeValue(element, attribute, record.source, record);
+    return;
+  }
+  const localTranslation = lookup(record.source);
+  if (localTranslation !== record.source) {
+    setAttributeValue(element, attribute, localTranslation, record);
+    return;
+  }
+  setAttributeValue(element, attribute, record.source, record);
+}
+
+function scan(root, includeRoot = false) {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  let node;
+  while ((node = walker.nextNode())) translateNode(node);
+  if (root instanceof Element || root instanceof Document) {
+    const elements = root instanceof Element
+      ? [root, ...root.querySelectorAll("*")]
+      : [...root.querySelectorAll("*")];
+    if (!includeRoot && root instanceof Element) elements.shift();
+    for (const element of elements) {
+      for (const attribute of attributes) translateAttribute(element, attribute);
+    }
+  }
+}
+
+function setLanguage(nextLocale) {
+  if (!languages[nextLocale]) return;
+  locale = nextLocale;
+  document.documentElement.lang = nextLocale;
+  document.documentElement.dir = languages[nextLocale].direction;
+  languageSelect.value = nextLocale;
+  try {
+    localStorage.setItem("iaevolution:locale", nextLocale);
+  } catch {
+    // Language selection remains available for the current page.
+  }
+  scan(document.body);
+  document.dispatchEvent(new CustomEvent("iaevolution:languagechange", { detail: { locale: nextLocale } }));
+}
+
+export function translateToFrench(text) {
+  const query = text.trim();
+  if (locale === "fr" || !query) return Promise.resolve(query);
+  const sourceLocale = locale;
+  const reverseDictionary = Object.fromEntries(
+    Object.entries(dictionaries[sourceLocale]).map(([source, translated]) => [translated.toLocaleLowerCase(), source]),
+  );
+  const localTranslation = reverseDictionary[query.toLocaleLowerCase()];
+  if (localTranslation) return Promise.resolve(localTranslation);
+  return Promise.resolve(query);
+}
+
+export function getLocalizedText(text, target = locale) {
+  return lookup(text, target);
+}
+
+export function translateText(text, target = locale, source = "fr") {
+  if (source === "fr") {
+    return Promise.resolve(getLocalizedText(text, target));
+  }
+  const reverseDictionary = Object.fromEntries(
+    Object.entries(dictionaries[target] ?? {}).map(([original, translated]) => [translated, original]),
+  );
+  const localTranslation = reverseDictionary[text];
+  return Promise.resolve(localTranslation || text);
+}
+
+export function initializeTranslation() {
+  if (!languageSelect || languageSelect.dataset.translationInitialized === "true") return;
+  languageSelect.dataset.translationInitialized = "true";
+  scan(document.body);
+  const observer = new MutationObserver((mutations) => {
+    for (const mutation of mutations) {
+      if (mutation.type === "characterData") translateNode(mutation.target);
+      else if (mutation.type === "childList") {
+        mutation.addedNodes.forEach((node) => {
+          if (node.nodeType === Node.TEXT_NODE) translateNode(node);
+          else if (node instanceof Element) scan(node, true);
+        });
+      } else if (mutation.type === "attributes") {
+        translateAttribute(mutation.target, mutation.attributeName);
+      }
+    }
+  });
+  observer.observe(document.body, {
+    subtree: true,
+    childList: true,
+    characterData: true,
+    attributes: true,
+    attributeFilter: attributes,
+  });
+  languageSelect.addEventListener("change", () => setLanguage(languageSelect.value));
+
+  let savedLocale = "fr";
+  try {
+    if (languages[localStorage.getItem("iaevolution:locale")]) savedLocale = localStorage.getItem("iaevolution:locale");
+  } catch {
+    // French remains the default when browser storage is unavailable.
+  }
+  locale = savedLocale;
+  languageSelect.value = savedLocale;
+  document.documentElement.lang = savedLocale;
+  document.documentElement.dir = languages[savedLocale].direction;
+  scan(document.body, true);
+}

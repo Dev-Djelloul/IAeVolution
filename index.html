@@ -1,0 +1,1000 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#10151d">
+    <meta name="description" content="Explorez l'intelligence artificielle à travers ses infrastructures, ses réseaux, ses robots et des contenus sourcés.">
+    <title>IAeVolution — Comprendre l'IA qui change</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="app.js"></script>
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="IAeVolution, accueil">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>IA<span class="brand-accent">e</span>Volution</span>
+      </a>
+      <nav class="main-nav" aria-label="Navigation principale">
+        <a class="nav-link is-active" href="#boussole">Notre boussole</a>
+        <a class="nav-link" href="#explorer">Explorer</a>
+        <a class="nav-link" href="#sources">Sources</a>
+      </nav>
+      <div class="language-control">
+        <label for="language-select">Langue</label>
+        <select id="language-select" aria-label="Langue d’affichage">
+          <option value="fr">Français</option>
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="nl">Nederlands</option>
+          <option value="de">Deutsch</option>
+          <option value="zh-CN">中文</option>
+          <option value="pt">Português</option>
+          <option value="ar">العربية</option>
+          <option value="hi">हिन्दी</option>
+          <option value="ja">日本語</option>
+          <option value="ru">Русский</option>
+          <option value="it">Italiano</option>
+        </select>
+      </div>
+      <a class="header-link" href="reseaux-mondiaux.html">Réseaux mondiaux <span aria-hidden="true">↗</span></a>
+    </header>
+    <main id="contenu">
+      <section class="compass-section" id="boussole" aria-labelledby="compass-title">
+        <div class="compass-cover">
+          <svg class="compass-wave-field" viewBox="0 0 1600 740" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="signal-cyan" x1="0" x2="1">
+                <stop offset="0" stop-color="#59c8c3" stop-opacity="0"></stop>
+                <stop offset=".38" stop-color="#70e2d3" stop-opacity=".85"></stop>
+                <stop offset=".72" stop-color="#6e9cce" stop-opacity=".7"></stop>
+                <stop offset="1" stop-color="#6e9cce" stop-opacity="0"></stop>
+              </linearGradient>
+              <linearGradient id="signal-amber" x1="0" x2="1">
+                <stop offset="0" stop-color="#e28d68" stop-opacity="0"></stop>
+                <stop offset=".45" stop-color="#efb074" stop-opacity=".8"></stop>
+                <stop offset=".75" stop-color="#e98d8e" stop-opacity=".72"></stop>
+                <stop offset="1" stop-color="#e98d8e" stop-opacity="0"></stop>
+              </linearGradient>
+              <linearGradient id="signal-violet" x1="0" x2="1">
+                <stop offset="0" stop-color="#7897d0" stop-opacity="0"></stop>
+                <stop offset=".5" stop-color="#9b9ce2" stop-opacity=".62"></stop>
+                <stop offset="1" stop-color="#d17ca3" stop-opacity="0"></stop>
+              </linearGradient>
+              <radialGradient id="signal-aura">
+                <stop offset="0" stop-color="#4fa69d" stop-opacity=".17"></stop>
+                <stop offset="1" stop-color="#09121c" stop-opacity="0"></stop>
+              </radialGradient>
+            </defs>
+            <ellipse class="signal-aura" cx="840" cy="370" rx="850" ry="420"></ellipse>
+            <g class="signal-traces">
+              <path d="M95 205V590M183 132V564M326 164V634M520 82V543M691 129V607M880 75V560M1094 144V622M1264 87V550M1458 146V603"></path>
+              <path d="M249 246V634M437 96V460M772 81V503M1010 119V662M1171 61V500M1371 184V664M1530 110V505"></path>
+            </g>
+            <g class="signal-lines signal-lines-cyan">
+              <path d="M-100 405C125 279 202 319 350 383S565 497 720 364 945 230 1112 356 1374 505 1700 281"></path>
+              <path d="M-100 431C122 301 212 343 365 404S567 515 734 386 950 253 1127 378 1398 526 1700 308"></path>
+              <path d="M-100 457C119 325 225 369 380 426S582 538 748 411 963 278 1144 400 1420 548 1700 336"></path>
+              <path d="M-100 483C116 350 237 393 393 450S594 560 763 438 982 304 1160 425 1440 571 1700 364"></path>
+              <path d="M-100 509C114 376 246 418 407 474S610 584 780 464 1001 331 1179 450 1463 594 1700 392"></path>
+              <path d="M-100 535C112 403 258 442 423 500S624 609 799 489 1021 358 1200 475 1486 618 1700 420"></path>
+              <path d="M-100 561C111 429 270 469 438 526S643 634 820 515 1041 384 1220 500 1510 642 1700 448"></path>
+            </g>
+            <g class="signal-lines signal-lines-amber">
+              <path d="M-100 465C104 533 235 465 373 355S580 258 716 453 923 631 1077 478 1300 301 1450 376 1605 430 1700 381"></path>
+              <path d="M-100 493C112 560 247 492 389 382S597 285 737 479 939 652 1096 505 1316 330 1468 403 1617 455 1700 409"></path>
+              <path d="M-100 521C120 589 260 520 405 409S614 311 758 505 958 678 1115 533 1334 359 1486 432 1631 484 1700 437"></path>
+              <path d="M-100 549C129 617 273 547 422 436S633 338 779 531 978 702 1135 562 1352 389 1504 461 1643 513 1700 465"></path>
+              <path d="M-100 577C137 645 286 575 439 463S649 365 800 557 998 726 1153 590 1370 418 1522 490 1656 541 1700 493"></path>
+            </g>
+            <g class="signal-lines signal-lines-violet">
+              <path d="M-100 351C110 245 222 286 391 352S604 461 752 334 981 214 1156 329 1415 460 1700 250"></path>
+              <path d="M-100 380C115 271 232 314 404 379S617 487 770 362 998 242 1174 356 1434 488 1700 278"></path>
+              <path d="M-100 594C133 464 290 506 460 558S664 661 837 541 1061 411 1241 526 1525 670 1700 475"></path>
+              <path d="M-100 622C145 492 304 533 478 585S686 687 857 568 1084 439 1263 554 1548 697 1700 505"></path>
+            </g>
+            <g class="signal-particles">
+              <circle cx="132" cy="307" r="3"></circle><circle cx="277" cy="423" r="2.5"></circle>
+              <circle cx="459" cy="270" r="3"></circle><circle cx="617" cy="509" r="2.5"></circle>
+              <circle cx="804" cy="331" r="3.5"></circle><circle cx="972" cy="590" r="2.5"></circle>
+              <circle cx="1115" cy="293" r="3"></circle><circle cx="1295" cy="465" r="2.5"></circle>
+              <circle cx="1480" cy="340" r="3"></circle>
+            </g>
+          </svg>
+          <div class="compass-cover-topline">
+            <span>IAeVOLUTION <span class="compass-separator">·</span> Observatoire de l’IA</span>
+            <span>5 axes <i></i> 7 dossiers</span>
+          </div>
+          <div class="compass-cover-content">
+            <p class="eyebrow">Comprendre l’IA au-delà des modèles</p>
+            <h2 id="compass-title">Lire l’IA<br> <span>en mouvement</span></h2>
+            <p>Des modèles aux infrastructures, de la recherche aux usages : cinq angles pour comprendre ce qui change et ce qui le rend possible.</p>
+            <div class="compass-cover-actions">
+              <a class="compass-primary-link" href="#compass-routes">Explorer les cinq axes <span aria-hidden="true">↓</span></a>
+              <a class="compass-secondary-link" href="#explorer">Voir les sept dossiers <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <div class="compass-mark" aria-hidden="true">
+            <span class="compass-ring compass-ring-outer"></span>
+            <span class="compass-ring compass-ring-inner"></span>
+            <span class="compass-needle"></span>
+          </div>
+          <span class="compass-cover-coordinate">Science · énergie · société</span>
+        </div>
+
+        <div class="compass-section-body">
+        <div class="compass-body-heading">
+          <p class="eyebrow">Cinq axes · sept dossiers</p>
+          <h3>Choisissez votre angle d’entrée</h3>
+        </div>
+        <div class="compass-routes" id="compass-routes" aria-label="Axes d'exploration">
+          <a class="compass-route" href="#dossier-ia-generative">
+            <span class="compass-route-index">01 <span>/ SCIENCE</span></span>
+            <span class="compass-route-title">Comment ça fonctionne ?</span>
+            <span class="compass-route-copy">Modèles, génération, agents, entraînement et inférence.</span>
+            <span class="compass-route-link">Explorer les modèles <span aria-hidden="true">↗</span></span>
+          </a>
+          <a class="compass-route" href="#dossier-data-centres">
+            <span class="compass-route-index">02 <span>/ INFRASTRUCTURE</span></span>
+            <span class="compass-route-title">Sur quoi repose l’IA ?</span>
+            <span class="compass-route-copy">Puces, centres de données, énergie, refroidissement et réseaux.</span>
+            <span class="compass-route-link">Voir l’infrastructure <span aria-hidden="true">↗</span></span>
+          </a>
+          <a class="compass-route" href="#dossier-data-centres" data-compass-tab="tab-histoire">
+            <span class="compass-route-index">03 <span>/ HISTOIRE</span></span>
+            <span class="compass-route-title">Quelles ruptures l’ont façonnée ?</span>
+            <span class="compass-route-copy">Des machines de calcul aux architectures et usages actuels.</span>
+            <span class="compass-route-link">Parcourir les jalons <span aria-hidden="true">↗</span></span>
+          </a>
+          <a class="compass-route" href="#dossier-data-centres" data-compass-tab="tab-economie">
+            <span class="compass-route-index">04 <span>/ ÉCONOMIE</span></span>
+            <span class="compass-route-title">Qui investit et capte la valeur ?</span>
+            <span class="compass-route-copy">Chaîne de valeur, coûts du calcul, marchés et concentration.</span>
+            <span class="compass-route-link">Analyser les marchés <span aria-hidden="true">↗</span></span>
+          </a>
+          <a class="compass-route" href="#dossier-ia-responsable">
+            <span class="compass-route-index">05 <span>/ SOCIÉTÉ</span></span>
+            <span class="compass-route-title">Quels effets et quelles limites ?</span>
+            <span class="compass-route-copy">Usages, travail, fiabilité, risques et gouvernance.</span>
+            <span class="compass-route-link">Examiner les impacts <span aria-hidden="true">↗</span></span>
+          </a>
+        </div>
+
+        <div class="compass-method">
+          <div class="compass-method-heading">
+            <p class="eyebrow">LIRE LES AFFIRMATIONS</p>
+            <h3>Un chiffre n’est pas un scénario. Un scénario n’est pas un fait</h3>
+            <p>Les dossiers distinguent la nature des éléments avancés et renvoient aux sources pour permettre leur vérification.</p>
+          </div>
+          <div class="evidence-grid">
+            <article class="evidence-type"><span class="evidence-symbol evidence-measured" aria-hidden="true">●</span><div><h4>Mesure</h4><p>Observation publiée, liée à une période, un périmètre et une méthode.</p></div></article>
+            <article class="evidence-type"><span class="evidence-symbol evidence-estimate" aria-hidden="true">◉</span><div><h4>Estimation</h4><p>Valeur calculée lorsque la mesure directe ou complète n’est pas disponible.</p></div></article>
+            <article class="evidence-type"><span class="evidence-symbol evidence-projection" aria-hidden="true">↗</span><div><h4>Projection</h4><p>Trajectoire conditionnelle à des hypothèses ; elle ne décrit pas un résultat acquis.</p></div></article>
+            <article class="evidence-type"><span class="evidence-symbol evidence-analysis" aria-hidden="true">◇</span><div><h4>Analyse</h4><p>Interprétation ou synthèse, à distinguer des données et des résultats originaux.</p></div></article>
+          </div>
+          <a class="compass-sources-link" href="#sources">Consulter le registre des sources et la méthode éditoriale <span aria-hidden="true">↗</span></a>
+        </div>
+        </div>
+      </section>
+
+      <section class="hero" aria-labelledby="hero-title" data-exploration="closed">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="status-dot"></span> PARCOURS VISUEL <span class="dossier-separator">/</span> INFRASTRUCTURE</p>
+          <h1 id="hero-title">L’IA, du courant<br><span>au calcul</span></h1>
+          <p class="hero-description">Une visite courte pour suivre le trajet de l’électricité jusqu’aux machines et à leur refroidissement.</p>
+        </div>
+        <div class="act-one-layout">
+          <section class="act-player" aria-labelledby="act-step-title" data-tour-state="ready">
+            <div class="act-player-topline">
+              <p class="act-label">01 <span>/</span> LA MATIÈRE</p>
+              <span class="act-duration">≈ 1 MIN</span>
+            </div>
+            <nav class="act-steps" aria-label="Étapes de l'acte 1">
+              <button class="act-step is-current" type="button" data-tour-step="0" aria-current="step">
+                <span>01</span><span>Électricité</span>
+              </button>
+              <button class="act-step" type="button" data-tour-step="1">
+                <span>02</span><span>Machines</span>
+              </button>
+              <button class="act-step" type="button" data-tour-step="2">
+                <span>03</span><span>Chaleur</span>
+              </button>
+            </nav>
+            <div class="act-copy" aria-live="polite" aria-atomic="true">
+              <p class="act-step-kicker" id="act-step-kicker">ÉTAPE 1 / 3 · ÉLECTRICITÉ</p>
+              <h2 id="act-step-title">Tout commence par le courant</h2>
+              <p class="act-step-summary" id="act-step-summary">Avant de produire une réponse, une IA a besoin de machines alimentées en électricité.</p>
+              <div class="act-fact">
+                <strong id="act-fact-value">≈ 415 TWh</strong>
+                <span id="act-fact-note">d'électricité consommés par les centres de données dans le monde en 2024 — pas par l'IA seule.</span>
+              </div>
+            </div>
+            <div class="act-narration">
+              <span class="act-narration-icon" aria-hidden="true">◖</span>
+              <p id="act-narration-text">« Une réponse d'IA semble immatérielle. Pourtant, avant même l'écran, il faut alimenter des machines. »</p>
+            </div>
+            <div class="act-controls" role="group" aria-label="Commandes de la visite">
+              <button class="button button-primary act-start" type="button" data-tour-start>Lancer la visite <span aria-hidden="true">▶</span></button>
+              <button class="act-voice is-enabled" type="button" data-tour-voice aria-pressed="true">Voix activée</button>
+              <button class="act-control" type="button" data-tour-previous aria-label="Revenir à l'étape précédente" disabled hidden>←</button>
+              <button class="act-control act-pause" type="button" data-tour-pause hidden>Pause</button>
+              <button class="act-control" type="button" data-tour-next aria-label="Passer à l'étape suivante" hidden>→</button>
+              <button class="act-control act-stop" type="button" data-tour-stop hidden>Arrêter</button>
+            </div>
+            <p class="act-status" data-tour-status role="status">Prêt à commencer · la voix de synthèse du navigateur accompagnera la visite.</p>
+            <a class="act-source" id="act-source" href="https://www.iea.org/reports/energy-and-ai" target="_blank" rel="noopener noreferrer">Source : AIE · Energy and AI ↗</a>
+            <a class="act-explore-link" data-tour-dossier href="#dossier-data-centres" hidden>Lire le dossier complet <span aria-hidden="true">↗</span></a>
+          </section>
+          <div class="hero-visual" id="visual-experience" data-active-scene="infrastructure" data-robot-zone="perception" data-tour-state="ready" data-story-beat="energy">
+          <div class="scene-canvas">
+            <svg class="scene-art" viewBox="0 0 560 520" aria-hidden="true" focusable="false">
+              <defs>
+                <linearGradient id="scene-glow" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0" stop-color="#c5f36b" stop-opacity=".72"></stop>
+                  <stop offset="1" stop-color="#48b9a0" stop-opacity=".08"></stop>
+                </linearGradient>
+                <linearGradient id="rack-front" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0" stop-color="#34463f"></stop>
+                  <stop offset="1" stop-color="#17221f"></stop>
+                </linearGradient>
+                <linearGradient id="robot-shell" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0" stop-color="#526d68"></stop>
+                  <stop offset=".48" stop-color="#304844"></stop>
+                  <stop offset="1" stop-color="#1d302f"></stop>
+                </linearGradient>
+                <linearGradient id="robot-limb" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0" stop-color="#59776e"></stop>
+                  <stop offset=".55" stop-color="#344d49"></stop>
+                  <stop offset="1" stop-color="#203534"></stop>
+                </linearGradient>
+                <linearGradient id="robot-visor" x1="0" x2="1">
+                  <stop offset="0" stop-color="#153432"></stop>
+                  <stop offset=".5" stop-color="#255d52"></stop>
+                  <stop offset="1" stop-color="#172d30"></stop>
+                </linearGradient>
+                <filter id="soft-glow" x="-100%" y="-100%" width="300%" height="300%">
+                  <feGaussianBlur stdDeviation="8"></feGaussianBlur>
+                </filter>
+              </defs>
+              <g class="scene-grid">
+                <path d="M280 70 500 190 280 310 60 190 280 70Z"></path>
+                <path d="m60 190 220 120 220-120M100 168l220 120m20-142 180 98M140 146l220 120m20-142 140 76M180 124l220 120m20-142 100 54M220 102l220 120m20-142 60 32M60 190v145l220 120V310m220-120v145L280 455"></path>
+                <path d="m100 212 220 120m180-98L280 354m-140-186v145m180-31V77m40 120v145m40-167v145m40-167v145m40-167v145"></path>
+              </g>
+              <ellipse class="scene-halo" cx="284" cy="280" rx="170" ry="108"></ellipse>
+              <g class="scene-layer" data-visual-scene="infrastructure">
+                <path class="scene-shadow" d="m100 316 182-99 180 98-183 101-179-100Z"></path>
+                <path class="scene-platform" d="m108 290 174-96 173 96-174 97-173-97Z"></path>
+                <path class="scene-platform-edge" d="M108 290v23l173 98v-24L108 290Zm347 0v23l-174 98v-24l174-97Z"></path>
+                <g class="server-building">
+                  <path class="building-side" d="m282 132 99 54v145l-99-55V132Z"></path>
+                  <path class="building-front" d="m189 186 93-54v144l-93 54V186Z"></path>
+                  <path class="building-roof" d="m189 186 93-54 99 54-99 55-93-55Z"></path>
+                  <path class="building-glass" d="m202 190 80-46v124l-80 47V190Z"></path>
+                  <path class="building-side-glass" d="m292 146 77 42v124l-77-43V146Z"></path>
+                  <path class="building-seam" d="m282 241 99-55m-99 79 99-55m-99 79 99-55"></path>
+                  <path class="building-seam" d="m209 207 67-39m-67 66 67-39m-67 65 67-39"></path>
+                  <path class="scene-highlight" d="m189 186 93-54 99 54-99 55-93-55Z"></path>
+                </g>
+                <g class="rack-group">
+                  <path class="rack-side" d="m130 291 16-9v53l-16 9v-53Z"></path>
+                  <path class="rack-front" d="m105 277 25 14v53l-25-14v-53Z"></path>
+                  <path class="rack-top" d="m105 277 17-10 24 15-16 9-25-14Z"></path>
+                  <path class="rack-lights" d="m111 290 13 7m-13 8 13 7m-13 8 13 7"></path>
+                  <path class="rack-side" d="m174 316 16-9v53l-16 9v-53Z"></path>
+                  <path class="rack-front" d="m149 302 25 14v53l-25-14v-53Z"></path>
+                  <path class="rack-top" d="m149 302 17-10 24 15-16 9-25-14Z"></path>
+                  <path class="rack-lights" d="m155 315 13 7m-13 8 13 7m-13 8 13 7"></path>
+                  <path class="rack-side" d="m365 313 16-9v53l-16 9v-53Z"></path>
+                  <path class="rack-front" d="m340 299 25 14v53l-25-14v-53Z"></path>
+                  <path class="rack-top" d="m340 299 17-10 24 15-16 9-25-14Z"></path>
+                  <path class="rack-lights" d="m346 312 13 7m-13 8 13 7m-13 8 13 7"></path>
+                  <path class="rack-side" d="m409 289 16-9v53l-16 9v-53Z"></path>
+                  <path class="rack-front" d="m384 275 25 14v53l-25-14v-53Z"></path>
+                  <path class="rack-top" d="m384 275 17-10 24 15-16 9-25-14Z"></path>
+                  <path class="rack-lights" d="m390 288 13 7m-13 8 13 7m-13 8 13 7"></path>
+                </g>
+                <circle class="scene-node node-pulse" cx="280" cy="123" r="4"></circle>
+                <path class="scene-connector" d="m280 123 47-39"></path>
+              </g>
+              <g class="scene-layer" data-visual-scene="robotique">
+                <path class="robot-sensor-ring" d="M234 235a48 35 0 1 0 96 0 48 35 0 1 0-96 0Zm-10-2a58 43 0 1 0 116 0 58 43 0 1 0-116 0Z"></path>
+                <path class="scene-shadow" d="m152 368 133-74 162 88-134 74-161-88Z"></path>
+                <path class="scene-platform" d="m152 342 133-74 161 88-133 74-161-88Z"></path>
+                <path class="scene-platform-edge" d="M152 342v20l161 88v-20l-161-88Zm294 14v20l-133 74v-20l133-74Z"></path>
+                <ellipse class="robot-ground-shadow" cx="281" cy="428" rx="73" ry="25"></ellipse>
+                <g class="robot-motion">
+                <path class="robot-cable" d="M281 272v-17m0 0c0-12 11-19 23-16"></path>
+                <g class="robot-legs">
+                  <path class="robot-leg" d="m265 344-22 37 7 39"></path>
+                  <path class="robot-leg-highlight" d="m265 344-22 37 7 39"></path>
+                  <path class="robot-leg" d="m292 346 26 34-8 39"></path>
+                  <path class="robot-leg-highlight" d="m292 346 26 34-8 39"></path>
+                  <path class="robot-boot" d="m250 409 10 3 4 16-31 12-16-4 4-8 24-14 5-5Z"></path>
+                  <path class="robot-boot" d="m309 409 10 1 11 15 25 12 2 8-35-2-16-18 3-16Z"></path>
+                  <path class="robot-joint" d="M231 375a12 12 0 1 0 24 0 12 12 0 1 0-24 0Zm75 5a12 12 0 1 0 24 0 12 12 0 1 0-24 0Z"></path>
+                  <circle class="robot-joint-core" cx="243" cy="375" r="4"></circle>
+                  <circle class="robot-joint-core" cx="318" cy="380" r="4"></circle>
+                </g>
+                <g class="robot-arms">
+                  <path class="robot-arm" d="m239 284-22 30 11 26 18 11"></path>
+                  <path class="robot-arm-highlight" d="m239 284-22 30 11 26 18 11"></path>
+                  <path class="robot-arm" d="m310 284 28 24-8 29-18 14"></path>
+                  <path class="robot-arm-highlight" d="m310 284 28 24-8 29-18 14"></path>
+                  <circle class="robot-joint" cx="221" cy="315" r="11"></circle>
+                  <circle class="robot-joint" cx="333" cy="309" r="11"></circle>
+                  <circle class="robot-joint" cx="228" cy="341" r="9"></circle>
+                  <circle class="robot-joint" cx="330" cy="337" r="9"></circle>
+                  <circle class="robot-joint-core" cx="221" cy="315" r="3.5"></circle>
+                  <circle class="robot-joint-core" cx="333" cy="309" r="3.5"></circle>
+                  <path class="robot-hand" d="m245 351-5 13-9 4m9-4 5 8m87-35 10 4 7 11m-17-15 13-5 8 7"></path>
+                </g>
+                <path class="robot-torso" d="m248 273 16-8 31 4 21 14-7 48-17 20-36-5-22-23 3-35 11-15Z"></path>
+                <path class="robot-chest" d="m255 285 46 5-5 23-40-5-1-23Z"></path>
+                <path class="robot-chest-line" d="m260 291 34 4m-31 8 28 4"></path>
+                <path class="robot-badge" d="m276 321 9-5 9 7-8 8-10-3v-7Z"></path>
+                <circle class="robot-shoulder" cx="242" cy="282" r="12"></circle>
+                <circle class="robot-shoulder" cx="311" cy="284" r="12"></circle>
+                <path class="robot-neck" d="m267 254 27 3 4 18-30-3-1-18Z"></path>
+                <g class="robot-head-motion">
+                <path class="robot-head" d="m255 214 9-13 34 3 15 14-3 35-12 10-35-5-12-17 4-27Z"></path>
+                <path class="robot-ear" d="m253 224-7 2-2 14 9 3m61-13 8 2 2 13-9 2"></path>
+                <path class="robot-face" d="m257 222 45 5-2 18-41-5-2-18Z"></path>
+                <path class="robot-visor" d="m261 226 37 4-1 10-34-4-2-10Z"></path>
+                <circle class="robot-eye" cx="272" cy="232" r="2.6"></circle>
+                <circle class="robot-eye" cx="289" cy="234" r="2.6"></circle>
+                <path class="robot-head-detail" d="m271 207 18 2m-25 44 28 4"></path>
+                </g>
+                <circle class="scene-node node-pulse" cx="294" cy="204" r="4"></circle>
+                <path class="scene-connector" d="m294 204 42-29"></path>
+                </g>
+              </g>
+              <g class="scene-layer" data-visual-scene="reseaux">
+                <path class="scene-shadow" d="m89 353 191-105 195 107-193 107-193-109Z"></path>
+                <path class="scene-platform" d="m89 328 191-105 195 107-193 107-193-109Z"></path>
+                <path class="scene-platform-edge" d="M89 328v25l193 109v-25L89 328Zm386 2v25L282 462v-25l193-107Z"></path>
+                <path class="network-link" d="m157 302 68-71 62 25 54-66 69 50 34-12m-287 74 67 36 79-45 53 64 76-41m-195-124 6 134 95-60 56 95 57-141m-214 44 168 27"></path>
+                <g class="network-node">
+                  <circle cx="157" cy="302" r="8"></circle><circle cx="225" cy="231" r="7"></circle>
+                  <circle cx="287" cy="256" r="10"></circle><circle cx="341" cy="190" r="7"></circle>
+                  <circle cx="410" cy="240" r="9"></circle><circle cx="444" cy="228" r="6"></circle>
+                  <circle cx="224" cy="338" r="6"></circle><circle cx="303" cy="293" r="8"></circle>
+                  <circle cx="356" cy="357" r="7"></circle><circle cx="432" cy="316" r="8"></circle>
+                  <circle cx="163" cy="258" r="5"></circle><circle cx="388" cy="275" r="5"></circle>
+                </g>
+                <circle class="scene-node node-pulse" cx="287" cy="256" r="16"></circle>
+              </g>
+              <g class="scene-label" transform="translate(326 60)">
+                <rect width="143" height="34" rx="3"></rect>
+                <circle cx="15" cy="17" r="3"></circle>
+                <text x="26" y="21">SYSTÈME EN ÉVOLUTION</text>
+              </g>
+            </svg>
+            <div class="robot-hotspots" role="group" aria-label="Explorer les fonctions du robot">
+              <button class="robot-hotspot robot-hotspot-perception is-active" type="button" data-robot-zone="perception" aria-pressed="true" aria-label="01 Perception, capteurs et environnement">01</button>
+              <button class="robot-hotspot robot-hotspot-control" type="button" data-robot-zone="control" aria-pressed="false" aria-label="02 Décision et contrôle">02</button>
+              <button class="robot-hotspot robot-hotspot-action" type="button" data-robot-zone="action" aria-pressed="false" aria-label="03 Action et mouvement">03</button>
+              <button class="robot-hotspot robot-hotspot-safety" type="button" data-robot-zone="safety" aria-pressed="false" aria-label="04 Sécurité et environnement humain">04</button>
+            </div>
+            <div class="datacenter-scene" id="datacenter-scene">
+              <div class="datacenter-stage" role="group" tabindex="0" inert aria-hidden="true" aria-label="Maquette 3D d'un centre de données. Utilisez les flèches gauche et droite pour tourner, et la touche Début pour réinitialiser.">
+                <div class="datacenter-world" id="datacenter-world" data-zone="energy">
+                  <div class="facility-ground"></div>
+                  <div class="facility facility-platform">
+                    <div class="cuboid" style="--box-width: 430px; --box-height: 14px; --box-depth: 274px; --box-half-width: 215px; --box-half-height: 7px; --box-half-depth: 137px;">
+                      <i class="face front"></i><i class="face back"></i><i class="face right"></i><i class="face left"></i><i class="face top"></i><i class="face bottom"></i>
+                    </div>
+                  </div>
+                  <div class="facility facility-hall">
+                    <div class="cuboid" style="--box-width: 246px; --box-height: 110px; --box-depth: 150px; --box-half-width: 123px; --box-half-height: 55px; --box-half-depth: 75px;">
+                      <i class="face front"></i><i class="face back"></i><i class="face right"></i><i class="face left"></i><i class="face top"></i><i class="face bottom"></i>
+                      <div class="hall-window-grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                      <div class="hall-door"></div>
+                    </div>
+                  </div>
+                  <div class="facility facility-rack rack-one">
+                    <div class="cuboid" style="--box-width: 34px; --box-height: 108px; --box-depth: 44px; --box-half-width: 17px; --box-half-height: 54px; --box-half-depth: 22px;">
+                      <i class="face front"></i><i class="face back"></i><i class="face right"></i><i class="face left"></i><i class="face top"></i><i class="face bottom"></i>
+                      <div class="rack-slots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                    </div>
+                  </div>
+                  <div class="facility facility-rack rack-two">
+                    <div class="cuboid" style="--box-width: 34px; --box-height: 108px; --box-depth: 44px; --box-half-width: 17px; --box-half-height: 54px; --box-half-depth: 22px;">
+                      <i class="face front"></i><i class="face back"></i><i class="face right"></i><i class="face left"></i><i class="face top"></i><i class="face bottom"></i>
+                      <div class="rack-slots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                    </div>
+                  </div>
+                  <div class="facility facility-rack rack-three">
+                    <div class="cuboid" style="--box-width: 34px; --box-height: 108px; --box-depth: 44px; --box-half-width: 17px; --box-half-height: 54px; --box-half-depth: 22px;">
+                      <i class="face front"></i><i class="face back"></i><i class="face right"></i><i class="face left"></i><i class="face top"></i><i class="face bottom"></i>
+                      <div class="rack-slots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                    </div>
+                  </div>
+                  <div class="facility facility-rack rack-four">
+                    <div class="cuboid" style="--box-width: 34px; --box-height: 108px; --box-depth: 44px; --box-half-width: 17px; --box-half-height: 54px; --box-half-depth: 22px;">
+                      <i class="face front"></i><i class="face back"></i><i class="face right"></i><i class="face left"></i><i class="face top"></i><i class="face bottom"></i>
+                      <div class="rack-slots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                    </div>
+                  </div>
+                  <div class="facility facility-cooling cooling-one">
+                    <div class="cuboid" style="--box-width: 72px; --box-height: 44px; --box-depth: 54px; --box-half-width: 36px; --box-half-height: 22px; --box-half-depth: 27px;">
+                      <i class="face front"></i><i class="face back"></i><i class="face right"></i><i class="face left"></i><i class="face top"></i><i class="face bottom"></i>
+                      <div class="cooling-fan"><i></i><i></i><i></i><i></i></div>
+                    </div>
+                  </div>
+                  <div class="facility facility-cooling cooling-two">
+                    <div class="cuboid" style="--box-width: 72px; --box-height: 44px; --box-depth: 54px; --box-half-width: 36px; --box-half-height: 22px; --box-half-depth: 27px;">
+                      <i class="face front"></i><i class="face back"></i><i class="face right"></i><i class="face left"></i><i class="face top"></i><i class="face bottom"></i>
+                      <div class="cooling-fan"><i></i><i></i><i></i><i></i></div>
+                    </div>
+                  </div>
+                  <div class="facility facility-power">
+                    <div class="cuboid" style="--box-width: 78px; --box-height: 58px; --box-depth: 62px; --box-half-width: 39px; --box-half-height: 29px; --box-half-depth: 31px;">
+                      <i class="face front"></i><i class="face back"></i><i class="face right"></i><i class="face left"></i><i class="face top"></i><i class="face bottom"></i>
+                      <div class="power-light"></div>
+                    </div>
+                  </div>
+                  <div class="facility facility-cable cable-one"></div>
+                  <div class="facility facility-cable cable-two"></div>
+                  <div class="facility facility-cable cable-three"></div>
+                </div>
+                <div class="datacenter-hotspots" role="group" aria-label="Explorer les zones du centre de données">
+                  <button class="datacenter-hotspot hotspot-compute" type="button" data-zone="compute" aria-pressed="false"><span>01</span> Calcul</button>
+                  <button class="datacenter-hotspot hotspot-energy is-active" type="button" data-zone="energy" aria-pressed="true"><span>02</span> Énergie</button>
+                  <button class="datacenter-hotspot hotspot-cooling" type="button" data-zone="cooling" aria-pressed="false"><span>03</span> Refroidissement</button>
+                  <button class="datacenter-hotspot hotspot-network" type="button" data-zone="network" aria-pressed="false"><span>04</span> Réseau</button>
+                </div>
+              </div>
+              <div class="datacenter-controls" role="group" aria-label="Contrôles de la maquette 3D">
+                <span>FAIRE TOURNER</span>
+                <button type="button" data-camera-turn="-1" aria-label="Tourner la scène vers la gauche">↶</button>
+                <button type="button" data-camera-turn="1" aria-label="Tourner la scène vers la droite">↷</button>
+                <button type="button" data-camera-reset aria-label="Réinitialiser la vue">Réinitialiser</button>
+                <button type="button" id="toggle-scene-view" aria-label="Basculer vers la vue illustrée">Vue illustrée</button>
+              </div>
+              <p class="datacenter-instruction">Faites glisser pour tourner · sélectionnez une zone pour en savoir plus</p>
+            </div>
+            <div class="scene-coordinate coordinate-top"><span>SCHÉMA DE PRINCIPE</span><span>NON À L'ÉCHELLE</span></div>
+            <div class="scene-coordinate coordinate-bottom"><span class="scene-live-dot"></span> MAQUETTE PÉDAGOGIQUE <span id="scene-index">01 / 03</span></div>
+            <div class="scene-data data-top"><span class="data-spark" aria-hidden="true">✳</span><span><span id="scene-context-title">INFRASTRUCTURES</span><br><strong id="scene-context-detail">Énergie · calcul · réseau</strong></span></div>
+            <div class="scene-data data-bottom"><span class="data-index">01</span><span id="scene-stat-label">LE COEUR DU CALCUL</span></div>
+          </div>
+          <details class="scene-explorer">
+            <summary>Explorer le centre de données et ses détails</summary>
+            <div class="scene-caption">
+              <div>
+                <p class="eyebrow">APPROFONDIR</p>
+                <h2 id="scene-title" aria-live="polite">Le calcul</h2>
+                <p id="scene-description" aria-live="polite">Les serveurs hébergent les accélérateurs, la mémoire et le stockage utilisés par les services d'IA.</p>
+              </div>
+              <a class="scene-link" id="scene-link" href="#dossier-data-centres">Explorer le dossier <span aria-hidden="true">↗</span></a>
+              <a class="scene-source" id="scene-source" href="https://www.oecd.org/en/publications/competition-in-artificial-intelligence-infrastructure_623d1874-en/full-report.html" target="_blank" rel="noopener noreferrer">Source : OCDE ↗</a>
+            </div>
+            <div class="scene-switcher" role="group" aria-label="Choisir une scène à explorer">
+              <button class="scene-choice is-active" type="button" data-scene-choice="infrastructure" aria-pressed="true"><span>01</span> Infrastructures</button>
+              <button class="scene-choice" type="button" data-scene-choice="robotique" aria-pressed="false"><span>02</span> Robotique</button>
+              <button class="scene-choice" type="button" data-scene-choice="reseaux" aria-pressed="false"><span>03</span> Réseaux</button>
+            </div>
+          </details>
+        </div>
+        </div>
+        <div class="hero-foot">
+          <span>UNE TECHNOLOGIE, MILLE PERSPECTIVES</span>
+          <span class="hero-foot-right">OBSERVER · COMPRENDRE · EXPLORER <span aria-hidden="true">↓</span></span>
+        </div>
+      </section>
+
+      <section class="explore-section" id="explorer" aria-labelledby="explore-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">VOTRE POINT DE DÉPART</p>
+            <h2 id="explore-title">L'IA, sous tous ses angles</h2>
+          </div>
+          <p class="section-note">07 dossiers · sélectionner un axe</p>
+        </div>
+
+        <form class="search-form" role="search">
+          <label class="search-label" for="search-input">Rechercher un sujet</label>
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input id="search-input" type="search" placeholder="Un sujet, une technologie, une question…" autocomplete="off">
+          <kbd class="search-shortcut" aria-hidden="true">⌘ K</kbd>
+        </form>
+
+        <div class="filter-row" role="group" aria-label="Filtrer les sujets">
+          <button class="filter-chip is-selected" type="button" data-filter="all" aria-pressed="true">Tout explorer <span>07</span></button>
+          <button class="filter-chip" type="button" data-filter="comprendre" aria-pressed="false">Comprendre</button>
+          <button class="filter-chip" type="button" data-filter="explorer" aria-pressed="false">Explorer</button>
+          <button class="filter-chip" type="button" data-filter="anticiper" aria-pressed="false">Anticiper</button>
+          <span class="results-label" id="results-label" aria-live="polite">07 sujets</span>
+        </div>
+
+        <div class="topic-grid" id="topic-grid" aria-live="polite"></div>
+        <p class="empty-state" id="empty-state" hidden>Aucun sujet ne correspond à cette recherche. Essayez un autre terme.</p>
+        <a class="network-feature-link" href="reseaux-mondiaux.html">
+          <span class="network-feature-index">DOSSIER VISUEL <span>·</span> INFRASTRUCTURES</span>
+          <span class="network-feature-title">Sous les océans, les réseaux qui rendent l’IA mondiale</span>
+          <span class="network-feature-action">Explorer le schéma des connexions <span aria-hidden="true">↗</span></span>
+        </a>
+      </section>
+
+      <section class="dossier-section topic-dossier" id="dossier-ia-generative" aria-labelledby="generative-dossier-title">
+        <div class="dossier-heading">
+          <div>
+            <p class="eyebrow">DOSSIER 01 <span class="dossier-separator">/</span> MODÈLES GÉNÉRATIFS</p>
+            <h2 id="generative-dossier-title">Produire une réponse n'est pas établir un fait</h2>
+            <p class="dossier-intro">Les modèles génératifs produisent du contenu à partir de régularités apprises. Leur fluidité ne garantit ni exactitude, ni traçabilité, ni compréhension au sens humain.</p>
+          </div>
+          <span class="dossier-version">DOSSIER THÉMATIQUE <span>·</span> 01 / 07</span>
+        </div>
+        <div class="topic-detail-grid">
+          <article class="topic-detail-card"><span class="topic-detail-index">MÉCANISME</span><h3>Génération conditionnelle</h3><p>Un modèle de langage autorégressif estime une distribution sur le prochain token à partir du contexte, puis répète l'opération. D'autres modèles génératifs produisent des images, de l'audio ou des sorties multimodales selon des mécanismes distincts.</p></article>
+          <article class="topic-detail-card"><span class="topic-detail-index">INTERPRÉTATION</span><h3>La plausibilité n'est pas une preuve</h3><p>Une réponse peut être cohérente et pourtant inexacte. Le modèle ne certifie pas ses affirmations par le seul fait de les produire ; les informations à enjeu doivent être vérifiées auprès de sources adaptées.</p></article>
+          <article class="topic-detail-card"><span class="topic-detail-index">ÉVALUATION</span><h3>Tester sur l'usage réel</h3><p>Mesurer la qualité sur les tâches visées, les cas limites, les langues et les populations concernées. Documenter les erreurs, les données de référence et les limites de généralisation.</p></article>
+        </div>
+        <div class="topic-dossier-footer"><p><strong>Sources de référence</strong> — NIST, profil de gestion des risques de l'IA générative ; Vaswani et al., architecture Transformer (NeurIPS, 2017).</p><div><a class="inline-source" href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf" target="_blank" rel="noopener noreferrer">NIST · profil IA générative ↗</a><a class="inline-source" href="https://proceedings.neurips.cc/paper/7181-attention-is-all-you-need" target="_blank" rel="noopener noreferrer">NeurIPS · Transformer ↗</a></div></div>
+        <a class="topic-dossier-return" href="#explorer">← Tous les dossiers</a>
+      </section>
+
+      <section class="dossier-section topic-dossier" id="dossier-agents-ia" aria-labelledby="agents-dossier-title">
+        <div class="dossier-heading">
+          <div>
+            <p class="eyebrow">DOSSIER 02 <span class="dossier-separator">/</span> SYSTÈMES AGENTS</p>
+            <h2 id="agents-dossier-title">Un agent relie un modèle à des actions</h2>
+            <p class="dossier-intro">Un système agentique combine un modèle avec des outils, un état et une boucle de contrôle. Il peut décomposer une tâche et agir, ce qui élargit ses capacités — et sa surface de risque.</p>
+          </div>
+          <span class="dossier-version">DOSSIER THÉMATIQUE <span>·</span> 02 / 07</span>
+        </div>
+        <div class="topic-detail-grid">
+          <article class="topic-detail-card"><span class="topic-detail-index">ARCHITECTURE</span><h3>Modèle, outils, boucle</h3><p>Le modèle sélectionne ou prépare une action ; un outil l'exécute ; son résultat revient dans le contexte pour guider l'étape suivante. L'orchestration définit l'état, les conditions d'arrêt et les reprises après erreur.</p></article>
+          <article class="topic-detail-card"><span class="topic-detail-index">CHOIX DE CONCEPTION</span><h3>Déterministe quand c'est possible</h3><p>Une séquence fixe de règles ou d'appels peut être plus prévisible qu'un agent autonome. Réserver la boucle agentique aux tâches où la décision dynamique apporte un bénéfice mesurable.</p></article>
+          <article class="topic-detail-card"><span class="topic-detail-index">GOUVERNANCE</span><h3>Limiter les actions possibles</h3><p>Accorder le minimum de permissions, borner les outils et les données accessibles, journaliser les actions et imposer une validation humaine pour les opérations sensibles ou difficiles à annuler.</p></article>
+        </div>
+        <div class="topic-dossier-footer"><p><strong>Sources de référence</strong> — Anthropic, principes de conception des agents ; Yao et al., ReAct (raisonnement et action).</p><div><a class="inline-source" href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener noreferrer">Anthropic · concevoir des agents ↗</a><a class="inline-source" href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener noreferrer">Yao et al. · ReAct ↗</a></div></div>
+        <a class="topic-dossier-return" href="#explorer">← Tous les dossiers</a>
+      </section>
+
+      <section class="dossier-section topic-dossier" id="dossier-modeles-ouverts" aria-labelledby="open-models-dossier-title">
+        <div class="dossier-heading">
+          <div>
+            <p class="eyebrow">DOSSIER 03 <span class="dossier-separator">/</span> ÉCOSYSTÈME DES MODÈLES</p>
+            <h2 id="open-models-dossier-title">« Ouvert » recouvre plusieurs degrés d'accès</h2>
+            <p class="dossier-intro">La disponibilité des poids ne signifie pas nécessairement que le code, les données d'entraînement et la méthode le sont aussi. Il faut examiner les artefacts et les droits séparément.</p>
+          </div>
+          <span class="dossier-version">DOSSIER THÉMATIQUE <span>·</span> 03 / 07</span>
+        </div>
+        <div class="topic-detail-grid">
+          <article class="topic-detail-card"><span class="topic-detail-index">VOCABULAIRE</span><h3>Poids accessibles, transparence variable</h3><p>Un modèle à poids accessibles peut être téléchargé et exécuté sous les conditions de sa licence. La définition de l'Open Source AI requiert une disponibilité plus large des éléments nécessaires à l'étude, l'usage, la modification et le partage.</p></article>
+          <article class="topic-detail-card"><span class="topic-detail-index">VÉRIFICATION</span><h3>Lire la fiche et la licence</h3><p>Vérifier la provenance, les usages autorisés, les restrictions, les données déclarées, les évaluations et les limites. Une fiche modèle facilite l'examen, mais ne remplace pas un audit indépendant.</p></article>
+          <article class="topic-detail-card"><span class="topic-detail-index">ARBITRAGE</span><h3>Autonomie contre responsabilité</h3><p>L'exécution locale peut donner davantage de contrôle sur le déploiement et les données. Elle transfère aussi à l'organisation la charge de sécuriser l'infrastructure, les mises à jour, l'évaluation et la conformité.</p></article>
+        </div>
+        <div class="topic-dossier-footer"><p><strong>Sources de référence</strong> — Open Source Initiative, définition de l'Open Source AI ; Hugging Face, documentation des fiches modèles.</p><div><a class="inline-source" href="https://opensource.org/ai/open-source-ai-definition" target="_blank" rel="noopener noreferrer">OSI · définition Open Source AI ↗</a><a class="inline-source" href="https://huggingface.co/docs/hub/model-cards" target="_blank" rel="noopener noreferrer">Hugging Face · fiches modèles ↗</a></div></div>
+        <a class="topic-dossier-return" href="#explorer">← Tous les dossiers</a>
+      </section>
+
+      <section class="dossier-section topic-dossier" id="dossier-ia-responsable" aria-labelledby="responsible-ai-dossier-title">
+        <div class="dossier-heading">
+          <div>
+            <p class="eyebrow">DOSSIER 04 <span class="dossier-separator">/</span> RISQUES & RESPONSABILITÉS</p>
+            <h2 id="responsible-ai-dossier-title">La fiabilité se construit sur tout le cycle de vie</h2>
+            <p class="dossier-intro">Un système d'IA s'évalue au regard d'un contexte, de personnes concernées et de conséquences possibles. Une démonstration réussie ne suffit pas à établir son adéquation à un usage.</p>
+          </div>
+          <span class="dossier-version">DOSSIER THÉMATIQUE <span>·</span> 04 / 07</span>
+        </div>
+        <div class="topic-detail-grid">
+          <article class="topic-detail-card"><span class="topic-detail-index">CARTOGRAPHIER</span><h3>Définir le contexte d'usage</h3><p>Préciser l'objectif, les utilisateurs, les personnes exposées, les données traitées et les décisions influencées. Identifier les dommages plausibles avant de choisir les contrôles.</p></article>
+          <article class="topic-detail-card"><span class="topic-detail-index">MESURER</span><h3>Évaluer les risques pertinents</h3><p>Tester la performance et les défaillances selon les conditions réelles : biais, confidentialité, sécurité, robustesse, explicabilité et capacité de recours selon le domaine.</p></article>
+          <article class="topic-detail-card"><span class="topic-detail-index">SUIVRE</span><h3>Contrôler après déploiement</h3><p>Documenter les décisions, surveiller les changements de comportement, signaler les incidents et prévoir une intervention humaine, une suspension ou un retrait si nécessaire.</p></article>
+        </div>
+        <div class="topic-dossier-footer"><p><strong>Sources de référence</strong> — NIST, AI Risk Management Framework et profil IA générative ; Commission européenne, cadre réglementaire de l'IA.</p><div><a class="inline-source" href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener noreferrer">NIST · AI RMF ↗</a><a class="inline-source" href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener noreferrer">Commission européenne · cadre IA ↗</a></div></div>
+        <a class="topic-dossier-return" href="#explorer">← Tous les dossiers</a>
+      </section>
+
+      <section class="dossier-section topic-dossier" id="dossier-ia-quotidien" aria-labelledby="work-dossier-title">
+        <div class="dossier-heading">
+          <div>
+            <p class="eyebrow">DOSSIER 05 <span class="dossier-separator">/</span> IA & ACTIVITÉS</p>
+            <h2 id="work-dossier-title">L'IA assiste des tâches ; l'usage demande du discernement</h2>
+            <p class="dossier-intro">Rédiger, synthétiser, analyser ou apprendre : les systèmes génératifs s'intègrent à des activités quotidiennes, mais leurs résultats doivent être évalués selon la tâche, le risque et le contexte.</p>
+          </div>
+          <span class="dossier-version">DOSSIER THÉMATIQUE <span>·</span> 05 / 07</span>
+        </div>
+        <div class="topic-detail-grid">
+          <article class="topic-detail-card"><span class="topic-detail-index">PRODUCTION</span><h3>Rédiger et reformuler</h3><p>Un modèle peut proposer un premier jet, une synthèse ou plusieurs formulations. Vérifier les faits, les références, le ton et les omissions avant de diffuser ou d'utiliser le texte.</p></article>
+          <article class="topic-detail-card"><span class="topic-detail-index">ANALYSE</span><h3>Explorer des informations</h3><p>Résumer un corpus ou classer des données peut accélérer une première lecture. Garder accès aux documents d'origine et contrôler les citations, les calculs et les interprétations.</p></article>
+          <article class="topic-detail-card"><span class="topic-detail-index">ÉVALUATION</span><h3>Mesurer l'effet sur l'activité</h3><p>Comparer temps, qualité, erreurs et reprises à une situation de référence. Une tâche exposée à l'automatisation n'implique pas à elle seule qu'un métier ou un emploi disparaisse.</p></article>
+        </div>
+        <div class="topic-dossier-footer"><p><strong>Source de référence</strong> — Organisation internationale du Travail, analyse mondiale de l'exposition des tâches à l'IA générative (2023). Elle étudie le potentiel d'automatisation et d'augmentation des tâches, pas une prévision individuelle de suppressions d'emplois.</p><div><a class="inline-source" href="https://www.ilo.org/publications/generative-ai-and-jobs-global-analysis-potential-effects-job-quantity-and" target="_blank" rel="noopener noreferrer">OIT · IA générative et emploi ↗</a></div></div>
+        <a class="topic-dossier-return" href="#explorer">← Tous les dossiers</a>
+      </section>
+
+      <section class="dossier-section topic-dossier" id="dossier-prospective" aria-labelledby="outlook-dossier-title">
+        <div class="dossier-heading">
+          <div>
+            <p class="eyebrow">DOSSIER 06 <span class="dossier-separator">/</span> SIGNAUX & PROSPECTIVE</p>
+            <h2 id="outlook-dossier-title">Séparer les tendances observées des scénarios</h2>
+            <p class="dossier-intro">La prospective sur l'IA gagne en rigueur lorsqu'elle distingue résultats de recherche, déploiement mesuré, investissements, projections et hypothèses. Ces catégories n'ont pas le même statut probant.</p>
+          </div>
+          <span class="dossier-version">DOSSIER THÉMATIQUE <span>·</span> 06 / 07</span>
+        </div>
+        <div class="topic-detail-grid">
+          <article class="topic-detail-card"><span class="topic-detail-index">CAPACITÉS</span><h3>Suivre les performances et leurs limites</h3><p>Comparer les résultats à des évaluations documentées, en vérifiant les tâches, les données, les coûts et les conditions de test. Un benchmark ne résume ni l'utilité ni la fiabilité dans tous les usages.</p></article>
+          <article class="topic-detail-card"><span class="topic-detail-index">DIFFUSION</span><h3>Mesurer l'adoption, pas seulement l'annonce</h3><p>Distinguer un prototype, un produit disponible, un déploiement effectif et un usage durable. Les données d'adoption doivent préciser leur population, leur période et leur méthode de collecte.</p></article>
+          <article class="topic-detail-card"><span class="topic-detail-index">SCÉNARIOS</span><h3>Rendre les incertitudes visibles</h3><p>Une projection dépend d'hypothèses sur les coûts, les infrastructures, la demande et les politiques publiques. Présenter plusieurs scénarios et leurs hypothèses est plus informatif qu'une trajectoire unique.</p></article>
+        </div>
+        <div class="topic-dossier-footer"><p><strong>Sources de référence</strong> — Stanford HAI, AI Index ; Agence internationale de l'énergie, Energy and AI. Les rapports décrivent des périmètres et des méthodes distincts.</p><div><a class="inline-source" href="https://hai.stanford.edu/ai-index/2025-ai-index-report" target="_blank" rel="noopener noreferrer">Stanford HAI · AI Index 2025 ↗</a><a class="inline-source" href="https://www.iea.org/reports/energy-and-ai" target="_blank" rel="noopener noreferrer">AIE · Energy and AI ↗</a></div></div>
+        <a class="topic-dossier-return" href="#explorer">← Tous les dossiers</a>
+      </section>
+
+      <section class="dossier-section" id="dossier-data-centres" aria-labelledby="dossier-title">
+        <div class="dossier-heading">
+          <div>
+            <p class="eyebrow">DOSSIER 07 <span class="dossier-separator">/</span> INFRASTRUCTURE</p>
+            <h2 id="dossier-title">L'IA a une géographie</h2>
+            <p class="dossier-intro">Derrière chaque modèle, des bâtiments, des réseaux, des machines et des choix d'investissement. Voici les repères pour lire cette infrastructure.</p>
+          </div>
+          <span class="dossier-version">DOSSIER DE CADRAGE <span>·</span> V 0.1</span>
+        </div>
+
+        <div class="dossier-tabs" role="tablist" aria-label="Angles du dossier sur les centres de données">
+          <button id="tab-geographie" class="dossier-tab" type="button" role="tab" aria-selected="true" aria-controls="panel-geographie" data-dossier-tab>Géographie <span>01</span></button>
+          <button id="tab-economie" class="dossier-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-economie" data-dossier-tab>Économie <span>02</span></button>
+          <button id="tab-histoire" class="dossier-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-histoire" data-dossier-tab>Histoire <span>03</span></button>
+          <button id="tab-technique" class="dossier-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-technique" data-dossier-tab>Fonctionnement <span>04</span></button>
+        </div>
+
+        <div id="panel-geographie" class="dossier-panel" role="tabpanel" aria-labelledby="tab-geographie" data-dossier-panel>
+          <div class="dossier-panel-heading">
+            <p class="eyebrow">01 / GÉOGRAPHIE</p>
+            <h3>Où construire ? Là où plusieurs réseaux se rencontrent</h3>
+            <p>Un centre de données dépend de ressources locales. La carte n'est pas qu'une carte de bâtiments : elle raconte l'accès à l'électricité, aux télécommunications, au foncier et au refroidissement.</p>
+          </div>
+          <div class="factor-grid">
+            <article class="factor-card"><span class="factor-symbol" aria-hidden="true">ϟ</span><h4>Électricité</h4><p>Puissance disponible, stabilité du réseau et délais de raccordement.</p></article>
+            <article class="factor-card"><span class="factor-symbol" aria-hidden="true">⌁</span><h4>Connectivité</h4><p>Réseaux terrestres et câbles sous-marins relient les centres aux utilisateurs et entre eux.</p></article>
+            <article class="factor-card"><span class="factor-symbol" aria-hidden="true">◌</span><h4>Climat & eau</h4><p>Le climat et les choix de refroidissement influencent les besoins locaux en énergie et en eau.</p></article>
+            <article class="factor-card"><span class="factor-symbol" aria-hidden="true">▤</span><h4>Territoire</h4><p>Foncier, règles d'urbanisme, fiscalité et proximité des activités numériques entrent aussi en jeu.</p></article>
+          </div>
+          <div class="region-heading">
+            <p class="eyebrow">TROIS TERRITOIRES, TROIS CONTEXTES</p>
+            <span>Exemples documentés · pas un classement</span>
+          </div>
+          <div class="region-grid">
+            <article class="region-card">
+              <div class="region-card-top"><span class="region-continent">AMÉRIQUE DU NORD</span><span class="region-code">US / VA</span></div>
+              <h4>Virginie du Nord</h4>
+              <p>Le régulateur de l'État décrit le plus grand marché de centres de données au monde, soutenu par un réseau fibre dense, l'accès à l'énergie, le foncier et la proximité des clients.</p>
+              <div class="region-insight"><span>13 %</span><p>de la capacité opérationnelle mondiale recensée par l'étude, selon son périmètre.</p></div>
+              <a class="inline-source" href="https://rga.lis.virginia.gov/Published/2025/RD206" target="_blank" rel="noopener noreferrer">Étude JLARC sur la Virginie <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="region-card">
+              <div class="region-card-top"><span class="region-continent">EUROPE</span><span class="region-code">FLAP-D +</span></div>
+              <h4>Des hubs vers de nouveaux marchés</h4>
+              <p>L'association européenne du secteur suit les hubs FLAP-D et une expansion vers les régions nordiques et méridionales. L'accès à l'énergie reste un enjeu de développement.</p>
+              <div class="region-insight region-insight-text"><span>FLAP-D</span><p>Francfort, Londres, Amsterdam, Paris et Dublin : cinq marchés souvent regroupés dans les analyses européennes.</p></div>
+              <a class="inline-source" href="https://www.eudca.org/state-of-european-data-centres-2025" target="_blank" rel="noopener noreferrer">EUDCA, State of European Data Centres 2025 <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="region-card">
+              <div class="region-card-top"><span class="region-continent">ASIE DU SUD-EST</span><span class="region-code">SG</span></div>
+              <h4>Singapour</h4>
+              <p>La cité-État cherche à concilier croissance numérique et contraintes de ressources. Sa feuille de route 2024 conditionne une nouvelle capacité à des exigences de durabilité.</p>
+              <div class="region-insight"><span>≥ 300 MW</span><p>de capacité supplémentaire à court terme visée par la feuille de route, sous conditions.</p></div>
+              <a class="inline-source" href="https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/factsheets/2024/charting-green-growth-for-data-centres-in-sg" target="_blank" rel="noopener noreferrer">Feuille de route IMDA <span aria-hidden="true">↗</span></a>
+            </article>
+          </div>
+          <p class="region-caveat">Les chiffres et catégories ne sont pas directement comparables : ils proviennent d'études aux périmètres et méthodes différents. Consultez les sources pour leur définition.</p>
+          <div class="dossier-callout">
+            <span class="callout-mark" aria-hidden="true">↗</span>
+            <p><strong>Explorer la carte réelle des câbles.</strong> TeleGeography publie une carte interactive des câbles sous-marins et de leurs points d'atterrissement. Elle aide à comprendre la connectivité mondiale, sans constituer un inventaire des centres de données.</p>
+            <a class="source-link" href="https://www.submarinecablemap.com/" target="_blank" rel="noopener noreferrer">Ouvrir la carte <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+
+        <div id="panel-economie" class="dossier-panel" role="tabpanel" aria-labelledby="tab-economie" data-dossier-panel hidden>
+          <div class="dossier-panel-heading">
+            <p class="eyebrow">02 / ÉCONOMIE</p>
+            <h3>La croissance numérique se mesure aussi en mégawatts</h3>
+            <p>La construction d'infrastructures d'IA engage des capitaux à long terme : terrains, raccordement électrique, bâtiments, accélérateurs, réseaux et exploitation.</p>
+          </div>
+          <div class="energy-figure">
+            <div class="energy-figure-heading">
+              <div><span class="figure-label">ÉLECTRICITÉ DES CENTRES DE DONNÉES DANS LE MONDE</span><span class="figure-source">Agence internationale de l'énergie · rapport 2025</span></div>
+              <span class="figure-unit">TWh / an</span>
+            </div>
+            <div class="energy-bars">
+              <div class="energy-bar-row"><span class="energy-year">2024</span><div class="energy-bar-track"><span class="energy-bar energy-bar-2024"></span></div><strong>415 <small>TWh</small></strong><span class="energy-kind">estimation</span></div>
+              <div class="energy-bar-row"><span class="energy-year">2030</span><div class="energy-bar-track"><span class="energy-bar energy-bar-2030"></span></div><strong>945 <small>TWh</small></strong><span class="energy-kind projection-kind">projection</span></div>
+            </div>
+            <p class="figure-caveat">Le chiffre 2030 est une projection du scénario de base de l'AIE, pas une mesure future. Ces valeurs couvrent l'ensemble des centres de données : elles ne représentent pas uniquement l'IA.</p>
+            <a class="source-link" href="https://www.iea.org/reports/energy-and-ai" target="_blank" rel="noopener noreferrer">Lire le rapport Energy and AI <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="economy-notes">
+            <div><span class="note-index">A</span><p><strong>Le calcul a un coût d'exploitation.</strong> L'électricité et le refroidissement pèsent sur les coûts récurrents, tandis que les accélérateurs spécialisés représentent un investissement matériel important.</p></div>
+            <div><span class="note-index">B</span><p><strong>Les lieux et les marchés sont liés.</strong> Disponibilité du réseau, prix de l'énergie, accès au capital et réglementation influencent les projets — et leur calendrier.</p></div>
+          </div>
+          <div class="value-chain-heading">
+            <div><p class="eyebrow">LA CHAÎNE DE VALEUR</p><h4>De ressources physiques à des services numériques</h4></div>
+            <p>Schéma de lecture : les relations commerciales et les revenus réels varient selon les organisations.</p>
+          </div>
+          <ol class="value-chain" aria-label="Étapes de la chaîne de valeur de l'intelligence artificielle">
+            <li class="value-chain-stage">
+              <span class="stage-number">01 <span>/ RESSOURCES</span></span>
+              <h5>Énergie & matériaux</h5>
+              <p>Électricité, eau, terrains et matières premières alimentent les infrastructures physiques.</p>
+              <span class="stage-economics"><strong>Valeur :</strong> fourniture, raccordement, construction</span>
+            </li>
+            <li class="value-chain-stage">
+              <span class="stage-number">02 <span>/ MATÉRIEL</span></span>
+              <h5>Semi-conducteurs</h5>
+              <p>Conception, fabrication, mémoire et assemblage rendent possibles les accélérateurs et les serveurs.</p>
+              <span class="stage-economics"><strong>Valeur :</strong> conception, fabrication, vente</span>
+            </li>
+            <li class="value-chain-stage">
+              <span class="stage-number">03 <span>/ CALCUL</span></span>
+              <h5>Centres & cloud</h5>
+              <p>Des opérateurs assemblent puces, réseaux, stockage et énergie en capacité de calcul.</p>
+              <span class="stage-economics"><strong>Valeur :</strong> location, hébergement, services cloud</span>
+            </li>
+            <li class="value-chain-stage">
+              <span class="stage-number">04 <span>/ MODÈLES</span></span>
+              <h5>Données & modèles</h5>
+              <p>Des équipes développent, entraînent et évaluent des modèles, puis les adaptent à des tâches.</p>
+              <span class="stage-economics"><strong>Valeur :</strong> accès API, licences, services</span>
+            </li>
+            <li class="value-chain-stage">
+              <span class="stage-number">05 <span>/ USAGES</span></span>
+              <h5>Produits & métiers</h5>
+              <p>Des logiciels intègrent l'IA aux processus de travail, aux outils et aux services destinés au public.</p>
+              <span class="stage-economics"><strong>Valeur :</strong> abonnements, intégration, gains d'usage</span>
+            </li>
+          </ol>
+          <div class="economy-insight-grid">
+            <article class="economy-insight">
+              <span class="insight-symbol" aria-hidden="true">↻</span>
+              <div><h5>Entraîner n'est pas servir</h5><p>L'entraînement mobilise un grand volume de calcul pendant une période donnée. L'inférence — répondre à chaque requête — engendre des coûts récurrents qui dépendent du modèle, du matériel, du taux d'utilisation et du volume de demandes.</p></div>
+            </article>
+            <article class="economy-insight">
+              <span class="insight-symbol" aria-hidden="true">⇄</span>
+              <div><h5>La valeur ne se répartit pas également</h5><p>Les capacités de calcul, les composants et certains services reposent sur des chaînes d'approvisionnement concentrées. Coûts d'entrée élevés et dépendance à une plateforme peuvent limiter le choix des acteurs en aval.</p></div>
+            </article>
+          </div>
+          <div class="dossier-callout economy-callout">
+            <span class="callout-mark" aria-hidden="true">i</span>
+            <p><strong>À garder en tête.</strong> Ce schéma décrit des couches interdépendantes, pas un partage de revenus mesuré. L'OCDE analyse les enjeux de concurrence liés aux infrastructures d'IA ; l'AIE documente les coûts énergétiques et les incertitudes de projection.</p>
+            <div class="economy-sources">
+              <a class="source-link" href="https://www.oecd.org/en/publications/competition-in-artificial-intelligence-infrastructure_623d1874-en/full-report.html" target="_blank" rel="noopener noreferrer">OCDE · concurrence <span aria-hidden="true">↗</span></a>
+              <a class="source-link" href="https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai" target="_blank" rel="noopener noreferrer">AIE · demande énergétique <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div id="panel-histoire" class="dossier-panel" role="tabpanel" aria-labelledby="tab-histoire" data-dossier-panel hidden>
+          <div class="dossier-panel-heading">
+            <p class="eyebrow">03 / HISTOIRE</p>
+            <h3>Les percées s'appuient sur des couches qui s'accumulent</h3>
+            <p>Calcul, réseaux, accélérateurs et architectures d'IA se sont développés à des rythmes différents. Ces jalons montrent quelques croisements importants, sans prétendre résumer toute l'histoire de l'informatique.</p>
+          </div>
+          <div class="timeline">
+            <article class="timeline-item">
+              <span class="timeline-date">1952</span>
+              <div>
+                <span class="timeline-theme">MACHINES</span>
+                <h4>Le calcul électronique se centralise</h4>
+                <p>IBM annonce le 701, un ordinateur électronique destiné au calcul scientifique. Les grandes machines sont installées et opérées par des organisations disposant des moyens nécessaires.</p>
+                <a class="inline-source" href="https://www.ibm.com/history/700" target="_blank" rel="noopener noreferrer">IBM · histoire de la série 700 <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <span class="timeline-date">1989–1990</span>
+              <div>
+                <span class="timeline-theme">RÉSEAUX</span>
+                <h4>Le Web relie les documents et les chercheurs</h4>
+                <p>À partir de 1989 au CERN, Tim Berners-Lee conçoit le World Wide Web. En 1990, le premier serveur et le premier navigateur rendent le système concret.</p>
+                <a class="inline-source" href="https://home.cern/science/computing/the-birth-of-the-web/short-history-web/" target="_blank" rel="noopener noreferrer">CERN · une brève histoire du Web <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <span class="timeline-date">2006</span>
+              <div>
+                <span class="timeline-theme">ACCÈS AU CALCUL</span>
+                <h4>Le cloud et le GPU programmable élargissent l'accès</h4>
+                <p>Amazon lance AWS avec des services de stockage et de calcul à la demande. La même année, NVIDIA introduit CUDA, qui permet d'utiliser ses GPU pour des calculs généraux, au-delà du rendu graphique.</p>
+                <div class="timeline-sources">
+                  <a class="inline-source" href="https://aws.amazon.com/about-aws/our-origins/" target="_blank" rel="noopener noreferrer">AWS · origines du cloud <span aria-hidden="true">↗</span></a>
+                  <a class="inline-source" href="https://blogs.nvidia.com/blog/what-is-cuda-2/" target="_blank" rel="noopener noreferrer">NVIDIA · CUDA, lancé en 2006 <span aria-hidden="true">↗</span></a>
+                </div>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <span class="timeline-date">2012</span>
+              <div>
+                <span class="timeline-theme">APPRENTISSAGE PROFOND</span>
+                <h4>AlexNet montre la puissance des réseaux profonds sur GPU</h4>
+                <p>Une équipe entraîne un grand réseau convolutif pour classer des images ImageNet à l'aide d'une implémentation GPU efficace, illustrant l'intérêt pratique du calcul parallèle pour l'apprentissage profond.</p>
+                <a class="inline-source" href="https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html" target="_blank" rel="noopener noreferrer">NeurIPS · ImageNet Classification with Deep CNNs <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <span class="timeline-date">2017</span>
+              <div>
+                <span class="timeline-theme">ARCHITECTURES</span>
+                <h4>Le Transformer propose une autre voie</h4>
+                <p>« Attention Is All You Need » présente une architecture fondée sur l'attention, sans récurrence ni convolution, et met en avant une meilleure parallélisation pour les tâches étudiées.</p>
+                <a class="inline-source" href="https://proceedings.neurips.cc/paper/7181-attention-is-all-you-need" target="_blank" rel="noopener noreferrer">NeurIPS · article de recherche <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <span class="timeline-date">2022</span>
+              <div>
+                <span class="timeline-theme">USAGES PUBLICS</span>
+                <h4>Le dialogue avec les modèles devient une interface grand public</h4>
+                <p>OpenAI présente ChatGPT comme aperçu de recherche le 30 novembre. L'interface conversationnelle rend les interactions avec un modèle de langage directement accessibles à un large public.</p>
+                <a class="inline-source" href="https://openai.com/index/chatgpt/" target="_blank" rel="noopener noreferrer">OpenAI · présentation de ChatGPT <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
+          </div>
+          <p class="timeline-note">Repères choisis pour éclairer l'histoire technique et l'accès aux usages de l'IA. Ils ne sont ni exhaustifs, ni les seuls jalons possibles.</p>
+        </div>
+
+        <div id="panel-technique" class="dossier-panel" role="tabpanel" aria-labelledby="tab-technique" data-dossier-panel hidden>
+          <div class="dossier-panel-heading">
+            <p class="eyebrow">04 / FONCTIONNEMENT</p>
+            <h3>Du courant électrique à une réponse de modèle</h3>
+            <p>Un assistant est la partie visible d'une chaîne plus large : des données et des méthodes d'entraînement, des composants matériels et logiciels, puis un service qui produit et vérifie ses réponses.</p>
+          </div>
+          <div class="system-flow" aria-label="Flux physique d'un centre de données">
+            <div class="system-node"><span>01 / ALIMENTER</span><strong>Réseau électrique</strong><small>Puissance, conversion<br>et systèmes de secours</small></div>
+            <span class="flow-arrow" aria-hidden="true">→</span>
+            <div class="system-node"><span>02 / CALCULER</span><strong>Serveurs IA</strong><small>CPU, GPU ou autres<br>accélérateurs</small></div>
+            <span class="flow-arrow" aria-hidden="true">→</span>
+            <div class="system-node"><span>03 / ÉCHANGER</span><strong>Réseau & stockage</strong><small>Relier les machines<br>et fournir les données</small></div>
+            <span class="flow-arrow" aria-hidden="true">→</span>
+            <div class="system-node"><span>04 / REFROIDIR</span><strong>Gestion thermique</strong><small>Évacuer la chaleur<br>des équipements</small></div>
+          </div>
+          <div class="technical-subheading">
+            <p class="eyebrow">COMMENT UN MODÈLE APPREND — ET RÉPOND</p>
+            <span>Deux phases différentes, un même socle de calcul</span>
+          </div>
+          <div class="training-inference-grid">
+            <article class="process-card">
+              <div class="process-card-heading"><span class="process-index">A</span><div><span class="process-kicker">PHASE 1</span><h4>Entraîner le modèle</h4></div></div>
+              <p>Des exemples sont transformés en données exploitables. L'entraînement ajuste progressivement les paramètres du modèle pour réduire une erreur mesurée par un objectif d'apprentissage.</p>
+              <ol class="process-steps">
+                <li><span>01</span>Préparer et filtrer les données</li>
+                <li><span>02</span>Calculer les prédictions et l'erreur</li>
+                <li><span>03</span>Mettre à jour les paramètres</li>
+                <li><span>04</span>Évaluer sur des tâches distinctes</li>
+              </ol>
+              <span class="process-output">Résultat : un modèle avec des paramètres appris</span>
+            </article>
+            <article class="process-card inference-card">
+              <div class="process-card-heading"><span class="process-index">B</span><div><span class="process-kicker">PHASE 2</span><h4>Exécuter l'inférence</h4></div></div>
+              <p>Une requête est découpée en unités appelées tokens. Le modèle traite le contexte et produit une sortie, souvent token par token, pendant que le service gère le débit et la latence.</p>
+              <ol class="process-steps">
+                <li><span>01</span>Recevoir et tokeniser le contexte</li>
+                <li><span>02</span>Calculer la suite probable</li>
+                <li><span>03</span>Générer puis décoder la sortie</li>
+                <li><span>04</span>Appliquer les contrôles du produit</li>
+              </ol>
+              <span class="process-output">Résultat : une réponse pour cette requête</span>
+            </article>
+          </div>
+          <div class="model-layers" aria-label="Composants d'un système d'IA conversationnelle">
+            <div class="model-layer"><span class="layer-number">01</span><div><h4>Le modèle</h4><p>Architecture, paramètres appris et limites de capacité.</p></div><span class="layer-tag">CALCUL</span></div>
+            <div class="model-layer"><span class="layer-number">02</span><div><h4>Le contexte</h4><p>Conversation, consignes et documents transmis au modèle. Des outils peuvent aussi être appelés.</p></div><span class="layer-tag">DONNÉES</span></div>
+            <div class="model-layer"><span class="layer-number">03</span><div><h4>Le service</h4><p>Routage, sécurité, disponibilité, latence, coûts et expérience utilisateur.</p></div><span class="layer-tag">PRODUIT</span></div>
+            <div class="model-layer"><span class="layer-number">04</span><div><h4>L'évaluation</h4><p>Tests de qualité, robustesse, sécurité et suivi des erreurs après déploiement.</p></div><span class="layer-tag">CONFIANCE</span></div>
+          </div>
+          <div class="technical-reading">
+            <span class="reading-symbol" aria-hidden="true">↗</span>
+            <p><strong>Un modèle n'est pas tout le produit.</strong> Une réponse dépend aussi du contexte fourni, des outils disponibles, des règles du service et des évaluations. Le NIST propose un cadre de gestion des risques couvrant la conception, le développement, l'utilisation et l'évaluation des systèmes d'IA.</p>
+            <a class="source-link" href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener noreferrer">Lire le cadre NIST AI RMF <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="pue-explainer">
+            <div class="pue-equation"><span>PUE</span><strong>=</strong><span>Énergie totale du site</span><strong>/</strong><span>Énergie des équipements IT</span></div>
+            <p>Le PUE mesure l'efficacité énergétique de l'infrastructure d'un centre de données. Plus il se rapproche de 1, moins le site consomme d'énergie en plus des équipements informatiques. Il ne mesure ni l'empreinte carbone totale, ni l'efficacité du modèle d'IA.</p>
+            <a class="source-link" href="https://journal.uptimeinstitute.com/global-pues-are-they-going-anywhere/" target="_blank" rel="noopener noreferrer">Uptime Institute : comprendre le PUE <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="technical-sources">
+            <span>POUR ALLER PLUS LOIN</span>
+            <a class="inline-source" href="https://proceedings.neurips.cc/paper/7181-attention-is-all-you-need" target="_blank" rel="noopener noreferrer">NeurIPS · Transformer <span aria-hidden="true">↗</span></a>
+            <a class="inline-source" href="https://ai.google.dev/gemini-api/docs/tokens" target="_blank" rel="noopener noreferrer">Google AI · tokens et tokenisation <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="dossier-callout technical-callout">
+            <span class="callout-mark" aria-hidden="true">i</span>
+            <p><strong>Un exemple d'architecture réseau.</strong> Google décrit Jupiter, son réseau de centre de données, conçu pour relier des dizaines de milliers de serveurs et faire évoluer la capacité de calcul à grande échelle.</p>
+            <a class="source-link" href="https://cloud.google.com/blog/topics/systems/the-evolution-of-googles-jupiter-data-center-network" target="_blank" rel="noopener noreferrer">Voir l'explication technique <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+
+        <p class="dossier-disclaimer">Les chiffres et projections sont attribués à leurs sources. Les explications générales sont une synthèse introductive, pas un inventaire exhaustif des sites ou des opérateurs.</p>
+      </section>
+
+      <section class="sources-section" id="sources" aria-labelledby="sources-title">
+        <div class="sources-heading">
+          <div>
+            <p class="eyebrow">TRANSPARENCE ÉDITORIALE <span class="assistant-index">/ 01</span></p>
+            <h2 id="sources-title">Une veille solide commence par ses sources</h2>
+            <p>Un premier registre pour savoir qui publie, sur quels sujets, et à quel rythme il serait pertinent de relire leurs travaux.</p>
+          </div>
+          <span class="sources-status"><span aria-hidden="true">●</span><span id="sources-review-status">ÉTAT DES REVUES</span></span>
+        </div>
+
+        <form class="source-search" role="search">
+          <label for="source-search-input">Rechercher une source ou un thème</label>
+          <input id="source-search-input" type="search" placeholder="Ex. énergie, recherche, risques…" autocomplete="off">
+        </form>
+        <div class="source-filter-row" role="group" aria-label="Filtrer les sources par famille">
+          <button class="source-filter is-selected" type="button" data-source-filter="all" aria-pressed="true">Toutes</button>
+          <button class="source-filter" type="button" data-source-filter="public" aria-pressed="false">Institutions publiques</button>
+          <button class="source-filter" type="button" data-source-filter="sector" aria-pressed="false">Secteur</button>
+          <button class="source-filter" type="button" data-source-filter="research" aria-pressed="false">Recherche</button>
+          <button class="source-filter" type="button" data-source-filter="publisher" aria-pressed="false">Documentation éditeur</button>
+          <span class="source-count" id="source-count" aria-live="polite">08 sources</span>
+        </div>
+        <div class="source-register" id="source-register" aria-label="Registre des sources de référence" aria-live="polite"></div>
+        <p class="source-empty" id="source-empty" hidden>Aucune source ne correspond à cette recherche. Essayez un autre terme ou une autre famille.</p>
+
+        <div class="source-method">
+          <div class="source-method-heading">
+            <p class="eyebrow">MÉTHODE DE MISE À JOUR</p>
+            <p>Une règle simple : pouvoir remonter du repère publié à la source et à son contexte.</p>
+          </div>
+          <ol class="source-method-steps">
+            <li><span>01</span><div><h3>Choisir</h3><p>Privilégier les documents originaux, les organismes publics et la recherche. Identifier la nature et les intérêts de chaque source.</p></div></li>
+            <li><span>02</span><div><h3>Vérifier</h3><p>Noter auteur, date, périmètre et méthode ; recouper les chiffres importants et distinguer faits, estimations, projections et opinions.</p></div></li>
+            <li><span>03</span><div><h3>Actualiser</h3><p>Comparer une nouvelle édition à la précédente, conserver la date de consultation et expliquer ce qui a changé avant de modifier un dossier.</p></div></li>
+          </ol>
+        </div>
+        <p class="sources-disclaimer">Les rythmes indiqués sont des propositions de travail, pas les fréquences de publication des organismes. Les dates portent sur la revue éditoriale du contenu, pas uniquement sur l'accessibilité d'un lien. Aucune source n'est surveillée automatiquement.</p>
+      </section>
+
+      <section class="assistant-section" id="assistant" aria-labelledby="assistant-title">
+        <div class="assistant-heading">
+          <div>
+            <p class="eyebrow">EXPLORATION SOURCÉE <span class="assistant-index">/ 01</span></p>
+            <h2 id="assistant-title">Une question. Des sources. Pas d'invention</h2>
+            <p>Interrogez les dossiers IAeVolution. Ce prototype retrouve des repères éditorialisés et affiche leurs sources — il ne génère pas encore de réponse avec un modèle d'IA.</p>
+          </div>
+          <div class="local-badge"><span></span> RECHERCHE LOCALE</div>
+        </div>
+        <div class="assistant-workspace">
+          <form class="assistant-form" id="assistant-form">
+            <label for="assistant-query">Votre question</label>
+            <div class="assistant-input-row">
+              <input id="assistant-query" name="question" type="search" maxlength="240" placeholder="Ex. Combien d'électricité consomment les centres de données ?" autocomplete="off" required>
+              <button class="assistant-submit" type="submit">Chercher <span aria-hidden="true">↗</span></button>
+            </div>
+          </form>
+          <div class="suggested-questions" role="group" aria-label="Exemples de questions">
+            <span>ESSAYEZ PAR EXEMPLE</span>
+            <button type="button" data-assistant-prompt="Combien d'électricité les centres de données consomment-ils ?">Consommation électrique</button>
+            <button type="button" data-assistant-prompt="Pourquoi les centres de données s'installent-ils en Virginie du Nord ?">Pourquoi la Virginie du Nord ?</button>
+            <button type="button" data-assistant-prompt="Quelle différence entre entraîner un modèle et l'inférence ?">Entraînement ou inférence ?</button>
+            <button type="button" data-assistant-prompt="Qu'est-ce que l'IA générative ?">IA générative</button>
+            <button type="button" data-assistant-prompt="Pourquoi un modèle peut-il inventer une réponse ?">Fiabilité des réponses</button>
+          </div>
+          <div class="assistant-results" id="assistant-results" aria-live="polite" aria-atomic="false"></div>
+        </div>
+        <p class="assistant-scope">Périmètre actuel : centres de données, infrastructure et premiers repères sur l'IA générative. Si les sources disponibles ne couvrent pas votre question, l'assistant le dira plutôt que de compléter au hasard.</p>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand footer-brand" href="#" aria-label="IAeVolution, accueil">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>IA<span class="brand-accent">e</span>Volution</span>
+      </a>
+      <p>Veille, idées et perspectives sur l'intelligence artificielle.</p>
+      <span class="footer-note">UN PROJET EN ÉVOLUTION <span aria-hidden="true">✳</span></span>
+    </footer>
+    <a class="back-to-top" id="back-to-top" href="#top" aria-label="Retour en haut de page" hidden>
+      <span aria-hidden="true">↑</span>
+      <span>Haut</span>
+    </a>
+  </body>
+</html>
