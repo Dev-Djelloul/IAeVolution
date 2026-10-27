@@ -521,28 +521,106 @@ const speechLocales = {
   it: "it-IT",
 };
 
-async function getPreferredSpeechVoice(locale) {
-  if (!window.speechSynthesis) return undefined;
+const speechVoicePreferenceKey = "iaevolution:speech-voice";
+let speechVoicesPromise;
+let speechVoiceRefreshRequest = 0;
+
+function getSpeechLanguagePrefix(locale) {
   const requestedLocale = speechLocales[locale] || locale || speechLocales.fr;
-  const languagePrefix = requestedLocale.toLocaleLowerCase().split("-")[0];
-  let availableVoices = window.speechSynthesis.getVoices();
-  if (availableVoices.length === 0) {
-    availableVoices = await new Promise((resolve) => {
-      const synthesis = window.speechSynthesis;
-      const timeout = window.setTimeout(() => {
-        synthesis.removeEventListener("voiceschanged", handleVoicesChanged);
-        resolve(synthesis.getVoices());
-      }, 1500);
-      const handleVoicesChanged = () => {
+  return requestedLocale.toLocaleLowerCase().split("-")[0];
+}
+
+function getSpeechVoiceId(voice) {
+  return `${voice.voiceURI}\u0000${voice.lang}\u0000${voice.name}`;
+}
+
+async function getAvailableSpeechVoices() {
+  const synthesis = window.speechSynthesis;
+  if (!synthesis) return [];
+  const voices = synthesis.getVoices();
+  if (voices.length > 0) return voices;
+  if (!speechVoicesPromise) {
+    speechVoicesPromise = new Promise((resolve) => {
+      let settled = false;
+      const finish = () => {
+        if (settled) return;
+        settled = true;
         window.clearTimeout(timeout);
         synthesis.removeEventListener("voiceschanged", handleVoicesChanged);
         resolve(synthesis.getVoices());
       };
+      const handleVoicesChanged = () => finish();
+      const timeout = window.setTimeout(finish, 1500);
       synthesis.addEventListener("voiceschanged", handleVoicesChanged, { once: true });
+    }).finally(() => {
+      speechVoicesPromise = undefined;
     });
   }
+  return speechVoicesPromise;
+}
+
+async function updateSpeechVoiceSelectors() {
+  const selectors = [...document.querySelectorAll("[data-speech-voice]")];
+  if (selectors.length === 0) return;
+  const refreshRequest = ++speechVoiceRefreshRequest;
+  const locale = document.documentElement.lang || "fr";
+  const languagePrefix = getSpeechLanguagePrefix(locale);
+  const voices = await getAvailableSpeechVoices();
+  if (refreshRequest !== speechVoiceRefreshRequest) return;
+
+  const localVoices = voices
+    .filter((voice) => voice.localService && voice.lang.toLocaleLowerCase().startsWith(languagePrefix))
+    .sort((left, right) => left.name.localeCompare(right.name))
+    .filter((voice, index, available) => available.findIndex((candidate) => (
+      candidate.name === voice.name && candidate.lang === voice.lang
+    )) === index);
+  const savedVoiceId = localStorage.getItem(speechVoicePreferenceKey) || "";
+  const selectedVoiceId = localVoices.some((voice) => getSpeechVoiceId(voice) === savedVoiceId)
+    ? savedVoiceId
+    : "";
+
+  selectors.forEach((selector) => {
+    selector.replaceChildren();
+    const automaticOption = document.createElement("option");
+    automaticOption.value = "";
+    automaticOption.textContent = getLocalizedText("Automatique (recommandé)");
+    selector.append(automaticOption);
+
+    localVoices.forEach((voice) => {
+      const option = document.createElement("option");
+      option.value = getSpeechVoiceId(voice);
+      option.textContent = `${voice.name} (${voice.lang})`;
+      selector.append(option);
+    });
+    selector.value = selectedVoiceId;
+    selector.disabled = localVoices.length === 0;
+  });
+}
+
+document.querySelectorAll("[data-speech-voice]").forEach((selector) => {
+  selector.addEventListener("change", () => {
+    if (selector.value) localStorage.setItem(speechVoicePreferenceKey, selector.value);
+    else localStorage.removeItem(speechVoicePreferenceKey);
+    document.querySelectorAll("[data-speech-voice]").forEach((otherSelector) => {
+      otherSelector.value = selector.value;
+    });
+  });
+});
+
+window.speechSynthesis?.addEventListener("voiceschanged", updateSpeechVoiceSelectors);
+document.addEventListener("iaevolution:languagechange", updateSpeechVoiceSelectors);
+updateSpeechVoiceSelectors();
+
+async function getPreferredSpeechVoice(locale) {
+  if (!window.speechSynthesis) return undefined;
+  const requestedLocale = speechLocales[locale] || locale || speechLocales.fr;
+  const languagePrefix = getSpeechLanguagePrefix(locale);
+  const availableVoices = await getAvailableSpeechVoices();
   const candidates = availableVoices.filter((voice) => voice.localService
     && voice.lang.toLocaleLowerCase().startsWith(languagePrefix));
+  const selectedVoiceId = localStorage.getItem(speechVoicePreferenceKey);
+  const selectedVoice = candidates.find((voice) => getSpeechVoiceId(voice) === selectedVoiceId);
+  if (selectedVoice) return selectedVoice;
   const qualityMarkers = ["natural", "neural", "premium", "enhanced", "high quality"];
   const compactMarkers = ["compact", "basic", "legacy"];
 
@@ -657,6 +735,7 @@ async function speakTourStep() {
   utterance.lang = narrationLocale;
   utterance.rate = 1;
   const languageVoice = await getPreferredSpeechVoice(narrationLocale);
+  if (!tourVoiceEnabled || tourState !== "playing" || guidedTourSteps[tourIndex] !== step) return;
   if (!languageVoice) {
     tourStatus.textContent = "Aucune voix locale compatible · la visite continue avec le texte à l'écran.";
     finishTourStepWithoutVoice();
@@ -1196,6 +1275,7 @@ if (SpeechRecognition) {
   };
 
   assistantVoiceStart.addEventListener("click", () => {
+    assistantSpeechRequest += 1;
     activeAssistantUtterance = null;
     window.speechSynthesis?.cancel();
     assistantVoiceStopSpeaking.hidden = true;
@@ -1218,6 +1298,7 @@ if (SpeechRecognition) {
 }
 
 assistantVoiceStopSpeaking.addEventListener("click", () => {
+  assistantSpeechRequest += 1;
   activeAssistantUtterance = null;
   window.speechSynthesis?.cancel();
   assistantVoiceStopSpeaking.hidden = true;
@@ -1226,6 +1307,7 @@ assistantVoiceStopSpeaking.addEventListener("click", () => {
 
 window.addEventListener("pagehide", () => {
   voiceRecognition?.abort();
+  assistantSpeechRequest += 1;
   activeAssistantUtterance = null;
   window.speechSynthesis?.cancel();
 });

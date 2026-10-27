@@ -14,8 +14,10 @@ navigateur, l'audio peut être traité par son fournisseur ; IAeVolution ne cons
 l'audio ni les transcriptions. La recherche et les réponses restent limitées au corpus
 éditorial du site, et la lecture vocale utilise la synthèse du navigateur. Les commandes
 vocales ne sont pas disponibles dans tous les navigateurs ; la saisie texte reste accessible.
-L'assistant et la visite guidée partagent une sélection automatique de la meilleure voix
-locale disponible pour la langue choisie ; le rendu dépend des voix installées sur l'appareil.
+L'assistant et la visite guidée partagent un sélecteur de voix locale, avec un choix
+automatique par défaut ; le choix manuel est conservé dans le navigateur sur cet appareil.
+Les voix proposées dépendent du navigateur. Une voix personnelle macOS peut nécessiter
+l'autorisation des apps et ne pas être accessible aux sites web.
 
 L'interface propose douze langues : français, anglais, espagnol, néerlandais, allemand,
 chinois simplifié, portugais, arabe, hindi, japonais, russe et italien. Les traductions

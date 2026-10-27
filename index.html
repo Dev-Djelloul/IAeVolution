@@ -225,6 +225,10 @@
               <button class="act-control" type="button" data-tour-next aria-label="Passer à l'étape suivante" hidden>→</button>
               <button class="act-control act-stop" type="button" data-tour-stop hidden>Arrêter</button>
             </div>
+            <div class="speech-voice-picker">
+              <label for="tour-speech-voice">Voix de lecture</label>
+              <select id="tour-speech-voice" data-speech-voice></select>
+            </div>
             <p class="act-status" data-tour-status role="status">Prêt à commencer · la meilleure voix locale disponible pour la langue choisie accompagnera la visite ; le rendu dépend des voix de votre appareil.</p>
             <a class="act-source" id="act-source" href="https://www.iea.org/reports/energy-and-ai" target="_blank" rel="noopener noreferrer">Source : AIE · Energy and AI ↗</a>
             <a class="act-explore-link" data-tour-dossier href="#dossier-data-centres" hidden>Lire le dossier complet <span aria-hidden="true">↗</span></a>
@@ -974,8 +978,12 @@
             <button class="assistant-voice-button" id="assistant-voice-stop" type="button" hidden>Arrêter le micro</button>
             <button class="assistant-voice-button" id="assistant-voice-stop-speaking" type="button" hidden>Arrêter la lecture</button>
           </div>
+          <div class="speech-voice-picker">
+            <label for="assistant-speech-voice">Voix de lecture</label>
+            <select id="assistant-speech-voice" data-speech-voice></select>
+          </div>
           <p class="assistant-voice-disclosure">Le micro ne s'active qu'à votre demande. La reconnaissance vocale de votre navigateur peut envoyer l'audio à son fournisseur. IAeVolution ne conserve aucun audio ni transcription ; la recherche reste limitée aux sources du site.</p>
-          <p class="assistant-voice-disclosure">La meilleure voix locale disponible pour la langue choisie est sélectionnée automatiquement ; le rendu dépend des voix de votre appareil.</p>
+          <p class="assistant-voice-disclosure">Les voix proposées dépendent de votre appareil et de votre navigateur. Une voix personnelle macOS peut nécessiter l'autorisation des apps et ne pas être accessible aux sites web.</p>
           <p class="assistant-voice-status" id="assistant-voice-status" role="status" aria-live="polite" aria-atomic="true"></p>
           <div class="suggested-questions" role="group" aria-label="Exemples de questions">
             <span>ESSAYEZ PAR EXEMPLE</span>
