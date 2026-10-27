@@ -6,7 +6,14 @@ IAeVolution est un observatoire éditorial de l'IA, conçu pour rendre le sujet 
 utile et accessible. Le site propose une visite guidée, une boussole à cinq angles, sept
 dossiers thématiques, un registre de sources et une page dédiée aux réseaux mondiaux.
 Les contenus sont éditorialisés et sourcés ; l'assistant documentaire effectue une recherche
-locale dans un corpus restreint et ne fait pas appel à un modèle génératif.
+locale dans un corpus restreint, avec une commande vocale facultative fournie par le
+navigateur. Il ne fait pas appel à un modèle génératif.
+
+La reconnaissance vocale ne démarre qu'après une action sur le bouton du micro. Selon le
+navigateur, l'audio peut être traité par son fournisseur ; IAeVolution ne conserve ni
+l'audio ni les transcriptions. La recherche et les réponses restent limitées au corpus
+éditorial du site, et la lecture vocale utilise la synthèse du navigateur. Les commandes
+vocales ne sont pas disponibles dans tous les navigateurs ; la saisie texte reste accessible.
 
 L'interface propose douze langues : français, anglais, espagnol, néerlandais, allemand,
 chinois simplifié, portugais, arabe, hindi, japonais, russe et italien. Les traductions

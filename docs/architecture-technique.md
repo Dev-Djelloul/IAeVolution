@@ -155,6 +155,13 @@ nécessitent. Le scraping généraliste n'est pas le point de départ.
   texte, sous-titres/transcription, commande d'arrêt et confirmation visuelle. Le choix entre
   capacités natives du navigateur et services vocaux côté serveur est à évaluer selon la
   compatibilité, la confidentialité et les coûts.
+- **État du prototype vocal :** le bouton « Parler » active ponctuellement la reconnaissance
+  vocale du navigateur ; la transcription remplit le champ de recherche et interroge le même
+  corpus éditorial local que la saisie texte. Les résultats et leurs citations restent
+  visibles, puis la synthèse vocale du navigateur peut les lire. Aucun modèle génératif,
+  Worker API, Durable Object ni historique de conversation n'est activé. La compatibilité
+  dépend du navigateur ; celui-ci peut transmettre l'audio à son propre fournisseur, ce qui
+  est indiqué avant l'activation du micro. La saisie texte reste toujours disponible.
 - **Génération éventuelle :** appel au modèle depuis l'API serveur ; le modèle ne remplace
   ni le corpus ni la validation des sources.
 - Chaque réponse doit distinguer les sources internes des sources Web, citer les passages
@@ -184,8 +191,12 @@ commit ou d'une simple collecte automatique.
 - Les questions de l'assistant ne sont pas conservées par défaut ; ne stocker aucune
   conversation sans choix explicite, finalité annoncée et durée de conservation définie.
 - Avant l'activation du micro, expliquer la capture vocale et son traitement, demander une
-  action claire et offrir une alternative texte. Ne transmettre l'audio à un tiers que si le
-  traitement et le fournisseur sont explicitement indiqués.
+  action claire et offrir une alternative texte. Le prototype indique que le fournisseur du
+  navigateur peut traiter l'audio ; aucune capture ne démarre sans action explicite.
+- Le prototype vocal actuel ne transmet pas les transcriptions à IAeVolution : la recherche
+  reste locale au navigateur et aucune conversation n'est conservée. Toute évolution vers
+  une reconnaissance, synthèse ou génération côté serveur exigera une nouvelle évaluation
+  des fournisseurs, coûts, limites et règles de conservation.
 - Présenter les résultats Web comme des contenus externes non vérifiés par défaut ; séparer
   clairement publicité éventuelle, résultats éditoriaux IAeVolution et résultats de recherche.
 - Minimiser les journaux techniques et exclure les questions et contenus personnels des
@@ -210,7 +221,7 @@ commit ou d'une simple collecte automatique.
 | 4. Persistance et API | Catalogue durable, historique et API en lecture seule pour le site | L'interface lit le même contenu publié que l'assistant |
 | 5. Recherche évaluée | Corpus approuvé, jeu de questions de référence et mesure des citations | Les réponses pertinentes citent les bonnes preuves et les cas inconnus s'abstiennent |
 | 6. Recherche Web contrôlée | Recherche Web explicite ou déclenchée par intention, résultats séparés du corpus interne | Sources accessibles et citées ; aucune affirmation de couverture exhaustive du Web |
-| 7. Assistant vocal | Parcours vocal et textuel avec transcription, arrêt, lecture et refus traçable | Le parcours reste utilisable sans micro et fonctionne avec des sources internes et Web distinctes |
+| 7. Assistant vocal | Prototype navigateur à la demande : transcription, recherche locale sourcée, lecture et saisie texte de repli | La compatibilité du navigateur, la confidentialité audio et la qualité de reconnaissance sont évaluées avant tout service vocal côté serveur |
 | 8. Génération contrôlée | Prototype RAG derrière l'API, désactivable et plafonné | Qualité, confidentialité, coûts et limites sont mesurés avant une ouverture plus large |
 
 ## Décisions à prendre avant l'étape 2

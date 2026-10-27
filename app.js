@@ -228,6 +228,10 @@ filterButtons.forEach((button) => {
 const assistantForm = document.querySelector("#assistant-form");
 const assistantQuery = document.querySelector("#assistant-query");
 const assistantResults = document.querySelector("#assistant-results");
+const assistantVoiceStart = document.querySelector("#assistant-voice-start");
+const assistantVoiceStop = document.querySelector("#assistant-voice-stop");
+const assistantVoiceStopSpeaking = document.querySelector("#assistant-voice-stop-speaking");
+const assistantVoiceStatus = document.querySelector("#assistant-voice-status");
 const suggestedQuestions = [...document.querySelectorAll("[data-assistant-prompt]")];
 const backToTop = document.querySelector("#back-to-top");
 const sourceRegister = document.querySelector("#source-register");
@@ -966,9 +970,9 @@ function renderAssistantResults(question) {
   if (matches.length === 0) {
     const emptyMessage = document.createElement("p");
     emptyMessage.className = "assistant-empty";
-    emptyMessage.textContent = "Je n'ai pas trouvé de réponse dans les sources actuellement indexées. Essaie une question sur l'énergie, les régions, le cloud, le PUE, l'IA générative, les tokens ou la fiabilité des modèles.";
+    emptyMessage.textContent = getLocalizedText("Je n'ai pas trouvé de réponse dans les sources actuellement indexées. Essaie une question sur l'énergie, les régions, le cloud, le PUE, l'IA générative, les tokens ou la fiabilité des modèles.");
     assistantResults.append(emptyMessage);
-    return;
+    return matches;
   }
 
   const answerList = document.createElement("div");
@@ -994,23 +998,173 @@ function renderAssistantResults(question) {
   });
 
   assistantResults.append(answerList);
+  return matches;
+}
+
+let assistantRequest = 0;
+let voiceRecognition;
+let activeAssistantUtterance;
+let intentionalVoiceStop = false;
+
+function setAssistantVoiceStatus(message) {
+  assistantVoiceStatus.textContent = message;
+}
+
+function speakAssistantResults(matches) {
+  if (!window.speechSynthesis || !("SpeechSynthesisUtterance" in window)) {
+    setAssistantVoiceStatus(getLocalizedText("La lecture vocale n'est pas disponible sur ce navigateur."));
+    return;
+  }
+
+  activeAssistantUtterance = null;
+  window.speechSynthesis.cancel();
+  const spokenText = matches.length === 0
+    ? assistantResults.querySelector(".assistant-empty")?.textContent ?? ""
+    : matches
+      .slice(0, 2)
+      .map(({ item }) => {
+        const locale = document.documentElement.lang || "fr";
+        const localizedAnswer = getSuggestedAnswer(item.title, locale);
+        const sourceLabel = getLocalizedText("Lire la source : ").trimEnd();
+        return `${localizedAnswer?.title ?? getLocalizedText(item.title)}. ${localizedAnswer?.answer ?? getLocalizedText(item.answer)} ${sourceLabel} ${item.source.name}.`;
+      })
+      .join(" ")
+      .slice(0, 2200);
+  const utterance = new SpeechSynthesisUtterance(spokenText);
+  const language = document.documentElement.lang || "fr";
+  const speechLocales = { fr: "fr-FR", en: "en-US", es: "es-ES", nl: "nl-NL", de: "de-DE", "zh-CN": "zh-CN", pt: "pt-PT", ar: "ar-SA", hi: "hi-IN", ja: "ja-JP", ru: "ru-RU", it: "it-IT" };
+  utterance.lang = speechLocales[language] || "fr-FR";
+  const languagePrefix = utterance.lang.toLowerCase().split("-")[0];
+  const voice = window.speechSynthesis.getVoices().find((item) => item.lang.toLowerCase().startsWith(languagePrefix));
+  if (voice) utterance.voice = voice;
+  activeAssistantUtterance = utterance;
+  utterance.onend = () => {
+    if (activeAssistantUtterance !== utterance) return;
+    activeAssistantUtterance = null;
+    assistantVoiceStopSpeaking.hidden = true;
+    setAssistantVoiceStatus(getLocalizedText("Lecture vocale terminée."));
+  };
+  utterance.onerror = () => {
+    if (activeAssistantUtterance !== utterance) return;
+    activeAssistantUtterance = null;
+    assistantVoiceStopSpeaking.hidden = true;
+    setAssistantVoiceStatus(getLocalizedText("La lecture vocale a échoué."));
+  };
+  assistantVoiceStopSpeaking.hidden = false;
+  setAssistantVoiceStatus(getLocalizedText("Lecture de la réponse à voix haute."));
+  window.speechSynthesis.speak(utterance);
+}
+
+async function processAssistantQuestion(question, speakAnswer = false) {
+  const request = ++assistantRequest;
+  currentAssistantQuestion = await translateToFrench(question);
+  if (request !== assistantRequest) return;
+  const matches = renderAssistantResults(currentAssistantQuestion);
+  if (speakAnswer) speakAssistantResults(matches);
 }
 
 assistantForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const question = assistantQuery.value.trim();
-  if (!question) return;
-  currentAssistantQuestion = await translateToFrench(question);
-  renderAssistantResults(currentAssistantQuestion);
+  if (question) await processAssistantQuestion(question);
 });
 
 suggestedQuestions.forEach((button) => {
   button.addEventListener("click", async () => {
     assistantQuery.value = button.dataset.assistantPrompt;
     assistantQuery.focus();
-    currentAssistantQuestion = await translateToFrench(assistantQuery.value);
-    renderAssistantResults(currentAssistantQuestion);
+    await processAssistantQuestion(assistantQuery.value);
   });
+});
+
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+if (SpeechRecognition) {
+  voiceRecognition = new SpeechRecognition();
+  voiceRecognition.continuous = false;
+  voiceRecognition.interimResults = true;
+  voiceRecognition.maxAlternatives = 1;
+
+  voiceRecognition.onstart = () => {
+    intentionalVoiceStop = false;
+    assistantVoiceStart.disabled = true;
+    assistantVoiceStop.hidden = false;
+    setAssistantVoiceStatus(getLocalizedText("Écoute en cours…"));
+  };
+
+  voiceRecognition.onresult = (event) => {
+    const results = Array.from(event.results);
+    const finalTranscript = results
+      .filter((result) => result.isFinal)
+      .map((result) => result[0].transcript.trim())
+      .join(" ")
+      .trim();
+    const interimTranscript = results
+      .filter((result) => !result.isFinal)
+      .map((result) => result[0].transcript.trim())
+      .join(" ")
+      .trim();
+
+    if (finalTranscript) {
+      if (finalTranscript.length > 240) {
+        setAssistantVoiceStatus(getLocalizedText("La question reconnue dépasse la limite de 240 caractères."));
+        voiceRecognition.stop();
+        return;
+      }
+      assistantQuery.value = finalTranscript;
+      voiceRecognition.stop();
+      void processAssistantQuestion(finalTranscript, true);
+    } else if (interimTranscript) {
+      setAssistantVoiceStatus(`${getLocalizedText("Reconnaissance en cours :")} ${interimTranscript}`);
+    }
+  };
+
+  voiceRecognition.onerror = (event) => {
+    if (intentionalVoiceStop) return;
+    const status = event.error === "not-allowed"
+      ? getLocalizedText("Accès au micro refusé. Vérifiez l'autorisation du navigateur.")
+      : getLocalizedText("La reconnaissance vocale est indisponible. Vérifiez l'autorisation du micro ou saisissez votre question.");
+    setAssistantVoiceStatus(status);
+  };
+
+  voiceRecognition.onend = () => {
+    assistantVoiceStart.disabled = false;
+    assistantVoiceStop.hidden = true;
+  };
+
+  assistantVoiceStart.addEventListener("click", () => {
+    activeAssistantUtterance = null;
+    window.speechSynthesis?.cancel();
+    assistantVoiceStopSpeaking.hidden = true;
+    voiceRecognition.lang = ({ fr: "fr-FR", en: "en-US", es: "es-ES", nl: "nl-NL", de: "de-DE", "zh-CN": "zh-CN", pt: "pt-PT", ar: "ar-SA", hi: "hi-IN", ja: "ja-JP", ru: "ru-RU", it: "it-IT" })[document.documentElement.lang] || "fr-FR";
+    try {
+      voiceRecognition.start();
+    } catch {
+      setAssistantVoiceStatus(getLocalizedText("Impossible de démarrer la reconnaissance vocale."));
+    }
+  });
+
+  assistantVoiceStop.addEventListener("click", () => {
+    intentionalVoiceStop = true;
+    voiceRecognition.stop();
+    setAssistantVoiceStatus("");
+  });
+} else {
+  assistantVoiceStart.disabled = true;
+  setAssistantVoiceStatus(getLocalizedText("La reconnaissance vocale n'est pas disponible sur ce navigateur. Vous pouvez toujours saisir votre question."));
+}
+
+assistantVoiceStopSpeaking.addEventListener("click", () => {
+  activeAssistantUtterance = null;
+  window.speechSynthesis?.cancel();
+  assistantVoiceStopSpeaking.hidden = true;
+  setAssistantVoiceStatus(getLocalizedText("Lecture vocale arrêtée."));
+});
+
+window.addEventListener("pagehide", () => {
+  voiceRecognition?.abort();
+  activeAssistantUtterance = null;
+  window.speechSynthesis?.cancel();
 });
 
 sourceFilterButtons.forEach((button) => {

@@ -761,6 +761,14 @@ h2 {
 .assistant-submit { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; gap: 15px; min-width: 112px; padding: 0 15px; border: 0; border-radius: 3px; background: var(--lime); color: #151a17; cursor: pointer; font-size: 0.96875rem; font-weight: 700; }
 .assistant-submit span { font-size: 1.3175rem; }
 .assistant-submit:hover { background: #c5e5dc; }
+.assistant-voice-controls { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.assistant-voice-button { min-height: 38px; padding: 0 13px; border: 1px solid #46534b; border-radius: 3px; background: rgba(168,214,200,.08); color: #c5d5cb; cursor: pointer; font-size: 0.81375rem; font-weight: 600; }
+.assistant-voice-button:hover:not(:disabled) { border-color: var(--lime); color: var(--lime); }
+.assistant-voice-button:disabled { cursor: not-allowed; opacity: .55; }
+.assistant-voice-button[hidden] { display: none; }
+.assistant-voice-disclosure, .assistant-voice-status { margin: 10px 0 0; color: #89969f; font-size: 0.76rem; line-height: 1.6; }
+.assistant-voice-status:empty { display: none; }
+.assistant-voice-status:not(:empty) { color: #c5d5cb; }
 .suggested-questions { display: flex; align-items: center; flex-wrap: wrap; gap: 7px; margin-top: 20px; }
 .suggested-questions > span { margin-right: 4px; color: #788590; font-family: var(--mono); font-size: 0.6975rem; letter-spacing: .7px; }
 .suggested-questions button { min-height: 29px; padding: 0 10px; border: 1px solid #33404b; border-radius: 3px; background: transparent; color: #a9b4bc; cursor: pointer; font-size: 0.81375rem; }

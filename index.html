@@ -957,7 +957,7 @@
           <div>
             <p class="eyebrow">EXPLORATION SOURCÉE <span class="assistant-index">/ 01</span></p>
             <h2 id="assistant-title">Une question. Des sources. Pas d'invention</h2>
-            <p>Interrogez les dossiers IAeVolution. Ce prototype retrouve des repères éditorialisés et affiche leurs sources — il ne génère pas encore de réponse avec un modèle d'IA.</p>
+            <p>Interrogez les dossiers IAeVolution par écrit ou à la voix. Les réponses s'appuient sur des repères éditorialisés et leurs sources ; aucune réponse générée par un modèle n'est encore utilisée.</p>
           </div>
           <div class="local-badge"><span></span> RECHERCHE LOCALE</div>
         </div>
@@ -969,6 +969,13 @@
               <button class="assistant-submit" type="submit">Chercher <span aria-hidden="true">↗</span></button>
             </div>
           </form>
+          <div class="assistant-voice-controls" role="group" aria-label="Commandes vocales">
+            <button class="assistant-voice-button" id="assistant-voice-start" type="button">Parler (recherche locale)</button>
+            <button class="assistant-voice-button" id="assistant-voice-stop" type="button" hidden>Arrêter le micro</button>
+            <button class="assistant-voice-button" id="assistant-voice-stop-speaking" type="button" hidden>Arrêter la lecture</button>
+          </div>
+          <p class="assistant-voice-disclosure">Le micro ne s'active qu'à votre demande. La reconnaissance vocale de votre navigateur peut envoyer l'audio à son fournisseur. IAeVolution ne conserve aucun audio ni transcription ; la recherche reste limitée aux sources du site.</p>
+          <p class="assistant-voice-status" id="assistant-voice-status" role="status" aria-live="polite" aria-atomic="true"></p>
           <div class="suggested-questions" role="group" aria-label="Exemples de questions">
             <span>ESSAYEZ PAR EXEMPLE</span>
             <button type="button" data-assistant-prompt="Combien d'électricité les centres de données consomment-ils ?">Consommation électrique</button>
