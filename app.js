@@ -231,6 +231,7 @@ const assistantResults = document.querySelector("#assistant-results");
 const assistantVoiceStart = document.querySelector("#assistant-voice-start");
 const assistantVoiceStop = document.querySelector("#assistant-voice-stop");
 const assistantVoiceStopSpeaking = document.querySelector("#assistant-voice-stop-speaking");
+const assistantVoiceInstallLocal = document.querySelector("#assistant-voice-install-local");
 const assistantVoiceStatus = document.querySelector("#assistant-voice-status");
 const suggestedQuestions = [...document.querySelectorAll("[data-assistant-prompt]")];
 const backToTop = document.querySelector("#back-to-top");
@@ -1220,6 +1221,94 @@ suggestedQuestions.forEach((button) => {
 });
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+let localRecognitionAvailability = "unsupported";
+let localRecognitionLanguage = "";
+let localRecognitionCheckRequest = 0;
+let localRecognitionInstallRequest = 0;
+let activeRecognitionIsLocal = false;
+
+function getSpeechRecognitionLanguage() {
+  return speechLocales[document.documentElement.lang] || "fr-FR";
+}
+
+async function checkLocalRecognitionAvailability(language = getSpeechRecognitionLanguage()) {
+  if (!SpeechRecognition || typeof SpeechRecognition.available !== "function") {
+    localRecognitionAvailability = "unsupported";
+    localRecognitionLanguage = language;
+    assistantVoiceInstallLocal.hidden = true;
+    return localRecognitionAvailability;
+  }
+
+  const request = ++localRecognitionCheckRequest;
+  try {
+    const availability = await SpeechRecognition.available({
+      langs: [language],
+      processLocally: true,
+    });
+    if (request !== localRecognitionCheckRequest) return localRecognitionAvailability;
+    localRecognitionAvailability = availability;
+    localRecognitionLanguage = language;
+    assistantVoiceInstallLocal.hidden = availability !== "downloadable";
+    if (availability === "downloadable") {
+      setAssistantVoiceStatus(getLocalizedText("Un modèle de reconnaissance vocale locale peut être installé pour cette langue."));
+    } else if (assistantVoiceStatus.textContent === getLocalizedText("Vérification de la reconnaissance locale…")) {
+      setAssistantVoiceStatus("");
+    }
+    return availability;
+  } catch {
+    if (request !== localRecognitionCheckRequest) return localRecognitionAvailability;
+    localRecognitionAvailability = "unsupported";
+    localRecognitionLanguage = language;
+    assistantVoiceInstallLocal.hidden = true;
+    return localRecognitionAvailability;
+  }
+}
+
+async function installLocalRecognitionLanguage() {
+  if (!SpeechRecognition || typeof SpeechRecognition.install !== "function") {
+    assistantVoiceInstallLocal.hidden = true;
+    setAssistantVoiceStatus(getLocalizedText("Cette version du navigateur ne permet pas d'installer un modèle vocal local."));
+    return;
+  }
+
+  const language = getSpeechRecognitionLanguage();
+  const request = ++localRecognitionInstallRequest;
+  assistantVoiceInstallLocal.disabled = true;
+  setAssistantVoiceStatus(getLocalizedText("Téléchargement du modèle vocal local…"));
+  try {
+    const installStarted = await SpeechRecognition.install({
+      langs: [language],
+      processLocally: true,
+    });
+    if (request !== localRecognitionInstallRequest) return;
+    if (!installStarted) {
+      setAssistantVoiceStatus(getLocalizedText("Le modèle vocal local n'a pas pu être téléchargé. Vérifiez la connexion puis réessayez."));
+      return;
+    }
+
+    for (let attempt = 0; attempt < 60; attempt += 1) {
+      const availability = await SpeechRecognition.available({
+        langs: [language],
+        processLocally: true,
+      });
+      if (request !== localRecognitionInstallRequest) return;
+      if (availability === "available") {
+        localRecognitionAvailability = availability;
+        localRecognitionLanguage = language;
+        assistantVoiceInstallLocal.hidden = true;
+        setAssistantVoiceStatus(getLocalizedText("Modèle local installé. Cliquez de nouveau sur le micro pour parler sans envoyer l'audio au service vocal du navigateur."));
+        return;
+      }
+      await new Promise((resolve) => window.setTimeout(resolve, 1000));
+    }
+    setAssistantVoiceStatus(getLocalizedText("Le téléchargement du modèle local prend plus de temps que prévu. Réessayez dans un instant."));
+  } catch {
+    if (request !== localRecognitionInstallRequest) return;
+    setAssistantVoiceStatus(getLocalizedText("Le modèle vocal local n'a pas pu être téléchargé. Vérifiez la connexion puis réessayez."));
+  } finally {
+    if (request === localRecognitionInstallRequest) assistantVoiceInstallLocal.disabled = false;
+  }
+}
 
 if (SpeechRecognition) {
   voiceRecognition = new SpeechRecognition();
@@ -1263,9 +1352,18 @@ if (SpeechRecognition) {
 
   voiceRecognition.onerror = (event) => {
     if (intentionalVoiceStop) return;
-    const status = event.error === "not-allowed"
-      ? getLocalizedText("Accès au micro refusé. Vérifiez l'autorisation du navigateur.")
-      : getLocalizedText("La reconnaissance vocale est indisponible. Vérifiez l'autorisation du micro ou saisissez votre question.");
+    const errorMessages = {
+      "no-speech": "Aucun son n'a été détecté. Parlez près du micro, puis réessayez.",
+      "audio-capture": "Le micro est inaccessible. Vérifiez le périphérique d'entrée et les autorisations de macOS et Chrome.",
+      network: activeRecognitionIsLocal
+        ? "La reconnaissance vocale locale a échoué. Vérifiez le modèle de langue puis réessayez."
+        : "Le service de reconnaissance en ligne est injoignable. Essayez la reconnaissance locale ou saisissez votre question.",
+      "not-allowed": "Chrome a bloqué le service vocal. Vérifiez l'autorisation Microphone pour le site et dans les réglages macOS.",
+      "service-not-allowed": "Chrome a bloqué le service vocal. Vérifiez l'autorisation Microphone pour le site et dans les réglages macOS.",
+      "language-not-supported": "Cette langue n'est pas prise en charge par le service vocal. Choisissez une autre langue ou saisissez votre question.",
+    };
+    const status = getLocalizedText(errorMessages[event.error] || "La reconnaissance vocale a échoué (code :")
+      + (errorMessages[event.error] ? "" : ` ${event.error}). ${getLocalizedText("Réessayez ou saisissez votre question.")}`);
     setAssistantVoiceStatus(status);
   };
 
@@ -1279,11 +1377,21 @@ if (SpeechRecognition) {
     activeAssistantUtterance = null;
     window.speechSynthesis?.cancel();
     assistantVoiceStopSpeaking.hidden = true;
-    voiceRecognition.lang = ({ fr: "fr-FR", en: "en-US", es: "es-ES", nl: "nl-NL", de: "de-DE", "zh-CN": "zh-CN", pt: "pt-PT", ar: "ar-SA", hi: "hi-IN", ja: "ja-JP", ru: "ru-RU", it: "it-IT" })[document.documentElement.lang] || "fr-FR";
+    voiceRecognition.lang = getSpeechRecognitionLanguage();
+    if (localRecognitionLanguage !== voiceRecognition.lang) {
+      setAssistantVoiceStatus(getLocalizedText("Vérification de la reconnaissance locale…"));
+      void checkLocalRecognitionAvailability(voiceRecognition.lang);
+      return;
+    }
+    activeRecognitionIsLocal = localRecognitionAvailability === "available"
+      && "processLocally" in voiceRecognition;
+    if ("processLocally" in voiceRecognition) {
+      voiceRecognition.processLocally = activeRecognitionIsLocal;
+    }
     try {
       voiceRecognition.start();
     } catch {
-      setAssistantVoiceStatus(getLocalizedText("Impossible de démarrer la reconnaissance vocale."));
+      setAssistantVoiceStatus(getLocalizedText("Impossible de démarrer la reconnaissance vocale. Réessayez ou saisissez votre question."));
     }
   });
 
@@ -1292,10 +1400,17 @@ if (SpeechRecognition) {
     voiceRecognition.stop();
     setAssistantVoiceStatus("");
   });
+  assistantVoiceInstallLocal.addEventListener("click", installLocalRecognitionLanguage);
+  void checkLocalRecognitionAvailability();
 } else {
   assistantVoiceStart.disabled = true;
   setAssistantVoiceStatus(getLocalizedText("La reconnaissance vocale n'est pas disponible sur ce navigateur. Vous pouvez toujours saisir votre question."));
 }
+document.addEventListener("iaevolution:languagechange", () => {
+  localRecognitionInstallRequest += 1;
+  assistantVoiceInstallLocal.disabled = false;
+  void checkLocalRecognitionAvailability();
+});
 
 assistantVoiceStopSpeaking.addEventListener("click", () => {
   assistantSpeechRequest += 1;

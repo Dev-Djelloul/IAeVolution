@@ -156,7 +156,11 @@ nécessitent. Le scraping généraliste n'est pas le point de départ.
   capacités natives du navigateur et services vocaux côté serveur est à évaluer selon la
   compatibilité, la confidentialité et les coûts.
 - **État du prototype vocal :** le bouton « Parler » active ponctuellement la reconnaissance
-  vocale du navigateur ; la transcription remplit le champ de recherche et interroge le même
+  vocale du navigateur ; lorsque l'API et le modèle le permettent, la reconnaissance est
+  explicitement exécutée sur l'appareil. Un modèle de langue installable est proposé quand le
+  navigateur l'expose ; à défaut, le navigateur peut transmettre l'audio à son fournisseur.
+  Les erreurs distinguent désormais les problèmes de réseau, d'accès au micro, de langue et
+  d'absence de parole. La transcription remplit le champ de recherche et interroge le même
   corpus éditorial local que la saisie texte. Les résultats et leurs citations restent
   visibles, puis la synthèse vocale du navigateur peut les lire. Aucun modèle génératif,
   Worker API, Durable Object ni historique de conversation n'est activé. La compatibilité

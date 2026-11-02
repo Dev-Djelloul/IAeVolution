@@ -9,9 +9,10 @@ Les contenus sont éditorialisés et sourcés ; l'assistant documentaire effectu
 locale dans un corpus restreint, avec une commande vocale facultative fournie par le
 navigateur. Il ne fait pas appel à un modèle génératif.
 
-La reconnaissance vocale ne démarre qu'après une action sur le bouton du micro. Selon le
-navigateur, l'audio peut être traité par son fournisseur ; IAeVolution ne conserve ni
-l'audio ni les transcriptions. La recherche et les réponses restent limitées au corpus
+La reconnaissance vocale ne démarre qu'après une action sur le bouton du micro. Les
+navigateurs compatibles utilisent d'abord un modèle vocal local installé ; sinon, l'audio
+peut être traité par le fournisseur du navigateur. IAeVolution ne conserve ni l'audio ni les
+transcriptions. La recherche et les réponses restent limitées au corpus
 éditorial du site, et la lecture vocale utilise la synthèse du navigateur. Les commandes
 vocales ne sont pas disponibles dans tous les navigateurs ; la saisie texte reste accessible.
 L'assistant et la visite guidée partagent un sélecteur de voix locale, avec un choix
