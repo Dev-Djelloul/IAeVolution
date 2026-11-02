@@ -1138,6 +1138,108 @@ const assistantSectionTranslations = {
   },
 };
 
+const historyTimelineTranslations = {
+  en: {
+    "Filtrer les jalons historiques": "Filter historical milestones",
+    "Tous les jalons": "All milestones",
+    "Fondations": "Foundations",
+    "Infrastructures": "Infrastructure",
+    "Percées techniques": "Technical breakthroughs",
+    "Usages publics": "Public use",
+    "Jalons affichés :": "Milestones shown:",
+  },
+  es: {
+    "Filtrer les jalons historiques": "Filtrar hitos históricos",
+    "Tous les jalons": "Todos los hitos",
+    "Fondations": "Fundamentos",
+    "Infrastructures": "Infraestructura",
+    "Percées techniques": "Avances técnicos",
+    "Usages publics": "Usos públicos",
+    "Jalons affichés :": "Hitos mostrados:",
+  },
+  nl: {
+    "Filtrer les jalons historiques": "Historische mijlpalen filteren",
+    "Tous les jalons": "Alle mijlpalen",
+    "Fondations": "Grondslagen",
+    "Infrastructures": "Infrastructuur",
+    "Percées techniques": "Technische doorbraken",
+    "Usages publics": "Publieke toepassingen",
+    "Jalons affichés :": "Getoonde mijlpalen:",
+  },
+  de: {
+    "Filtrer les jalons historiques": "Historische Meilensteine filtern",
+    "Tous les jalons": "Alle Meilensteine",
+    "Fondations": "Grundlagen",
+    "Infrastructures": "Infrastruktur",
+    "Percées techniques": "Technische Durchbrüche",
+    "Usages publics": "Öffentliche Nutzung",
+    "Jalons affichés :": "Angezeigte Meilensteine:",
+  },
+  "zh-CN": {
+    "Filtrer les jalons historiques": "筛选历史里程碑",
+    "Tous les jalons": "全部里程碑",
+    "Fondations": "基础",
+    "Infrastructures": "基础设施",
+    "Percées techniques": "技术突破",
+    "Usages publics": "公众应用",
+    "Jalons affichés :": "显示的里程碑：",
+  },
+  pt: {
+    "Filtrer les jalons historiques": "Filtrar marcos históricos",
+    "Tous les jalons": "Todos os marcos",
+    "Fondations": "Fundamentos",
+    "Infrastructures": "Infraestruturas",
+    "Percées techniques": "Avanços técnicos",
+    "Usages publics": "Usos públicos",
+    "Jalons affichés :": "Marcos apresentados:",
+  },
+  ar: {
+    "Filtrer les jalons historiques": "تصفية المحطات التاريخية",
+    "Tous les jalons": "كل المحطات",
+    "Fondations": "الأسس",
+    "Infrastructures": "البنية التحتية",
+    "Percées techniques": "اختراقات تقنية",
+    "Usages publics": "استخدامات عامة",
+    "Jalons affichés :": "المحطات المعروضة:",
+  },
+  hi: {
+    "Filtrer les jalons historiques": "ऐतिहासिक पड़ाव फ़िल्टर करें",
+    "Tous les jalons": "सभी पड़ाव",
+    "Fondations": "आधार",
+    "Infrastructures": "बुनियादी ढाँचा",
+    "Percées techniques": "तकनीकी सफलताएँ",
+    "Usages publics": "सार्वजनिक उपयोग",
+    "Jalons affichés :": "दिखाए गए पड़ाव:",
+  },
+  ja: {
+    "Filtrer les jalons historiques": "歴史的な出来事を絞り込む",
+    "Tous les jalons": "すべての出来事",
+    "Fondations": "基礎",
+    "Infrastructures": "インフラ",
+    "Percées techniques": "技術的な突破",
+    "Usages publics": "一般向けの利用",
+    "Jalons affichés :": "表示中の出来事：",
+  },
+  ru: {
+    "Filtrer les jalons historiques": "Фильтр исторических вех",
+    "Tous les jalons": "Все вехи",
+    "Fondations": "Основы",
+    "Infrastructures": "Инфраструктура",
+    "Percées techniques": "Технические прорывы",
+    "Usages publics": "Общественное применение",
+    "Jalons affichés :": "Показано вех:",
+  },
+  it: {
+    "Filtrer les jalons historiques": "Filtra le tappe storiche",
+    "Tous les jalons": "Tutte le tappe",
+    "Fondations": "Fondamenti",
+    "Infrastructures": "Infrastrutture",
+    "Percées techniques": "Innovazioni tecniche",
+    "Usages publics": "Usi pubblici",
+    "Jalons affichés :": "Tappe mostrate:",
+  },
+};
+
 const speechRecognitionTranslations = {
   en: {
     "Installer la reconnaissance locale": "Install local speech recognition",
@@ -1355,6 +1457,10 @@ for (const [language, translations] of Object.entries(assistantSectionTranslatio
 }
 
 for (const [language, translations] of Object.entries(speechRecognitionTranslations)) {
+  Object.assign(dictionaries[language], translations);
+}
+
+for (const [language, translations] of Object.entries(historyTimelineTranslations)) {
   Object.assign(dictionaries[language], translations);
 }
 

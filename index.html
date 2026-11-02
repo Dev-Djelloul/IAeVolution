@@ -781,8 +781,25 @@
             <h3>Les percées s'appuient sur des couches qui s'accumulent</h3>
             <p>Calcul, réseaux, accélérateurs et architectures d'IA se sont développés à des rythmes différents. Ces jalons montrent quelques croisements importants, sans prétendre résumer toute l'histoire de l'informatique.</p>
           </div>
+          <div class="timeline-filter-row" role="group" aria-label="Filtrer les jalons historiques">
+            <button class="timeline-filter is-selected" type="button" data-timeline-filter="all" aria-pressed="true">Tous les jalons</button>
+            <button class="timeline-filter" type="button" data-timeline-filter="foundations" aria-pressed="false">Fondations</button>
+            <button class="timeline-filter" type="button" data-timeline-filter="infrastructure" aria-pressed="false">Infrastructures</button>
+            <button class="timeline-filter" type="button" data-timeline-filter="breakthrough" aria-pressed="false">Percées techniques</button>
+            <button class="timeline-filter" type="button" data-timeline-filter="public-use" aria-pressed="false">Usages publics</button>
+            <span class="timeline-count" data-timeline-count role="status" aria-live="polite"></span>
+          </div>
           <div class="timeline">
-            <article class="timeline-item">
+            <article class="timeline-item" data-timeline-category="foundations">
+              <span class="timeline-date">1950</span>
+              <div>
+                <span class="timeline-theme">FONDEMENTS</span>
+                <h4>Alan Turing pose la question des machines pensantes</h4>
+                <p>Dans son article « Computing Machinery and Intelligence », Turing propose de déplacer la question « une machine peut-elle penser ? » vers un test fondé sur le comportement observable et examine aussi l'idée de machines capables d'apprendre.</p>
+                <a class="inline-source" href="https://academic.oup.com/mind/article/LIX/236/433/986238" target="_blank" rel="noopener noreferrer">Oxford Academic · article original de Turing <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
+            <article class="timeline-item" data-timeline-category="infrastructure">
               <span class="timeline-date">1952</span>
               <div>
                 <span class="timeline-theme">MACHINES</span>
@@ -791,7 +808,16 @@
                 <a class="inline-source" href="https://www.ibm.com/history/700" target="_blank" rel="noopener noreferrer">IBM · histoire de la série 700 <span aria-hidden="true">↗</span></a>
               </div>
             </article>
-            <article class="timeline-item">
+            <article class="timeline-item" data-timeline-category="foundations">
+              <span class="timeline-date">1955–1956</span>
+              <div>
+                <span class="timeline-theme">FONDEMENTS</span>
+                <h4>Dartmouth formalise un programme de recherche en IA</h4>
+                <p>Une proposition datée de 1955 prépare un atelier d'été en 1956 et emploie l'expression « artificial intelligence » pour désigner l'étude de systèmes capables d'apprendre, d'utiliser le langage et de résoudre des problèmes.</p>
+                <a class="inline-source" href="https://www-formal.stanford.edu/jmc/history/dartmouth.pdf" target="_blank" rel="noopener noreferrer">Stanford · proposition originale de Dartmouth <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
+            <article class="timeline-item" data-timeline-category="infrastructure">
               <span class="timeline-date">1989–1990</span>
               <div>
                 <span class="timeline-theme">RÉSEAUX</span>
@@ -800,7 +826,7 @@
                 <a class="inline-source" href="https://home.cern/science/computing/the-birth-of-the-web/short-history-web/" target="_blank" rel="noopener noreferrer">CERN · une brève histoire du Web <span aria-hidden="true">↗</span></a>
               </div>
             </article>
-            <article class="timeline-item">
+            <article class="timeline-item" data-timeline-category="infrastructure">
               <span class="timeline-date">2006</span>
               <div>
                 <span class="timeline-theme">ACCÈS AU CALCUL</span>
@@ -812,7 +838,7 @@
                 </div>
               </div>
             </article>
-            <article class="timeline-item">
+            <article class="timeline-item" data-timeline-category="breakthrough">
               <span class="timeline-date">2012</span>
               <div>
                 <span class="timeline-theme">APPRENTISSAGE PROFOND</span>
@@ -821,7 +847,7 @@
                 <a class="inline-source" href="https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html" target="_blank" rel="noopener noreferrer">NeurIPS · ImageNet Classification with Deep CNNs <span aria-hidden="true">↗</span></a>
               </div>
             </article>
-            <article class="timeline-item">
+            <article class="timeline-item" data-timeline-category="breakthrough">
               <span class="timeline-date">2017</span>
               <div>
                 <span class="timeline-theme">ARCHITECTURES</span>
@@ -830,7 +856,7 @@
                 <a class="inline-source" href="https://proceedings.neurips.cc/paper/7181-attention-is-all-you-need" target="_blank" rel="noopener noreferrer">NeurIPS · article de recherche <span aria-hidden="true">↗</span></a>
               </div>
             </article>
-            <article class="timeline-item">
+            <article class="timeline-item" data-timeline-category="public-use">
               <span class="timeline-date">2022</span>
               <div>
                 <span class="timeline-theme">USAGES PUBLICS</span>

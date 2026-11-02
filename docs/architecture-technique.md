@@ -72,6 +72,9 @@ ou un service vocal nécessitant un secret depuis le navigateur.
 - Utiliser la boussole comme navigation éditoriale transversale : science, infrastructure,
   histoire, économie et société. Rendre explicite le statut des affirmations (mesure,
   estimation, projection ou analyse) et relier la méthode au registre de sources.
+- La chronologie du panneau « Histoire » expose des jalons datés filtrables par fondements,
+  infrastructures, percées techniques et usages publics. Chaque entrée renvoie à une source ;
+  les filtres annoncent le nombre de résultats et restent utilisables au clavier.
 - La page `reseaux-mondiaux.html` relie le schéma des grands corridors sous-marins à la
   carte interactive de TeleGeography et aux ressources de résilience de l'UIT, référencées
   dans `sources.json`.

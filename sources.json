@@ -91,6 +91,32 @@
     "url": "https://proceedings.neurips.cc/paper/7181-attention-is-all-you-need"
   },
   {
+    "id": "turing-computing-machinery-intelligence",
+    "name": "A. M. Turing · Mind",
+    "domain": "Histoire & fondements",
+    "family": "research",
+    "publisherType": "Article de recherche · Oxford Academic",
+    "description": "Article de 1950 qui examine la question des machines pensantes, propose le jeu de l'imitation et discute des machines capables d'apprendre.",
+    "topics": ["Histoire", "Fondements", "Apprentissage"],
+    "reviewCadence": "À chaque mise à jour éditoriale",
+    "lastReviewedAt": null,
+    "linkLabel": "Computing Machinery and Intelligence",
+    "url": "https://academic.oup.com/mind/article/LIX/236/433/986238"
+  },
+  {
+    "id": "dartmouth-ai-proposal",
+    "name": "Dartmouth · proposition de recherche en IA",
+    "domain": "Histoire & fondements",
+    "family": "research",
+    "publisherType": "Document de recherche historique",
+    "description": "Proposition datée de 1955 pour l'atelier d'été de 1956 qui a structuré un programme de recherche consacré à l'intelligence artificielle.",
+    "topics": ["Histoire", "Fondements", "Recherche"],
+    "reviewCadence": "À chaque mise à jour éditoriale",
+    "lastReviewedAt": null,
+    "linkLabel": "Proposition du projet Dartmouth",
+    "url": "https://www-formal.stanford.edu/jmc/history/dartmouth.pdf"
+  },
+  {
     "id": "google-ai-tokens",
     "name": "Google AI",
     "domain": "Documentation technique",

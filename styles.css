@@ -690,9 +690,16 @@ h2 {
 .economy-sources { display: flex; flex-direction: column; gap: 8px; }
 .economy-sources .source-link { font-size: 0.81375rem; }
 
+.timeline-filter-row { display: flex; align-items: center; flex-wrap: wrap; gap: 7px; margin: 0 0 19px; }
+.timeline-filter { min-height: 31px; padding: 0 10px; border: 1px solid #34404a; border-radius: 3px; background: transparent; color: #9ca8b0; cursor: pointer; font-size: 0.81375rem; }
+.timeline-filter:hover, .timeline-filter:focus-visible { border-color: #687b4e; color: var(--lime); }
+.timeline-filter:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
+.timeline-filter.is-selected { border-color: #657d75; background: rgba(168,214,200,.07); color: var(--lime); }
+.timeline-count { margin-left: auto; color: #76838d; font-family: var(--mono); font-size: 0.6975rem; }
 .timeline { position: relative; display: grid; gap: 0; margin-top: 4px; }
 .timeline::before { position: absolute; top: 12px; bottom: 14px; left: 51px; width: 1px; background: #3d4b46; content: ""; }
 .timeline-item { position: relative; display: grid; grid-template-columns: 103px 1fr; gap: 15px; padding: 0 0 24px; }
+.timeline-item[hidden] { display: none; }
 .timeline-item:last-child { padding-bottom: 0; }
 .timeline-date { position: relative; z-index: 1; display: flex; width: max-content; height: 24px; align-items: center; padding: 0 7px; border: 1px solid #657d75; border-radius: 2px; background: #151d22; color: var(--lime); font-family: var(--mono); font-size: 0.81375rem; }
 .timeline-theme { display: inline-block; margin-bottom: 5px; color: #7f8c96; font-family: var(--mono); font-size: 0.62rem; letter-spacing: .9px; }

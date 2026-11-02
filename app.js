@@ -1439,6 +1439,32 @@ sourceFilterButtons.forEach((button) => {
   });
 });
 
+const timelineItems = [...document.querySelectorAll("[data-timeline-category]")];
+const timelineFilterButtons = [...document.querySelectorAll("[data-timeline-filter]")];
+const timelineCount = document.querySelector("[data-timeline-count]");
+
+function updateTimelineCount() {
+  const visibleCount = timelineItems.filter((item) => !item.hidden).length;
+  timelineCount.textContent = `${getLocalizedText("Jalons affichés :")} ${visibleCount}`;
+}
+
+timelineFilterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const filter = button.dataset.timelineFilter;
+    timelineFilterButtons.forEach((filterButton) => {
+      const isSelected = filterButton === button;
+      filterButton.classList.toggle("is-selected", isSelected);
+      filterButton.setAttribute("aria-pressed", String(isSelected));
+    });
+    timelineItems.forEach((item) => {
+      item.hidden = filter !== "all" && item.dataset.timelineCategory !== filter;
+    });
+    updateTimelineCount();
+  });
+});
+updateTimelineCount();
+document.addEventListener("iaevolution:languagechange", updateTimelineCount);
+
 let sourceSearchRequest = 0;
 let sourceSearchTimer;
 sourceSearchInput.addEventListener("input", () => {
