@@ -643,6 +643,79 @@
           <span class="dossier-version">DOSSIER DE CADRAGE <span>·</span> V 0.1</span>
         </div>
 
+        <section class="indicator-dashboard" aria-labelledby="indicator-dashboard-title">
+          <div class="indicator-dashboard-heading">
+            <div>
+              <p class="eyebrow">OBSERVATOIRE / TABLEAU DE BORD</p>
+              <h3 id="indicator-dashboard-title">L'IA en quelques indicateurs</h3>
+              <p>Un instantané pour relier énergie, capitaux, adoption et géographie. Chaque chiffre garde son année, son statut et sa source.</p>
+            </div>
+            <span class="indicator-dashboard-period">ÉDITIONS 2024–2026</span>
+          </div>
+          <div class="indicator-filter-row" role="group" aria-label="Filtrer les indicateurs">
+            <button class="indicator-filter is-selected" type="button" data-indicator-filter="all" aria-pressed="true">Tous</button>
+            <button class="indicator-filter" type="button" data-indicator-filter="energy" aria-pressed="false">Énergie</button>
+            <button class="indicator-filter" type="button" data-indicator-filter="investment" aria-pressed="false">Investissement</button>
+            <button class="indicator-filter" type="button" data-indicator-filter="adoption" aria-pressed="false">Adoption</button>
+            <button class="indicator-filter" type="button" data-indicator-filter="infrastructure" aria-pressed="false">Infrastructure</button>
+            <span class="indicator-count" data-indicator-count role="status" aria-live="polite"></span>
+          </div>
+          <div class="indicator-grid">
+            <article class="indicator-card indicator-card-energy" data-indicator-category="energy">
+              <div class="indicator-card-top"><span class="indicator-category">ÉNERGIE</span><span class="indicator-status">ESTIMATION + PROJECTION</span></div>
+              <h4>Électricité des centres de données</h4>
+              <div class="indicator-pair" aria-label="415 térawattheures estimés en 2024 et 945 térawattheures projetés en 2030">
+                <div><strong>415</strong><span>TWh / an</span><small>2024 · estimation</small></div>
+                <span class="indicator-arrow" aria-hidden="true">→</span>
+                <div><strong>945</strong><span>TWh / an</span><small>2030 · scénario de base</small></div>
+              </div>
+              <p>Projection pour l'ensemble des centres de données, pas pour l'IA seule.</p>
+              <a class="indicator-source" href="https://www.iea.org/reports/energy-and-ai" target="_blank" rel="noopener noreferrer">AIE · Energy and AI<span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="indicator-card" data-indicator-category="investment">
+              <div class="indicator-card-top"><span class="indicator-category">INVESTISSEMENT</span><span class="indicator-status">INVESTISSEMENT PRIVÉ</span></div>
+              <h4>Investissement privé en IA aux États-Unis</h4>
+              <div class="indicator-value"><strong>285,9</strong><span>Md $</span></div>
+              <p>Montant déclaré pour 2025 ; il ne représente pas l'ensemble des dépenses publiques et privées.</p>
+              <span class="indicator-period">2025 · Stanford AI Index 2026</span>
+              <a class="indicator-source" href="https://hai.stanford.edu/ai-index/2026-ai-index-report/economy" target="_blank" rel="noopener noreferrer">Stanford HAI · AI Index 2026<span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="indicator-card" data-indicator-category="investment">
+              <div class="indicator-card-top"><span class="indicator-category">INVESTISSEMENT</span><span class="indicator-status">VARIATION ANNUELLE</span></div>
+              <h4>Progression de l'investissement privé mondial en IA</h4>
+              <div class="indicator-value"><strong>+127,5</strong><span>%</span></div>
+              <p>Hausse en 2025 par rapport à 2024, selon les séries compilées par Stanford HAI.</p>
+              <span class="indicator-period">2025 vs 2024 · monde</span>
+              <a class="indicator-source" href="https://hai.stanford.edu/ai-index/2026-ai-index-report/economy" target="_blank" rel="noopener noreferrer">Stanford HAI · AI Index 2026<span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="indicator-card" data-indicator-category="adoption">
+              <div class="indicator-card-top"><span class="indicator-category">ADOPTION</span><span class="indicator-status">ENQUÊTE</span></div>
+              <h4>Organisations déclarant utiliser l'IA</h4>
+              <div class="indicator-value"><strong>88</strong><span>%</span></div>
+              <p>Part des organisations interrogées qui déclarent utiliser l'IA en 2025 ; ce n'est pas un recensement mondial.</p>
+              <span class="indicator-period">Enquête 2025 · Stanford AI Index 2026</span>
+              <a class="indicator-source" href="https://hai.stanford.edu/ai-index/2026-ai-index-report/economy" target="_blank" rel="noopener noreferrer">Stanford HAI · AI Index 2026<span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="indicator-card" data-indicator-category="infrastructure">
+              <div class="indicator-card-top"><span class="indicator-category">INFRASTRUCTURE</span><span class="indicator-status">PÉRIMÈTRE D'ÉTUDE</span></div>
+              <h4>Part attribuée à la Virginie du Nord</h4>
+              <div class="indicator-value"><strong>13</strong><span>%</span></div>
+              <p>Part de la capacité opérationnelle mondiale recensée dans l'étude citée ; la définition dépend de son périmètre.</p>
+              <span class="indicator-period">Étude JLARC · Virginie</span>
+              <a class="indicator-source" href="https://rga.lis.virginia.gov/Published/2025/RD206" target="_blank" rel="noopener noreferrer">JLARC · Data Centers in Virginia<span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="indicator-card" data-indicator-category="infrastructure">
+              <div class="indicator-card-top"><span class="indicator-category">INFRASTRUCTURE</span><span class="indicator-status">OBJECTIF CONDITIONNEL</span></div>
+              <h4>Capacité supplémentaire visée à Singapour</h4>
+              <div class="indicator-value"><strong>≥300</strong><span>MW</span></div>
+              <p>Capacité supplémentaire visée à court terme par la feuille de route ; ce n'est pas une capacité déjà construite.</p>
+              <span class="indicator-period">Feuille de route 2024 · IMDA</span>
+              <a class="indicator-source" href="https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/factsheets/2024/charting-green-growth-for-data-centres-in-sg" target="_blank" rel="noopener noreferrer">IMDA · Green Data Centre Roadmap<span aria-hidden="true">↗</span></a>
+            </article>
+          </div>
+          <p class="indicator-caveat">Ce tableau de bord éditorial n'est pas mis à jour en temps réel. Les périodes, méthodes et périmètres diffèrent ; estimations, projections, résultats d'enquête et objectifs ne sont pas directement comparables.</p>
+        </section>
+
         <div class="dossier-tabs" role="tablist" aria-label="Angles du dossier sur les centres de données">
           <button id="tab-geographie" class="dossier-tab" type="button" role="tab" aria-selected="true" aria-controls="panel-geographie" data-dossier-tab>Géographie <span>01</span></button>
           <button id="tab-economie" class="dossier-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-economie" data-dossier-tab>Économie <span>02</span></button>

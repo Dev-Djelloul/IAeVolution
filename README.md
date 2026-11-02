@@ -4,8 +4,8 @@
 
 IAeVolution est un observatoire éditorial de l'IA, conçu pour rendre le sujet plus lisible,
 utile et accessible. Le site propose une visite guidée, une boussole à cinq angles, sept
-dossiers thématiques, une chronologie historique filtrable et sourcée, un registre de sources
-et une page dédiée aux réseaux mondiaux.
+dossiers thématiques, une chronologie historique filtrable et sourcée, un tableau de bord
+d'indicateurs datés et sourcés, un registre de sources et une page dédiée aux réseaux mondiaux.
 Les contenus sont éditorialisés et sourcés ; l'assistant documentaire effectue une recherche
 locale dans un corpus restreint, avec une commande vocale facultative fournie par le
 navigateur. Il ne fait pas appel à un modèle génératif.

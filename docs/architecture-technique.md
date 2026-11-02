@@ -75,6 +75,11 @@ ou un service vocal nécessitant un secret depuis le navigateur.
 - La chronologie du panneau « Histoire » expose des jalons datés filtrables par fondements,
   infrastructures, percées techniques et usages publics. Chaque entrée renvoie à une source ;
   les filtres annoncent le nombre de résultats et restent utilisables au clavier.
+- Le tableau de bord d'indicateurs rassemble des repères éditorialisés sur l'énergie,
+  l'investissement, l'adoption et l'infrastructure. Chaque valeur conserve sa période, son
+  statut (estimation, projection, enquête ou objectif) et sa source ; les filtres thématiques
+  sont accessibles au clavier. Le tableau n'est pas un flux temps réel et ses périmètres ne
+  doivent pas être comparés sans consulter les méthodes citées.
 - La page `reseaux-mondiaux.html` relie le schéma des grands corridors sous-marins à la
   carte interactive de TeleGeography et aux ressources de résilience de l'UIT, référencées
   dans `sources.json`.

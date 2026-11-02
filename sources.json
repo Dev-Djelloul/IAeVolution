@@ -221,6 +221,19 @@
     "url": "https://hai.stanford.edu/ai-index/2025-ai-index-report"
   },
   {
+    "id": "stanford-ai-index-2026",
+    "name": "Stanford HAI · AI Index",
+    "domain": "Indicateurs & recherche",
+    "family": "research",
+    "publisherType": "Institut universitaire de recherche",
+    "description": "Rapport annuel avec des indicateurs 2025 sur l'investissement privé, les dépenses d'infrastructure, l'adoption organisationnelle et les marchés du travail. Les résultats d'enquête et estimations restent liés à leurs méthodes et périmètres.",
+    "topics": ["Économie", "Adoption", "Indicateurs"],
+    "reviewCadence": "Annuelle",
+    "lastReviewedAt": null,
+    "linkLabel": "AI Index Report 2026 · économie",
+    "url": "https://hai.stanford.edu/ai-index/2026-ai-index-report/economy"
+  },
+  {
     "id": "itu-submarine-cable-resilience",
     "name": "Union internationale des télécommunications",
     "domain": "Réseaux & résilience",

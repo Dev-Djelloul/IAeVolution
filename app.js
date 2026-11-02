@@ -1465,6 +1465,32 @@ timelineFilterButtons.forEach((button) => {
 updateTimelineCount();
 document.addEventListener("iaevolution:languagechange", updateTimelineCount);
 
+const indicatorCards = [...document.querySelectorAll("[data-indicator-category]")];
+const indicatorFilterButtons = [...document.querySelectorAll("[data-indicator-filter]")];
+const indicatorCount = document.querySelector("[data-indicator-count]");
+
+function updateIndicatorCount() {
+  const visibleCount = indicatorCards.filter((card) => !card.hidden).length;
+  indicatorCount.textContent = `${getLocalizedText("Indicateurs affichés :")} ${visibleCount}`;
+}
+
+indicatorFilterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const filter = button.dataset.indicatorFilter;
+    indicatorFilterButtons.forEach((filterButton) => {
+      const isSelected = filterButton === button;
+      filterButton.classList.toggle("is-selected", isSelected);
+      filterButton.setAttribute("aria-pressed", String(isSelected));
+    });
+    indicatorCards.forEach((card) => {
+      card.hidden = filter !== "all" && card.dataset.indicatorCategory !== filter;
+    });
+    updateIndicatorCount();
+  });
+});
+updateIndicatorCount();
+document.addEventListener("iaevolution:languagechange", updateIndicatorCount);
+
 let sourceSearchRequest = 0;
 let sourceSearchTimer;
 sourceSearchInput.addEventListener("input", () => {
