@@ -716,6 +716,112 @@
           <p class="indicator-caveat">Ce tableau de bord éditorial n'est pas mis à jour en temps réel. Les périodes, méthodes et périmètres diffèrent ; estimations, projections, résultats d'enquête et objectifs ne sont pas directement comparables.</p>
         </section>
 
+        <section class="model-compare" id="comparateur-modeles" aria-labelledby="model-compare-title">
+          <div class="indicator-dashboard-heading">
+            <div>
+              <p class="eyebrow">OBSERVATOIRE / COMPARATEUR</p>
+              <h3 id="model-compare-title">Comparer les familles de modèles</h3>
+              <p>Sélectionnez jusqu'à trois familles pour comparer des critères stables : origine, mode d'accès et ouverture. Pas de classement ni de score : les performances changent à chaque version.</p>
+            </div>
+            <span class="indicator-dashboard-period">REPÈRES ÉDITORIAUX</span>
+          </div>
+          <div class="indicator-filter-row" role="group" aria-label="Choisir les familles à comparer">
+            <button class="indicator-filter is-selected" type="button" data-model-toggle="openai" aria-pressed="true">OpenAI GPT</button>
+            <button class="indicator-filter is-selected" type="button" data-model-toggle="anthropic" aria-pressed="true">Anthropic Claude</button>
+            <button class="indicator-filter is-selected" type="button" data-model-toggle="google" aria-pressed="true">Google Gemini</button>
+            <button class="indicator-filter" type="button" data-model-toggle="meta" aria-pressed="false">Meta Llama</button>
+            <button class="indicator-filter" type="button" data-model-toggle="mistral" aria-pressed="false">Mistral</button>
+            <button class="indicator-filter" type="button" data-model-toggle="deepseek" aria-pressed="false">DeepSeek</button>
+            <button class="indicator-filter" type="button" data-model-toggle="qwen" aria-pressed="false">Alibaba Qwen</button>
+            <span class="indicator-count" data-model-count role="status" aria-live="polite"></span>
+          </div>
+          <div class="model-table-wrap" tabindex="0" role="region" aria-label="Tableau comparatif des familles de modèles">
+            <table class="model-table">
+              <thead>
+                <tr>
+                  <th scope="col">Critère</th>
+                  <th scope="col" data-model="openai">OpenAI GPT</th>
+                  <th scope="col" data-model="anthropic">Anthropic Claude</th>
+                  <th scope="col" data-model="google">Google Gemini</th>
+                  <th scope="col" data-model="meta" hidden>Meta Llama</th>
+                  <th scope="col" data-model="mistral" hidden>Mistral</th>
+                  <th scope="col" data-model="deepseek" hidden>DeepSeek</th>
+                  <th scope="col" data-model="qwen" hidden>Alibaba Qwen</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Pays du siège</th>
+                  <td data-model="openai">États-Unis</td>
+                  <td data-model="anthropic">États-Unis</td>
+                  <td data-model="google">États-Unis</td>
+                  <td data-model="meta" hidden>États-Unis</td>
+                  <td data-model="mistral" hidden>France</td>
+                  <td data-model="deepseek" hidden>Chine</td>
+                  <td data-model="qwen" hidden>Chine</td>
+                </tr>
+                <tr>
+                  <th scope="row">Accès principal</th>
+                  <td data-model="openai">Application et API du fournisseur</td>
+                  <td data-model="anthropic">Application et API du fournisseur</td>
+                  <td data-model="google">Application, API et services Google</td>
+                  <td data-model="meta" hidden>Téléchargement des poids, plus des offres d'hébergeurs</td>
+                  <td data-model="mistral" hidden>Application, API et téléchargement selon le modèle</td>
+                  <td data-model="deepseek" hidden>Application, API et téléchargement des poids</td>
+                  <td data-model="qwen" hidden>Application, API et téléchargement selon le modèle</td>
+                </tr>
+                <tr>
+                  <th scope="row">Poids ouverts</th>
+                  <td data-model="openai">Flagships fermés ; quelques modèles ouverts publiés à part</td>
+                  <td data-model="anthropic">Non, modèles fermés</td>
+                  <td data-model="google">Flagships fermés ; famille ouverte Gemma à part</td>
+                  <td data-model="meta" hidden>Oui, sous licence propre à Meta</td>
+                  <td data-model="mistral" hidden>Selon le modèle : certains ouverts, d'autres commerciaux</td>
+                  <td data-model="deepseek" hidden>Oui, pour les principaux modèles publiés</td>
+                  <td data-model="qwen" hidden>Oui pour de nombreux modèles, pas tous</td>
+                </tr>
+                <tr>
+                  <th scope="row">Cadre de licence</th>
+                  <td data-model="openai">Conditions d'utilisation du service</td>
+                  <td data-model="anthropic">Conditions d'utilisation du service</td>
+                  <td data-model="google">Conditions du service ; licence propre pour Gemma</td>
+                  <td data-model="meta" hidden>Licence communautaire Llama, avec conditions d'usage</td>
+                  <td data-model="mistral" hidden>Varie : licence permissive ou licence commerciale</td>
+                  <td data-model="deepseek" hidden>Licences permissives, à lire modèle par modèle</td>
+                  <td data-model="qwen" hidden>Souvent permissives, à lire modèle par modèle</td>
+                </tr>
+                <tr>
+                  <th scope="row">Déploiement sur son propre matériel</th>
+                  <td data-model="openai">Non pour les modèles fermés</td>
+                  <td data-model="anthropic">Non, passage par le fournisseur ou ses partenaires cloud</td>
+                  <td data-model="google">Non pour Gemini ; possible pour Gemma</td>
+                  <td data-model="meta" hidden>Oui, selon la taille du modèle et le matériel</td>
+                  <td data-model="mistral" hidden>Oui pour les modèles à poids ouverts</td>
+                  <td data-model="deepseek" hidden>Oui, mais les grands modèles exigent beaucoup de mémoire</td>
+                  <td data-model="qwen" hidden>Oui pour les modèles à poids ouverts</td>
+                </tr>
+                <tr>
+                  <th scope="row">Fiche officielle</th>
+                  <td data-model="openai"><a class="inline-source" href="https://platform.openai.com/docs/models" target="_blank" rel="noopener noreferrer">Modèles OpenAI <span aria-hidden="true">↗</span></a></td>
+                  <td data-model="anthropic"><a class="inline-source" href="https://docs.anthropic.com/en/docs/about-claude/models" target="_blank" rel="noopener noreferrer">Modèles Claude <span aria-hidden="true">↗</span></a></td>
+                  <td data-model="google"><a class="inline-source" href="https://ai.google.dev/gemini-api/docs/models" target="_blank" rel="noopener noreferrer">Modèles Gemini <span aria-hidden="true">↗</span></a></td>
+                  <td data-model="meta" hidden><a class="inline-source" href="https://www.llama.com/" target="_blank" rel="noopener noreferrer">Llama <span aria-hidden="true">↗</span></a></td>
+                  <td data-model="mistral" hidden><a class="inline-source" href="https://docs.mistral.ai/getting-started/models/" target="_blank" rel="noopener noreferrer">Modèles Mistral <span aria-hidden="true">↗</span></a></td>
+                  <td data-model="deepseek" hidden><a class="inline-source" href="https://api-docs.deepseek.com/" target="_blank" rel="noopener noreferrer">Documentation DeepSeek <span aria-hidden="true">↗</span></a></td>
+                  <td data-model="qwen" hidden><a class="inline-source" href="https://github.com/QwenLM" target="_blank" rel="noopener noreferrer">Dépôts Qwen <span aria-hidden="true">↗</span></a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="model-criteria">
+            <article class="factor-card"><span class="factor-symbol" aria-hidden="true">◈</span><h4>Confidentialité</h4><p>Des données sensibles peuvent justifier un déploiement sur son propre matériel plutôt qu'une API distante.</p></article>
+            <article class="factor-card"><span class="factor-symbol" aria-hidden="true">€</span><h4>Coût</h4><p>Comparez le prix à l'usage d'une API avec le coût du matériel et de l'exploitation d'un modèle ouvert.</p></article>
+            <article class="factor-card"><span class="factor-symbol" aria-hidden="true">◌</span><h4>Langues & tâches</h4><p>Testez le modèle sur vos propres cas d'usage et vos langues avant de vous engager.</p></article>
+            <article class="factor-card"><span class="factor-symbol" aria-hidden="true">▤</span><h4>Licence & souveraineté</h4><p>Lisez la licence exacte du modèle et le cadre juridique du fournisseur, qui peuvent varier d'une version à l'autre.</p></article>
+          </div>
+          <p class="indicator-caveat">Repères éditoriaux sur des familles de modèles, non exhaustifs et susceptibles d'évoluer. Les conditions varient selon la version : vérifiez toujours la fiche officielle avant tout choix.</p>
+        </section>
+
         <div class="dossier-tabs" role="tablist" aria-label="Angles du dossier sur les centres de données">
           <button id="tab-geographie" class="dossier-tab" type="button" role="tab" aria-selected="true" aria-controls="panel-geographie" data-dossier-tab>Géographie <span>01</span></button>
           <button id="tab-economie" class="dossier-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-economie" data-dossier-tab>Économie <span>02</span></button>

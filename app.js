@@ -1534,6 +1534,32 @@ indicatorFilterButtons.forEach((button) => {
 updateIndicatorCount();
 document.addEventListener("iaevolution:languagechange", updateIndicatorCount);
 
+const modelToggles = [...document.querySelectorAll("[data-model-toggle]")];
+const modelCount = document.querySelector("[data-model-count]");
+const maxComparedModels = 3;
+
+function applyModelSelection() {
+  const selected = new Set(modelToggles.filter((b) => b.classList.contains("is-selected")).map((b) => b.dataset.modelToggle));
+  document.querySelectorAll(".model-table [data-model]").forEach((cell) => {
+    cell.hidden = !selected.has(cell.dataset.model);
+  });
+  modelCount.textContent = `${getLocalizedText("Familles comparées :")} ${selected.size}/${maxComparedModels}`;
+}
+
+modelToggles.forEach((button) => {
+  button.addEventListener("click", () => {
+    const selectedCount = modelToggles.filter((b) => b.classList.contains("is-selected")).length;
+    const isSelected = button.classList.contains("is-selected");
+    if (isSelected && selectedCount === 1) return;
+    if (!isSelected && selectedCount >= maxComparedModels) return;
+    button.classList.toggle("is-selected", !isSelected);
+    button.setAttribute("aria-pressed", String(!isSelected));
+    applyModelSelection();
+  });
+});
+applyModelSelection();
+document.addEventListener("iaevolution:languagechange", applyModelSelection);
+
 let sourceSearchRequest = 0;
 let sourceSearchTimer;
 sourceSearchInput.addEventListener("input", () => {
