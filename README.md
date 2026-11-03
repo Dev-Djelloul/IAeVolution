@@ -23,9 +23,29 @@ l'autorisation des apps et ne pas être accessible aux sites web.
 
 L'interface propose douze langues : français, anglais, espagnol, néerlandais, allemand,
 chinois simplifié, portugais, arabe, hindi, japonais, russe et italien. Les traductions
-disponibles sont intégrées localement au projet : aucune clé API, aucun compte cloud et
-aucun service de traduction externe ne sont nécessaires. Les textes absents du catalogue
-restent en français ; les requêtes de recherche ne sont pas traduites automatiquement.
+éditoriales et le catalogue généré sont intégrés localement au projet. Les visiteurs ne
+déclenchent aucune requête de traduction ; seuls les textes éditoriaux publics sont envoyés
+à Google Cloud Translation lors d'une génération explicite. La clé reste locale et les
+textes absents du catalogue restent en français. Les requêtes des visiteurs ne sont pas
+traduites automatiquement.
+
+Pour extraire les textes et consulter le volume avant toute génération :
+
+```sh
+npm run translations:extract
+```
+
+La génération nécessite l'API Cloud Translation activée et une clé API restreinte à cette
+API. Fournissez `GOOGLE_TRANSLATE_API_KEY` dans l'environnement local, vérifiez la
+tarification et le volume affiché, puis lancez explicitement :
+
+```sh
+npm run translations:generate -- --confirm-cost
+```
+
+Le résultat est enregistré dans `translation-catalog.generated.json` ; les traductions
+éditoriales déjà présentes dans `translation.js` restent prioritaires. Ne placez jamais la
+clé dans le dépôt. Voir la [tarification Google Cloud Translation](https://cloud.google.com/products/translate/pricing).
 
 ## Environnement de développement
 

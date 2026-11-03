@@ -1,3 +1,5 @@
+import generatedCatalog from "./translation-catalog.generated.json";
+
 const languages = {
   fr: { name: "Français", direction: "ltr" },
   en: { name: "English", direction: "ltr" },
@@ -2058,6 +2060,7 @@ let locale = "fr";
 function lookup(value, language = locale) {
   const catalog = dictionaries[language];
   if (catalog?.[value] !== undefined) return catalog[value];
+  if (generatedCatalog[language]?.[value] !== undefined) return generatedCatalog[language][value];
   const dossierPrefix = "Ouvrir le dossier : ";
   if (value.startsWith(dossierPrefix)) {
     const translatedPrefix = {
@@ -2083,6 +2086,20 @@ function lookupText(value, language = locale) {
   if (!match) return lookup(value, language);
   const [, leading, text, trailing] = match;
   return `${leading}${lookup(text, language)}${trailing}`;
+}
+
+export function formatLocalizedText(template, values, target = locale) {
+  const replacements = new Map();
+  const source = template.replace(/\{([\w]+)\}/g, (placeholder, name) => {
+    if (!Object.hasOwn(values, name)) throw new Error(`Missing value for localized placeholder: ${name}`);
+    if (replacements.has(name)) return replacements.get(name).marker;
+    const marker = `__IAEVAR${replacements.size}__`;
+    replacements.set(name, { marker, value: String(values[name]) });
+    return marker;
+  });
+  let translated = lookup(source, target);
+  for (const { marker, value } of replacements.values()) translated = translated.replaceAll(marker, value);
+  return translated;
 }
 
 function setNodeValue(node, value, record) {
@@ -2183,7 +2200,8 @@ export function translateToFrench(text) {
   if (locale === "fr" || !query) return Promise.resolve(query);
   const sourceLocale = locale;
   const reverseDictionary = Object.fromEntries(
-    Object.entries(dictionaries[sourceLocale]).map(([source, translated]) => [translated.toLocaleLowerCase(), source]),
+    Object.entries({ ...generatedCatalog[sourceLocale], ...dictionaries[sourceLocale] })
+      .map(([source, translated]) => [translated.toLocaleLowerCase(), source]),
   );
   const localTranslation = reverseDictionary[query.toLocaleLowerCase()];
   if (localTranslation) return Promise.resolve(localTranslation);
@@ -2199,7 +2217,8 @@ export function translateText(text, target = locale, source = "fr") {
     return Promise.resolve(getLocalizedText(text, target));
   }
   const reverseDictionary = Object.fromEntries(
-    Object.entries(dictionaries[target] ?? {}).map(([original, translated]) => [translated, original]),
+    Object.entries({ ...generatedCatalog[target], ...dictionaries[target] })
+      .map(([original, translated]) => [translated, original]),
   );
   const localTranslation = reverseDictionary[text];
   return Promise.resolve(localTranslation || text);

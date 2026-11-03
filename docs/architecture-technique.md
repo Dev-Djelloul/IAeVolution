@@ -4,7 +4,9 @@
 
 IAeVolution est construit avec Vite. Les dossiers, les réponses de l'assistant et le
 catalogue `sources.json` sont éditorialisés dans le dépôt ; il n'existe ni base de données,
-ni collecte programmée, ni appel à un modèle génératif ou à un service de traduction.
+ni collecte programmée, ni appel à un modèle génératif. Les traductions peuvent être
+générées explicitement en amont avec Google Cloud Translation, puis intégrées comme données
+statiques au catalogue local.
 
 La vision produit est celle d'une expérience visuelle et immersive pour donner à voir
 l'IA : images, scènes 3D, robotique, formes et esthétique technologique, en plus des
@@ -101,11 +103,18 @@ ou un service vocal nécessitant un secret depuis le navigateur.
 - Ne jamais embarquer de secret, clé fournisseur ou identifiant d'accès dans les assets web.
 - Le sélecteur propose douze langues : français, anglais, espagnol, néerlandais, allemand,
   chinois simplifié, portugais, arabe, hindi, japonais, russe et italien. Les traductions
-  disponibles sont intégrées dans `translation.js` et restent locales ; les textes sans
-  entrée correspondante demeurent en français.
-- Aucune requête, question ou chaîne d'interface n'est envoyée à un service de traduction.
-  Les recherches sont effectuées dans la langue saisie ; la couverture du catalogue local
-  pourra être étendue ultérieurement par des traductions éditoriales vérifiées.
+  éditoriales restent dans `translation.js` et les traductions générées sont intégrées dans
+  `translation-catalog.generated.json`. Les traductions éditoriales priment ; les textes
+  sans entrée correspondante demeurent en français.
+- `npm run translations:extract` rassemble les textes HTML, les chaînes des vues dynamiques
+  et le catalogue de sources, puis affiche le volume estimé. La génération vers les onze
+  langues non françaises exige `GOOGLE_TRANSLATE_API_KEY` local et l'option
+  `--confirm-cost` après vérification de la tarification Google Cloud. La clé n'est jamais
+  embarquée dans le site.
+- Aucun texte de visiteur, question ou requête n'est envoyé à un service de traduction :
+  seuls des textes éditoriaux publics sont transmis lors de cette génération volontaire.
+  À l'exécution, le navigateur ne fait aucune requête à Google pour traduire le contenu.
+  Les recherches restent effectuées dans la langue saisie.
 
 ### Catalogue éditorial et historique
 

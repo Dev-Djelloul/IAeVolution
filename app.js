@@ -1,6 +1,12 @@
 import sourceCatalog from "./sources.json";
 import { getSuggestedAnswer } from "./assistant-locales.js";
-import { getLocalizedText, initializeTranslation, translateText, translateToFrench } from "./translation.js";
+import {
+  formatLocalizedText,
+  getLocalizedText,
+  initializeTranslation,
+  translateText,
+  translateToFrench,
+} from "./translation.js";
 
 const topics = [
   {
@@ -431,15 +437,20 @@ let tourTimer = null;
 let tourDeadline = 0;
 let tourRemainingMs = 0;
 let tourWaitingForAdvance = false;
+let tourStatusTemplate = "";
+let tourStatusValues = {};
+let tourStatusRenderedText = "";
 const tourMotionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+let activeSceneDetails = null;
 
 function renderSceneDetails(details) {
+  activeSceneDetails = details;
   sceneTitle.textContent = details.title;
   sceneDescription.textContent = details.description;
   sceneContextTitle.textContent = details.contextTitle;
   sceneContextDetail.textContent = details.contextDetail;
   sceneStatLabel.textContent = details.stat;
-  sceneSource.textContent = `Source : ${details.sourceName} ↗`;
+  sceneSource.textContent = formatLocalizedText("Source : {name} ↗", { name: details.sourceName });
   sceneSource.href = details.sourceUrl;
 }
 
@@ -642,6 +653,27 @@ function cancelTourSpeech() {
   tourUtterance = null;
 }
 
+function renderTourStepText(step) {
+  tourStepKicker.textContent = formatLocalizedText(
+    "ÉTAPE {current} / {total} · {name}",
+    { current: tourIndex + 1, total: guidedTourSteps.length, name: step.name },
+  );
+  tourStepTitle.textContent = step.title;
+  tourStepSummary.textContent = step.summary;
+  tourFactValue.textContent = step.factValue;
+  tourFactNote.textContent = step.factNote;
+  tourNarrationText.textContent = formatLocalizedText("« {narration} »", { narration: step.narration });
+  tourSource.textContent = formatLocalizedText("Source : {name} ↗", { name: step.sourceName });
+  tourSource.href = step.sourceUrl;
+}
+
+function setTourStatus(template, values = {}) {
+  tourStatusTemplate = template;
+  tourStatusValues = values;
+  tourStatus.textContent = formatLocalizedText(template, values);
+  tourStatusRenderedText = tourStatus.textContent;
+}
+
 function setTourState(nextState) {
   tourState = nextState;
   actPlayer.dataset.tourState = nextState;
@@ -665,14 +697,7 @@ function setTourStep(index, { speak = tourState === "playing" } = {}) {
   tourIndex = Math.max(0, Math.min(index, guidedTourSteps.length - 1));
   tourWaitingForAdvance = false;
   const step = guidedTourSteps[tourIndex];
-  tourStepKicker.textContent = `ÉTAPE ${tourIndex + 1} / ${guidedTourSteps.length} · ${step.name.toLocaleUpperCase("fr")}`;
-  tourStepTitle.textContent = step.title;
-  tourStepSummary.textContent = step.summary;
-  tourFactValue.textContent = step.factValue;
-  tourFactNote.textContent = step.factNote;
-  tourNarrationText.textContent = `« ${step.narration} »`;
-  tourSource.textContent = `Source : ${step.sourceName} ↗`;
-  tourSource.href = step.sourceUrl;
+  renderTourStepText(step);
   visualExperience.dataset.storyBeat = step.beat;
   datacenterWorld.dataset.zone = step.zone;
   tourSteps.forEach((button, buttonIndex) => {
@@ -778,7 +803,10 @@ function advanceTour() {
       return;
     }
     setTourStep(tourIndex + 1, { speak: false });
-    tourStatus.textContent = `En pause · étape ${tourIndex + 1} sélectionnée. Reprenez ou avancez à votre rythme.`;
+    setTourStatus(
+      "En pause · étape {current} sélectionnée. Reprenez ou avancez à votre rythme.",
+      { current: tourIndex + 1 },
+    );
     return;
   }
   if (tourState !== "playing") return;
@@ -797,7 +825,10 @@ tourSteps.forEach((button) => {
     if (tourState === "complete") setTourState("ready");
     setTourStep(Number(button.dataset.tourStep));
     if (tourState !== "playing" && tourState !== "paused") {
-      tourStatus.textContent = `Étape ${tourIndex + 1} sélectionnée · lancez la visite pour écouter la narration.`;
+      setTourStatus(
+        "Étape {current} sélectionnée · lancez la visite pour écouter la narration.",
+        { current: tourIndex + 1 },
+      );
     }
   });
 });
@@ -986,7 +1017,10 @@ let sourceSearchFrenchQuery = "";
 function renderSourceCatalog(queryValue = sourceSearchFrenchQuery) {
   const query = normalizeText(queryValue.trim());
   const unreviewedCount = sourceCatalog.filter((source) => !source.lastReviewedAt).length;
-  sourceReviewStatus.textContent = `${String(unreviewedCount).padStart(2, "0")} fiches sans revue datée`;
+  sourceReviewStatus.textContent = formatLocalizedText(
+    "{count} fiches sans revue datée",
+    { count: String(unreviewedCount).padStart(2, "0") },
+  );
   const visibleSources = sourceCatalog.filter((source) => {
     const matchesFilter = activeSourceFilter === "all" || source.family === activeSourceFilter;
     const searchableText = normalizeText([
@@ -1032,11 +1066,17 @@ function renderSourceCatalog(queryValue = sourceSearchFrenchQuery) {
     const footer = document.createElement("div");
     footer.className = "source-card-footer";
     const schedule = document.createElement("span");
-    schedule.textContent = `Relecture proposée : ${source.reviewCadence}`;
+    schedule.textContent = formatLocalizedText(
+      "Relecture proposée : {cadence}",
+      { cadence: source.reviewCadence },
+    );
     const lastReviewed = document.createElement("span");
     if (source.lastReviewedAt) {
       const reviewedDate = new Date(`${source.lastReviewedAt}T00:00:00`);
-      lastReviewed.textContent = `Dernière revue éditoriale : ${reviewedDate.toLocaleDateString(document.documentElement.lang)}`;
+      lastReviewed.textContent = formatLocalizedText(
+        "Dernière revue éditoriale : {date}",
+        { date: reviewedDate.toLocaleDateString(document.documentElement.lang) },
+      );
     } else {
       lastReviewed.textContent = "Dernière revue éditoriale : non renseignée";
     }
@@ -1058,7 +1098,10 @@ function renderSourceCatalog(queryValue = sourceSearchFrenchQuery) {
   });
 
   const count = String(visibleSources.length).padStart(2, "0");
-  sourceCount.textContent = `${count} ${visibleSources.length > 1 || visibleSources.length === 0 ? "sources" : "source"}`;
+  sourceCount.textContent = formatLocalizedText(
+    visibleSources.length > 1 || visibleSources.length === 0 ? "{count} sources" : "{count} source",
+    { count },
+  );
   sourceEmpty.hidden = visibleSources.length > 0;
   sourceRegister.hidden = visibleSources.length === 0;
 }
@@ -1563,6 +1606,12 @@ searchInput.addEventListener("input", () => {
 searchForm.addEventListener("submit", (event) => event.preventDefault());
 
 document.addEventListener("iaevolution:languagechange", async () => {
+  if (activeSceneDetails) renderSceneDetails(activeSceneDetails);
+  renderTourStepText(guidedTourSteps[tourIndex]);
+  if (tourStatusTemplate && tourStatus.textContent === tourStatusRenderedText) {
+    tourStatus.textContent = formatLocalizedText(tourStatusTemplate, tourStatusValues);
+    tourStatusRenderedText = tourStatus.textContent;
+  }
   if (currentAssistantQuestion) renderAssistantResults(currentAssistantQuestion);
   const topicRequest = ++topicSearchRequest;
   const sourceRequest = ++sourceSearchRequest;

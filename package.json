@@ -14,6 +14,8 @@
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview --host 0.0.0.0",
-    "start": "vite preview --host 0.0.0.0"
+    "start": "vite preview --host 0.0.0.0",
+    "translations:extract": "node scripts/generate-translations.mjs --extract",
+    "translations:generate": "node scripts/generate-translations.mjs --translate"
   }
 }
