@@ -1584,6 +1584,20 @@ glossaryInput.closest("form").addEventListener("submit", (event) => event.preven
 filterGlossary();
 document.addEventListener("iaevolution:languagechange", filterGlossary);
 
+const geoMarkers = [...document.querySelectorAll(".geo-marker")];
+geoMarkers.forEach((marker) => {
+  marker.addEventListener("click", () => {
+    const isActive = marker.getAttribute("aria-pressed") === "true";
+    geoMarkers.forEach((other) => other.setAttribute("aria-pressed", "false"));
+    document.querySelectorAll(".region-card").forEach((card) => card.classList.remove("is-highlighted"));
+    if (isActive) return;
+    marker.setAttribute("aria-pressed", "true");
+    const card = document.getElementById(marker.dataset.regionTarget);
+    card.classList.add("is-highlighted");
+    card.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
+  });
+});
+
 let sourceSearchRequest = 0;
 let sourceSearchTimer;
 sourceSearchInput.addEventListener("input", () => {

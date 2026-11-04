@@ -896,22 +896,38 @@
             <p class="eyebrow">TROIS TERRITOIRES, TROIS CONTEXTES</p>
             <span>Exemples documentés · pas un classement</span>
           </div>
+          <div class="geo-map" data-geo-map>
+            <svg viewBox="0 0 360 180" role="img" aria-labelledby="geo-map-title">
+              <title id="geo-map-title">Carte schématique du monde avec trois territoires documentés</title>
+              <g class="geo-land" aria-hidden="true">
+                <polygon points="12,24 40,20 85,18 115,28 125,42 104,55 99,65 83,64 80,72 92,80 100,82 86,77 72,68 63,56 55,50 55,40 30,30"/>
+                <polygon points="100,82 120,80 145,95 140,112 122,128 112,145 105,138 108,110 99,95"/>
+                <polygon points="170,54 171,47 180,40 190,32 200,20 240,20 290,14 360,22 340,35 320,50 302,60 290,70 285,80 280,88 260,82 252,70 235,65 215,60 208,52 190,50"/>
+                <polygon points="163,69 175,54 190,53 212,59 223,78 231,79 220,105 213,116 200,125 192,108 189,86 172,86 163,76"/>
+                <polygon points="294,112 310,102 322,101 333,117 326,129 310,122 295,124"/>
+              </g>
+            </svg>
+            <button class="geo-marker" type="button" data-region-target="region-virginie" style="left:28.5%;top:28.3%" aria-pressed="false"><span class="geo-dot" aria-hidden="true"></span><span class="geo-label">Virginie du Nord</span></button>
+            <button class="geo-marker" type="button" data-region-target="region-europe" style="left:52.4%;top:22.2%" aria-pressed="false"><span class="geo-dot" aria-hidden="true"></span><span class="geo-label">Hubs européens</span></button>
+            <button class="geo-marker" type="button" data-region-target="region-singapour" style="left:78.8%;top:49.3%" aria-pressed="false"><span class="geo-dot" aria-hidden="true"></span><span class="geo-label">Singapour</span></button>
+          </div>
+          <p class="geo-note">Carte schématique : les contours sont simplifiés et les points indicatifs. Sélectionnez un territoire pour mettre en évidence sa fiche.</p>
           <div class="region-grid">
-            <article class="region-card">
+            <article class="region-card" id="region-virginie">
               <div class="region-card-top"><span class="region-continent">AMÉRIQUE DU NORD</span><span class="region-code">US / VA</span></div>
               <h4>Virginie du Nord</h4>
               <p>Le régulateur de l'État décrit le plus grand marché de centres de données au monde, soutenu par un réseau fibre dense, l'accès à l'énergie, le foncier et la proximité des clients.</p>
               <div class="region-insight"><span>13 %</span><p>de la capacité opérationnelle mondiale recensée par l'étude, selon son périmètre.</p></div>
               <a class="inline-source" href="https://rga.lis.virginia.gov/Published/2025/RD206" target="_blank" rel="noopener noreferrer">Étude JLARC sur la Virginie <span aria-hidden="true">↗</span></a>
             </article>
-            <article class="region-card">
+            <article class="region-card" id="region-europe">
               <div class="region-card-top"><span class="region-continent">EUROPE</span><span class="region-code">FLAP-D +</span></div>
               <h4>Des hubs vers de nouveaux marchés</h4>
               <p>L'association européenne du secteur suit les hubs FLAP-D et une expansion vers les régions nordiques et méridionales. L'accès à l'énergie reste un enjeu de développement.</p>
               <div class="region-insight region-insight-text"><span>FLAP-D</span><p>Francfort, Londres, Amsterdam, Paris et Dublin : cinq marchés souvent regroupés dans les analyses européennes.</p></div>
               <a class="inline-source" href="https://www.eudca.org/state-of-european-data-centres-2025" target="_blank" rel="noopener noreferrer">EUDCA, State of European Data Centres 2025 <span aria-hidden="true">↗</span></a>
             </article>
-            <article class="region-card">
+            <article class="region-card" id="region-singapour">
               <div class="region-card-top"><span class="region-continent">ASIE DU SUD-EST</span><span class="region-code">SG</span></div>
               <h4>Singapour</h4>
               <p>La cité-État cherche à concilier croissance numérique et contraintes de ressources. Sa feuille de route 2024 conditionne une nouvelle capacité à des exigences de durabilité.</p>

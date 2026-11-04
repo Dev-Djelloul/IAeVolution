@@ -1602,3 +1602,16 @@ html { scroll-behavior: smooth; }
   .network-feature-index { grid-column: auto; }
   .network-feature-action { justify-content: space-between; }
 }
+
+.geo-map { position: relative; max-width: 900px; margin: 0 auto 10px; border: 1px solid rgba(120, 170, 220, 0.25); border-radius: 6px; background: rgba(20, 40, 70, 0.35); }
+.geo-map svg { display: block; width: 100%; height: auto; }
+.geo-land polygon { fill: rgba(120, 170, 220, 0.22); stroke: rgba(150, 200, 250, 0.45); stroke-width: 0.5; }
+.geo-marker { position: absolute; display: flex; align-items: center; gap: 6px; padding: 4px 6px; transform: translate(-9px, -50%); border: 0; background: transparent; color: #e8f1fb; font: inherit; font-size: 0.75rem; cursor: pointer; }
+.geo-dot { width: 14px; height: 14px; flex: none; border: 2px solid #8fd0ff; border-radius: 50%; background: #245d95; box-shadow: 0 0 0 4px rgba(143, 208, 255, 0.2); }
+.geo-label { padding: 2px 6px; border-radius: 3px; background: rgba(10, 20, 36, 0.8); white-space: nowrap; }
+.geo-marker[aria-pressed="true"] .geo-dot { background: #8fd0ff; }
+.geo-marker:focus-visible { outline: 2px solid #8fd0ff; outline-offset: 2px; }
+.geo-note { max-width: 900px; margin: 0 auto 22px; color: #9fb6cc; font-size: 0.78rem; }
+.region-card.is-highlighted { outline: 2px solid #8fd0ff; outline-offset: 3px; }
+[dir="rtl"] .geo-map { direction: ltr; }
+@media (max-width: 640px) { .geo-label { display: none; } }
