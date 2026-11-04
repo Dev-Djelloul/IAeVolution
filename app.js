@@ -1191,7 +1191,7 @@ function setAssistantVoiceStatus(message) {
 
 let assistantSpeechRequest = 0;
 
-async function speakAssistantResults(matches) {
+async function speakAssistantResults(matches, overrideText = "") {
   if (!window.speechSynthesis || !("SpeechSynthesisUtterance" in window)) {
     setAssistantVoiceStatus(getLocalizedText("La lecture vocale n'est pas disponible sur ce navigateur."));
     return;
@@ -1201,7 +1201,9 @@ async function speakAssistantResults(matches) {
   activeAssistantUtterance = null;
   assistantVoiceStopSpeaking.hidden = true;
   window.speechSynthesis.cancel();
-  const spokenText = matches.length === 0
+  const spokenText = overrideText
+    ? overrideText.replace(/\[\d+\]/g, "").replace(/[*#_`]/g, "").slice(0, 3000)
+    : matches.length === 0
     ? assistantResults.querySelector(".assistant-empty")?.textContent ?? ""
     : matches
       .slice(0, 2)
@@ -1311,6 +1313,14 @@ function renderAiAnswer(result) {
   caveat.textContent = getLocalizedText("Réponse produite par un modèle d'IA via OpenRouter : elle peut contenir des erreurs. Vérifiez les informations importantes dans les sources.");
 
   card.append(label, body, meta, caveat);
+  if ("speechSynthesis" in window) {
+    const listen = document.createElement("button");
+    listen.type = "button";
+    listen.className = "assistant-voice-button assistant-listen";
+    listen.textContent = getLocalizedText("Écouter la réponse");
+    listen.addEventListener("click", () => speakAssistantResults([], result.answer));
+    card.append(listen);
+  }
   return card;
 }
 
@@ -1326,16 +1336,19 @@ async function processAssistantQuestion(question, speakAnswer = false) {
   status.textContent = getLocalizedText("Réflexion de l'assistant en cours…");
   assistantResults.prepend(status);
 
+  let aiAnswer = "";
   try {
     const result = await fetchAiAnswer(question, matches);
     if (request !== assistantRequest) return;
     status.replaceWith(renderAiAnswer(result));
     assistantResults.querySelector(".assistant-empty")?.remove();
+    aiAnswer = result.answer;
   } catch {
     if (request !== assistantRequest) return;
     status.textContent = getLocalizedText("L'assistant IA est momentanément indisponible. Les repères du corpus restent affichés.");
   }
-  if (speakAnswer) await speakAssistantResults(matches);
+  const autoRead = document.querySelector("#assistant-autoread")?.checked;
+  if (speakAnswer || autoRead) await speakAssistantResults(matches, aiAnswer);
 }
 
 assistantForm.addEventListener("submit", async (event) => {
