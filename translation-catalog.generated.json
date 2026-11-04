@@ -1140,7 +1140,17 @@
     "Modèle": "Model",
     "Niveau": "Level",
     "OpenAI · GPT-4o mini": "OpenAI · GPT-4o mini",
-    "Pointu (expert)": "Sharp (expert)"
+    "Pointu (expert)": "Sharp (expert)",
+    "ASSISTANT IA SOURCÉ": "AI ASSISTANT SOURCED",
+    "Consommation": "Consumption",
+    "Coût estimé": "Estimated cost",
+    "Lecture terminée": "Reading complete",
+    "Poser ma question à voix haute": "Ask my question out loud",
+    "Posez vos questions sur l'intelligence artificielle par écrit ou à la voix. Un modèle d'IA rédige la réponse, appuyée sur les repères éditoriaux et leurs sources, et vous indique le modèle utilisé, son coût et le temps de lecture.": "Ask your questions about artificial intelligence in writing or by voice. An AI model will write the answer, supported by editorial guidelines and their sources, and tell you which model was used, its cost, and the reading time.",
+    "Progression de la lecture": "Reading progression",
+    "Temps de lecture estimé": "Estimated reading time",
+    "Temps restant": "Time remaining",
+    "Une question. Une IA. Des sources": "One question. One AI. Some sources"
   },
   "es": {
     "__IAEVAR0__ fiches sans revue datée": "Fichas de índice __IAEVAR0__ sin revisión fechada",
@@ -2283,7 +2293,17 @@
     "Modèle": "Modelo",
     "Niveau": "Nivel",
     "OpenAI · GPT-4o mini": "OpenAI · GPT-4o mini",
-    "Pointu (expert)": "Afilado (experto)"
+    "Pointu (expert)": "Afilado (experto)",
+    "ASSISTANT IA SOURCÉ": "ASISTENTE DE IA OBTENIDO",
+    "Consommation": "Consumo",
+    "Coût estimé": "Costo estimado",
+    "Lecture terminée": "Lectura completa",
+    "Poser ma question à voix haute": "Haz mi pregunta en voz alta",
+    "Posez vos questions sur l'intelligence artificielle par écrit ou à la voix. Un modèle d'IA rédige la réponse, appuyée sur les repères éditoriaux et leurs sources, et vous indique le modèle utilisé, son coût et le temps de lecture.": "Formula tus preguntas sobre inteligencia artificial por escrito o por voz. Un modelo de IA redactará la respuesta, basándose en las directrices editoriales y sus fuentes, e indicará qué modelo se utilizó, su coste y el tiempo de lectura.",
+    "Progression de la lecture": "Progresión de lectura",
+    "Temps de lecture estimé": "Tiempo estimado de lectura",
+    "Temps restant": "Tiempo restante",
+    "Une question. Une IA. Des sources": "Una pregunta. Una IA. Algunas fuentes."
   },
   "nl": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ indexkaarten zonder gedateerde beoordeling",
@@ -3426,7 +3446,17 @@
     "Modèle": "Model",
     "Niveau": "Niveau",
     "OpenAI · GPT-4o mini": "OpenAI · GPT-4o mini",
-    "Pointu (expert)": "Scherp (expert)"
+    "Pointu (expert)": "Scherp (expert)",
+    "ASSISTANT IA SOURCÉ": "AI-ASSISTENT BRON",
+    "Consommation": "Consumptie",
+    "Coût estimé": "Geschatte kosten",
+    "Lecture terminée": "Het lezen is voltooid.",
+    "Poser ma question à voix haute": "Stel mijn vraag hardop",
+    "Posez vos questions sur l'intelligence artificielle par écrit ou à la voix. Un modèle d'IA rédige la réponse, appuyée sur les repères éditoriaux et leurs sources, et vous indique le modèle utilisé, son coût et le temps de lecture.": "Stel uw vragen over kunstmatige intelligentie schriftelijk of via spraak. Een AI-model zal het antwoord formuleren, ondersteund door redactionele richtlijnen en bronvermelding, en u informeren over het gebruikte model, de kosten en de leestijd.",
+    "Progression de la lecture": "Leesvoortgang",
+    "Temps de lecture estimé": "Geschatte leestijd",
+    "Temps restant": "Resterende tijd",
+    "Une question. Une IA. Des sources": "Eén vraag. Eén AI. Enkele bronnen."
   },
   "de": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ Karteikarten ohne datierte Überprüfung",
@@ -4569,7 +4599,17 @@
     "Modèle": "Modell",
     "Niveau": "Ebene",
     "OpenAI · GPT-4o mini": "OpenAI · GPT-4o mini",
-    "Pointu (expert)": "Scharf (Experte)"
+    "Pointu (expert)": "Scharf (Experte)",
+    "ASSISTANT IA SOURCÉ": "KI-ASSISTENT BESCHAFFEN",
+    "Consommation": "Verbrauch",
+    "Coût estimé": "Geschätzte Kosten",
+    "Lecture terminée": "Lesen abgeschlossen",
+    "Poser ma question à voix haute": "Stell meine Frage laut",
+    "Posez vos questions sur l'intelligence artificielle par écrit ou à la voix. Un modèle d'IA rédige la réponse, appuyée sur les repères éditoriaux et leurs sources, et vous indique le modèle utilisé, son coût et le temps de lecture.": "Stellen Sie Ihre Fragen zur künstlichen Intelligenz schriftlich oder per Spracheingabe. Ein KI-Modell verfasst die Antwort, unterstützt durch redaktionelle Richtlinien und deren Quellen, und informiert Sie über das verwendete Modell, die Kosten und die Lesezeit.",
+    "Progression de la lecture": "Lesefortschritt",
+    "Temps de lecture estimé": "Geschätzte Lesezeit",
+    "Temps restant": "verbleibende Zeit",
+    "Une question. Une IA. Des sources": "Eine Frage. Eine KI. Einige Quellen"
   },
   "zh-CN": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ 索引卡，无日期审核",
@@ -5712,7 +5752,17 @@
     "Modèle": "模型",
     "Niveau": "等级",
     "OpenAI · GPT-4o mini": "OpenAI · GPT-4o mini",
-    "Pointu (expert)": "夏普（专家）"
+    "Pointu (expert)": "夏普（专家）",
+    "ASSISTANT IA SOURCÉ": "AI助手来源",
+    "Consommation": "消耗",
+    "Coût estimé": "预计成本",
+    "Lecture terminée": "阅读完毕",
+    "Poser ma question à voix haute": "请大声说出我的问题。",
+    "Posez vos questions sur l'intelligence artificielle par écrit ou à la voix. Un modèle d'IA rédige la réponse, appuyée sur les repères éditoriaux et leurs sources, et vous indique le modèle utilisé, son coût et le temps de lecture.": "您可以书面或语音提出关于人工智能的问题。人工智能模型将根据编辑指南及其来源撰写答案，并告知您所使用的模型、成本和阅读时间。",
+    "Progression de la lecture": "阅读进度",
+    "Temps de lecture estimé": "预计阅读时间",
+    "Temps restant": "剩余时间",
+    "Une question. Une IA. Des sources": "一个问题。一个人工智能。一些来源"
   },
   "pt": {
     "__IAEVAR0__ fiches sans revue datée": "Fichas de índice __IAEVAR0__ sem revisão datada",
@@ -6855,7 +6905,17 @@
     "Modèle": "Modelo",
     "Niveau": "Nível",
     "OpenAI · GPT-4o mini": "OpenAI · GPT-4o mini",
-    "Pointu (expert)": "Afiado (especialista)"
+    "Pointu (expert)": "Afiado (especialista)",
+    "ASSISTANT IA SOURCÉ": "ASSISTENTE DE IA ORIENTADO",
+    "Consommation": "Consumo",
+    "Coût estimé": "Custo estimado",
+    "Lecture terminée": "Leitura completa",
+    "Poser ma question à voix haute": "Faça minha pergunta em voz alta.",
+    "Posez vos questions sur l'intelligence artificielle par écrit ou à la voix. Un modèle d'IA rédige la réponse, appuyée sur les repères éditoriaux et leurs sources, et vous indique le modèle utilisé, son coût et le temps de lecture.": "Faça suas perguntas sobre inteligência artificial por escrito ou por voz. Um modelo de IA escreverá a resposta, com base em diretrizes editoriais e suas fontes, e informará qual modelo foi usado, seu custo e o tempo de leitura.",
+    "Progression de la lecture": "Progressão de leitura",
+    "Temps de lecture estimé": "Tempo estimado de leitura",
+    "Temps restant": "Tempo restante",
+    "Une question. Une IA. Des sources": "Uma pergunta. Uma IA. Algumas fontes."
   },
   "ar": {
     "__IAEVAR0__ fiches sans revue datée": "بطاقات فهرسة __IAEVAR0__ بدون مراجعة مؤرخة",
@@ -7998,7 +8058,17 @@
     "Modèle": "نموذج",
     "Niveau": "مستوى",
     "OpenAI · GPT-4o mini": "OpenAI · GPT-4o mini",
-    "Pointu (expert)": "شارب (خبير)"
+    "Pointu (expert)": "شارب (خبير)",
+    "ASSISTANT IA SOURCÉ": "تم الحصول على مساعد الذكاء الاصطناعي",
+    "Consommation": "استهلاك",
+    "Coût estimé": "التكلفة التقديرية",
+    "Lecture terminée": "قراءة كاملة",
+    "Poser ma question à voix haute": "اطرح سؤالي بصوت عالٍ",
+    "Posez vos questions sur l'intelligence artificielle par écrit ou à la voix. Un modèle d'IA rédige la réponse, appuyée sur les repères éditoriaux et leurs sources, et vous indique le modèle utilisé, son coût et le temps de lecture.": "اطرح أسئلتك حول الذكاء الاصطناعي كتابةً أو صوتياً. سيقوم نموذج الذكاء الاصطناعي بكتابة الإجابة، مدعومةً بالمعايير التحريرية ومصادرها، وسيخبرك بالنموذج المستخدم وتكلفته ووقت القراءة.",
+    "Progression de la lecture": "التقدم في القراءة",
+    "Temps de lecture estimé": "الوقت المقدر للقراءة",
+    "Temps restant": "الوقت المتبقي",
+    "Une question. Une IA. Des sources": "سؤال واحد. ذكاء اصطناعي واحد. بعض المصادر"
   },
   "hi": {
     "__IAEVAR0__ fiches sans revue datée": "दिनांकित समीक्षा के बिना __IAEVAR0__ अनुक्रमणिका कार्ड",
@@ -9141,7 +9211,17 @@
     "Modèle": "नमूना",
     "Niveau": "स्तर",
     "OpenAI · GPT-4o mini": "ओपनएआई · जीपीटी-4ओ मिनी",
-    "Pointu (expert)": "तेज (विशेषज्ञ)"
+    "Pointu (expert)": "तेज (विशेषज्ञ)",
+    "ASSISTANT IA SOURCÉ": "एआई असिस्टेंट सोर्स किया गया",
+    "Consommation": "उपभोग",
+    "Coût estimé": "अनुमानित लागत",
+    "Lecture terminée": "पढ़ना पूरा हुआ",
+    "Poser ma question à voix haute": "मेरा सवाल ज़ोर से पूछो",
+    "Posez vos questions sur l'intelligence artificielle par écrit ou à la voix. Un modèle d'IA rédige la réponse, appuyée sur les repères éditoriaux et leurs sources, et vous indique le modèle utilisé, son coût et le temps de lecture.": "कृत्रिम बुद्धिमत्ता से संबंधित अपने प्रश्न लिखकर या बोलकर पूछें। एक एआई मॉडल संपादकीय दिशा-निर्देशों और उनके स्रोतों के आधार पर उत्तर लिखेगा और आपको बताएगा कि किस मॉडल का उपयोग किया गया, उसकी लागत कितनी आई और उसे पढ़ने में कितना समय लगा।",
+    "Progression de la lecture": "पठन प्रगति",
+    "Temps de lecture estimé": "अनुमानित पठन समय",
+    "Temps restant": "शेष समय",
+    "Une question. Une IA. Des sources": "एक सवाल। एक एआई। कुछ स्रोत।"
   },
   "ja": {
     "__IAEVAR0__ fiches sans revue datée": "日付レビューのないインデックスカード __IAEVAR0__",
@@ -10284,7 +10364,17 @@
     "Modèle": "モデル",
     "Niveau": "レベル",
     "OpenAI · GPT-4o mini": "OpenAI · GPT-4o mini",
-    "Pointu (expert)": "シャープ（専門家）"
+    "Pointu (expert)": "シャープ（専門家）",
+    "ASSISTANT IA SOURCÉ": "AIアシスタント提供",
+    "Consommation": "消費",
+    "Coût estimé": "概算費用",
+    "Lecture terminée": "読了完了",
+    "Poser ma question à voix haute": "私の質問を声に出して言ってください",
+    "Posez vos questions sur l'intelligence artificielle par écrit ou à la voix. Un modèle d'IA rédige la réponse, appuyée sur les repères éditoriaux et leurs sources, et vous indique le modèle utilisé, son coût et le temps de lecture.": "人工知能に関するご質問は、文章または音声でお送りください。AIモデルが編集ガイドラインと情報源に基づき回答を作成し、使用したモデル、その費用、および読解時間をお知らせします。",
+    "Progression de la lecture": "読書の進捗状況",
+    "Temps de lecture estimé": "推定読書時間",
+    "Temps restant": "残り時間",
+    "Une question. Une IA. Des sources": "質問は1つ。AIは1つ。いくつかの情報源。"
   },
   "ru": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ индексные карточки без датированного обзора",
@@ -11427,7 +11517,17 @@
     "Modèle": "Модель",
     "Niveau": "Уровень",
     "OpenAI · GPT-4o mini": "OpenAI · GPT-4o mini",
-    "Pointu (expert)": "Острый (эксперт)"
+    "Pointu (expert)": "Острый (эксперт)",
+    "ASSISTANT IA SOURCÉ": "Искусственный интеллект как помощник",
+    "Consommation": "Потребление",
+    "Coût estimé": "Ориентировочная стоимость",
+    "Lecture terminée": "Чтение завершено",
+    "Poser ma question à voix haute": "Задайте мой вопрос вслух.",
+    "Posez vos questions sur l'intelligence artificielle par écrit ou à la voix. Un modèle d'IA rédige la réponse, appuyée sur les repères éditoriaux et leurs sources, et vous indique le modèle utilisé, son coût et le temps de lecture.": "Задавайте вопросы об искусственном интеллекте в письменной форме или голосом. Модель ИИ напишет ответ, руководствуясь редакционными правилами и указанием источников, а также сообщит, какая модель используется, сколько времени она стоит и сколько времени занимает чтение.",
+    "Progression de la lecture": "Последовательность чтения",
+    "Temps de lecture estimé": "Примерное время чтения",
+    "Temps restant": "Осталось времени",
+    "Une question. Une IA. Des sources": "Один вопрос. Один ИИ. Несколько источников."
   },
   "it": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ schede indice senza revisione datata",
@@ -12570,6 +12670,16 @@
     "Modèle": "Modello",
     "Niveau": "Livello",
     "OpenAI · GPT-4o mini": "OpenAI · GPT-4o mini",
-    "Pointu (expert)": "Acuto (esperto)"
+    "Pointu (expert)": "Acuto (esperto)",
+    "ASSISTANT IA SOURCÉ": "ASSISTENTE IA FORNITO",
+    "Consommation": "Consumo",
+    "Coût estimé": "Costo stimato",
+    "Lecture terminée": "Lettura completata",
+    "Poser ma question à voix haute": "Poni la mia domanda ad alta voce",
+    "Posez vos questions sur l'intelligence artificielle par écrit ou à la voix. Un modèle d'IA rédige la réponse, appuyée sur les repères éditoriaux et leurs sources, et vous indique le modèle utilisé, son coût et le temps de lecture.": "Poni le tue domande sull'intelligenza artificiale per iscritto o a voce. Un modello di IA scriverà la risposta, corredata da linee guida editoriali e relative fonti, e ti indicherà quale modello è stato utilizzato, il suo costo e il tempo di lettura.",
+    "Progression de la lecture": "Progressione della lettura",
+    "Temps de lecture estimé": "Tempo di lettura stimato",
+    "Temps restant": "Tempo rimanente",
+    "Une question. Une IA. Des sources": "Una domanda. Un'IA. Alcune fonti"
   }
 }
