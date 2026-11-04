@@ -1241,11 +1241,97 @@ async function speakAssistantResults(matches) {
   window.speechSynthesis.speak(utterance);
 }
 
+const modelProfiles = [
+  { match: "openai/gpt-4o-mini", provider: "OpenAI", description: "Modèle polyvalent, rapide et économique, adapté aux questions de compréhension générale." },
+  { match: "google/gemini-2.0-flash", provider: "Google", description: "Modèle rapide et multimodal, adapté aux réponses synthétiques." },
+  { match: "anthropic/claude-3.5-haiku", provider: "Anthropic", description: "Modèle compact et rapide, orienté vers des réponses nuancées et prudentes." },
+];
+
+function describeModel(modelId) {
+  const known = modelProfiles.find((entry) => modelId.startsWith(entry.match));
+  const provider = known?.provider ?? modelId.split("/")[0];
+  return {
+    provider,
+    profile: known?.description ?? getLocalizedText("Modèle de langage généraliste sélectionné automatiquement parmi les modèles disponibles."),
+  };
+}
+
+async function fetchAiAnswer(question, matches) {
+  const response = await fetch("/api/assistant", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      question,
+      language: document.documentElement.lang || "fr",
+      context: matches.map(({ item }) => ({ title: item.title, answer: item.answer, source: item.source.name })),
+    }),
+  });
+  if (!response.ok) throw new Error(`assistant-${response.status}`);
+  return response.json();
+}
+
+function renderAiAnswer(result) {
+  const card = document.createElement("article");
+  card.className = "assistant-answer assistant-ai-answer";
+
+  const label = document.createElement("p");
+  label.className = "assistant-results-heading";
+  label.textContent = getLocalizedText("RÉPONSE GÉNÉRÉE PAR IA");
+
+  const body = document.createElement("div");
+  body.className = "assistant-ai-text";
+  result.answer.split(/\n{2,}/).forEach((paragraph) => {
+    const element = document.createElement("p");
+    element.textContent = paragraph;
+    body.append(element);
+  });
+
+  const { provider, profile } = describeModel(result.model);
+  const meta = document.createElement("dl");
+  meta.className = "assistant-model-card";
+  [
+    [getLocalizedText("Modèle utilisé"), result.model],
+    [getLocalizedText("Éditeur"), provider],
+    [getLocalizedText("Profil"), getLocalizedText(profile)],
+  ].forEach(([term, value]) => {
+    const wrapper = document.createElement("div");
+    const dt = document.createElement("dt");
+    const dd = document.createElement("dd");
+    dt.textContent = term;
+    dd.textContent = value;
+    wrapper.append(dt, dd);
+    meta.append(wrapper);
+  });
+
+  const caveat = document.createElement("p");
+  caveat.className = "assistant-ai-caveat";
+  caveat.textContent = getLocalizedText("Réponse produite par un modèle d'IA via OpenRouter : elle peut contenir des erreurs. Vérifiez les informations importantes dans les sources.");
+
+  card.append(label, body, meta, caveat);
+  return card;
+}
+
 async function processAssistantQuestion(question, speakAnswer = false) {
   const request = ++assistantRequest;
   currentAssistantQuestion = await translateToFrench(question);
   if (request !== assistantRequest) return;
   const matches = renderAssistantResults(currentAssistantQuestion);
+
+  const status = document.createElement("p");
+  status.className = "assistant-ai-status";
+  status.setAttribute("role", "status");
+  status.textContent = getLocalizedText("Réflexion de l'assistant en cours…");
+  assistantResults.prepend(status);
+
+  try {
+    const result = await fetchAiAnswer(question, matches);
+    if (request !== assistantRequest) return;
+    status.replaceWith(renderAiAnswer(result));
+    assistantResults.querySelector(".assistant-empty")?.remove();
+  } catch {
+    if (request !== assistantRequest) return;
+    status.textContent = getLocalizedText("L'assistant IA est momentanément indisponible. Les repères du corpus restent affichés.");
+  }
   if (speakAnswer) await speakAssistantResults(matches);
 }
 

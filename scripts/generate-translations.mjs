@@ -140,6 +140,12 @@ function extractRelevantJavascript(source, texts) {
     addText(decodeJsString(literal.slice(1, -1), literal[0]), texts);
   }
 
+  const localizedCallPattern = /\bgetLocalizedText\s*\(\s*("(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*')/g;
+  for (const match of source.matchAll(localizedCallPattern)) {
+    const literal = match[1];
+    addText(decodeJsString(literal.slice(1, -1), literal[0]), texts);
+  }
+
   const formattedPattern = /\bformatLocalizedText\s*\(\s*("(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*')/g;
   for (const match of source.matchAll(formattedPattern)) {
     const literal = match[1];

@@ -1654,3 +1654,11 @@ html { scroll-behavior: smooth; }
 .region-card.is-highlighted { outline: 2px solid #8fd0ff; outline-offset: 3px; }
 [dir="rtl"] .geo-map { direction: ltr; }
 @media (max-width: 640px) { .geo-label { display: none; } }
+
+.assistant-ai-answer { border-color: #8fd0ff; }
+.assistant-ai-text p { margin: 0 0 10px; line-height: 1.65; }
+.assistant-model-card { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin: 14px 0 10px; padding: 12px; border: 1px solid rgba(143, 208, 255, 0.35); border-radius: 4px; background: rgba(143, 208, 255, 0.08); }
+.assistant-model-card dt { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.75; }
+.assistant-model-card dd { margin: 3px 0 0; font-size: 0.82rem; }
+.assistant-ai-caveat, .assistant-ai-status { margin: 0; font-size: 0.76rem; opacity: 0.8; }
+.assistant-ai-status { margin-bottom: 12px; }
