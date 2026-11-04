@@ -1584,6 +1584,17 @@ glossaryInput.closest("form").addEventListener("submit", (event) => event.preven
 filterGlossary();
 document.addEventListener("iaevolution:languagechange", filterGlossary);
 
+const watchFilters = [...document.querySelectorAll("[data-watch-filter]")];
+const watchItems = [...document.querySelectorAll(".watch-item")];
+watchFilters.forEach((button) => {
+  button.addEventListener("click", () => {
+    watchFilters.forEach((other) => other.setAttribute("aria-pressed", String(other === button)));
+    watchItems.forEach((item) => {
+      item.hidden = button.dataset.watchFilter !== "all" && item.dataset.watchCategory !== button.dataset.watchFilter;
+    });
+  });
+});
+
 const geoMarkers = [...document.querySelectorAll(".geo-marker")];
 geoMarkers.forEach((marker) => {
   marker.addEventListener("click", () => {
