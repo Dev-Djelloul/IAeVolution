@@ -1263,7 +1263,9 @@ async function fetchAiAnswer(question, matches) {
     body: JSON.stringify({
       question,
       language: document.documentElement.lang || "fr",
-      context: matches.map(({ item }) => ({ title: item.title, answer: item.answer, source: item.source.name })),
+      level: document.querySelector("#assistant-level").value,
+      length: document.querySelector("#assistant-length").value,
+      model: document.querySelector("#assistant-model").value, matches.map(({ item }) => ({ title: item.title, answer: item.answer, source: item.source.name })),
     }),
   });
   if (!response.ok) throw new Error(`assistant-${response.status}`);

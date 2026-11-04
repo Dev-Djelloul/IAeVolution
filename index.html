@@ -1328,6 +1328,28 @@
               <input id="assistant-query" name="question" type="search" maxlength="240" placeholder="Ex. Combien d'électricité consomment les centres de données ?" autocomplete="off" required>
               <button class="assistant-submit" type="submit">Chercher <span aria-hidden="true">↗</span></button>
             </div>
+            <div class="assistant-settings">
+              <label>Niveau
+                <select id="assistant-level" name="level">
+                  <option value="accessible">Accessible</option>
+                  <option value="expert">Pointu (expert)</option>
+                </select>
+              </label>
+              <label>Longueur
+                <select id="assistant-length" name="length">
+                  <option value="concise">Concise</option>
+                  <option value="detailed">Détaillée</option>
+                </select>
+              </label>
+              <label>Modèle
+                <select id="assistant-model" name="model">
+                  <option value="auto">Automatique (recommandé)</option>
+                  <option value="openai/gpt-4o-mini">OpenAI · GPT-4o mini</option>
+                  <option value="google/gemini-2.0-flash-001">Google · Gemini 2.0 Flash</option>
+                  <option value="anthropic/claude-3.5-haiku">Anthropic · Claude 3.5 Haiku</option>
+                </select>
+              </label>
+            </div>
           </form>
           <div class="assistant-voice-controls" role="group" aria-label="Commandes vocales">
             <button class="assistant-voice-button" id="assistant-voice-start" type="button">Parler (recherche locale)</button>

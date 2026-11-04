@@ -32,15 +32,24 @@ function cleanText(value, max) {
   return typeof value === "string" ? value.replace(/\s+/g, " ").trim().slice(0, max) : "";
 }
 
-function buildMessages(question, language, context) {
+const ALLOWED_MODELS = new Set(DEFAULT_MODELS);
+
+function buildMessages(question, language, context, level, length) {
   const languageName = LANGUAGE_NAMES[language] ?? LANGUAGE_NAMES.fr;
   const sourceBlock = context.length
     ? context.map((item, index) => `[${index + 1}] ${item.title} — ${item.answer} (source : ${item.source})`).join("\n")
     : "Aucun repère du corpus n'a été retrouvé pour cette question.";
+  const levelRule = level === "expert"
+    ? "Niveau pointu : vocabulaire technique précis, mécanismes, compromis et limites ; suppose un lecteur déjà familier de l'IA."
+    : "Niveau accessible : explique simplement, avec une analogie si utile, sans jargon non défini.";
+  const lengthRule = length === "detailed"
+    ? "Longueur détaillée : environ 300 à 400 mots, structurée en courtes parties."
+    : "Longueur concise : environ 100 à 150 mots.";
   const system = [
     "Tu es l'assistant d'IAeVolution, un observatoire éditorial de l'intelligence artificielle.",
     "Tu réponds à toute question sur l'IA : concepts, technologies, modèles, infrastructures, économie, géographie, histoire, régulation, usages, risques.",
-    "Réponds de façon claire, pédagogique et structurée, en 150 mots environ sauf si la question exige plus.",
+    levelRule,
+    lengthRule,
     "Priorité aux repères sourcés fournis ci-dessous : cite-les par leur numéro [n] quand tu t'en sers.",
     "Pour le reste, appuie-toi sur tes connaissances générales, sans inventer de chiffres, de dates ni de sources. Si tu n'es pas sûr, dis-le.",
     "Distingue les faits établis, les estimations et les projections.",
@@ -79,7 +88,12 @@ async function handleAssistant(request, env) {
     .filter((item) => item.title && item.answer);
 
   const models = (env.OPENROUTER_MODELS ?? "").split(",").map((model) => model.trim()).filter(Boolean);
-  const modelList = models.length ? models : DEFAULT_MODELS;
+  const defaultList = models.length ? models : DEFAULT_MODELS;
+  const modelList = ALLOWED_MODELS.has(payload?.model)
+    ? [payload.model, ...defaultList.filter((model) => model !== payload.model)]
+    : defaultList;
+  const level = payload?.level === "expert" ? "expert" : "accessible";
+  const length = payload?.length === "detailed" ? "detailed" : "concise";
 
   let upstream;
   try {
@@ -93,8 +107,8 @@ async function handleAssistant(request, env) {
       },
       body: JSON.stringify({
         models: modelList,
-        messages: buildMessages(question, language, context),
-        max_tokens: 700,
+        messages: buildMessages(question, language, context, level, length),
+        max_tokens: length === "detailed" ? 1100 : 600,
         temperature: 0.3,
       }),
     });
