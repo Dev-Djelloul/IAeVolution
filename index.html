@@ -224,6 +224,7 @@
           <section class="toc-group" aria-labelledby="toc-group-refs">
             <h3 id="toc-group-refs"><span>04</span> Repères & outils</h3>
             <ol>
+              <li><a href="#glossaire"><strong>Glossaire</strong><span>Les mots de l'IA expliqués simplement</span></a></li>
               <li><a href="#sources"><strong>Sources</strong><span>Registre, méthode et recherche de sources</span></a></li>
               <li><a href="#assistant"><strong>Assistant sourcé</strong><span>Poser une question, à l'écrit ou à la voix</span></a></li>
             </ol>
@@ -1170,6 +1171,38 @@
         </div>
 
         <p class="dossier-disclaimer">Les chiffres et projections sont attribués à leurs sources. Les explications générales sont une synthèse introductive, pas un inventaire exhaustif des sites ou des opérateurs.</p>
+      </section>
+
+      <section class="glossary-section" id="glossaire" aria-labelledby="glossary-title">
+        <div class="glossary-heading">
+          <p class="eyebrow">COMPRENDRE LE VOCABULAIRE <span class="dossier-separator">/</span> GLOSSAIRE</p>
+          <h2 id="glossary-title">Les mots de l'IA, expliqués simplement</h2>
+          <p>Des définitions courtes, sans jargon inutile. Chaque terme renvoie au dossier qui l'approfondit.</p>
+        </div>
+        <form class="glossary-search" role="search">
+          <label for="glossary-input">Rechercher un terme</label>
+          <input id="glossary-input" type="search" placeholder="Ex. : token, agent, poids ouverts…" autocomplete="off">
+          <span class="glossary-count" data-glossary-count role="status" aria-live="polite"></span>
+        </form>
+        <dl class="glossary-list" data-glossary-list>
+          <div class="glossary-item"><dt>Modèle de langage</dt><dd>Programme entraîné sur de grands volumes de textes pour prédire la suite d'un texte. C'est le moteur de la plupart des assistants conversationnels. <a href="#dossier-ia-generative">Modèles génératifs ↓</a></dd></div>
+          <div class="glossary-item"><dt>Token</dt><dd>Petit morceau de texte (mot, partie de mot, signe) que le modèle lit et produit. Les limites et les coûts s'expriment souvent en tokens. <a href="#dossier-ia-generative">Modèles génératifs ↓</a></dd></div>
+          <div class="glossary-item"><dt>Fenêtre de contexte</dt><dd>Quantité de texte qu'un modèle peut prendre en compte en une seule fois, question et documents fournis compris. <a href="#comparateur-modeles">Comparateur ↓</a></dd></div>
+          <div class="glossary-item"><dt>Hallucination</dt><dd>Réponse plausible mais fausse ou non fondée. Un texte fluide n'est pas une preuve : les informations importantes se vérifient. <a href="#dossier-ia-generative">Modèles génératifs ↓</a></dd></div>
+          <div class="glossary-item"><dt>Entraînement</dt><dd>Phase où le modèle ajuste ses paramètres à partir de données. Elle demande beaucoup de calcul et d'énergie. <a href="#dossier-data-centres">Infrastructure ↓</a></dd></div>
+          <div class="glossary-item"><dt>Inférence</dt><dd>Utilisation d'un modèle déjà entraîné pour produire une réponse. C'est ce qui se passe à chaque question posée. <a href="#dossier-data-centres">Infrastructure ↓</a></dd></div>
+          <div class="glossary-item"><dt>Agent</dt><dd>Système qui relie un modèle à des outils pour accomplir des actions par étapes. Il demande des garde-fous et une validation humaine pour les actes sensibles. <a href="#dossier-agents-ia">Systèmes agents ↓</a></dd></div>
+          <div class="glossary-item"><dt>Poids ouverts</dt><dd>Modèle dont les paramètres peuvent être téléchargés et exécutés sous conditions de licence. Ce n'est pas forcément de l'open source complet. <a href="#dossier-modeles-ouverts">Écosystème des modèles ↓</a></dd></div>
+          <div class="glossary-item"><dt>Multimodal</dt><dd>Se dit d'un modèle capable de traiter plusieurs types de contenus : texte, image, audio ou vidéo. <a href="#comparateur-modeles">Comparateur ↓</a></dd></div>
+          <div class="glossary-item"><dt>Biais</dt><dd>Écart systématique des résultats d'un système, souvent issu des données ou de la conception, qui peut défavoriser certains groupes. <a href="#dossier-ia-responsable">Risques & responsabilités ↓</a></dd></div>
+          <div class="glossary-item"><dt>Benchmark</dt><dd>Test standardisé pour comparer des modèles. Il ne résume ni l'utilité ni la fiabilité dans tous les usages. <a href="#dossier-prospective">Signaux & prospective ↓</a></dd></div>
+          <div class="glossary-item"><dt>GPU</dt><dd>Processeur conçu pour effectuer de nombreux calculs en parallèle ; il est au cœur de l'entraînement et de l'inférence des modèles. <a href="#dossier-data-centres">Infrastructure ↓</a></dd></div>
+          <div class="glossary-item"><dt>Centre de données</dt><dd>Bâtiment qui héberge serveurs, réseaux, alimentation électrique et refroidissement. <a href="#dossier-data-centres">Infrastructure ↓</a></dd></div>
+          <div class="glossary-item"><dt>Mégawatt (MW)</dt><dd>Unité de puissance électrique. Elle mesure la capacité d'un centre de données, pas son énergie consommée sur la durée. <a href="#tableau-de-bord">Tableau de bord ↓</a></dd></div>
+          <div class="glossary-item"><dt>Recherche augmentée (RAG)</dt><dd>Méthode où l'assistant consulte d'abord des sources puis rédige sa réponse à partir d'elles, ce qui permet de les citer. <a href="#assistant">Assistant sourcé ↓</a></dd></div>
+          <div class="glossary-item"><dt>Scénario</dt><dd>Hypothèse chiffrée sur l'avenir. Une projection dépend de ses hypothèses : ce n'est pas un fait observé. <a href="#dossier-prospective">Signaux & prospective ↓</a></dd></div>
+        </dl>
+        <p class="empty-state glossary-empty" data-glossary-empty hidden>Aucun terme ne correspond à cette recherche.</p>
       </section>
 
       <section class="sources-section" id="sources" aria-labelledby="sources-title">

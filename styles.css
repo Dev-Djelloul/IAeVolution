@@ -668,6 +668,28 @@ h2 {
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
+.glossary-section { padding: 64px max(7vw, 38px); border-bottom: 1px solid #cfcde4; background: #e4e3f2; color: #26253f; }
+.glossary-heading, .glossary-search, .glossary-list, .glossary-empty { max-width: 1440px; margin-right: auto; margin-left: auto; }
+.glossary-heading { margin-bottom: 22px; }
+.glossary-heading .eyebrow { margin-bottom: 8px; color: #5a58a0; }
+.glossary-heading h2 { margin: 0 0 8px; font-family: var(--display); font-size: clamp(1.7rem, 3vw, 2.3rem); font-weight: 500; }
+.glossary-heading p:last-child { max-width: 640px; margin: 0; color: #55547a; font-size: 0.9rem; line-height: 1.65; }
+.glossary-search { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
+.glossary-search label { color: #55547a; font-size: 0.85rem; }
+.glossary-search input { flex: 1 1 260px; max-width: 420px; min-height: 40px; padding: 0 12px; border: 1px solid #b9b7d8; border-radius: 4px; background: #f6f5fc; color: #26253f; font: inherit; }
+.glossary-search input:focus-visible { outline: 2px solid #5a58a0; outline-offset: 2px; }
+.glossary-count { margin-left: auto; color: #55547a; font-family: var(--mono); font-size: 0.7rem; }
+.glossary-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 0; margin-bottom: 0; }
+.glossary-item { padding: 15px; border: 1px solid #c9c7e2; border-radius: 4px; background: #f6f5fc; }
+.glossary-item[hidden] { display: none; }
+.glossary-item dt { margin: 0 0 6px; font-family: var(--display); font-size: 1.1rem; font-weight: 500; }
+.glossary-item dd { margin: 0; color: #4a4968; font-size: 0.83rem; line-height: 1.6; }
+.glossary-item dd a { display: inline-block; margin-top: 6px; color: #4b49a0; font-size: 0.78rem; text-decoration: none; }
+.glossary-item dd a:hover, .glossary-item dd a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+.glossary-empty { margin-top: 14px; color: #26253f; }
+@media (max-width: 1100px) { .glossary-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .glossary-list { grid-template-columns: 1fr; } }
+
 .model-compare { margin: 0 0 35px; padding: 22px; border: 1px solid #303d43; border-radius: 4px; background: radial-gradient(ellipse at 10% 0, rgba(104,130,150,.12), transparent 35%), rgba(16,23,29,.72); }
 .model-table-wrap { overflow-x: auto; margin: 0 0 14px; border: 1px solid #2b3741; border-radius: 3px; }
 .model-table-wrap:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }

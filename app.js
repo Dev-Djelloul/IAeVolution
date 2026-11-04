@@ -1560,6 +1560,30 @@ modelToggles.forEach((button) => {
 applyModelSelection();
 document.addEventListener("iaevolution:languagechange", applyModelSelection);
 
+const glossaryInput = document.querySelector("#glossary-input");
+const glossaryItems = [...document.querySelectorAll(".glossary-item")];
+const glossaryCount = document.querySelector("[data-glossary-count]");
+const glossaryEmpty = document.querySelector("[data-glossary-empty]");
+
+function normalizeGlossaryText(value) {
+  return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+}
+
+function filterGlossary() {
+  const query = normalizeGlossaryText(glossaryInput.value.trim());
+  glossaryItems.forEach((item) => {
+    item.hidden = Boolean(query) && !normalizeGlossaryText(item.textContent).includes(query);
+  });
+  const visibleCount = glossaryItems.filter((item) => !item.hidden).length;
+  glossaryCount.textContent = `${getLocalizedText("Termes affichés :")} ${visibleCount}`;
+  glossaryEmpty.hidden = visibleCount > 0;
+}
+
+glossaryInput.addEventListener("input", filterGlossary);
+glossaryInput.closest("form").addEventListener("submit", (event) => event.preventDefault());
+filterGlossary();
+document.addEventListener("iaevolution:languagechange", filterGlossary);
+
 let sourceSearchRequest = 0;
 let sourceSearchTimer;
 sourceSearchInput.addEventListener("input", () => {
