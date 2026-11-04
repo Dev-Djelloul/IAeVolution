@@ -1433,8 +1433,8 @@ html { scroll-behavior: smooth; }
 .network-feature-action span { font-size: 1.3rem; }
 
 .topic-dossier:nth-of-type(odd) { background: radial-gradient(ellipse at 90% 4%, rgba(77,142,173,.16), transparent 33%), #173149; }
-.assistant-section { background: radial-gradient(ellipse at 12% 0%, rgba(83,149,177,.18), transparent 34%), #172d43; }
-.sources-section { background: radial-gradient(ellipse at 88% 10%, rgba(116,104,156,.15), transparent 35%), #202d46; }
+.assistant-section { background: radial-gradient(ellipse at 12% 0%, rgba(143,130,230,.2), transparent 34%), #1f1c42; }
+.sources-section { background: radial-gradient(ellipse at 88% 10%, rgba(104,190,160,.14), transparent 35%), #163532; }
 
 .networks-page { --network-blue: #245d95; --network-ink: #17344a; background: #f1f5f5; color: var(--network-ink); }
 .networks-page .site-header { border-color: rgba(25,54,78,.14); background: #f5f7f7; color: var(--network-ink); }

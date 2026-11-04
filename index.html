@@ -20,10 +20,10 @@
         <span>IA<span class="brand-accent">e</span>Volution</span>
       </a>
       <nav class="main-nav" aria-label="Navigation principale">
-        <a class="nav-link is-active" href="#boussole">Notre boussole</a>
+        <a class="nav-link is-active" href="#sommaire">Sommaire</a>
+        <a class="nav-link" href="#boussole">Notre boussole</a>
         <a class="nav-link" href="#assistant">Assistant</a>
         <a class="nav-link" href="#explorer">Explorer</a>
-        <a class="nav-link" href="#sommaire">Sommaire</a>
         <a class="nav-link" href="#sources">Sources</a>
       </nav>
       <div class="language-control">
@@ -46,6 +46,58 @@
       <a class="header-link" href="reseaux-mondiaux.html">Réseaux mondiaux <span aria-hidden="true">↗</span></a>
     </header>
     <main id="contenu">
+      <section class="toc-section" id="sommaire" aria-labelledby="toc-title">
+        <div class="toc-heading">
+          <p class="eyebrow">SE REPÉRER <span class="dossier-separator">/</span> SOMMAIRE</p>
+          <h2 id="toc-title">Tout le site, d'un seul coup d'œil</h2>
+          <p>Chaque entrée mène directement à sa section. Les dossiers à onglets s'ouvrent sur l'angle choisi.</p>
+        </div>
+        <nav class="toc-grid" aria-label="Sommaire détaillé du site">
+          <section class="toc-group" aria-labelledby="toc-group-visit">
+            <h3 id="toc-group-visit"><span>01</span> Parcours & visites</h3>
+            <ol>
+              <li><a href="#boussole"><strong>Notre boussole</strong><span>Les cinq axes d'entrée pour lire l'IA</span></a></li>
+              <li><a href="#assistant"><strong>Assistant sourcé</strong><span>Poser une question, à l'écrit ou à la voix</span></a></li>
+              <li><a href="#parcours-visuel"><strong>Parcours visuel</strong><span>Visite guidée : du courant au calcul</span></a></li>
+              <li><a href="#parcours-apprentissage"><strong>Parcours d'apprentissage</strong><span>De débutant à expert</span></a></li>
+              <li><a href="reseaux-mondiaux.html"><strong>Réseaux mondiaux</strong><span>Page dédiée : les connexions sous les océans</span></a></li>
+            </ol>
+          </section>
+          <section class="toc-group" aria-labelledby="toc-group-topics">
+            <h3 id="toc-group-topics"><span>02</span> Dossiers thématiques</h3>
+            <ol>
+              <li><a href="#explorer"><strong>Explorer par sujet</strong><span>Recherche et filtres sur les sept dossiers</span></a></li>
+              <li><a href="#dossier-ia-generative"><strong>01 · Modèles génératifs</strong><span>Produire une réponse n'est pas établir un fait</span></a></li>
+              <li><a href="#dossier-agents-ia"><strong>02 · Systèmes agents</strong><span>Un agent relie un modèle à des actions</span></a></li>
+              <li><a href="#dossier-modeles-ouverts"><strong>03 · Écosystème des modèles</strong><span>Les degrés d'ouverture</span></a></li>
+              <li><a href="#dossier-ia-responsable"><strong>04 · Risques & responsabilités</strong><span>La fiabilité sur tout le cycle de vie</span></a></li>
+              <li><a href="#dossier-ia-quotidien"><strong>05 · IA & activités</strong><span>Assister des tâches avec discernement</span></a></li>
+              <li><a href="#dossier-prospective"><strong>06 · Signaux & prospective</strong><span>Tendances observées et scénarios</span></a></li>
+            </ol>
+          </section>
+          <section class="toc-group" aria-labelledby="toc-group-infra">
+            <h3 id="toc-group-infra"><span>03</span> Dossier 07 · Infrastructure</h3>
+            <ol>
+              <li><a href="#dossier-data-centres"><strong>L'IA a une géographie</strong><span>Introduction au dossier sur les centres de données</span></a></li>
+              <li><a href="#tableau-de-bord"><strong>Tableau de bord</strong><span>Indicateurs sourcés : énergie, capitaux, adoption</span></a></li>
+              <li><a href="#comparateur-modeles"><strong>Comparateur de modèles</strong><span>Comparer jusqu'à trois familles de modèles</span></a></li>
+              <li><a href="#dossier-data-centres" data-compass-tab="tab-geographie"><strong>Géographie</strong><span>Où construire, trois territoires</span></a></li>
+              <li><a href="#dossier-data-centres" data-compass-tab="tab-economie"><strong>Économie</strong><span>Mégawatts et investissements</span></a></li>
+              <li><a href="#dossier-data-centres" data-compass-tab="tab-histoire"><strong>Histoire</strong><span>Chronologie interactive des jalons</span></a></li>
+              <li><a href="#dossier-data-centres" data-compass-tab="tab-technique"><strong>Fonctionnement</strong><span>Du courant électrique à une réponse de modèle</span></a></li>
+            </ol>
+          </section>
+          <section class="toc-group" aria-labelledby="toc-group-refs">
+            <h3 id="toc-group-refs"><span>04</span> Repères & outils</h3>
+            <ol>
+              <li><a href="#veille"><strong>Veille</strong><span>Jalons datés et sourcés</span></a></li>
+              <li><a href="#glossaire"><strong>Glossaire</strong><span>Les mots de l'IA expliqués simplement</span></a></li>
+              <li><a href="#sources"><strong>Sources</strong><span>Registre, méthode et recherche de sources</span></a></li>
+            </ol>
+          </section>
+        </nav>
+      </section>
+
       <section class="compass-section" id="boussole" aria-labelledby="compass-title">
         <div class="compass-cover">
           <svg class="compass-wave-field" viewBox="0 0 1600 740" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
@@ -1285,58 +1337,6 @@
           <div class="glossary-item"><dt>Scénario</dt><dd>Hypothèse chiffrée sur l'avenir. Une projection dépend de ses hypothèses : ce n'est pas un fait observé. <a href="#dossier-prospective">Signaux & prospective ↓</a></dd></div>
         </dl>
         <p class="empty-state glossary-empty" data-glossary-empty hidden>Aucun terme ne correspond à cette recherche.</p>
-      </section>
-
-      <section class="toc-section" id="sommaire" aria-labelledby="toc-title">
-        <div class="toc-heading">
-          <p class="eyebrow">SE REPÉRER <span class="dossier-separator">/</span> SOMMAIRE</p>
-          <h2 id="toc-title">Tout le site, d'un seul coup d'œil</h2>
-          <p>Chaque entrée mène directement à sa section. Les dossiers à onglets s'ouvrent sur l'angle choisi.</p>
-        </div>
-        <nav class="toc-grid" aria-label="Sommaire détaillé du site">
-          <section class="toc-group" aria-labelledby="toc-group-visit">
-            <h3 id="toc-group-visit"><span>01</span> Parcours & visites</h3>
-            <ol>
-              <li><a href="#boussole"><strong>Notre boussole</strong><span>Les cinq axes d'entrée pour lire l'IA</span></a></li>
-              <li><a href="#assistant"><strong>Assistant sourcé</strong><span>Poser une question, à l'écrit ou à la voix</span></a></li>
-              <li><a href="#parcours-visuel"><strong>Parcours visuel</strong><span>Visite guidée : du courant au calcul</span></a></li>
-              <li><a href="#parcours-apprentissage"><strong>Parcours d'apprentissage</strong><span>De débutant à expert</span></a></li>
-              <li><a href="reseaux-mondiaux.html"><strong>Réseaux mondiaux</strong><span>Page dédiée : les connexions sous les océans</span></a></li>
-            </ol>
-          </section>
-          <section class="toc-group" aria-labelledby="toc-group-topics">
-            <h3 id="toc-group-topics"><span>02</span> Dossiers thématiques</h3>
-            <ol>
-              <li><a href="#explorer"><strong>Explorer par sujet</strong><span>Recherche et filtres sur les sept dossiers</span></a></li>
-              <li><a href="#dossier-ia-generative"><strong>01 · Modèles génératifs</strong><span>Produire une réponse n'est pas établir un fait</span></a></li>
-              <li><a href="#dossier-agents-ia"><strong>02 · Systèmes agents</strong><span>Un agent relie un modèle à des actions</span></a></li>
-              <li><a href="#dossier-modeles-ouverts"><strong>03 · Écosystème des modèles</strong><span>Les degrés d'ouverture</span></a></li>
-              <li><a href="#dossier-ia-responsable"><strong>04 · Risques & responsabilités</strong><span>La fiabilité sur tout le cycle de vie</span></a></li>
-              <li><a href="#dossier-ia-quotidien"><strong>05 · IA & activités</strong><span>Assister des tâches avec discernement</span></a></li>
-              <li><a href="#dossier-prospective"><strong>06 · Signaux & prospective</strong><span>Tendances observées et scénarios</span></a></li>
-            </ol>
-          </section>
-          <section class="toc-group" aria-labelledby="toc-group-infra">
-            <h3 id="toc-group-infra"><span>03</span> Dossier 07 · Infrastructure</h3>
-            <ol>
-              <li><a href="#dossier-data-centres"><strong>L'IA a une géographie</strong><span>Introduction au dossier sur les centres de données</span></a></li>
-              <li><a href="#tableau-de-bord"><strong>Tableau de bord</strong><span>Indicateurs sourcés : énergie, capitaux, adoption</span></a></li>
-              <li><a href="#comparateur-modeles"><strong>Comparateur de modèles</strong><span>Comparer jusqu'à trois familles de modèles</span></a></li>
-              <li><a href="#dossier-data-centres" data-compass-tab="tab-geographie"><strong>Géographie</strong><span>Où construire, trois territoires</span></a></li>
-              <li><a href="#dossier-data-centres" data-compass-tab="tab-economie"><strong>Économie</strong><span>Mégawatts et investissements</span></a></li>
-              <li><a href="#dossier-data-centres" data-compass-tab="tab-histoire"><strong>Histoire</strong><span>Chronologie interactive des jalons</span></a></li>
-              <li><a href="#dossier-data-centres" data-compass-tab="tab-technique"><strong>Fonctionnement</strong><span>Du courant électrique à une réponse de modèle</span></a></li>
-            </ol>
-          </section>
-          <section class="toc-group" aria-labelledby="toc-group-refs">
-            <h3 id="toc-group-refs"><span>04</span> Repères & outils</h3>
-            <ol>
-              <li><a href="#veille"><strong>Veille</strong><span>Jalons datés et sourcés</span></a></li>
-              <li><a href="#glossaire"><strong>Glossaire</strong><span>Les mots de l'IA expliqués simplement</span></a></li>
-              <li><a href="#sources"><strong>Sources</strong><span>Registre, méthode et recherche de sources</span></a></li>
-            </ol>
-          </section>
-        </nav>
       </section>
 
       <section class="sources-section" id="sources" aria-labelledby="sources-title">
