@@ -1275,6 +1275,77 @@ async function fetchAiAnswer(question, matches) {
   return response.json();
 }
 
+function appendInlineMarkdown(parent, text) {
+  const pattern = /\*\*([^*]+)\*\*|__([^_]+)__|`([^`]+)`|\*([^*\s][^*]*)\*|\[(\d{1,2})\]/g;
+  let last = 0;
+  let match;
+  while ((match = pattern.exec(text))) {
+    if (match.index > last) parent.append(text.slice(last, match.index));
+    let node;
+    if (match[1] ?? match[2]) {
+      node = document.createElement("strong");
+      node.textContent = match[1] ?? match[2];
+    } else if (match[3]) {
+      node = document.createElement("code");
+      node.textContent = match[3];
+    } else if (match[4]) {
+      node = document.createElement("em");
+      node.textContent = match[4];
+    } else {
+      node = document.createElement("sup");
+      node.className = "assistant-cite";
+      node.textContent = match[5];
+    }
+    parent.append(node);
+    last = pattern.lastIndex;
+  }
+  if (last < text.length) parent.append(text.slice(last));
+}
+
+function renderMarkdownInto(container, markdown) {
+  let list = null;
+  let listType = "";
+  let paragraph = null;
+  const flush = () => { list = null; listType = ""; paragraph = null; };
+  markdown.replace(/\r/g, "").split("\n").forEach((rawLine) => {
+    const line = rawLine.trim();
+    if (!line || /^([-*_])\1{2,}$/.test(line)) return flush();
+    const heading = line.match(/^#{1,6}\s+(.*?)\s*#*$/);
+    if (heading) {
+      flush();
+      const element = document.createElement("h4");
+      element.className = "assistant-ai-heading";
+      appendInlineMarkdown(element, heading[1]);
+      container.append(element);
+      return;
+    }
+    const item = line.match(/^(?:([-*•–])|(\d+)[.)])\s+(.*)$/);
+    if (item) {
+      const type = item[2] ? "ol" : "ul";
+      if (!list || listType !== type) {
+        list = document.createElement(type);
+        list.className = "assistant-ai-list";
+        listType = type;
+        paragraph = null;
+        container.append(list);
+      }
+      const li = document.createElement("li");
+      appendInlineMarkdown(li, item[3]);
+      list.append(li);
+      return;
+    }
+    list = null;
+    listType = "";
+    if (!paragraph) {
+      paragraph = document.createElement("p");
+      container.append(paragraph);
+    } else {
+      paragraph.append(" ");
+    }
+    appendInlineMarkdown(paragraph, line);
+  });
+}
+
 function renderAiAnswer(result) {
   const card = document.createElement("article");
   card.className = "assistant-answer assistant-ai-answer";
@@ -1285,11 +1356,7 @@ function renderAiAnswer(result) {
 
   const body = document.createElement("div");
   body.className = "assistant-ai-text";
-  result.answer.split(/\n{2,}/).forEach((paragraph) => {
-    const element = document.createElement("p");
-    element.textContent = paragraph;
-    body.append(element);
-  });
+  renderMarkdownInto(body, result.answer);
 
   const { provider, profile } = describeModel(result.model);
   const meta = document.createElement("dl");
