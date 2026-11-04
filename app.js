@@ -1265,7 +1265,8 @@ async function fetchAiAnswer(question, matches) {
       language: document.documentElement.lang || "fr",
       level: document.querySelector("#assistant-level").value,
       length: document.querySelector("#assistant-length").value,
-      model: document.querySelector("#assistant-model").value, matches.map(({ item }) => ({ title: item.title, answer: item.answer, source: item.source.name })),
+      model: document.querySelector("#assistant-model").value,
+      context: matches.map(({ item }) => ({ title: item.title, answer: item.answer, source: item.source.name })),
     }),
   });
   if (!response.ok) throw new Error(`assistant-${response.status}`);
