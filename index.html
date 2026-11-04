@@ -21,8 +21,9 @@
       </a>
       <nav class="main-nav" aria-label="Navigation principale">
         <a class="nav-link is-active" href="#boussole">Notre boussole</a>
-        <a class="nav-link" href="#sommaire">Sommaire</a>
+        <a class="nav-link" href="#assistant">Assistant</a>
         <a class="nav-link" href="#explorer">Explorer</a>
+        <a class="nav-link" href="#sommaire">Sommaire</a>
         <a class="nav-link" href="#sources">Sources</a>
       </nav>
       <div class="language-control">
@@ -182,56 +183,69 @@
         </div>
       </section>
 
-      <section class="toc-section" id="sommaire" aria-labelledby="toc-title">
-        <div class="toc-heading">
-          <p class="eyebrow">SE REPÉRER <span class="dossier-separator">/</span> SOMMAIRE</p>
-          <h2 id="toc-title">Tout le site, d'un seul coup d'œil</h2>
-          <p>Chaque entrée mène directement à sa section. Les dossiers à onglets s'ouvrent sur l'angle choisi.</p>
+      <section class="assistant-section" id="assistant" aria-labelledby="assistant-title">
+        <div class="assistant-heading">
+          <div>
+            <p class="eyebrow">EXPLORATION SOURCÉE <span class="assistant-index">/ 01</span></p>
+            <h2 id="assistant-title">Une question. Une IA. Des sources</h2>
+            <p>Posez vos questions sur l'intelligence artificielle par écrit ou à la voix. Un modèle d'IA rédige la réponse, appuyée sur les repères éditoriaux et leurs sources, et vous indique le modèle utilisé, son coût et le temps de lecture.</p>
+          </div>
+          <div class="local-badge"><span></span> ASSISTANT IA SOURCÉ</div>
         </div>
-        <nav class="toc-grid" aria-label="Sommaire détaillé du site">
-          <section class="toc-group" aria-labelledby="toc-group-visit">
-            <h3 id="toc-group-visit"><span>01</span> Parcours & visites</h3>
-            <ol>
-              <li><a href="#boussole"><strong>Notre boussole</strong><span>Les cinq axes d'entrée pour lire l'IA</span></a></li>
-              <li><a href="#parcours-visuel"><strong>Parcours visuel</strong><span>Visite guidée : du courant au calcul</span></a></li>
-              <li><a href="reseaux-mondiaux.html"><strong>Réseaux mondiaux</strong><span>Page dédiée : les connexions sous les océans</span></a></li>
-            </ol>
-          </section>
-          <section class="toc-group" aria-labelledby="toc-group-topics">
-            <h3 id="toc-group-topics"><span>02</span> Dossiers thématiques</h3>
-            <ol>
-              <li><a href="#explorer"><strong>Explorer par sujet</strong><span>Recherche et filtres sur les sept dossiers</span></a></li>
-              <li><a href="#dossier-ia-generative"><strong>01 · Modèles génératifs</strong><span>Produire une réponse n'est pas établir un fait</span></a></li>
-              <li><a href="#dossier-agents-ia"><strong>02 · Systèmes agents</strong><span>Un agent relie un modèle à des actions</span></a></li>
-              <li><a href="#dossier-modeles-ouverts"><strong>03 · Écosystème des modèles</strong><span>Les degrés d'ouverture</span></a></li>
-              <li><a href="#dossier-ia-responsable"><strong>04 · Risques & responsabilités</strong><span>La fiabilité sur tout le cycle de vie</span></a></li>
-              <li><a href="#dossier-ia-quotidien"><strong>05 · IA & activités</strong><span>Assister des tâches avec discernement</span></a></li>
-              <li><a href="#dossier-prospective"><strong>06 · Signaux & prospective</strong><span>Tendances observées et scénarios</span></a></li>
-            </ol>
-          </section>
-          <section class="toc-group" aria-labelledby="toc-group-infra">
-            <h3 id="toc-group-infra"><span>03</span> Dossier 07 · Infrastructure</h3>
-            <ol>
-              <li><a href="#dossier-data-centres"><strong>L'IA a une géographie</strong><span>Introduction au dossier sur les centres de données</span></a></li>
-              <li><a href="#tableau-de-bord"><strong>Tableau de bord</strong><span>Indicateurs sourcés : énergie, capitaux, adoption</span></a></li>
-              <li><a href="#comparateur-modeles"><strong>Comparateur de modèles</strong><span>Comparer jusqu'à trois familles de modèles</span></a></li>
-              <li><a href="#dossier-data-centres" data-compass-tab="tab-geographie"><strong>Géographie</strong><span>Où construire, trois territoires</span></a></li>
-              <li><a href="#dossier-data-centres" data-compass-tab="tab-economie"><strong>Économie</strong><span>Mégawatts et investissements</span></a></li>
-              <li><a href="#dossier-data-centres" data-compass-tab="tab-histoire"><strong>Histoire</strong><span>Chronologie interactive des jalons</span></a></li>
-              <li><a href="#dossier-data-centres" data-compass-tab="tab-technique"><strong>Fonctionnement</strong><span>Du courant électrique à une réponse de modèle</span></a></li>
-            </ol>
-          </section>
-          <section class="toc-group" aria-labelledby="toc-group-refs">
-            <h3 id="toc-group-refs"><span>04</span> Repères & outils</h3>
-            <ol>
-              <li><a href="#parcours-apprentissage"><strong>Parcours d'apprentissage</strong><span>De débutant à expert</span></a></li>
-              <li><a href="#veille"><strong>Veille</strong><span>Jalons datés et sourcés</span></a></li>
-              <li><a href="#glossaire"><strong>Glossaire</strong><span>Les mots de l'IA expliqués simplement</span></a></li>
-              <li><a href="#sources"><strong>Sources</strong><span>Registre, méthode et recherche de sources</span></a></li>
-              <li><a href="#assistant"><strong>Assistant sourcé</strong><span>Poser une question, à l'écrit ou à la voix</span></a></li>
-            </ol>
-          </section>
-        </nav>
+        <div class="assistant-workspace">
+          <form class="assistant-form" id="assistant-form">
+            <label for="assistant-query">Votre question</label>
+            <div class="assistant-input-row">
+              <input id="assistant-query" name="question" type="search" maxlength="240" placeholder="Ex. Combien d'électricité consomment les centres de données ?" autocomplete="off" required>
+              <button class="assistant-submit" type="submit">Chercher <span aria-hidden="true">↗</span></button>
+            </div>
+            <div class="assistant-settings">
+              <label>Niveau
+                <select id="assistant-level" name="level">
+                  <option value="accessible">Accessible</option>
+                  <option value="expert">Pointu (expert)</option>
+                </select>
+              </label>
+              <label>Longueur
+                <select id="assistant-length" name="length">
+                  <option value="concise">Concise</option>
+                  <option value="detailed">Détaillée</option>
+                </select>
+              </label>
+              <label>Modèle
+                <select id="assistant-model" name="model">
+                  <option value="auto">Automatique (recommandé)</option>
+                  <option value="openai/gpt-4o-mini">OpenAI · GPT-4o mini</option>
+                  <option value="google/gemini-2.0-flash-001">Google · Gemini 2.0 Flash</option>
+                  <option value="anthropic/claude-3.5-haiku">Anthropic · Claude 3.5 Haiku</option>
+                </select>
+              </label>
+            </div>
+            <label class="assistant-autoread"><input type="checkbox" id="assistant-autoread" checked> Lire les réponses à voix haute</label>
+          </form>
+          <div class="assistant-voice-controls" role="group" aria-label="Commandes vocales">
+            <button class="assistant-voice-button" id="assistant-voice-start" type="button">Poser ma question à voix haute</button>
+            <button class="assistant-voice-button" id="assistant-voice-stop" type="button" hidden>Arrêter le micro</button>
+            <button class="assistant-voice-button" id="assistant-voice-stop-speaking" type="button" hidden>Arrêter la lecture</button>
+            <button class="assistant-voice-button" id="assistant-voice-install-local" type="button" hidden>Installer la reconnaissance locale</button>
+          </div>
+          <div class="speech-voice-picker">
+            <label for="assistant-speech-voice">Voix de lecture</label>
+            <select id="assistant-speech-voice" data-speech-voice></select>
+          </div>
+          <p class="assistant-voice-disclosure">Le micro ne s'active qu'à votre demande. Si votre navigateur propose un modèle local installé, la reconnaissance reste sur l'appareil ; sinon, le navigateur peut envoyer l'audio à son fournisseur. IAeVolution ne conserve aucun audio ni transcription ; la recherche reste limitée aux sources du site.</p>
+          <p class="assistant-voice-disclosure">Les voix proposées dépendent de votre appareil et de votre navigateur. Une voix personnelle macOS peut nécessiter l'autorisation des apps et ne pas être accessible aux sites web.</p>
+          <p class="assistant-voice-status" id="assistant-voice-status" role="status" aria-live="polite" aria-atomic="true"></p>
+          <div class="suggested-questions" role="group" aria-label="Exemples de questions">
+            <span>ESSAYEZ PAR EXEMPLE</span>
+            <button type="button" data-assistant-prompt="Combien d'électricité les centres de données consomment-ils ?">Consommation électrique</button>
+            <button type="button" data-assistant-prompt="Pourquoi les centres de données s'installent-ils en Virginie du Nord ?">Pourquoi la Virginie du Nord ?</button>
+            <button type="button" data-assistant-prompt="Quelle différence entre entraîner un modèle et l'inférence ?">Entraînement ou inférence ?</button>
+            <button type="button" data-assistant-prompt="Qu'est-ce que l'IA générative ?">IA générative</button>
+            <button type="button" data-assistant-prompt="Pourquoi un modèle peut-il inventer une réponse ?">Fiabilité des réponses</button>
+          </div>
+          <div class="assistant-results" id="assistant-results" aria-live="polite" aria-atomic="false"></div>
+        </div>
       </section>
 
       <section class="hero" id="parcours-visuel" aria-labelledby="hero-title" data-exploration="closed">
@@ -542,6 +556,35 @@
         <div class="hero-foot">
           <span>UNE TECHNOLOGIE, MILLE PERSPECTIVES</span>
           <span class="hero-foot-right">OBSERVER · COMPRENDRE · EXPLORER <span aria-hidden="true">↓</span></span>
+        </div>
+      </section>
+
+      <section class="path-section" id="parcours-apprentissage" aria-labelledby="path-title">
+        <div class="path-inner">
+          <p class="eyebrow">APPRENDRE <span class="dossier-separator">/</span> PARCOURS GUIDÉ</p>
+          <h2 id="path-title">De débutant à expert, étape par étape</h2>
+          <p class="path-intro">Suivez l'ordre proposé ou piochez à votre rythme. Cochez les étapes terminées : la progression reste sur cet appareil et n'est envoyée nulle part.</p>
+          <p class="path-progress" role="status" aria-live="polite" data-path-progress></p>
+          <div class="path-levels">
+            <article class="path-level"><span class="path-index">NIVEAU 1</span><h3>Débutant</h3><p>Comprendre les bases et le vocabulaire.</p><ol class="path-steps">
+              <li class="path-step"><label><input type="checkbox" data-path-step="d1"><span><strong>Repérer les mots clés</strong><small>Parcourir le glossaire.</small></span></label><a href="#glossaire">Ouvrir ↓</a></li>
+              <li class="path-step"><label><input type="checkbox" data-path-step="d2"><span><strong>Voir comment fonctionnent les modèles génératifs</strong><small>Dossier sur les modèles génératifs.</small></span></label><a href="#dossier-ia-generative">Ouvrir ↓</a></li>
+              <li class="path-step"><label><input type="checkbox" data-path-step="d3"><span><strong>Utiliser l'IA au quotidien</strong><small>Dossier sur les usages au travail.</small></span></label><a href="#dossier-ia-quotidien">Ouvrir ↓</a></li>
+            </ol></article>
+            <article class="path-level"><span class="path-index">NIVEAU 2</span><h3>Intermédiaire</h3><p>Situer les acteurs, les risques et les usages avancés.</p><ol class="path-steps">
+              <li class="path-step"><label><input type="checkbox" data-path-step="i1"><span><strong>Découvrir les systèmes agents</strong><small>Dossier sur les agents.</small></span></label><a href="#dossier-agents-ia">Ouvrir ↓</a></li>
+              <li class="path-step"><label><input type="checkbox" data-path-step="i2"><span><strong>Comprendre l'écosystème des modèles</strong><small>Dossier sur les modèles ouverts.</small></span></label><a href="#dossier-modeles-ouverts">Ouvrir ↓</a></li>
+              <li class="path-step"><label><input type="checkbox" data-path-step="i3"><span><strong>Comparer des familles de modèles</strong><small>Comparateur du dossier 07.</small></span></label><a href="#comparateur-modeles">Ouvrir ↓</a></li>
+              <li class="path-step"><label><input type="checkbox" data-path-step="i4"><span><strong>Mesurer les risques</strong><small>Dossier sur l'IA responsable.</small></span></label><a href="#dossier-ia-responsable">Ouvrir ↓</a></li>
+            </ol></article>
+            <article class="path-level"><span class="path-index">NIVEAU 3</span><h3>Avancé</h3><p>Relier l'IA à l'infrastructure, à l'économie et aux sources.</p><ol class="path-steps">
+              <li class="path-step"><label><input type="checkbox" data-path-step="a1"><span><strong>Explorer la géographie de l'IA</strong><small>Dossier 07 et carte des territoires.</small></span></label><a href="#dossier-data-centres">Ouvrir ↓</a></li>
+              <li class="path-step"><label><input type="checkbox" data-path-step="a2"><span><strong>Lire les indicateurs avec prudence</strong><small>Tableau de bord sourcé.</small></span></label><a href="#tableau-de-bord">Ouvrir ↓</a></li>
+              <li class="path-step"><label><input type="checkbox" data-path-step="a3"><span><strong>Suivre les signaux et scénarios</strong><small>Dossier prospective.</small></span></label><a href="#dossier-prospective">Ouvrir ↓</a></li>
+              <li class="path-step"><label><input type="checkbox" data-path-step="a4"><span><strong>Croiser les sources</strong><small>Registre de sources.</small></span></label><a href="#sources">Ouvrir ↓</a></li>
+            </ol></article>
+          </div>
+          <button class="path-reset" type="button" data-path-reset>Réinitialiser ma progression</button>
         </div>
       </section>
 
@@ -1191,35 +1234,6 @@
         <p class="dossier-disclaimer">Les chiffres et projections sont attribués à leurs sources. Les explications générales sont une synthèse introductive, pas un inventaire exhaustif des sites ou des opérateurs.</p>
       </section>
 
-      <section class="path-section" id="parcours-apprentissage" aria-labelledby="path-title">
-        <div class="path-inner">
-          <p class="eyebrow">APPRENDRE <span class="dossier-separator">/</span> PARCOURS GUIDÉ</p>
-          <h2 id="path-title">De débutant à expert, étape par étape</h2>
-          <p class="path-intro">Suivez l'ordre proposé ou piochez à votre rythme. Cochez les étapes terminées : la progression reste sur cet appareil et n'est envoyée nulle part.</p>
-          <p class="path-progress" role="status" aria-live="polite" data-path-progress></p>
-          <div class="path-levels">
-            <article class="path-level"><span class="path-index">NIVEAU 1</span><h3>Débutant</h3><p>Comprendre les bases et le vocabulaire.</p><ol class="path-steps">
-              <li class="path-step"><label><input type="checkbox" data-path-step="d1"><span><strong>Repérer les mots clés</strong><small>Parcourir le glossaire.</small></span></label><a href="#glossaire">Ouvrir ↓</a></li>
-              <li class="path-step"><label><input type="checkbox" data-path-step="d2"><span><strong>Voir comment fonctionnent les modèles génératifs</strong><small>Dossier sur les modèles génératifs.</small></span></label><a href="#dossier-ia-generative">Ouvrir ↓</a></li>
-              <li class="path-step"><label><input type="checkbox" data-path-step="d3"><span><strong>Utiliser l'IA au quotidien</strong><small>Dossier sur les usages au travail.</small></span></label><a href="#dossier-ia-quotidien">Ouvrir ↓</a></li>
-            </ol></article>
-            <article class="path-level"><span class="path-index">NIVEAU 2</span><h3>Intermédiaire</h3><p>Situer les acteurs, les risques et les usages avancés.</p><ol class="path-steps">
-              <li class="path-step"><label><input type="checkbox" data-path-step="i1"><span><strong>Découvrir les systèmes agents</strong><small>Dossier sur les agents.</small></span></label><a href="#dossier-agents-ia">Ouvrir ↓</a></li>
-              <li class="path-step"><label><input type="checkbox" data-path-step="i2"><span><strong>Comprendre l'écosystème des modèles</strong><small>Dossier sur les modèles ouverts.</small></span></label><a href="#dossier-modeles-ouverts">Ouvrir ↓</a></li>
-              <li class="path-step"><label><input type="checkbox" data-path-step="i3"><span><strong>Comparer des familles de modèles</strong><small>Comparateur du dossier 07.</small></span></label><a href="#comparateur-modeles">Ouvrir ↓</a></li>
-              <li class="path-step"><label><input type="checkbox" data-path-step="i4"><span><strong>Mesurer les risques</strong><small>Dossier sur l'IA responsable.</small></span></label><a href="#dossier-ia-responsable">Ouvrir ↓</a></li>
-            </ol></article>
-            <article class="path-level"><span class="path-index">NIVEAU 3</span><h3>Avancé</h3><p>Relier l'IA à l'infrastructure, à l'économie et aux sources.</p><ol class="path-steps">
-              <li class="path-step"><label><input type="checkbox" data-path-step="a1"><span><strong>Explorer la géographie de l'IA</strong><small>Dossier 07 et carte des territoires.</small></span></label><a href="#dossier-data-centres">Ouvrir ↓</a></li>
-              <li class="path-step"><label><input type="checkbox" data-path-step="a2"><span><strong>Lire les indicateurs avec prudence</strong><small>Tableau de bord sourcé.</small></span></label><a href="#tableau-de-bord">Ouvrir ↓</a></li>
-              <li class="path-step"><label><input type="checkbox" data-path-step="a3"><span><strong>Suivre les signaux et scénarios</strong><small>Dossier prospective.</small></span></label><a href="#dossier-prospective">Ouvrir ↓</a></li>
-              <li class="path-step"><label><input type="checkbox" data-path-step="a4"><span><strong>Croiser les sources</strong><small>Registre de sources.</small></span></label><a href="#sources">Ouvrir ↓</a></li>
-            </ol></article>
-          </div>
-          <button class="path-reset" type="button" data-path-reset>Réinitialiser ma progression</button>
-        </div>
-      </section>
-
       <section class="watch-section" id="veille" aria-labelledby="watch-title">
         <div class="watch-inner">
           <p class="eyebrow">SUIVRE L'ACTUALITÉ <span class="dossier-separator">/</span> VEILLE</p>
@@ -1273,6 +1287,58 @@
         <p class="empty-state glossary-empty" data-glossary-empty hidden>Aucun terme ne correspond à cette recherche.</p>
       </section>
 
+      <section class="toc-section" id="sommaire" aria-labelledby="toc-title">
+        <div class="toc-heading">
+          <p class="eyebrow">SE REPÉRER <span class="dossier-separator">/</span> SOMMAIRE</p>
+          <h2 id="toc-title">Tout le site, d'un seul coup d'œil</h2>
+          <p>Chaque entrée mène directement à sa section. Les dossiers à onglets s'ouvrent sur l'angle choisi.</p>
+        </div>
+        <nav class="toc-grid" aria-label="Sommaire détaillé du site">
+          <section class="toc-group" aria-labelledby="toc-group-visit">
+            <h3 id="toc-group-visit"><span>01</span> Parcours & visites</h3>
+            <ol>
+              <li><a href="#boussole"><strong>Notre boussole</strong><span>Les cinq axes d'entrée pour lire l'IA</span></a></li>
+              <li><a href="#assistant"><strong>Assistant sourcé</strong><span>Poser une question, à l'écrit ou à la voix</span></a></li>
+              <li><a href="#parcours-visuel"><strong>Parcours visuel</strong><span>Visite guidée : du courant au calcul</span></a></li>
+              <li><a href="#parcours-apprentissage"><strong>Parcours d'apprentissage</strong><span>De débutant à expert</span></a></li>
+              <li><a href="reseaux-mondiaux.html"><strong>Réseaux mondiaux</strong><span>Page dédiée : les connexions sous les océans</span></a></li>
+            </ol>
+          </section>
+          <section class="toc-group" aria-labelledby="toc-group-topics">
+            <h3 id="toc-group-topics"><span>02</span> Dossiers thématiques</h3>
+            <ol>
+              <li><a href="#explorer"><strong>Explorer par sujet</strong><span>Recherche et filtres sur les sept dossiers</span></a></li>
+              <li><a href="#dossier-ia-generative"><strong>01 · Modèles génératifs</strong><span>Produire une réponse n'est pas établir un fait</span></a></li>
+              <li><a href="#dossier-agents-ia"><strong>02 · Systèmes agents</strong><span>Un agent relie un modèle à des actions</span></a></li>
+              <li><a href="#dossier-modeles-ouverts"><strong>03 · Écosystème des modèles</strong><span>Les degrés d'ouverture</span></a></li>
+              <li><a href="#dossier-ia-responsable"><strong>04 · Risques & responsabilités</strong><span>La fiabilité sur tout le cycle de vie</span></a></li>
+              <li><a href="#dossier-ia-quotidien"><strong>05 · IA & activités</strong><span>Assister des tâches avec discernement</span></a></li>
+              <li><a href="#dossier-prospective"><strong>06 · Signaux & prospective</strong><span>Tendances observées et scénarios</span></a></li>
+            </ol>
+          </section>
+          <section class="toc-group" aria-labelledby="toc-group-infra">
+            <h3 id="toc-group-infra"><span>03</span> Dossier 07 · Infrastructure</h3>
+            <ol>
+              <li><a href="#dossier-data-centres"><strong>L'IA a une géographie</strong><span>Introduction au dossier sur les centres de données</span></a></li>
+              <li><a href="#tableau-de-bord"><strong>Tableau de bord</strong><span>Indicateurs sourcés : énergie, capitaux, adoption</span></a></li>
+              <li><a href="#comparateur-modeles"><strong>Comparateur de modèles</strong><span>Comparer jusqu'à trois familles de modèles</span></a></li>
+              <li><a href="#dossier-data-centres" data-compass-tab="tab-geographie"><strong>Géographie</strong><span>Où construire, trois territoires</span></a></li>
+              <li><a href="#dossier-data-centres" data-compass-tab="tab-economie"><strong>Économie</strong><span>Mégawatts et investissements</span></a></li>
+              <li><a href="#dossier-data-centres" data-compass-tab="tab-histoire"><strong>Histoire</strong><span>Chronologie interactive des jalons</span></a></li>
+              <li><a href="#dossier-data-centres" data-compass-tab="tab-technique"><strong>Fonctionnement</strong><span>Du courant électrique à une réponse de modèle</span></a></li>
+            </ol>
+          </section>
+          <section class="toc-group" aria-labelledby="toc-group-refs">
+            <h3 id="toc-group-refs"><span>04</span> Repères & outils</h3>
+            <ol>
+              <li><a href="#veille"><strong>Veille</strong><span>Jalons datés et sourcés</span></a></li>
+              <li><a href="#glossaire"><strong>Glossaire</strong><span>Les mots de l'IA expliqués simplement</span></a></li>
+              <li><a href="#sources"><strong>Sources</strong><span>Registre, méthode et recherche de sources</span></a></li>
+            </ol>
+          </section>
+        </nav>
+      </section>
+
       <section class="sources-section" id="sources" aria-labelledby="sources-title">
         <div class="sources-heading">
           <div>
@@ -1311,72 +1377,6 @@
         </div>
         <p class="sources-disclaimer">Les rythmes indiqués sont des propositions de travail, pas les fréquences de publication des organismes. Les dates portent sur la revue éditoriale du contenu, pas uniquement sur l'accessibilité d'un lien. Aucune source n'est surveillée automatiquement.</p>
       </section>
-
-      <section class="assistant-section" id="assistant" aria-labelledby="assistant-title">
-        <div class="assistant-heading">
-          <div>
-            <p class="eyebrow">EXPLORATION SOURCÉE <span class="assistant-index">/ 01</span></p>
-            <h2 id="assistant-title">Une question. Une IA. Des sources</h2>
-            <p>Posez vos questions sur l'intelligence artificielle par écrit ou à la voix. Un modèle d'IA rédige la réponse, appuyée sur les repères éditoriaux et leurs sources, et vous indique le modèle utilisé, son coût et le temps de lecture.</p>
-          </div>
-          <div class="local-badge"><span></span> ASSISTANT IA SOURCÉ</div>
-        </div>
-        <div class="assistant-workspace">
-          <form class="assistant-form" id="assistant-form">
-            <label for="assistant-query">Votre question</label>
-            <div class="assistant-input-row">
-              <input id="assistant-query" name="question" type="search" maxlength="240" placeholder="Ex. Combien d'électricité consomment les centres de données ?" autocomplete="off" required>
-              <button class="assistant-submit" type="submit">Chercher <span aria-hidden="true">↗</span></button>
-            </div>
-            <div class="assistant-settings">
-              <label>Niveau
-                <select id="assistant-level" name="level">
-                  <option value="accessible">Accessible</option>
-                  <option value="expert">Pointu (expert)</option>
-                </select>
-              </label>
-              <label>Longueur
-                <select id="assistant-length" name="length">
-                  <option value="concise">Concise</option>
-                  <option value="detailed">Détaillée</option>
-                </select>
-              </label>
-              <label>Modèle
-                <select id="assistant-model" name="model">
-                  <option value="auto">Automatique (recommandé)</option>
-                  <option value="openai/gpt-4o-mini">OpenAI · GPT-4o mini</option>
-                  <option value="google/gemini-2.0-flash-001">Google · Gemini 2.0 Flash</option>
-                  <option value="anthropic/claude-3.5-haiku">Anthropic · Claude 3.5 Haiku</option>
-                </select>
-              </label>
-            </div>
-            <label class="assistant-autoread"><input type="checkbox" id="assistant-autoread" checked> Lire les réponses à voix haute</label>
-          </form>
-          <div class="assistant-voice-controls" role="group" aria-label="Commandes vocales">
-            <button class="assistant-voice-button" id="assistant-voice-start" type="button">Poser ma question à voix haute</button>
-            <button class="assistant-voice-button" id="assistant-voice-stop" type="button" hidden>Arrêter le micro</button>
-            <button class="assistant-voice-button" id="assistant-voice-stop-speaking" type="button" hidden>Arrêter la lecture</button>
-            <button class="assistant-voice-button" id="assistant-voice-install-local" type="button" hidden>Installer la reconnaissance locale</button>
-          </div>
-          <div class="speech-voice-picker">
-            <label for="assistant-speech-voice">Voix de lecture</label>
-            <select id="assistant-speech-voice" data-speech-voice></select>
-          </div>
-          <p class="assistant-voice-disclosure">Le micro ne s'active qu'à votre demande. Si votre navigateur propose un modèle local installé, la reconnaissance reste sur l'appareil ; sinon, le navigateur peut envoyer l'audio à son fournisseur. IAeVolution ne conserve aucun audio ni transcription ; la recherche reste limitée aux sources du site.</p>
-          <p class="assistant-voice-disclosure">Les voix proposées dépendent de votre appareil et de votre navigateur. Une voix personnelle macOS peut nécessiter l'autorisation des apps et ne pas être accessible aux sites web.</p>
-          <p class="assistant-voice-status" id="assistant-voice-status" role="status" aria-live="polite" aria-atomic="true"></p>
-          <div class="suggested-questions" role="group" aria-label="Exemples de questions">
-            <span>ESSAYEZ PAR EXEMPLE</span>
-            <button type="button" data-assistant-prompt="Combien d'électricité les centres de données consomment-ils ?">Consommation électrique</button>
-            <button type="button" data-assistant-prompt="Pourquoi les centres de données s'installent-ils en Virginie du Nord ?">Pourquoi la Virginie du Nord ?</button>
-            <button type="button" data-assistant-prompt="Quelle différence entre entraîner un modèle et l'inférence ?">Entraînement ou inférence ?</button>
-            <button type="button" data-assistant-prompt="Qu'est-ce que l'IA générative ?">IA générative</button>
-            <button type="button" data-assistant-prompt="Pourquoi un modèle peut-il inventer une réponse ?">Fiabilité des réponses</button>
-          </div>
-          <div class="assistant-results" id="assistant-results" aria-live="polite" aria-atomic="false"></div>
-        </div>
-      </section>
-
     </main>
 
     <footer class="site-footer">
