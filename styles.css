@@ -1381,9 +1381,9 @@ html { scroll-behavior: smooth; }
   .topic-card[data-topic-id="data-centres"] { grid-column: auto; width: auto; }
 }
 
-.compass-section-body { max-width: none; background: #eaf2f8; color: #152d42; }
-.compass-body-heading .eyebrow { color: #477b9c; }
-.compass-body-heading h3 { color: #16364f; }
+.compass-section-body { max-width: none; background: #ece8f7; color: #2a2140; }
+.compass-body-heading .eyebrow { color: #6a56a8; }
+.compass-body-heading h3 { color: #2f2552; }
 .compass-route { border-color: #d0dee8; background: #f7fafc; }
 .compass-route:hover { border-color: #78a5b6; background: #fff; }
 .compass-route-index { color: #2e7590; }
