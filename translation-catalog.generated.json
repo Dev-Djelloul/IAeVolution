@@ -1035,7 +1035,10 @@
     "Test standardisé pour comparer des modèles. Il ne résume ni l'utilité ni la fiabilité dans tous les usages.": "Standardized test for comparing models. It does not summarize usefulness or reliability in all uses.",
     "Token": "Token",
     "Unité de puissance électrique. Elle mesure la capacité d'un centre de données, pas son énergie consommée sur la durée.": "Unit of electrical power. It measures the capacity of a data center, not its energy consumption over time.",
-    "Utilisation d'un modèle déjà entraîné pour produire une réponse. C'est ce qui se passe à chaque question posée.": "Using a pre-trained model to produce an answer. This is what happens with every question asked."
+    "Utilisation d'un modèle déjà entraîné pour produire une réponse. C'est ce qui se passe à chaque question posée.": "Using a pre-trained model to produce an answer. This is what happens with every question asked.",
+    "Carte schématique : les contours sont simplifiés et les points indicatifs. Sélectionnez un territoire pour mettre en évidence sa fiche.": "Schematic map: outlines are simplified and points are indicative. Select a territory to highlight its information sheet.",
+    "Carte schématique du monde avec trois territoires documentés": "Schematic map of the world with three documented territories",
+    "Hubs européens": "European Hubs"
   },
   "es": {
     "__IAEVAR0__ fiches sans revue datée": "Fichas de índice __IAEVAR0__ sin revisión fechada",
@@ -2073,7 +2076,10 @@
     "Test standardisé pour comparer des modèles. Il ne résume ni l'utilité ni la fiabilité dans tous les usages.": "Prueba estandarizada para comparar modelos. No resume la utilidad ni la fiabilidad en todos los usos.",
     "Token": "Simbólico",
     "Unité de puissance électrique. Elle mesure la capacité d'un centre de données, pas son énergie consommée sur la durée.": "Unidad de potencia eléctrica. Mide la capacidad de un centro de datos, no su consumo energético a lo largo del tiempo.",
-    "Utilisation d'un modèle déjà entraîné pour produire une réponse. C'est ce qui se passe à chaque question posée.": "Utilizar un modelo preentrenado para generar una respuesta. Esto es lo que sucede con cada pregunta formulada."
+    "Utilisation d'un modèle déjà entraîné pour produire une réponse. C'est ce qui se passe à chaque question posée.": "Utilizar un modelo preentrenado para generar una respuesta. Esto es lo que sucede con cada pregunta formulada.",
+    "Carte schématique : les contours sont simplifiés et les points indicatifs. Sélectionnez un territoire pour mettre en évidence sa fiche.": "Mapa esquemático: los contornos están simplificados y los puntos son indicativos. Seleccione un territorio para resaltar su ficha informativa.",
+    "Carte schématique du monde avec trois territoires documentés": "Mapa esquemático del mundo con tres territorios documentados.",
+    "Hubs européens": "Centros europeos"
   },
   "nl": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ indexkaarten zonder gedateerde beoordeling",
@@ -3111,7 +3117,10 @@
     "Test standardisé pour comparer des modèles. Il ne résume ni l'utilité ni la fiabilité dans tous les usages.": "Gestandaardiseerde test voor het vergelijken van modellen. Deze test geeft geen volledig beeld van de bruikbaarheid of betrouwbaarheid bij alle toepassingen.",
     "Token": "Token",
     "Unité de puissance électrique. Elle mesure la capacité d'un centre de données, pas son énergie consommée sur la durée.": "Eenheid voor elektrisch vermogen. Het meet de capaciteit van een datacenter, niet het energieverbruik over een bepaalde tijd.",
-    "Utilisation d'un modèle déjà entraîné pour produire une réponse. C'est ce qui se passe à chaque question posée.": "Een vooraf getraind model gebruiken om een antwoord te genereren. Dit gebeurt bij elke gestelde vraag."
+    "Utilisation d'un modèle déjà entraîné pour produire une réponse. C'est ce qui se passe à chaque question posée.": "Een vooraf getraind model gebruiken om een antwoord te genereren. Dit gebeurt bij elke gestelde vraag.",
+    "Carte schématique : les contours sont simplifiés et les points indicatifs. Sélectionnez un territoire pour mettre en évidence sa fiche.": "Schematische kaart: de contouren zijn vereenvoudigd en de punten geven slechts een indicatie. Selecteer een gebied om het bijbehorende informatieblad te markeren.",
+    "Carte schématique du monde avec trois territoires documentés": "Schematische wereldkaart met drie gedocumenteerde gebieden",
+    "Hubs européens": "Europese hubs"
   },
   "de": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ Karteikarten ohne datierte Überprüfung",
@@ -4149,7 +4158,10 @@
     "Test standardisé pour comparer des modèles. Il ne résume ni l'utilité ni la fiabilité dans tous les usages.": "Standardisierter Test zum Vergleich von Modellen. Er gibt keine Auskunft über Nützlichkeit oder Zuverlässigkeit in allen Anwendungsfällen.",
     "Token": "Token",
     "Unité de puissance électrique. Elle mesure la capacité d'un centre de données, pas son énergie consommée sur la durée.": "Einheit der elektrischen Leistung. Sie misst die Kapazität eines Rechenzentrums, nicht dessen Energieverbrauch über die Zeit.",
-    "Utilisation d'un modèle déjà entraîné pour produire une réponse. C'est ce qui se passe à chaque question posée.": "Ein vortrainiertes Modell wird verwendet, um eine Antwort zu generieren. So läuft es bei jeder gestellten Frage ab."
+    "Utilisation d'un modèle déjà entraîné pour produire une réponse. C'est ce qui se passe à chaque question posée.": "Ein vortrainiertes Modell wird verwendet, um eine Antwort zu generieren. So läuft es bei jeder gestellten Frage ab.",
+    "Carte schématique : les contours sont simplifiés et les points indicatifs. Sélectionnez un territoire pour mettre en évidence sa fiche.": "Schematische Karte: Umrisse sind vereinfacht und Punkte dienen nur zur Orientierung. Wählen Sie ein Gebiet aus, um das zugehörige Informationsblatt hervorzuheben.",
+    "Carte schématique du monde avec trois territoires documentés": "Schematische Weltkarte mit drei dokumentierten Gebieten",
+    "Hubs européens": "Europäische Hubs"
   },
   "zh-CN": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ 索引卡，无日期审核",
@@ -5187,7 +5199,10 @@
     "Test standardisé pour comparer des modèles. Il ne résume ni l'utilité ni la fiabilité dans tous les usages.": "用于比较不同模型的标准化测试。它并不能概括模型在所有用途中的实用性或可靠性。",
     "Token": "令牌",
     "Unité de puissance électrique. Elle mesure la capacité d'un centre de données, pas son énergie consommée sur la durée.": "电功率单位。它衡量的是数据中心的容量，而不是其一段时间内的能耗。",
-    "Utilisation d'un modèle déjà entraîné pour produire une réponse. C'est ce qui se passe à chaque question posée.": "使用预训练模型生成答案。每个问题都是如此处理的。"
+    "Utilisation d'un modèle déjà entraîné pour produire une réponse. C'est ce qui se passe à chaque question posée.": "使用预训练模型生成答案。每个问题都是如此处理的。",
+    "Carte schématique : les contours sont simplifiés et les points indicatifs. Sélectionnez un territoire pour mettre en évidence sa fiche.": "示意图：轮廓已简化，点仅供参考。选择一个区域以突出显示其信息表。",
+    "Carte schématique du monde avec trois territoires documentés": "世界示意图，标示了三个已记录的领土",
+    "Hubs européens": "欧洲枢纽"
   },
   "pt": {
     "__IAEVAR0__ fiches sans revue datée": "Fichas de índice __IAEVAR0__ sem revisão datada",
@@ -6225,7 +6240,10 @@
     "Test standardisé pour comparer des modèles. Il ne résume ni l'utilité ni la fiabilité dans tous les usages.": "Teste padronizado para comparação de modelos. Não resume a utilidade ou a confiabilidade em todos os usos.",
     "Token": "Token",
     "Unité de puissance électrique. Elle mesure la capacité d'un centre de données, pas son énergie consommée sur la durée.": "Unidade de potência elétrica. Ela mede a capacidade de um centro de dados, não seu consumo de energia ao longo do tempo.",
-    "Utilisation d'un modèle déjà entraîné pour produire une réponse. C'est ce qui se passe à chaque question posée.": "Utilizando um modelo pré-treinado para gerar uma resposta. É isso que acontece com todas as perguntas feitas."
+    "Utilisation d'un modèle déjà entraîné pour produire une réponse. C'est ce qui se passe à chaque question posée.": "Utilizando um modelo pré-treinado para gerar uma resposta. É isso que acontece com todas as perguntas feitas.",
+    "Carte schématique : les contours sont simplifiés et les points indicatifs. Sélectionnez un territoire pour mettre en évidence sa fiche.": "Mapa esquemático: os contornos são simplificados e os pontos são indicativos. Selecione um território para destacar sua ficha informativa.",
+    "Carte schématique du monde avec trois territoires documentés": "Mapa esquemático do mundo com três territórios documentados.",
+    "Hubs européens": "Centros europeus"
   },
   "ar": {
     "__IAEVAR0__ fiches sans revue datée": "بطاقات فهرسة __IAEVAR0__ بدون مراجعة مؤرخة",
@@ -7263,7 +7281,10 @@
     "Test standardisé pour comparer des modèles. Il ne résume ni l'utilité ni la fiabilité dans tous les usages.": "اختبار معياري لمقارنة النماذج. لا يلخص هذا الاختبار مدى فائدته أو موثوقيته في جميع الاستخدامات.",
     "Token": "رمز مميز",
     "Unité de puissance électrique. Elle mesure la capacité d'un centre de données, pas son énergie consommée sur la durée.": "وحدة قياس الطاقة الكهربائية. وهي تقيس سعة مركز البيانات، وليس استهلاكه للطاقة بمرور الوقت.",
-    "Utilisation d'un modèle déjà entraîné pour produire une réponse. C'est ce qui se passe à chaque question posée.": "يتم استخدام نموذج مُدرَّب مسبقاً لإنتاج إجابة. هذا ما يحدث مع كل سؤال يُطرح."
+    "Utilisation d'un modèle déjà entraîné pour produire une réponse. C'est ce qui se passe à chaque question posée.": "يتم استخدام نموذج مُدرَّب مسبقاً لإنتاج إجابة. هذا ما يحدث مع كل سؤال يُطرح.",
+    "Carte schématique : les contours sont simplifiés et les points indicatifs. Sélectionnez un territoire pour mettre en évidence sa fiche.": "خريطة تخطيطية: الخطوط العريضة مبسطة والنقاط إرشادية. حدد منطقة لتسليط الضوء على ورقة معلوماتها.",
+    "Carte schématique du monde avec trois territoires documentés": "خريطة تخطيطية للعالم مع ثلاثة أقاليم موثقة",
+    "Hubs européens": "المراكز الأوروبية"
   },
   "hi": {
     "__IAEVAR0__ fiches sans revue datée": "दिनांकित समीक्षा के बिना __IAEVAR0__ अनुक्रमणिका कार्ड",
@@ -8301,7 +8322,10 @@
     "Test standardisé pour comparer des modèles. Il ne résume ni l'utilité ni la fiabilité dans tous les usages.": "मॉडलों की तुलना करने के लिए मानकीकृत परीक्षण। यह सभी उपयोगों में उपयोगिता या विश्वसनीयता का सारांश नहीं देता है।",
     "Token": "टोकन",
     "Unité de puissance électrique. Elle mesure la capacité d'un centre de données, pas son énergie consommée sur la durée.": "विद्युत शक्ति की इकाई। यह डेटा सेंटर की क्षमता को मापती है, न कि समय के साथ उसकी ऊर्जा खपत को।",
-    "Utilisation d'un modèle déjà entraîné pour produire une réponse. C'est ce qui se passe à chaque question posée.": "पूर्व-प्रशिक्षित मॉडल का उपयोग करके उत्तर उत्पन्न करना। पूछे गए प्रत्येक प्रश्न के साथ यही होता है।"
+    "Utilisation d'un modèle déjà entraîné pour produire une réponse. C'est ce qui se passe à chaque question posée.": "पूर्व-प्रशिक्षित मॉडल का उपयोग करके उत्तर उत्पन्न करना। पूछे गए प्रत्येक प्रश्न के साथ यही होता है।",
+    "Carte schématique : les contours sont simplifiés et les points indicatifs. Sélectionnez un territoire pour mettre en évidence sa fiche.": "आरेखीय मानचित्र: रूपरेखाएँ सरलीकृत हैं और बिंदु केवल सांकेतिक हैं। किसी क्षेत्र का चयन करके उसकी सूचना पत्रक को हाइलाइट करें।",
+    "Carte schématique du monde avec trois territoires documentés": "विश्व का योजनाबद्ध मानचित्र जिसमें तीन प्रलेखित क्षेत्र दर्शाए गए हैं",
+    "Hubs européens": "यूरोपीय केंद्र"
   },
   "ja": {
     "__IAEVAR0__ fiches sans revue datée": "日付レビューのないインデックスカード __IAEVAR0__",
@@ -9339,7 +9363,10 @@
     "Test standardisé pour comparer des modèles. Il ne résume ni l'utilité ni la fiabilité dans tous les usages.": "モデルを比較するための標準化されたテスト。あらゆる用途における有用性や信頼性を要約するものではありません。",
     "Token": "トークン",
     "Unité de puissance électrique. Elle mesure la capacité d'un centre de données, pas son énergie consommée sur la durée.": "電力の単位。データセンターの容量を測定するものであり、時間経過に伴うエネルギー消費量を測定するものではない。",
-    "Utilisation d'un modèle déjà entraîné pour produire une réponse. C'est ce qui se passe à chaque question posée.": "事前学習済みのモデルを使用して回答を生成します。これは、質問されたすべての場合に行われます。"
+    "Utilisation d'un modèle déjà entraîné pour produire une réponse. C'est ce qui se passe à chaque question posée.": "事前学習済みのモデルを使用して回答を生成します。これは、質問されたすべての場合に行われます。",
+    "Carte schématique : les contours sont simplifiés et les points indicatifs. Sélectionnez un territoire pour mettre en évidence sa fiche.": "概略図：輪郭線は簡略化されており、点は目安です。地域を選択すると、その地域の情報シートが強調表示されます。",
+    "Carte schématique du monde avec trois territoires documentés": "3つの記録された地域を示す世界地図の概略図",
+    "Hubs européens": "ヨーロッパのハブ"
   },
   "ru": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ индексные карточки без датированного обзора",
@@ -10377,7 +10404,10 @@
     "Test standardisé pour comparer des modèles. Il ne résume ni l'utilité ni la fiabilité dans tous les usages.": "Стандартизированный тест для сравнения моделей. Он не позволяет оценить полезность или надежность во всех случаях использования.",
     "Token": "Токен",
     "Unité de puissance électrique. Elle mesure la capacité d'un centre de données, pas son énergie consommée sur la durée.": "Единица измерения электрической мощности. Она измеряет мощность центра обработки данных, а не его энергопотребление за определенный период времени.",
-    "Utilisation d'un modèle déjà entraîné pour produire une réponse. C'est ce qui se passe à chaque question posée.": "Использование предварительно обученной модели для получения ответа. Так происходит с каждым заданным вопросом."
+    "Utilisation d'un modèle déjà entraîné pour produire une réponse. C'est ce qui se passe à chaque question posée.": "Использование предварительно обученной модели для получения ответа. Так происходит с каждым заданным вопросом.",
+    "Carte schématique : les contours sont simplifiés et les points indicatifs. Sélectionnez un territoire pour mettre en évidence sa fiche.": "Схематическая карта: контуры упрощены, точки являются ориентировочными. Выберите территорию, чтобы выделить ее информационный лист.",
+    "Carte schématique du monde avec trois territoires documentés": "Схематическая карта мира с тремя документально подтвержденными территориями.",
+    "Hubs européens": "Европейские хабы"
   },
   "it": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ schede indice senza revisione datata",
@@ -11415,6 +11445,9 @@
     "Test standardisé pour comparer des modèles. Il ne résume ni l'utilité ni la fiabilité dans tous les usages.": "Test standardizzato per il confronto tra modelli. Non riassume l'utilità o l'affidabilità in tutti gli ambiti di applicazione.",
     "Token": "Token",
     "Unité de puissance électrique. Elle mesure la capacité d'un centre de données, pas son énergie consommée sur la durée.": "Unità di misura della potenza elettrica. Misura la capacità di un data center, non il suo consumo energetico nel tempo.",
-    "Utilisation d'un modèle déjà entraîné pour produire une réponse. C'est ce qui se passe à chaque question posée.": "Utilizzo di un modello pre-addestrato per produrre una risposta. Questo è ciò che accade per ogni domanda posta."
+    "Utilisation d'un modèle déjà entraîné pour produire une réponse. C'est ce qui se passe à chaque question posée.": "Utilizzo di un modello pre-addestrato per produrre una risposta. Questo è ciò che accade per ogni domanda posta.",
+    "Carte schématique : les contours sont simplifiés et les points indicatifs. Sélectionnez un territoire pour mettre en évidence sa fiche.": "Mappa schematica: i contorni sono semplificati e i punti sono indicativi. Seleziona un territorio per evidenziare la relativa scheda informativa.",
+    "Carte schématique du monde avec trois territoires documentés": "Mappa schematica del mondo con tre territori documentati",
+    "Hubs européens": "Hub europei"
   }
 }
