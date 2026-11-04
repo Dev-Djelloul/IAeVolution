@@ -110,6 +110,7 @@ async function handleAssistant(request, env) {
         messages: buildMessages(question, language, context, level, length),
         max_tokens: length === "detailed" ? 1100 : 600,
         temperature: 0.3,
+        usage: { include: true },
       }),
     });
   } catch {
@@ -126,7 +127,7 @@ async function handleAssistant(request, env) {
     answer,
     model: data.model ?? modelList[0],
     requestedModels: modelList,
-    usage: data.usage ? { promptTokens: data.usage.prompt_tokens, completionTokens: data.usage.completion_tokens } : null,
+    usage: data.usage ? { promptTokens: data.usage.prompt_tokens, completionTokens: data.usage.completion_tokens, cost: typeof data.usage.cost === "number" ? data.usage.cost : null } : null,
   });
 }
 

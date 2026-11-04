@@ -1191,7 +1191,22 @@ function setAssistantVoiceStatus(message) {
 
 let assistantSpeechRequest = 0;
 
-async function speakAssistantResults(matches, overrideText = "") {
+function cleanSpokenText(text) {
+  return text.replace(/\[\d+\]/g, "").replace(/[*#_`]/g, "").slice(0, 3000);
+}
+
+function estimateReadingSeconds(text) {
+  const words = cleanSpokenText(text).split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round((words / 165) * 60));
+}
+
+function formatDuration(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const rest = seconds % 60;
+  return minutes ? `${minutes} min ${String(rest).padStart(2, "0")} s` : `${rest} s`;
+}
+
+async function speakAssistantResults(matches, overrideText = "", progress = null) {
   if (!window.speechSynthesis || !("SpeechSynthesisUtterance" in window)) {
     setAssistantVoiceStatus(getLocalizedText("La lecture vocale n'est pas disponible sur ce navigateur."));
     return;
@@ -1202,7 +1217,7 @@ async function speakAssistantResults(matches, overrideText = "") {
   assistantVoiceStopSpeaking.hidden = true;
   window.speechSynthesis.cancel();
   const spokenText = overrideText
-    ? overrideText.replace(/\[\d+\]/g, "").replace(/[*#_`]/g, "").slice(0, 3000)
+    ? cleanSpokenText(overrideText)
     : matches.length === 0
     ? assistantResults.querySelector(".assistant-empty")?.textContent ?? ""
     : matches
@@ -1226,13 +1241,33 @@ async function speakAssistantResults(matches, overrideText = "") {
   }
   utterance.voice = voice;
   activeAssistantUtterance = utterance;
+  let fallbackTimer = null;
+  let boundarySeen = false;
+  const stopProgress = (finished) => {
+    clearInterval(fallbackTimer);
+    if (finished) progress?.update(1);
+  };
+  if (progress) {
+    progress.update(0);
+    utterance.onboundary = (event) => {
+      boundarySeen = true;
+      progress.update(Math.min(1, event.charIndex / spokenText.length));
+    };
+    const startedAt = Date.now();
+    const total = estimateReadingSeconds(spokenText) * 1000;
+    fallbackTimer = setInterval(() => {
+      if (!boundarySeen) progress.update(Math.min(0.97, (Date.now() - startedAt) / total));
+    }, 300);
+  }
   utterance.onend = () => {
+    stopProgress(true);
     if (activeAssistantUtterance !== utterance) return;
     activeAssistantUtterance = null;
     assistantVoiceStopSpeaking.hidden = true;
     setAssistantVoiceStatus(getLocalizedText("Lecture vocale terminée."));
   };
   utterance.onerror = () => {
+    stopProgress(false);
     if (activeAssistantUtterance !== utterance) return;
     activeAssistantUtterance = null;
     assistantVoiceStopSpeaking.hidden = true;
@@ -1325,6 +1360,7 @@ function renderMarkdownInto(container, markdown) {
       if (!list || listType !== type) {
         list = document.createElement(type);
         list.className = "assistant-ai-list";
+        if (type === "ol") list.start = Number(item[2]);
         listType = type;
         paragraph = null;
         container.append(list);
@@ -1365,6 +1401,11 @@ function renderAiAnswer(result) {
     [getLocalizedText("Modèle utilisé"), result.model],
     [getLocalizedText("Éditeur"), provider],
     [getLocalizedText("Profil"), getLocalizedText(profile)],
+    ...(result.usage?.cost != null
+      ? [[getLocalizedText("Coût estimé"), `${result.usage.cost < 0.0001 ? "< 0,0001" : result.usage.cost.toFixed(4).replace(".", ",")} $ · ${(result.usage.promptTokens ?? 0) + (result.usage.completionTokens ?? 0)} tokens`]]
+      : result.usage
+        ? [[getLocalizedText("Consommation"), `${(result.usage.promptTokens ?? 0) + (result.usage.completionTokens ?? 0)} tokens`]]
+        : []),
   ].forEach(([term, value]) => {
     const wrapper = document.createElement("div");
     const dt = document.createElement("dt");
@@ -1385,8 +1426,33 @@ function renderAiAnswer(result) {
     listen.type = "button";
     listen.className = "assistant-voice-button assistant-listen";
     listen.textContent = getLocalizedText("Écouter la réponse");
-    listen.addEventListener("click", () => speakAssistantResults([], result.answer));
-    card.append(listen);
+    const bar = document.createElement("div");
+    bar.className = "assistant-progress";
+    bar.setAttribute("role", "progressbar");
+    bar.setAttribute("aria-label", getLocalizedText("Progression de la lecture"));
+    bar.setAttribute("aria-valuemin", "0");
+    bar.setAttribute("aria-valuemax", "100");
+    bar.setAttribute("aria-valuenow", "0");
+    const fill = document.createElement("span");
+    bar.append(fill);
+    const duration = document.createElement("span");
+    duration.className = "assistant-duration";
+    const total = estimateReadingSeconds(result.answer);
+    duration.textContent = `${getLocalizedText("Temps de lecture estimé")} : ${formatDuration(total)}`;
+    const progress = {
+      update(ratio) {
+        fill.style.width = `${Math.round(ratio * 100)}%`;
+        bar.setAttribute("aria-valuenow", String(Math.round(ratio * 100)));
+        duration.textContent = ratio >= 1
+          ? getLocalizedText("Lecture terminée")
+          : ratio > 0
+            ? `${getLocalizedText("Temps restant")} : ${formatDuration(Math.max(1, Math.round(total * (1 - ratio))))}`
+            : `${getLocalizedText("Temps de lecture estimé")} : ${formatDuration(total)}`;
+      },
+    };
+    card.readProgress = progress;
+    listen.addEventListener("click", () => speakAssistantResults([], result.answer, progress));
+    card.append(listen, bar, duration);
   }
   return card;
 }
@@ -1415,7 +1481,7 @@ async function processAssistantQuestion(question, speakAnswer = false) {
     status.textContent = getLocalizedText("L'assistant IA est momentanément indisponible. Les repères du corpus restent affichés.");
   }
   const autoRead = document.querySelector("#assistant-autoread")?.checked;
-  if (speakAnswer || autoRead) await speakAssistantResults(matches, aiAnswer);
+  if (speakAnswer || autoRead) await speakAssistantResults(matches, aiAnswer, assistantResults.querySelector(".assistant-ai-answer")?.readProgress ?? null);
 }
 
 assistantForm.addEventListener("submit", async (event) => {
