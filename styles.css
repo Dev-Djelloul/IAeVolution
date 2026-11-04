@@ -1603,6 +1603,28 @@ html { scroll-behavior: smooth; }
   .network-feature-action { justify-content: space-between; }
 }
 
+.path-section { padding: 64px max(7vw, 38px); border-bottom: 1px solid #e3c9c9; background: #f4e3e3; color: #3a2020; }
+.path-inner { max-width: 1440px; margin: 0 auto; }
+.path-inner .eyebrow { margin-bottom: 8px; color: #9a4a4a; }
+.path-inner h2 { margin: 0 0 10px; font-family: var(--display); font-size: clamp(1.7rem, 3vw, 2.3rem); font-weight: 500; }
+.path-intro { max-width: 680px; margin: 0 0 12px; color: #5a3a3a; font-size: 0.9rem; line-height: 1.65; }
+.path-progress { margin: 0 0 18px; color: #7a3a3a; font-family: var(--mono); font-size: 0.75rem; }
+.path-levels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.path-level { padding: 18px; border: 1px solid #deb9b9; border-radius: 4px; background: #fbf1f1; }
+.path-index { color: #9a4a4a; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em; }
+.path-level h3 { margin: 6px 0; font-family: var(--display); font-size: 1.3rem; font-weight: 500; }
+.path-level > p { margin: 0 0 12px; color: #5a3a3a; font-size: 0.83rem; }
+.path-steps { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.path-step { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; padding: 10px; border: 1px solid #ebcfcf; border-radius: 4px; background: #fff8f8; }
+.path-step label { display: flex; gap: 10px; cursor: pointer; }
+.path-step input { flex: none; width: 18px; height: 18px; margin-top: 2px; accent-color: #9a4a4a; }
+.path-step strong { display: block; font-size: 0.85rem; font-weight: 600; }
+.path-step small { display: block; margin-top: 2px; color: #6a4a4a; font-size: 0.76rem; }
+.path-step a { flex: none; color: #8a3a3a; font-size: 0.76rem; text-decoration: none; }
+.path-step a:hover, .path-step a:focus-visible { text-decoration: underline; }
+.path-reset { margin-top: 16px; padding: 8px 14px; border: 1px solid #c99a9a; border-radius: 4px; background: transparent; color: #5a2a2a; font: inherit; font-size: 0.8rem; cursor: pointer; }
+@media (max-width: 1100px) { .path-levels { grid-template-columns: 1fr; } }
+
 .watch-section { padding: 64px max(7vw, 38px); border-bottom: 1px solid #e0d3b4; background: #f5ecd6; color: #3a2f14; }
 .watch-inner { max-width: 1100px; margin: 0 auto; }
 .watch-inner .eyebrow { margin-bottom: 8px; color: #8a6a1c; }

@@ -1584,6 +1584,41 @@ glossaryInput.closest("form").addEventListener("submit", (event) => event.preven
 filterGlossary();
 document.addEventListener("iaevolution:languagechange", filterGlossary);
 
+const pathBoxes = [...document.querySelectorAll("[data-path-step]")];
+const pathProgress = document.querySelector("[data-path-progress]");
+const pathStorageKey = "iaevolution-path-v1";
+
+function readPathState() {
+  try {
+    return JSON.parse(localStorage.getItem(pathStorageKey)) || [];
+  } catch {
+    return [];
+  }
+}
+
+function renderPathProgress() {
+  const done = pathBoxes.filter((box) => box.checked).length;
+  pathProgress.textContent = `${getLocalizedText("Étapes terminées :")} ${done} / ${pathBoxes.length}`;
+}
+
+const savedPath = readPathState();
+pathBoxes.forEach((box) => {
+  box.checked = savedPath.includes(box.dataset.pathStep);
+  box.addEventListener("change", () => {
+    try {
+      localStorage.setItem(pathStorageKey, JSON.stringify(pathBoxes.filter((item) => item.checked).map((item) => item.dataset.pathStep)));
+    } catch {}
+    renderPathProgress();
+  });
+});
+document.querySelector("[data-path-reset]").addEventListener("click", () => {
+  pathBoxes.forEach((box) => { box.checked = false; });
+  try { localStorage.removeItem(pathStorageKey); } catch {}
+  renderPathProgress();
+});
+renderPathProgress();
+document.addEventListener("iaevolution:languagechange", renderPathProgress);
+
 const watchFilters = [...document.querySelectorAll("[data-watch-filter]")];
 const watchItems = [...document.querySelectorAll(".watch-item")];
 watchFilters.forEach((button) => {
