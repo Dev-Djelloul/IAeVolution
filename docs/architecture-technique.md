@@ -292,3 +292,7 @@ quatre zones, puis décider si un rendu WebGL apporterait une amélioration util
 parallèle, conserver le contrat de données et le workflow manuel comme fondation. Ne pas
 brancher voix, recherche Web ni modèle avant d'avoir validé les parcours, les exigences de
 confidentialité et les budgets avec l'utilisateur.
+
+## Streaming et mémoire de conversation
+
+`POST /api/assistant` accepte `stream: true` (le Worker relaie le flux SSE d'OpenRouter) et `history` (6 messages max, 700 caractères chacun, rôles `user`/`assistant`, nettoyés par `cleanHistory`). Le client tamponne les lignes `data:`, ignore les commentaires, rend le Markdown de façon progressive et garde l'historique en mémoire de page uniquement.

@@ -1293,21 +1293,93 @@ function describeModel(modelId) {
   };
 }
 
-async function fetchAiAnswer(question, matches) {
+const MAX_HISTORY_MESSAGES = 6;
+let conversationHistory = [];
+
+function updateConversationIndicator() {
+  const button = document.querySelector("#assistant-new-chat");
+  if (!button) return;
+  button.hidden = conversationHistory.length === 0;
+  const count = document.querySelector("#assistant-chat-count");
+  if (count) count.textContent = `${getLocalizedText("Mémoire")} ${Math.ceil(conversationHistory.length / 2)}/${MAX_HISTORY_MESSAGES / 2}`;
+}
+
+function rememberExchange(question, answer) {
+  conversationHistory.push({ role: "user", content: question }, { role: "assistant", content: answer });
+  conversationHistory = conversationHistory.slice(-MAX_HISTORY_MESSAGES);
+  updateConversationIndicator();
+}
+
+function readAssistantChoice(name, fallback) {
+  return document.querySelector(`input[name="${name}"]:checked`)?.value ?? fallback;
+}
+
+function parseUsage(raw) {
+  if (!raw) return null;
+  return {
+    promptTokens: raw.prompt_tokens ?? raw.promptTokens,
+    completionTokens: raw.completion_tokens ?? raw.completionTokens,
+    cost: typeof raw.cost === "number" ? raw.cost : null,
+  };
+}
+
+async function fetchAiAnswer(question, matches, onDelta = () => {}) {
   const response = await fetch("/api/assistant", {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({
       question,
       language: document.documentElement.lang || "fr",
-      level: document.querySelector("#assistant-level").value,
-      length: document.querySelector("#assistant-length").value,
+      level: readAssistantChoice("level", "accessible"),
+      length: readAssistantChoice("length", "concise"),
       model: document.querySelector("#assistant-model").value,
+      stream: true,
+      history: conversationHistory,
       context: matches.map(({ item }) => ({ title: item.title, answer: item.answer, source: item.source.name })),
     }),
   });
   if (!response.ok) throw new Error(`assistant-${response.status}`);
-  return response.json();
+  if (!response.body || !(response.headers.get("content-type") ?? "").includes("text/event-stream")) return response.json();
+
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "";
+  let answer = "";
+  let model = "";
+  let usage = null;
+
+  const handleLine = (line) => {
+    if (!line.startsWith("data:")) return;
+    const data = line.slice(5).trim();
+    if (!data || data === "[DONE]") return;
+    let chunk;
+    try {
+      chunk = JSON.parse(data);
+    } catch {
+      return;
+    }
+    if (chunk.error) throw new Error("assistant-stream");
+    model = chunk.model ?? model;
+    const delta = chunk.choices?.[0]?.delta?.content;
+    if (delta) {
+      answer += delta;
+      onDelta(answer);
+    }
+    if (chunk.usage) usage = parseUsage(chunk.usage);
+  };
+
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true });
+    const lines = buffer.split("\n");
+    buffer = lines.pop() ?? "";
+    lines.forEach(handleLine);
+  }
+  buffer.split("\n").forEach(handleLine);
+
+  if (!answer.trim()) throw new Error("assistant-empty");
+  return { answer: answer.trim(), model: model || "openrouter/auto", usage };
 }
 
 function appendInlineMarkdown(parent, text) {
@@ -1470,15 +1542,36 @@ async function processAssistantQuestion(question, speakAnswer = false) {
   assistantResults.prepend(status);
 
   let aiAnswer = "";
-  try {
-    const result = await fetchAiAnswer(question, matches);
+  let streamCard = null;
+  let streamBody = null;
+  const showStream = (text) => {
     if (request !== assistantRequest) return;
-    status.replaceWith(renderAiAnswer(result));
+    if (!streamCard) {
+      streamCard = document.createElement("article");
+      streamCard.className = "assistant-answer assistant-ai-answer is-streaming";
+      const heading = document.createElement("p");
+      heading.className = "assistant-results-heading";
+      heading.textContent = getLocalizedText("RÉPONSE GÉNÉRÉE PAR IA");
+      streamBody = document.createElement("div");
+      streamBody.className = "assistant-ai-text";
+      streamCard.append(heading, streamBody);
+      status.replaceWith(streamCard);
+    }
+    streamBody.replaceChildren();
+    renderMarkdownInto(streamBody, text);
+  };
+  try {
+    const result = await fetchAiAnswer(question, matches, showStream);
+    if (request !== assistantRequest) return;
+    const finalCard = renderAiAnswer(result);
+    (streamCard ?? status).replaceWith(finalCard);
     assistantResults.querySelector(".assistant-empty")?.remove();
     aiAnswer = result.answer;
+    rememberExchange(question, result.answer);
   } catch {
     if (request !== assistantRequest) return;
     status.textContent = getLocalizedText("L'assistant IA est momentanément indisponible. Les repères du corpus restent affichés.");
+    streamCard?.replaceWith(status);
   }
   const autoRead = document.querySelector("#assistant-autoread")?.checked;
   if (speakAnswer || autoRead) await speakAssistantResults(matches, aiAnswer, assistantResults.querySelector(".assistant-ai-answer")?.readProgress ?? null);
@@ -1489,6 +1582,18 @@ assistantForm.addEventListener("submit", async (event) => {
   const question = assistantQuery.value.trim();
   if (question) await processAssistantQuestion(question);
 });
+
+document.querySelector("#assistant-new-chat")?.addEventListener("click", () => {
+  conversationHistory = [];
+  assistantRequest += 1;
+  window.speechSynthesis?.cancel();
+  assistantQuery.value = "";
+  assistantResults.replaceChildren();
+  updateConversationIndicator();
+  assistantQuery.focus();
+});
+
+document.addEventListener("iaevolution:languagechange", updateConversationIndicator);
 
 suggestedQuestions.forEach((button) => {
   button.addEventListener("click", async () => {

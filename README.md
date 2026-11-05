@@ -121,3 +121,8 @@ Les contenus et le registre affichés sont éditoriaux et statiques : les source
 surveillées automatiquement et aucune revue éditoriale n'est encore datée dans le catalogue.
 Une prochaine étape pourra concevoir la collecte, la validation et l'historique nécessaires
 à une véritable veille.
+
+### Assistant : streaming et mémoire de conversation
+
+- La réponse IA est reçue en streaming (SSE) et affichée au fil de l'eau ; le coût et le modèle apparaissent à la fin.
+- Les 3 derniers échanges sont renvoyés au modèle (champ `history`). Ils ne vivent qu'en mémoire de page, sans stockage ; le bouton « Nouvelle conversation » les efface. Ils sont transmis à OpenRouter avec la question.

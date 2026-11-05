@@ -253,28 +253,34 @@
               <button class="assistant-submit" type="submit">Chercher <span aria-hidden="true">↗</span></button>
             </div>
             <div class="assistant-settings">
-              <label>Niveau
-                <select id="assistant-level" name="level">
-                  <option value="accessible">Accessible</option>
-                  <option value="expert">Pointu (expert)</option>
-                </select>
-              </label>
-              <label>Longueur
-                <select id="assistant-length" name="length">
-                  <option value="concise">Concise</option>
-                  <option value="detailed">Détaillée</option>
-                </select>
-              </label>
-              <label>Modèle
+              <fieldset class="assistant-choice" data-icon="🎓">
+                <legend>Niveau</legend>
+                <div class="segmented">
+                  <label><input type="radio" name="level" value="accessible" checked><span data-icon="🌱">Accessible</span></label>
+                  <label><input type="radio" name="level" value="expert"><span data-icon="🔬">Pointu (expert)</span></label>
+                </div>
+              </fieldset>
+              <fieldset class="assistant-choice" data-icon="📏">
+                <legend>Longueur</legend>
+                <div class="segmented">
+                  <label><input type="radio" name="length" value="concise" checked><span data-icon="⚡">Concise</span></label>
+                  <label><input type="radio" name="length" value="detailed"><span data-icon="📚">Détaillée</span></label>
+                </div>
+              </fieldset>
+              <div class="assistant-choice assistant-choice-model" data-icon="🤖">
+                <label for="assistant-model">Modèle</label>
                 <select id="assistant-model" name="model">
                   <option value="auto">Automatique (recommandé)</option>
                   <option value="openai/gpt-4o-mini">OpenAI · GPT-4o mini</option>
                   <option value="google/gemini-2.0-flash-001">Google · Gemini 2.0 Flash</option>
                   <option value="anthropic/claude-3.5-haiku">Anthropic · Claude 3.5 Haiku</option>
                 </select>
-              </label>
+              </div>
             </div>
-            <label class="assistant-autoread"><input type="checkbox" id="assistant-autoread" checked> Lire les réponses à voix haute</label>
+            <div class="assistant-toolbar">
+              <label class="assistant-switch"><input type="checkbox" id="assistant-autoread" checked><span class="switch-track" aria-hidden="true"></span><span class="switch-label" data-icon="🔊">Lire les réponses à voix haute</span></label>
+              <button class="assistant-new-chat" id="assistant-new-chat" type="button" hidden><span class="assistant-new-chat-count" id="assistant-chat-count"></span><span class="assistant-new-chat-label" data-icon="✨">Nouvelle conversation</span></button>
+            </div>
           </form>
           <div class="assistant-voice-controls" role="group" aria-label="Commandes vocales">
             <button class="assistant-voice-button" id="assistant-voice-start" type="button">Poser ma question à voix haute</button>
@@ -282,7 +288,7 @@
             <button class="assistant-voice-button" id="assistant-voice-stop-speaking" type="button" hidden>Arrêter la lecture</button>
             <button class="assistant-voice-button" id="assistant-voice-install-local" type="button" hidden>Installer la reconnaissance locale</button>
           </div>
-          <div class="speech-voice-picker">
+          <div class="speech-voice-picker assistant-voice-picker">
             <label for="assistant-speech-voice">Voix de lecture</label>
             <select id="assistant-speech-voice" data-speech-voice></select>
           </div>
