@@ -153,3 +153,5 @@ Une prochaine étape pourra concevoir la collecte, la validation et l'historique
 ## Logo et favicon
 
 Le logo (`public/favicon.svg`) reprend la marque du site : tuile sombre, anneau teal, arc lime et trois barres ascendantes. Le dossier `public/` est copié à la racine de `dist` : `favicon.svg`, `favicon.ico` (16/32/48), `favicon-48.png` (multiple de 48 px, recommandé par Google), `apple-touch-icon.png`, `icon-192.png`, `icon-512.png` et `site.webmanifest`. Les balises `<link>` sont dans le `<head>` des deux pages.
+
+Le logo remplace la marque de l'en-tête et du pied de page (`.brand-mark`, fond CSS). `public/og-image.png` (1200×630, généré par `node scripts/make-og-image.mjs`) sert à l'aperçu de partage (balises Open Graph / Twitter), et `public/sitemap.xml` + `public/robots.txt` aident l'indexation Google.
