@@ -1160,7 +1160,9 @@
     "La lecture à voix haute utilise les voix de votre appareil et de votre navigateur ; certaines voix en ligne peuvent traiter le texte chez leur fournisseur. Une voix personnelle macOS peut nécessiter l'autorisation des apps et ne pas être accessible aux sites web.": "Text-to-speech uses voices from your device and browser; some online voices may process the text at their provider's end. A personal macOS voice may require app permissions and not be accessible to websites.",
     "Le micro ne s'active qu'à votre demande. Si votre navigateur propose un modèle local installé, la reconnaissance reste sur l'appareil ; sinon, le navigateur peut envoyer l'audio à son fournisseur. IAeVolution ne reçoit ni ne conserve aucun audio. Le texte reconnu est traité comme une question écrite : il est transmis à l'assistant IA (via OpenRouter) pour rédiger la réponse, et IAeVolution ne le stocke pas.": "The microphone only activates when you request it. If your browser offers a locally installed model, the recognition remains on the device; otherwise, the browser may send the audio to its provider. IAeVolution neither receives nor stores any audio. The recognized text is treated as a written question: it is transmitted to the AI assistant (via OpenRouter) to generate the response, and IAeVolution does not store it.",
     "Ouvrir la source": "Open the source",
-    "Source": "Source"
+    "Source": "Source",
+    "Confidentialité et voix": "Privacy and voice",
+    "VOIX": "VOICE"
   },
   "es": {
     "__IAEVAR0__ fiches sans revue datée": "Fichas de índice __IAEVAR0__ sin revisión fechada",
@@ -2323,7 +2325,9 @@
     "La lecture à voix haute utilise les voix de votre appareil et de votre navigateur ; certaines voix en ligne peuvent traiter le texte chez leur fournisseur. Une voix personnelle macOS peut nécessiter l'autorisation des apps et ne pas être accessible aux sites web.": "La función de conversión de texto a voz utiliza las voces de tu dispositivo y navegador; algunas voces en línea pueden procesar el texto en el servidor de su proveedor. Una voz personal de macOS puede requerir permisos de la aplicación y no ser accesible desde sitios web.",
     "Le micro ne s'active qu'à votre demande. Si votre navigateur propose un modèle local installé, la reconnaissance reste sur l'appareil ; sinon, le navigateur peut envoyer l'audio à son fournisseur. IAeVolution ne reçoit ni ne conserve aucun audio. Le texte reconnu est traité comme une question écrite : il est transmis à l'assistant IA (via OpenRouter) pour rédiger la réponse, et IAeVolution ne le stocke pas.": "El micrófono solo se activa cuando se solicita. Si el navegador ofrece un modelo instalado localmente, el reconocimiento se realiza en el dispositivo; de lo contrario, el navegador puede enviar el audio a su proveedor. IAeVolution no recibe ni almacena ningún audio. El texto reconocido se trata como una pregunta escrita: se transmite al asistente de IA (a través de OpenRouter) para generar la respuesta, e IAeVolution no lo almacena.",
     "Ouvrir la source": "Abrir el código fuente",
-    "Source": "Fuente"
+    "Source": "Fuente",
+    "Confidentialité et voix": "Privacidad y voz",
+    "VOIX": "VOZ"
   },
   "nl": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ indexkaarten zonder gedateerde beoordeling",
@@ -3486,7 +3490,9 @@
     "La lecture à voix haute utilise les voix de votre appareil et de votre navigateur ; certaines voix en ligne peuvent traiter le texte chez leur fournisseur. Une voix personnelle macOS peut nécessiter l'autorisation des apps et ne pas être accessible aux sites web.": "Tekst-naar-spraak maakt gebruik van stemmen van uw apparaat en browser; sommige online stemmen verwerken de tekst mogelijk pas aan de kant van de aanbieder. Een persoonlijke macOS-stem vereist mogelijk app-machtigingen en is mogelijk niet toegankelijk voor websites.",
     "Le micro ne s'active qu'à votre demande. Si votre navigateur propose un modèle local installé, la reconnaissance reste sur l'appareil ; sinon, le navigateur peut envoyer l'audio à son fournisseur. IAeVolution ne reçoit ni ne conserve aucun audio. Le texte reconnu est traité comme une question écrite : il est transmis à l'assistant IA (via OpenRouter) pour rédiger la réponse, et IAeVolution ne le stocke pas.": "De microfoon wordt alleen geactiveerd wanneer u daarom vraagt. Als uw browser een lokaal geïnstalleerd model aanbiedt, blijft de herkenning op het apparaat; anders kan de browser de audio naar de provider sturen. IAeVolution ontvangt noch bewaart audio. De herkende tekst wordt behandeld als een geschreven vraag: deze wordt (via OpenRouter) naar de AI-assistent verzonden om het antwoord te genereren, en IAeVolution slaat deze niet op.",
     "Ouvrir la source": "Open de bron",
-    "Source": "Bron"
+    "Source": "Bron",
+    "Confidentialité et voix": "Privacy en spraak",
+    "VOIX": "STEM"
   },
   "de": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ Karteikarten ohne datierte Überprüfung",
@@ -4649,7 +4655,9 @@
     "La lecture à voix haute utilise les voix de votre appareil et de votre navigateur ; certaines voix en ligne peuvent traiter le texte chez leur fournisseur. Une voix personnelle macOS peut nécessiter l'autorisation des apps et ne pas être accessible aux sites web.": "Die Text-to-Speech-Funktion nutzt Stimmen Ihres Geräts und Browsers; einige Online-Stimmen verarbeiten den Text möglicherweise serverseitig. Eine persönliche macOS-Stimme benötigt unter Umständen App-Berechtigungen und ist für Websites nicht zugänglich.",
     "Le micro ne s'active qu'à votre demande. Si votre navigateur propose un modèle local installé, la reconnaissance reste sur l'appareil ; sinon, le navigateur peut envoyer l'audio à son fournisseur. IAeVolution ne reçoit ni ne conserve aucun audio. Le texte reconnu est traité comme une question écrite : il est transmis à l'assistant IA (via OpenRouter) pour rédiger la réponse, et IAeVolution ne le stocke pas.": "Das Mikrofon wird nur auf Anfrage aktiviert. Verfügt Ihr Browser über ein lokal installiertes Mikrofon, bleibt die Spracherkennung auf dem Gerät gespeichert; andernfalls sendet der Browser die Audiodaten an seinen Provider. IAeVolution empfängt und speichert keine Audiodaten. Der erkannte Text wird wie eine schriftliche Frage behandelt: Er wird (über OpenRouter) an den KI-Assistenten zur Generierung der Antwort übermittelt und von IAeVolution nicht gespeichert.",
     "Ouvrir la source": "Öffnen Sie den Quellcode",
-    "Source": "Quelle"
+    "Source": "Quelle",
+    "Confidentialité et voix": "Privatsphäre und Stimme",
+    "VOIX": "STIMME"
   },
   "zh-CN": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ 索引卡，无日期审核",
@@ -5812,7 +5820,9 @@
     "La lecture à voix haute utilise les voix de votre appareil et de votre navigateur ; certaines voix en ligne peuvent traiter le texte chez leur fournisseur. Une voix personnelle macOS peut nécessiter l'autorisation des apps et ne pas être accessible aux sites web.": "文本转语音功能使用来自您的设备和浏览器的语音；某些在线语音服务可能会在其服务提供商处处理文本。个人 macOS 语音可能需要应用程序权限，并且网站可能无法访问。",
     "Le micro ne s'active qu'à votre demande. Si votre navigateur propose un modèle local installé, la reconnaissance reste sur l'appareil ; sinon, le navigateur peut envoyer l'audio à son fournisseur. IAeVolution ne reçoit ni ne conserve aucun audio. Le texte reconnu est traité comme une question écrite : il est transmis à l'assistant IA (via OpenRouter) pour rédiger la réponse, et IAeVolution ne le stocke pas.": "麦克风仅在您发出请求时才会激活。如果您的浏览器支持本地安装的模型，则识别结果将保留在设备上；否则，浏览器可能会将音频发送给其服务提供商。IAeVolution 既不接收也不存储任何音频。识别出的文本将被视为书面问题：它会被传输给 AI 助手（通过 OpenRouter）以生成回复，IAeVolution 不会存储该文本。",
     "Ouvrir la source": "打开源代码",
-    "Source": "来源"
+    "Source": "来源",
+    "Confidentialité et voix": "隐私和语音",
+    "VOIX": "嗓音"
   },
   "pt": {
     "__IAEVAR0__ fiches sans revue datée": "Fichas de índice __IAEVAR0__ sem revisão datada",
@@ -6975,7 +6985,9 @@
     "La lecture à voix haute utilise les voix de votre appareil et de votre navigateur ; certaines voix en ligne peuvent traiter le texte chez leur fournisseur. Une voix personnelle macOS peut nécessiter l'autorisation des apps et ne pas être accessible aux sites web.": "A função de conversão de texto em fala utiliza vozes do seu dispositivo e navegador; algumas vozes online podem processar o texto no servidor do provedor. Uma voz pessoal do macOS pode exigir permissões do aplicativo e não ser acessível a sites.",
     "Le micro ne s'active qu'à votre demande. Si votre navigateur propose un modèle local installé, la reconnaissance reste sur l'appareil ; sinon, le navigateur peut envoyer l'audio à son fournisseur. IAeVolution ne reçoit ni ne conserve aucun audio. Le texte reconnu est traité comme une question écrite : il est transmis à l'assistant IA (via OpenRouter) pour rédiger la réponse, et IAeVolution ne le stocke pas.": "O microfone só é ativado quando você o solicita. Se o seu navegador oferecer um modelo instalado localmente, o reconhecimento permanece no dispositivo; caso contrário, o navegador pode enviar o áudio para o seu provedor. O IAeVolution não recebe nem armazena nenhum áudio. O texto reconhecido é tratado como uma pergunta escrita: ele é transmitido para o assistente de IA (via OpenRouter) para gerar a resposta, e o IAeVolution não o armazena.",
     "Ouvrir la source": "Abra a fonte",
-    "Source": "Fonte"
+    "Source": "Fonte",
+    "Confidentialité et voix": "Privacidade e voz",
+    "VOIX": "VOZ"
   },
   "ar": {
     "__IAEVAR0__ fiches sans revue datée": "بطاقات فهرسة __IAEVAR0__ بدون مراجعة مؤرخة",
@@ -8138,7 +8150,9 @@
     "La lecture à voix haute utilise les voix de votre appareil et de votre navigateur ; certaines voix en ligne peuvent traiter le texte chez leur fournisseur. Une voix personnelle macOS peut nécessiter l'autorisation des apps et ne pas être accessible aux sites web.": "تستخدم تقنية تحويل النص إلى كلام أصواتًا من جهازك ومتصفحك؛ وقد تعالج بعض الأصوات عبر الإنترنت النص من جانب مزود الخدمة. قد يتطلب صوت macOS الشخصي أذونات للتطبيقات، وقد لا يكون متاحًا للمواقع الإلكترونية.",
     "Le micro ne s'active qu'à votre demande. Si votre navigateur propose un modèle local installé, la reconnaissance reste sur l'appareil ; sinon, le navigateur peut envoyer l'audio à son fournisseur. IAeVolution ne reçoit ni ne conserve aucun audio. Le texte reconnu est traité comme une question écrite : il est transmis à l'assistant IA (via OpenRouter) pour rédiger la réponse, et IAeVolution ne le stocke pas.": "لا يتم تفعيل الميكروفون إلا عند طلبه. إذا كان متصفحك يوفر نموذجًا مثبتًا محليًا، فستبقى عملية التعرف على الصوت على الجهاز؛ وإلا، فقد يرسل المتصفح الصوت إلى مزود الخدمة. لا يستقبل نظام IAeVolution أي صوت ولا يخزنه. يُعامل النص المُتعرف عليه كسؤال مكتوب: يُرسل إلى المساعد الذكي (عبر OpenRouter) لإنشاء الرد، ولا يقوم نظام IAeVolution بتخزينه.",
     "Ouvrir la source": "افتح المصدر",
-    "Source": "مصدر"
+    "Source": "مصدر",
+    "Confidentialité et voix": "الخصوصية والصوت",
+    "VOIX": "صوت"
   },
   "hi": {
     "__IAEVAR0__ fiches sans revue datée": "दिनांकित समीक्षा के बिना __IAEVAR0__ अनुक्रमणिका कार्ड",
@@ -9301,7 +9315,9 @@
     "La lecture à voix haute utilise les voix de votre appareil et de votre navigateur ; certaines voix en ligne peuvent traiter le texte chez leur fournisseur. Une voix personnelle macOS peut nécessiter l'autorisation des apps et ne pas être accessible aux sites web.": "टेक्स्ट-टू-स्पीच आपके डिवाइस और ब्राउज़र से आवाज़ का उपयोग करता है; कुछ ऑनलाइन आवाज़ें अपने प्रदाता के स्तर पर टेक्स्ट को प्रोसेस कर सकती हैं। macOS की व्यक्तिगत आवाज़ के लिए ऐप अनुमतियों की आवश्यकता हो सकती है और यह वेबसाइटों के लिए सुलभ नहीं हो सकती है।",
     "Le micro ne s'active qu'à votre demande. Si votre navigateur propose un modèle local installé, la reconnaissance reste sur l'appareil ; sinon, le navigateur peut envoyer l'audio à son fournisseur. IAeVolution ne reçoit ni ne conserve aucun audio. Le texte reconnu est traité comme une question écrite : il est transmis à l'assistant IA (via OpenRouter) pour rédiger la réponse, et IAeVolution ne le stocke pas.": "माइक्रोफ़ोन तभी सक्रिय होता है जब आप इसकी अनुमति देते हैं। यदि आपका ब्राउज़र स्थानीय रूप से स्थापित मॉडल प्रदान करता है, तो पहचान डिवाइस पर ही रहती है; अन्यथा, ब्राउज़र ऑडियो को अपने प्रदाता को भेज सकता है। IAeVolution किसी भी ऑडियो को न तो प्राप्त करता है और न ही संग्रहीत करता है। पहचाना गया टेक्स्ट एक लिखित प्रश्न के रूप में माना जाता है: इसे प्रतिक्रिया उत्पन्न करने के लिए AI सहायक को (OpenRouter के माध्यम से) भेजा जाता है, और IAeVolution इसे संग्रहीत नहीं करता है।",
     "Ouvrir la source": "स्रोत खोलें",
-    "Source": "स्रोत"
+    "Source": "स्रोत",
+    "Confidentialité et voix": "गोपनीयता और आवाज",
+    "VOIX": "आवाज़"
   },
   "ja": {
     "__IAEVAR0__ fiches sans revue datée": "日付レビューのないインデックスカード __IAEVAR0__",
@@ -10464,7 +10480,9 @@
     "La lecture à voix haute utilise les voix de votre appareil et de votre navigateur ; certaines voix en ligne peuvent traiter le texte chez leur fournisseur. Une voix personnelle macOS peut nécessiter l'autorisation des apps et ne pas être accessible aux sites web.": "テキスト読み上げ機能は、デバイスとブラウザの音声を使用します。一部のオンライン音声は、プロバイダー側でテキストを処理する場合があります。macOSの個人用音声は、アプリの権限を必要とする場合があり、ウェブサイトからアクセスできない場合があります。",
     "Le micro ne s'active qu'à votre demande. Si votre navigateur propose un modèle local installé, la reconnaissance reste sur l'appareil ; sinon, le navigateur peut envoyer l'audio à son fournisseur. IAeVolution ne reçoit ni ne conserve aucun audio. Le texte reconnu est traité comme une question écrite : il est transmis à l'assistant IA (via OpenRouter) pour rédiger la réponse, et IAeVolution ne le stocke pas.": "マイクは、ユーザーが要求した場合にのみ起動します。ブラウザにローカルにインストールされたマイクが搭載されている場合、認識データはデバイス上に保持されます。そうでない場合、ブラウザは音声データをプロバイダに送信する可能性があります。IAeVolutionは音声データを受信も保存もしません。認識されたテキストは、書かれた質問として扱われます。応答を生成するために、AIアシスタント（OpenRouter経由）に送信され、IAeVolutionはそれを保存しません。",
     "Ouvrir la source": "ソースを開く",
-    "Source": "ソース"
+    "Source": "ソース",
+    "Confidentialité et voix": "プライバシーと音声",
+    "VOIX": "声"
   },
   "ru": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ индексные карточки без датированного обзора",
@@ -11627,7 +11645,9 @@
     "La lecture à voix haute utilise les voix de votre appareil et de votre navigateur ; certaines voix en ligne peuvent traiter le texte chez leur fournisseur. Une voix personnelle macOS peut nécessiter l'autorisation des apps et ne pas être accessible aux sites web.": "Функция преобразования текста в речь использует голоса с вашего устройства и браузера; некоторые онлайн-сервисы озвучивания могут обрабатывать текст на стороне своего поставщика. Персональный голосовой помощник macOS может потребовать разрешения приложения и быть недоступен для веб-сайтов.",
     "Le micro ne s'active qu'à votre demande. Si votre navigateur propose un modèle local installé, la reconnaissance reste sur l'appareil ; sinon, le navigateur peut envoyer l'audio à son fournisseur. IAeVolution ne reçoit ni ne conserve aucun audio. Le texte reconnu est traité comme une question écrite : il est transmis à l'assistant IA (via OpenRouter) pour rédiger la réponse, et IAeVolution ne le stocke pas.": "Микрофон активируется только по вашему запросу. Если ваш браузер предлагает локально установленную модель, распознавание остается на устройстве; в противном случае браузер может отправить аудиопоток своему провайдеру. IAeVolution не получает и не хранит аудио. Распознанный текст обрабатывается как письменный вопрос: он передается ИИ-помощнику (через OpenRouter) для генерации ответа, и IAeVolution его не сохраняет.",
     "Ouvrir la source": "Откройте исходный код",
-    "Source": "Источник"
+    "Source": "Источник",
+    "Confidentialité et voix": "Конфиденциальность и голос",
+    "VOIX": "ГОЛОС"
   },
   "it": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ schede indice senza revisione datata",
@@ -12790,6 +12810,8 @@
     "La lecture à voix haute utilise les voix de votre appareil et de votre navigateur ; certaines voix en ligne peuvent traiter le texte chez leur fournisseur. Une voix personnelle macOS peut nécessiter l'autorisation des apps et ne pas être accessible aux sites web.": "La sintesi vocale utilizza le voci del dispositivo e del browser; alcune voci online potrebbero elaborare il testo presso il proprio fornitore. Una voce personale per macOS potrebbe richiedere le autorizzazioni dell'app e non essere accessibile ai siti web.",
     "Le micro ne s'active qu'à votre demande. Si votre navigateur propose un modèle local installé, la reconnaissance reste sur l'appareil ; sinon, le navigateur peut envoyer l'audio à son fournisseur. IAeVolution ne reçoit ni ne conserve aucun audio. Le texte reconnu est traité comme une question écrite : il est transmis à l'assistant IA (via OpenRouter) pour rédiger la réponse, et IAeVolution ne le stocke pas.": "Il microfono si attiva solo su richiesta. Se il browser offre un modello installato localmente, il riconoscimento rimane sul dispositivo; in caso contrario, il browser può inviare l'audio al proprio fornitore. IAeVolution non riceve né memorizza alcun audio. Il testo riconosciuto viene trattato come una domanda scritta: viene trasmesso all'assistente AI (tramite OpenRouter) per generare la risposta e IAeVolution non lo memorizza.",
     "Ouvrir la source": "Apri la fonte",
-    "Source": "Fonte"
+    "Source": "Fonte",
+    "Confidentialité et voix": "Privacy e voce",
+    "VOIX": "VOCE"
   }
 }
