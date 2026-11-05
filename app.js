@@ -650,6 +650,42 @@ async function getPreferredSpeechVoice(locale) {
   })[0];
 }
 
+let journeySpeechToken = 0;
+
+function cancelJourneySpeech() {
+  journeySpeechToken += 1;
+  window.speechSynthesis?.cancel();
+}
+
+async function speakJourney(text, onEnd) {
+  const token = ++journeySpeechToken;
+  window.speechSynthesis?.cancel();
+  const done = (spoken) => {
+    if (token === journeySpeechToken) onEnd(spoken);
+  };
+  if (!window.speechSynthesis || !("SpeechSynthesisUtterance" in window)) return done(false);
+  const locale = document.documentElement.lang || "fr";
+  const sources = text.map((part) => translateToFrench(part));
+  const parts = await Promise.all(sources.map((part) => translateText(part, locale)));
+  const translated = parts.some((part, index) => part !== sources[index]);
+  const narration = parts.map((part) => part.replace(/[.!?…]*$/, "")).join(". ") + ".";
+  const narrationLocale = translated || locale === "fr" ? locale : "fr";
+  const voice = await getPreferredSpeechVoice(narrationLocale);
+  if (token !== journeySpeechToken) return undefined;
+  if (!voice) return done(false);
+  const utterance = new SpeechSynthesisUtterance(translated || locale === "fr" ? narration : sources.join(". ") + ".");
+  utterance.lang = narrationLocale;
+  utterance.voice = voice;
+  utterance.onend = () => done(true);
+  utterance.onerror = () => done(false);
+  try {
+    window.speechSynthesis.speak(utterance);
+  } catch {
+    done(false);
+  }
+  return undefined;
+}
+
 function cancelTourSpeech() {
   if (window.speechSynthesis) window.speechSynthesis.cancel();
   tourUtterance = null;
@@ -2325,6 +2361,6 @@ document.addEventListener("keydown", (event) => {
 });
 
 renderTopics();
-initJourneys();
+initJourneys({ speak: speakJourney, cancel: cancelJourneySpeech });
 initializeTranslation();
 initFitTitles();

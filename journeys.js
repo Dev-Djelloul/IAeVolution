@@ -2,7 +2,7 @@ import { renderJourneyArt } from "./journey-art.js";
 
 const AUTO_DELAY = 4500;
 
-export function initJourneys() {
+export function initJourneys(voice = {}) {
   const tabs = [...document.querySelectorAll("[data-journey-tab]")];
   const panels = [...document.querySelectorAll("[data-journey]")];
   if (!tabs.length || !panels.length) return;
@@ -22,6 +22,41 @@ export function initJourneys() {
 
     let current = 0;
     let timer = null;
+    let listening = false;
+    let advance = null;
+    const listenButton = panel.querySelector("[data-journey-listen]");
+
+    const narration = () => [...steps[current].querySelectorAll(".journey-detail h4, .journey-detail p")]
+      .map((node) => node.textContent.trim());
+
+    const setListening = (value) => {
+      listening = value;
+      listenButton.setAttribute("aria-pressed", String(value));
+      listenButton.querySelector("[data-listen-label]").hidden = value;
+      listenButton.querySelector("[data-unlisten-label]").hidden = !value;
+    };
+
+    const stopListening = () => {
+      window.clearTimeout(advance);
+      if (listening) voice.cancel?.();
+      setListening(false);
+    };
+
+    const speakCurrent = () => {
+      window.clearTimeout(advance);
+      voice.speak(narration(), () => {
+        if (!listening) return;
+        if (current >= steps.length - 1) {
+          setListening(false);
+          return;
+        }
+        advance = window.setTimeout(() => {
+          current += 1;
+          render();
+          speakCurrent();
+        }, 900);
+      });
+    };
 
     const render = () => {
       steps.forEach((step, index) => {
@@ -62,15 +97,38 @@ export function initJourneys() {
       stop();
       current = (index + steps.length) % steps.length;
       render();
+      if (listening) speakCurrent();
     };
 
     steps.forEach((step, index) => step.querySelector(".journey-node").addEventListener("click", () => go(index)));
     panel.querySelector("[data-journey-prev]").addEventListener("click", () => go(current - 1));
     panel.querySelector("[data-journey-next]").addEventListener("click", () => go(current + 1));
-    playButton.addEventListener("click", () => (timer ? stop() : start()));
+    playButton.addEventListener("click", () => {
+      if (timer) stop();
+      else {
+        stopListening();
+        start();
+      }
+    });
+    if (voice.speak && "speechSynthesis" in window) {
+      listenButton.addEventListener("click", () => {
+        if (listening) {
+          stopListening();
+          return;
+        }
+        stop();
+        setListening(true);
+        speakCurrent();
+      });
+    } else {
+      listenButton.hidden = true;
+    }
 
     render();
-    controllers.set(panel.id, stop);
+    controllers.set(panel.id, () => {
+      stop();
+      stopListening();
+    });
   });
 
   const select = (tab, focus) => {
