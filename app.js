@@ -1704,14 +1704,15 @@ function renderAiAnswer(result) {
   caveat.className = "assistant-ai-caveat";
   caveat.textContent = getLocalizedText("Réponse produite par un modèle d'IA via OpenRouter : elle peut contenir des erreurs. Vérifiez les informations importantes dans les sources.");
 
-  card.append(label, body);
-  if (result.sources?.some((source) => source?.url)) {
-    const sourcesTitle = document.createElement("p");
-    sourcesTitle.className = "assistant-sources-title";
-    sourcesTitle.textContent = getLocalizedText("Sources");
-    card.append(sourcesTitle, buildSourceList(result.sources));
-  }
-  card.append(meta, caveat);
+  const header = document.createElement("div");
+  header.className = "assistant-answer-header";
+  const badge = document.createElement("span");
+  badge.className = "assistant-model-badge";
+  badge.textContent = `${provider} · ${result.model}`;
+  header.append(label, badge);
+
+  const player = document.createElement("div");
+  player.className = "assistant-player";
   if ("speechSynthesis" in window) {
     const listen = document.createElement("button");
     listen.type = "button";
@@ -1743,8 +1744,25 @@ function renderAiAnswer(result) {
     };
     card.readProgress = progress;
     listen.addEventListener("click", () => speakAssistantResults([], result.answer, progress));
-    card.append(listen, bar, duration);
+    const track = document.createElement("div");
+    track.className = "assistant-player-track";
+    track.append(bar, duration);
+    player.append(listen, track);
   }
+
+  card.append(header);
+  if (player.childElementCount) card.append(player);
+  card.append(body);
+  if (result.sources?.some((source) => source?.url)) {
+    const sourcesBlock = document.createElement("section");
+    sourcesBlock.className = "assistant-sources";
+    const sourcesTitle = document.createElement("p");
+    sourcesTitle.className = "assistant-sources-title";
+    sourcesTitle.textContent = getLocalizedText("Sources");
+    sourcesBlock.append(sourcesTitle, buildSourceList(result.sources));
+    card.append(sourcesBlock);
+  }
+  card.append(meta, caveat);
   return card;
 }
 

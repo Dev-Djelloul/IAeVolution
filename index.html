@@ -276,25 +276,31 @@
                   <option value="anthropic/claude-3.5-haiku">Anthropic · Claude 3.5 Haiku</option>
                 </select>
               </div>
-            </div>
-            <div class="assistant-toolbar">
-              <label class="assistant-switch"><input type="checkbox" id="assistant-autoread" checked><span class="switch-track" aria-hidden="true"></span><span class="switch-label">Lire les réponses à voix haute</span></label>
               <button class="assistant-new-chat" id="assistant-new-chat" type="button" hidden><span class="assistant-new-chat-count" id="assistant-chat-count"></span><span class="assistant-new-chat-label">Nouvelle conversation</span></button>
             </div>
           </form>
-          <div class="assistant-voice-controls" role="group" aria-label="Commandes vocales">
-            <button class="assistant-voice-button" id="assistant-voice-start" type="button">Poser ma question à voix haute</button>
-            <button class="assistant-voice-button" id="assistant-voice-stop" type="button" hidden>Arrêter le micro</button>
-            <button class="assistant-voice-button" id="assistant-voice-stop-speaking" type="button" hidden>Arrêter la lecture</button>
-            <button class="assistant-voice-button" id="assistant-voice-install-local" type="button" hidden>Installer la reconnaissance locale</button>
+          <div class="assistant-voice-panel" role="group" aria-labelledby="assistant-voice-title">
+            <h3 class="assistant-panel-title" id="assistant-voice-title">VOIX</h3>
+            <div class="assistant-voice-controls" role="group" aria-label="Commandes vocales">
+              <button class="assistant-voice-button" id="assistant-voice-start" type="button">Poser ma question à voix haute</button>
+              <button class="assistant-voice-button" id="assistant-voice-stop" type="button" hidden>Arrêter le micro</button>
+              <button class="assistant-voice-button" id="assistant-voice-stop-speaking" type="button" hidden>Arrêter la lecture</button>
+              <button class="assistant-voice-button" id="assistant-voice-install-local" type="button" hidden>Installer la reconnaissance locale</button>
+            </div>
+            <div class="assistant-voice-options">
+              <label class="assistant-switch"><input type="checkbox" id="assistant-autoread" checked><span class="switch-track" aria-hidden="true"></span><span class="switch-label">Lire les réponses à voix haute</span></label>
+              <div class="speech-voice-picker assistant-voice-picker">
+                <label for="assistant-speech-voice">Voix de lecture</label>
+                <select id="assistant-speech-voice" data-speech-voice></select>
+              </div>
+            </div>
+            <p class="assistant-voice-status" id="assistant-voice-status" role="status" aria-live="polite" aria-atomic="true"></p>
+            <details class="assistant-privacy">
+              <summary>Confidentialité et voix</summary>
+              <p class="assistant-voice-disclosure">Le micro ne s'active qu'à votre demande. Si votre navigateur propose un modèle local installé, la reconnaissance reste sur l'appareil ; sinon, le navigateur peut envoyer l'audio à son fournisseur. IAeVolution ne reçoit ni ne conserve aucun audio. Le texte reconnu est traité comme une question écrite : il est transmis à l'assistant IA (via OpenRouter) pour rédiger la réponse, et IAeVolution ne le stocke pas.</p>
+              <p class="assistant-voice-disclosure">La lecture à voix haute utilise les voix de votre appareil et de votre navigateur ; certaines voix en ligne peuvent traiter le texte chez leur fournisseur. Une voix personnelle macOS peut nécessiter l'autorisation des apps et ne pas être accessible aux sites web.</p>
+            </details>
           </div>
-          <div class="speech-voice-picker assistant-voice-picker">
-            <label for="assistant-speech-voice">Voix de lecture</label>
-            <select id="assistant-speech-voice" data-speech-voice></select>
-          </div>
-          <p class="assistant-voice-disclosure">Le micro ne s'active qu'à votre demande. Si votre navigateur propose un modèle local installé, la reconnaissance reste sur l'appareil ; sinon, le navigateur peut envoyer l'audio à son fournisseur. IAeVolution ne reçoit ni ne conserve aucun audio. Le texte reconnu est traité comme une question écrite : il est transmis à l'assistant IA (via OpenRouter) pour rédiger la réponse, et IAeVolution ne le stocke pas.</p>
-          <p class="assistant-voice-disclosure">La lecture à voix haute utilise les voix de votre appareil et de votre navigateur ; certaines voix en ligne peuvent traiter le texte chez leur fournisseur. Une voix personnelle macOS peut nécessiter l'autorisation des apps et ne pas être accessible aux sites web.</p>
-          <p class="assistant-voice-status" id="assistant-voice-status" role="status" aria-live="polite" aria-atomic="true"></p>
           <div class="suggested-questions" role="group" aria-label="Exemples de questions">
             <span>ESSAYEZ PAR EXEMPLE</span>
             <button type="button" data-assistant-prompt="Combien d'électricité les centres de données consomment-ils ?">Consommation électrique</button>
