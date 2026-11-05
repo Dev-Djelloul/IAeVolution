@@ -1,4 +1,5 @@
 import { initFitTitles } from "./fit-titles.js";
+import { initializeTranslation } from "./translation.js";
 const map = document.querySelector(".network-map");
 const mapModeButtons = [...document.querySelectorAll("[data-map-mode]")];
 const mapCaption = document.querySelector("#network-map-caption");
@@ -44,6 +45,106 @@ corridorButtons.forEach((button) => {
   });
 });
 
+const listenButton = document.querySelector("[data-listen-map]");
+const speechVoiceKey = "iaevolution:speech-voice";
+let listenToken = 0;
+let listenPrevious = "";
+
+const setListening = (on) => {
+  listenButton.setAttribute("aria-pressed", String(on));
+  listenButton.classList.toggle("is-active", on);
+  listenButton.querySelector("[data-listen-label]").hidden = on;
+  listenButton.querySelector("[data-unlisten-label]").hidden = !on;
+};
+
+const stopListening = () => {
+  if (listenButton.getAttribute("aria-pressed") !== "true") return;
+  listenToken += 1;
+  window.speechSynthesis.cancel();
+  showCorridor(listenPrevious);
+  setListening(false);
+};
+
+const readable = (element) => {
+  const parts = element.children.length ? [...element.children].map((child) => child.textContent) : [element.textContent];
+  return parts.map((part) => part.trim().replace(/\s+/g, " ").replace(/[.!?…。]+$/, "")).filter(Boolean).join(". ") + ".";
+};
+
+const pickVoice = async (lang) => {
+  const synthesis = window.speechSynthesis;
+  let voices = synthesis.getVoices();
+  if (!voices.length) {
+    voices = await new Promise((resolve) => {
+      const timeout = window.setTimeout(() => resolve(synthesis.getVoices()), 1500);
+      synthesis.addEventListener("voiceschanged", () => {
+        window.clearTimeout(timeout);
+        resolve(synthesis.getVoices());
+      }, { once: true });
+    });
+  }
+  const prefix = lang.toLocaleLowerCase().split("-")[0];
+  const candidates = voices.filter((voice) => voice.lang.toLocaleLowerCase().startsWith(prefix));
+  const saved = localStorage.getItem(speechVoiceKey) || "";
+  const preferred = candidates.find((voice) => `${voice.voiceURI}\u0000${voice.lang}\u0000${voice.name}` === saved);
+  if (preferred) return preferred;
+  const score = (voice) => {
+    const details = `${voice.name} ${voice.voiceURI}`.toLocaleLowerCase();
+    return (voice.localService ? 2 : 0)
+      + ["natural", "neural", "premium", "enhanced"].reduce((total, marker) => total + (details.includes(marker) ? 2 : 0), 0)
+      - ["compact", "basic", "legacy"].reduce((total, marker) => total + (details.includes(marker) ? 2 : 0), 0);
+  };
+  return candidates.sort((left, right) => score(right) - score(left))[0];
+};
+
+const speakSegment = (text, lang, voice) => new Promise((resolve) => {
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = voice?.lang || lang;
+  if (voice) utterance.voice = voice;
+  utterance.onend = () => resolve(true);
+  utterance.onerror = () => resolve(false);
+  window.speechSynthesis.speak(utterance);
+});
+
+if (listenButton && "speechSynthesis" in window && "SpeechSynthesisUtterance" in window) {
+  listenButton.addEventListener("click", async () => {
+    if (listenButton.getAttribute("aria-pressed") === "true") return stopListening();
+    const token = ++listenToken;
+    window.speechSynthesis.cancel();
+    listenPrevious = map.dataset.focus || "";
+    setListening(true);
+    const lang = document.documentElement.lang || "fr";
+    const voice = await pickVoice(lang);
+    if (token !== listenToken) return undefined;
+    const queue = [
+      { name: "", text: mapCaption.textContent.trim() },
+      ...corridorButtons.map((button) => ({
+        name: button.dataset.corridor,
+        text: [...corridorDetails
+          .find((detail) => detail.dataset.corridorDetail === button.dataset.corridor)
+          .querySelectorAll("h3, p")]
+          .map(readable)
+          .join(" "),
+      })),
+    ];
+    for (const item of queue) {
+      if (token !== listenToken) return undefined;
+      showCorridor(item.name);
+      const spoken = await speakSegment(item.text, lang, voice);
+      if (!spoken && token === listenToken) break;
+      await new Promise((resolve) => window.setTimeout(resolve, 500));
+    }
+    if (token === listenToken) {
+      showCorridor(listenPrevious);
+      setListening(false);
+    }
+    return undefined;
+  });
+  document.addEventListener("iaevolution:languagechange", stopListening);
+  window.addEventListener("pagehide", () => window.speechSynthesis.cancel());
+} else if (listenButton) {
+  listenButton.hidden = true;
+}
+
 const cableArt = document.querySelector(".cable-art");
 document.querySelectorAll(".cable-legend [data-layer]").forEach((item) => {
   const on = () => { cableArt.dataset.layer = item.dataset.layer; };
@@ -88,3 +189,5 @@ if ("IntersectionObserver" in window && !reduceMotion.matches) {
   const heroStats = document.querySelector(".networks-hero-stats");
   if (heroStats) observer.observe(heroStats);
 }
+
+initializeTranslation();

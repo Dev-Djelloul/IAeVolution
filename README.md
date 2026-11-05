@@ -141,3 +141,11 @@ Une prochaine étape pourra concevoir la collecte, la validation et l'historique
 - « Écouter ce parcours » lit les étapes avec la synthèse vocale locale du navigateur, dans la langue du site et avec la voix choisie dans les réglages de l'assistant ; rien n'est envoyé à un service.
 - La scène du hero (maquette 3D CSS, vue illustrée SVG) porte des animations et des flux de données animés (`animateMotion`).
 - Les cartes du site sont de vraies cartes (Natural Earth, projection de Miller, `scripts/build-world-map.mjs`) et le menu de navigation reste visible au défilement.
+
+### Page « Réseaux mondiaux »
+
+- Hero avec trois repères chiffrés animés (UIT, TeleGeography), carte de corridors avec hubs et paquets de données animés, bascule Corridors / Redondance.
+- Quatre corridors cliquables (Atlantique, Pacifique, Sud global, Europe ↔ Asie) : le corridor est mis en avant sur la carte et son détail s'affiche.
+- Sections « Anatomie d'un câble » (coupe SVG à six couches, légende survolable), « Ce qui peut couper un câble », bandeau de latence, sources (UIT, ICPC, TeleGeography).
+- « Écouter la carte » lit la légende puis chaque corridor avec la synthèse vocale locale du navigateur (langue du site, voix choisie dans les réglages de l'assistant) ; rien n'est envoyé à un service.
+- La page charge désormais `translation.js` : le sélecteur de langue y fonctionne. Animations coupées avec `prefers-reduced-motion`.

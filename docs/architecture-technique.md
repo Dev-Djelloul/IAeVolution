@@ -312,3 +312,10 @@ Les 10 dernières questions sont stockées côté navigateur (`localStorage`, cl
 - Écoute : `speakJourney` (`app.js`) traduit chaque partie de l'étape, choisit la voix locale préférée et enchaîne les étapes ; un jeton annule toute lecture périmée. Sans voix ou sans `speechSynthesis`, le bouton est masqué.
 - Limite connue : l'encadré d'étape reste dans l'ancienne langue après un changement de langue jusqu'au prochain clic.
 - Scène du hero : flux de données et balayages en SVG/CSS ; le texte SVG s'exprime en unités du viewBox avec `textLength` pour ne pas déborder.
+
+## Page réseaux mondiaux
+
+- `reseaux-mondiaux.js` (point d'entrée Vite `networks`) gère : bascule de mode de la carte, sélection de corridor (`map.dataset.focus` + `[data-corridor-detail]`), légende du câble (`svg.dataset.layer`), compteurs `[data-count]` et apparition au défilement via `IntersectionObserver` (désactivés avec `prefers-reduced-motion`).
+- Le CSS de focus des corridors repose sur `.network-map[data-focus]` ; les paquets de données sont des `<animateMotion>` dans `g.map-packets`.
+- Écoute : le texte est lu dans le DOM déjà traduit, avec `document.documentElement.lang` ; la voix suit la préférence `iaevolution:speech-voice`. Un jeton (`listenToken`) annule toute lecture périmée ; l'écoute s'arrête au changement de langue. Sans `speechSynthesis`, le bouton est masqué.
+- La page appelle `initializeTranslation()` : les nouveaux textes doivent être dans le HTML pour être extraits par `npm run translations:extract`.

@@ -1549,6 +1549,8 @@ html { scroll-behavior: smooth; }
 .network-footer > a:last-child span { margin-left: 6px; }
 
 @keyframes corridor-flow { to { stroke-dashoffset: -170px; } }
+.network-listen [hidden] { display: none; }
+.network-listen[aria-pressed="true"] { background: #fff; color: #17344a; }
 .networks-hero-stats { list-style: none; display: flex; flex-wrap: wrap; gap: 14px 28px; margin: 26px 0 0; padding: 0; }
 .networks-hero-stats li { display: grid; gap: 2px; max-width: 190px; font-size: .85rem; color: #dff4f0; }
 .networks-hero-stats strong { font-family: var(--display); font-size: 2rem; color: #fff; }
