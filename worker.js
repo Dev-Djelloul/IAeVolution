@@ -151,9 +151,110 @@ async function handleAssistant(request, env) {
   });
 }
 
+const PREVIEW_LIMIT = 40;
+const previewHits = new Map();
+const MAX_PREVIEW_BYTES = 262144;
+
+function isPublicHttps(value) {
+  let target;
+  try {
+    target = new URL(value);
+  } catch {
+    return null;
+  }
+  const host = target.hostname;
+  if (target.protocol !== "https:" || target.port || target.username || !host.includes(".")) return null;
+  if (/^[\d.]+$/.test(host) || host.includes(":") || /(^|\.)(localhost|local|internal)$/i.test(host)) return null;
+  return target;
+}
+
+function metaContent(html, key) {
+  for (const tag of html.match(/<meta\b[^>]*>/gi) ?? []) {
+    const name = tag.match(/(?:property|name)\s*=\s*["']([^"']+)["']/i)?.[1]?.toLowerCase();
+    if (name !== key) continue;
+    const content = tag.match(/content\s*=\s*["']([^"']*)["']/i)?.[1];
+    if (content) return content.replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'").trim();
+  }
+  return "";
+}
+
+function absoluteUrl(value, base) {
+  const resolved = value ? (() => { try { return new URL(value, base); } catch { return null; } })() : null;
+  return resolved?.protocol === "https:" ? resolved.href : "";
+}
+
+async function handlePreview(request) {
+  const ip = request.headers.get("cf-connecting-ip") ?? "unknown";
+  const now = Date.now();
+  const recent = (previewHits.get(ip) ?? []).filter((time) => now - time < RATE_WINDOW_MS);
+  recent.push(now);
+  previewHits.set(ip, recent);
+  if (previewHits.size > 5000) previewHits.clear();
+  if (recent.length > PREVIEW_LIMIT) return json({ error: "rate_limited" }, 429);
+
+  const target = isPublicHttps(new URL(request.url).searchParams.get("url") ?? "");
+  if (!target) return json({ error: "bad_request" }, 400);
+
+  const cache = caches.default;
+  const cacheKey = new Request(`https://iaevolution.internal/preview?url=${encodeURIComponent(target.href)}`);
+  const cached = await cache.match(cacheKey);
+  if (cached) return cached;
+
+  let current = target;
+  let response;
+  try {
+    for (let hop = 0; hop < 4; hop += 1) {
+      response = await fetch(current.href, {
+        redirect: "manual",
+        headers: { "user-agent": "IAeVolutionPreview/1.0 (+https://iaevolution.digitalblueskye.com)", accept: "text/html" },
+        signal: AbortSignal.timeout(6000),
+      });
+      const location = response.headers.get("location");
+      if (response.status < 300 || response.status >= 400 || !location) break;
+      const next = isPublicHttps(new URL(location, current).href);
+      if (!next) return json({ host: target.hostname }, 200);
+      current = next;
+    }
+  } catch {
+    return json({ host: target.hostname, icon: `https://${target.hostname}/favicon.ico` });
+  }
+
+  let html = "";
+  if (response?.ok && (response.headers.get("content-type") ?? "").includes("text/html") && response.body) {
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let received = 0;
+    while (received < MAX_PREVIEW_BYTES) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      received += value.length;
+      html += decoder.decode(value, { stream: true });
+      if (/<\/head>/i.test(html)) break;
+    }
+    reader.cancel().catch(() => {});
+  }
+
+  const iconTag = (html.match(/<link\b[^>]*rel\s*=\s*["'][^"']*icon[^"']*["'][^>]*>/gi) ?? [])[0];
+  const iconHref = iconTag?.match(/href\s*=\s*["']([^"']+)["']/i)?.[1];
+  const title = metaContent(html, "og:title") || html.match(/<title[^>]*>([^<]*)<\/title>/i)?.[1]?.trim() || "";
+  const result = json({
+    host: current.hostname,
+    siteName: cleanText(metaContent(html, "og:site_name"), 80),
+    title: cleanText(title, 140),
+    description: cleanText(metaContent(html, "og:description") || metaContent(html, "description"), 200),
+    image: absoluteUrl(metaContent(html, "og:image") || metaContent(html, "twitter:image"), current),
+    icon: absoluteUrl(iconHref, current) || `https://${current.hostname}/favicon.ico`,
+  });
+  const cacheable = new Response(result.body, result);
+  cacheable.headers.set("cache-control", "public, max-age=86400");
+  await cache.put(cacheKey, cacheable.clone());
+  return cacheable;
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (url.pathname === "/api/preview" && request.method === "GET") return handlePreview(request);
     if (url.pathname === "/api/assistant") return handleAssistant(request, env);
     return env.ASSETS.fetch(request);
   },

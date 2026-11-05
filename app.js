@@ -1293,6 +1293,67 @@ function describeModel(modelId) {
   };
 }
 
+const HISTORY_KEY = "iaevolution-question-history";
+const MAX_QUESTION_HISTORY = 10;
+const historyPanel = document.querySelector("#assistant-history");
+const historyList = document.querySelector("#assistant-history-list");
+
+function readQuestionHistory() {
+  try {
+    const stored = JSON.parse(localStorage.getItem(HISTORY_KEY) ?? "[]");
+    return Array.isArray(stored) ? stored.filter((entry) => typeof entry === "string").slice(0, MAX_QUESTION_HISTORY) : [];
+  } catch {
+    return [];
+  }
+}
+
+function writeQuestionHistory(entries) {
+  try {
+    if (entries.length) localStorage.setItem(HISTORY_KEY, JSON.stringify(entries));
+    else localStorage.removeItem(HISTORY_KEY);
+  } catch {
+    // stockage indisponible : l'historique est simplement ignoré
+  }
+}
+
+function renderQuestionHistory() {
+  if (!historyPanel || !historyList) return;
+  const entries = readQuestionHistory();
+  historyPanel.hidden = entries.length === 0;
+  historyList.replaceChildren();
+  entries.forEach((entry) => {
+    const item = document.createElement("li");
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "assistant-history-item";
+    button.textContent = entry;
+    button.title = entry;
+    button.addEventListener("click", async () => {
+      assistantQuery.value = entry;
+      assistantQuery.focus();
+      await processAssistantQuestion(entry);
+    });
+    item.append(button);
+    historyList.append(item);
+  });
+}
+
+function recordQuestion(question) {
+  const clean = question.trim().slice(0, 240);
+  if (!clean) return;
+  const entries = [clean, ...readQuestionHistory().filter((entry) => entry !== clean)].slice(0, MAX_QUESTION_HISTORY);
+  writeQuestionHistory(entries);
+  renderQuestionHistory();
+}
+
+document.querySelector("#assistant-history-clear")?.addEventListener("click", () => {
+  writeQuestionHistory([]);
+  renderQuestionHistory();
+  assistantQuery.focus();
+});
+
+renderQuestionHistory();
+
 const MAX_HISTORY_MESSAGES = 6;
 let conversationHistory = [];
 
@@ -1382,6 +1443,158 @@ async function fetchAiAnswer(question, matches, onDelta = () => {}) {
   return { answer: answer.trim(), model: model || "openrouter/auto", usage };
 }
 
+let citationSources = [];
+const previewCache = new Map();
+
+function sourceHost(url) {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return "";
+  }
+}
+
+function loadSourcePreview(url) {
+  if (!previewCache.has(url)) {
+    previewCache.set(url, fetch(`/api/preview?url=${encodeURIComponent(url)}`).then((response) => (response.ok ? response.json() : {})).catch(() => ({})));
+  }
+  return previewCache.get(url);
+}
+
+function buildSourceCard(number, source) {
+  const card = document.createElement("span");
+  card.className = "assistant-source-card";
+  card.setAttribute("role", "tooltip");
+
+  const media = document.createElement("span");
+  media.className = "assistant-source-media";
+  media.hidden = true;
+  const image = document.createElement("img");
+  image.alt = "";
+  image.loading = "lazy";
+  image.referrerPolicy = "no-referrer";
+  image.addEventListener("error", () => { media.hidden = true; });
+  media.append(image);
+
+  const head = document.createElement("span");
+  head.className = "assistant-source-head";
+  const logo = document.createElement("img");
+  logo.className = "assistant-source-logo";
+  logo.alt = "";
+  logo.width = 20;
+  logo.height = 20;
+  logo.referrerPolicy = "no-referrer";
+  logo.hidden = true;
+  logo.addEventListener("error", () => { logo.hidden = true; });
+  logo.addEventListener("load", () => { logo.hidden = false; });
+  const site = document.createElement("span");
+  site.className = "assistant-source-site";
+  site.textContent = sourceHost(source.url);
+  const badge = document.createElement("span");
+  badge.className = "assistant-source-number";
+  badge.textContent = `[${number}]`;
+  head.append(logo, site, badge);
+
+  const title = document.createElement("strong");
+  title.className = "assistant-source-title";
+  title.textContent = source.name;
+  const description = document.createElement("span");
+  description.className = "assistant-source-description";
+
+  const link = document.createElement("a");
+  link.className = "assistant-source-link";
+  link.href = source.url;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.textContent = `${getLocalizedText("Ouvrir la source")} ↗`;
+  const address = document.createElement("span");
+  address.className = "assistant-source-url";
+  address.textContent = source.url;
+
+  card.append(media, head, title, description, address, link);
+
+  let loaded = false;
+  card.loadPreview = () => {
+    if (loaded) return;
+    loaded = true;
+    logo.src = `https://${sourceHost(source.url)}/favicon.ico`;
+    loadSourcePreview(source.url).then((data) => {
+      if (data.icon) logo.src = data.icon;
+      if (data.description) description.textContent = data.description;
+      if (data.image) {
+        image.src = data.image;
+        media.hidden = false;
+      }
+    });
+  };
+  return card;
+}
+
+function placeSourceCard(wrap, card) {
+  const rect = wrap.getBoundingClientRect();
+  const width = Math.min(340, window.innerWidth - 24);
+  card.style.width = `${width}px`;
+  const left = Math.max(12, Math.min(rect.left + rect.width / 2 - width / 2, window.innerWidth - width - 12));
+  card.style.left = `${left}px`;
+  const above = rect.top > window.innerHeight / 2;
+  card.style.top = above ? "auto" : `${rect.bottom + 4}px`;
+  card.style.bottom = above ? `${window.innerHeight - rect.top + 4}px` : "auto";
+  card.classList.toggle("is-above", above);
+}
+
+function buildCitation(number) {
+  const source = citationSources[number - 1];
+  if (!source?.url) {
+    const plain = document.createElement("sup");
+    plain.className = "assistant-cite";
+    plain.textContent = number;
+    return plain;
+  }
+  const wrap = document.createElement("span");
+  wrap.className = "assistant-cite-wrap";
+  const anchor = document.createElement("a");
+  anchor.className = "assistant-cite";
+  anchor.href = source.url;
+  anchor.target = "_blank";
+  anchor.rel = "noopener noreferrer";
+  anchor.textContent = number;
+  anchor.setAttribute("aria-label", `${getLocalizedText("Source")} ${number} : ${source.name}`);
+  const card = buildSourceCard(number, source);
+  const show = () => {
+    card.loadPreview();
+    placeSourceCard(wrap, card);
+    wrap.classList.add("is-open");
+  };
+  const hide = () => wrap.classList.remove("is-open");
+  wrap.addEventListener("mouseenter", show);
+  wrap.addEventListener("mouseleave", hide);
+  wrap.addEventListener("focusin", show);
+  wrap.addEventListener("focusout", hide);
+  wrap.addEventListener("keydown", (event) => { if (event.key === "Escape") hide(); });
+  wrap.append(anchor, card);
+  return wrap;
+}
+
+function buildSourceList(sources) {
+  const list = document.createElement("ol");
+  list.className = "assistant-source-list";
+  sources.forEach((source, index) => {
+    if (!source?.url) return;
+    const li = document.createElement("li");
+    li.value = index + 1;
+    const link = document.createElement("a");
+    link.href = source.url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = source.name;
+    const host = document.createElement("span");
+    host.textContent = ` · ${sourceHost(source.url)} ↗`;
+    li.append(link, host);
+    list.append(li);
+  });
+  return list;
+}
+
 function appendInlineMarkdown(parent, text) {
   const pattern = /\*\*([^*]+)\*\*|__([^_]+)__|`([^`]+)`|\*([^*\s][^*]*)\*|\[(\d{1,2})\]/g;
   let last = 0;
@@ -1399,9 +1612,7 @@ function appendInlineMarkdown(parent, text) {
       node = document.createElement("em");
       node.textContent = match[4];
     } else {
-      node = document.createElement("sup");
-      node.className = "assistant-cite";
-      node.textContent = match[5];
+      node = buildCitation(Number(match[5]));
     }
     parent.append(node);
     last = pattern.lastIndex;
@@ -1455,6 +1666,7 @@ function renderMarkdownInto(container, markdown) {
 }
 
 function renderAiAnswer(result) {
+  citationSources = result.sources ?? citationSources;
   const card = document.createElement("article");
   card.className = "assistant-answer assistant-ai-answer";
 
@@ -1492,7 +1704,14 @@ function renderAiAnswer(result) {
   caveat.className = "assistant-ai-caveat";
   caveat.textContent = getLocalizedText("Réponse produite par un modèle d'IA via OpenRouter : elle peut contenir des erreurs. Vérifiez les informations importantes dans les sources.");
 
-  card.append(label, body, meta, caveat);
+  card.append(label, body);
+  if (result.sources?.some((source) => source?.url)) {
+    const sourcesTitle = document.createElement("p");
+    sourcesTitle.className = "assistant-sources-title";
+    sourcesTitle.textContent = getLocalizedText("Sources");
+    card.append(sourcesTitle, buildSourceList(result.sources));
+  }
+  card.append(meta, caveat);
   if ("speechSynthesis" in window) {
     const listen = document.createElement("button");
     listen.type = "button";
@@ -1541,6 +1760,8 @@ async function processAssistantQuestion(question, speakAnswer = false) {
   status.textContent = getLocalizedText("Réflexion de l'assistant en cours…");
   assistantResults.prepend(status);
 
+  citationSources = matches.map(({ item }) => item.source);
+  recordQuestion(question);
   let aiAnswer = "";
   let streamCard = null;
   let streamBody = null;
@@ -1563,7 +1784,7 @@ async function processAssistantQuestion(question, speakAnswer = false) {
   try {
     const result = await fetchAiAnswer(question, matches, showStream);
     if (request !== assistantRequest) return;
-    const finalCard = renderAiAnswer(result);
+    const finalCard = renderAiAnswer({ ...result, sources: citationSources });
     (streamCard ?? status).replaceWith(finalCard);
     assistantResults.querySelector(".assistant-empty")?.remove();
     aiAnswer = result.answer;
