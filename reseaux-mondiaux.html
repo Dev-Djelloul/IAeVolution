@@ -50,12 +50,20 @@
           <h1 id="networks-title">L’IA voyage aussi <br>au fond des océans</h1>
           <p>Entre centres de données, services cloud et utilisateurs, une partie essentielle des échanges traverse les océans dans des câbles de fibre optique. Voici une lecture des grandes connexions qui soutiennent l’internet mondial.</p>
           <a class="networks-hero-link" href="#carte">Explorer le schéma <span aria-hidden="true">↓</span></a>
+          <ul class="networks-hero-stats" aria-label="Repères chiffrés">
+            <li><strong><span data-count="99">99</span> %</strong><span>du trafic de données entre continents passe par des câbles sous-marins (UIT)</span></li>
+            <li><strong><span data-count="500">500</span>+</strong><span>systèmes de câbles en service dans le monde (TeleGeography)</span></li>
+            <li><strong><span data-count="5">5</span> ms</strong><span>de délai ajouté tous les 1 000 km de fibre optique</span></li>
+          </ul>
         </div>
         <div class="networks-hero-aside" aria-label="Repère mondial">
           <span class="networks-orbit orbit-one"></span>
           <span class="networks-orbit orbit-two"></span>
           <span class="networks-orbit orbit-three"></span>
           <span class="networks-orbit-core"></span>
+          <span class="networks-ping ping-one"></span>
+          <span class="networks-ping ping-two"></span>
+          <span class="networks-ping ping-three"></span>
           <span class="networks-aside-label">RÉSEAU<br>INTERCONTINENTAL</span>
           <span class="networks-aside-caption">Des liaisons physiques<br>pour des usages immatériels</span>
         </div>
@@ -105,6 +113,27 @@
               <path class="corridor-secondary corridor-south" d="M371 394Q454 407 537 350M610 337Q634 281 657 255"></path>
               <path class="corridor-secondary corridor-connector" d="M515 198Q609 195 703 272"></path>
             </g>
+            <g class="map-hubs" aria-hidden="true">
+              <g class="map-hub"><circle class="map-hub-ring" cx="294" cy="206" r="9"></circle><circle cx="294" cy="206" r="4"></circle></g>
+              <g class="map-hub"><circle class="map-hub-ring" cx="488" cy="171" r="9"></circle><circle cx="488" cy="171" r="4"></circle></g>
+              <g class="map-hub"><circle class="map-hub-ring" cx="888" cy="222" r="9"></circle><circle cx="888" cy="222" r="4"></circle></g>
+              <g class="map-hub"><circle class="map-hub-ring" cx="172" cy="228" r="9"></circle><circle cx="172" cy="228" r="4"></circle></g>
+              <g class="map-hub"><circle class="map-hub-ring" cx="393" cy="336" r="9"></circle><circle cx="393" cy="336" r="4"></circle></g>
+              <g class="map-hub"><circle class="map-hub-ring" cx="551" cy="424" r="9"></circle><circle cx="551" cy="424" r="4"></circle></g>
+              <g class="map-hub"><circle class="map-hub-ring" cx="610" cy="337" r="9"></circle><circle cx="610" cy="337" r="4"></circle></g>
+              <g class="map-hub"><circle class="map-hub-ring" cx="703" cy="272" r="9"></circle><circle cx="703" cy="272" r="4"></circle></g>
+              <g class="map-hub"><circle class="map-hub-ring" cx="788" cy="322" r="9"></circle><circle cx="788" cy="322" r="4"></circle></g>
+            </g>
+            <g class="map-packets" aria-hidden="true">
+              <circle class="map-packet" r="3.6"><animateMotion dur="5.5s" repeatCount="indefinite" path="M294 206Q391 149 488 171"></animateMotion></circle>
+              <circle class="map-packet" r="3.6"><animateMotion dur="5.5s" begin="-2.7s" repeatCount="indefinite" path="M488 171Q391 149 294 206"></animateMotion></circle>
+              <circle class="map-packet" r="3.6"><animateMotion dur="6.5s" repeatCount="indefinite" path="M888 222Q944 180 1000 215"></animateMotion></circle>
+              <circle class="map-packet" r="3.6"><animateMotion dur="6.5s" begin="-3s" repeatCount="indefinite" path="M0 218Q86 218 172 228"></animateMotion></circle>
+              <circle class="map-packet" r="3.6"><animateMotion dur="7s" repeatCount="indefinite" path="M393 336Q472 405 551 424"></animateMotion></circle>
+              <circle class="map-packet" r="3.6"><animateMotion dur="6s" begin="-1.5s" repeatCount="indefinite" path="M610 337Q657 275 703 272"></animateMotion></circle>
+              <circle class="map-packet" r="3.6"><animateMotion dur="6s" begin="-4s" repeatCount="indefinite" path="M703 272Q746 317 788 322"></animateMotion></circle>
+              <circle class="map-packet" r="3.6"><animateMotion dur="8s" begin="-2s" repeatCount="indefinite" path="M515 198Q609 195 703 272"></animateMotion></circle>
+            </g>
             <g class="map-region-labels" fill="#17344a" font-weight="600" font-family="DM Mono, monospace" font-size="12" letter-spacing="1.3">
               <text x="222" y="181">AMÉRIQUES</text>
               <text x="533" y="139">EUROPE</text>
@@ -127,6 +156,39 @@
           </svg>
           <figcaption class="network-map-caption" id="network-map-caption">Les échanges internationaux s’appuient sur un réseau dense de liaisons transocéaniques.</figcaption>
         </figure>
+
+        <div class="network-corridors" role="group" aria-label="Choisir un corridor à mettre en avant">
+          <button type="button" class="network-corridor-card" data-corridor="atlantic" aria-pressed="false"><span class="cc-dot cc-atlantic"></span><strong>Atlantique</strong><span>Amérique du Nord ↔ Europe</span></button>
+          <button type="button" class="network-corridor-card" data-corridor="pacific" aria-pressed="false"><span class="cc-dot cc-pacific"></span><strong>Pacifique</strong><span>Amériques ↔ Asie et Océanie</span></button>
+          <button type="button" class="network-corridor-card" data-corridor="south" aria-pressed="false"><span class="cc-dot cc-south"></span><strong>Sud global</strong><span>Amérique du Sud, Afrique, Asie du Sud</span></button>
+          <button type="button" class="network-corridor-card" data-corridor="connector" aria-pressed="false"><span class="cc-dot cc-connector"></span><strong>Europe ↔ Asie</strong><span>Via la Méditerranée et la mer Rouge</span></button>
+        </div>
+        <div class="network-corridor-detail" aria-live="polite">
+          <article data-corridor-detail="overview">
+            <h3>Choisissez un corridor</h3>
+            <p>Chaque couloir relie des régions à des distances et des enjeux très différents. Sélectionnez-en un pour le mettre en lumière sur la carte et lire ce qui le distingue.</p>
+          </article>
+          <article data-corridor-detail="atlantic" hidden>
+            <h3>Atlantique : le couloir le plus dense</h3>
+            <p>Il relie l’Amérique du Nord à l’Europe et concentre de nombreux câbles à très forte capacité, dont plusieurs financés par de grands acteurs du cloud pour leurs propres services.</p>
+            <p class="network-corridor-fact"><strong>Pourquoi c’est important</strong><span>C’est l’un des passages les plus empruntés par les échanges entre centres de données, services cloud et utilisateurs.</span></p>
+          </article>
+          <article data-corridor-detail="pacific" hidden>
+            <h3>Pacifique : les plus longues distances</h3>
+            <p>Il relie l’Amérique du Nord à l’Asie et à l’Océanie, sur des milliers de kilomètres d’océan. Les atterrissements se concentrent sur quelques côtes bien équipées.</p>
+            <p class="network-corridor-fact"><strong>Pourquoi c’est important</strong><span>Plus un câble est long, plus sa pose, sa maintenance et sa réparation sont complexes.</span></p>
+          </article>
+          <article data-corridor-detail="south" hidden>
+            <h3>Sud global : un maillage qui se densifie</h3>
+            <p>Il relie l’Amérique du Sud, l’Afrique, le Moyen-Orient et l’Asie du Sud. De nouveaux câbles renforcent des régions longtemps moins bien connectées.</p>
+            <p class="network-corridor-fact"><strong>Pourquoi c’est important</strong><span>Un accès plus fiable à Internet conditionne aussi l’accès aux services d’IA, aux données et à la formation.</span></p>
+          </article>
+          <article data-corridor-detail="connector" hidden>
+            <h3>Europe et Asie : un passage étroit</h3>
+            <p>Une grande partie des liaisons entre l’Europe et l’Asie traverse la Méditerranée, l’Égypte et la mer Rouge, des passages resserrés où beaucoup de câbles se côtoient.</p>
+            <p class="network-corridor-fact"><strong>Pourquoi c’est important</strong><span>Quand plusieurs câbles suivent le même passage, un seul incident peut en affecter plusieurs : c’est un point de vigilance.</span></p>
+          </article>
+        </div>
       </section>
 
       <section class="network-facts-section" aria-labelledby="network-facts-title">
@@ -151,7 +213,47 @@
             <h3>La continuité dépend aussi d’opérations humaines</h3>
             <p>La résilience repose sur la prévention, la surveillance, les équipes de maintenance et la coopération entre acteurs et autorités.</p>
           </article>
+          <article class="network-fact-card fact-violet">
+            <span class="network-fact-index">04 <span>· PROPRIÉTÉ</span></span>
+            <h3>Qui finance ces câbles ?</h3>
+            <p>Des consortiums d’opérateurs, des États et, de plus en plus, de grands acteurs du cloud investissent dans de nouveaux câbles pour relier leurs centres de données et leurs services d’IA.</p>
+          </article>
         </div>
+      </section>
+
+      <section class="cable-section" aria-labelledby="cable-title">
+        <div class="cable-copy">
+          <p class="network-kicker">AU CŒUR DU CÂBLE</p>
+          <h2 id="cable-title">Anatomie d’un câble sous-marin</h2>
+          <p>Dans les grands fonds, un câble n’est guère plus épais qu’un tuyau d’arrosage. Il empile pourtant plusieurs couches qui protègent des fibres de verre fines comme des cheveux. Survolez une couche pour la repérer.</p>
+          <ol class="cable-legend">
+            <li data-layer="1" tabindex="0"><span class="cl-swatch cl-1"></span><div><strong>Gaine en polyéthylène</strong><span>Protège l’ensemble de l’eau de mer et des frottements.</span></div></li>
+            <li data-layer="2" tabindex="0"><span class="cl-swatch cl-2"></span><div><strong>Fils d’acier</strong><span>Donnent la résistance à la traction, utile à la pose et aux réparations.</span></div></li>
+            <li data-layer="3" tabindex="0"><span class="cl-swatch cl-3"></span><div><strong>Barrière d’étanchéité</strong><span>Empêche l’eau de pénétrer jusqu’au cœur du câble.</span></div></li>
+            <li data-layer="4" tabindex="0"><span class="cl-swatch cl-4"></span><div><strong>Conducteur en cuivre</strong><span>Transporte le courant qui alimente les répéteurs placés le long du câble.</span></div></li>
+            <li data-layer="5" tabindex="0"><span class="cl-swatch cl-5"></span><div><strong>Tube protecteur</strong><span>Maintient et amortit les fibres à l’intérieur.</span></div></li>
+            <li data-layer="6" tabindex="0"><span class="cl-swatch cl-6"></span><div><strong>Fibres optiques</strong><span>Transportent les données sous forme d’impulsions de lumière.</span></div></li>
+          </ol>
+        </div>
+        <svg class="cable-art" viewBox="0 0 320 320" role="img" aria-labelledby="cable-art-title">
+          <title id="cable-art-title">Coupe d’un câble sous-marin montrant six couches concentriques</title>
+          <circle class="cab-halo" cx="160" cy="160" r="156"></circle>
+          <circle class="cab-l1" cx="160" cy="160" r="150"></circle>
+          <circle class="cab-l2" cx="160" cy="160" r="134"></circle>
+          <circle class="cab-l3" cx="160" cy="160" r="120"></circle>
+          <circle class="cab-l4" cx="160" cy="160" r="98"></circle>
+          <circle class="cab-l5" cx="160" cy="160" r="70"></circle>
+          <g class="cab-l6">
+            <circle cx="160" cy="160" r="46" class="cab-core"></circle>
+            <circle class="cab-fibre" cx="160" cy="160" r="8"></circle>
+            <circle class="cab-fibre" cx="160" cy="130" r="7"></circle>
+            <circle class="cab-fibre" cx="186" cy="145" r="7"></circle>
+            <circle class="cab-fibre" cx="186" cy="175" r="7"></circle>
+            <circle class="cab-fibre" cx="160" cy="190" r="7"></circle>
+            <circle class="cab-fibre" cx="134" cy="175" r="7"></circle>
+            <circle class="cab-fibre" cx="134" cy="145" r="7"></circle>
+          </g>
+        </svg>
       </section>
 
       <section class="network-stat-band" aria-label="Repère de résilience">
@@ -164,6 +266,34 @@
         <a href="https://www.itu.int/en/mediacentre/backgrounders/Pages/submarine-cable-resilience.aspx" target="_blank" rel="noreferrer">Source : UIT <span aria-hidden="true">↗</span></a>
       </section>
 
+      <section class="network-risks-section" aria-labelledby="network-risks-title">
+        <p class="network-kicker">LES FRAGILITÉS ET LES PARADES</p>
+        <h2 id="network-risks-title">Ce qui peut couper un câble, et comment on répond</h2>
+        <div class="network-risks-grid">
+          <article>
+            <span class="risk-index">01</span>
+            <h3>Ancres et filets de pêche</h3>
+            <p>La majorité des incidents est accidentelle et se produit près des côtes. Les câbles y sont enterrés et renforcés par un blindage supplémentaire.</p>
+          </article>
+          <article>
+            <span class="risk-index">02</span>
+            <h3>Séismes et glissements sous-marins</h3>
+            <p>Des secousses ou des coulées de sédiments peuvent rompre plusieurs câbles à la fois, comme à Taïwan en 2006 ou lors de l’éruption de Tonga en 2022.</p>
+          </article>
+          <article>
+            <span class="risk-index">03</span>
+            <h3>Passages étroits et tensions</h3>
+            <p>Quand beaucoup de câbles suivent le même passage, comme en mer Rouge, un incident local peut avoir des effets sur plusieurs régions.</p>
+          </article>
+          <article>
+            <span class="risk-index">04</span>
+            <h3>Réparer en mer</h3>
+            <p>Des navires câbliers spécialisés localisent la coupure, remontent le câble, le réparent puis le reposent, en quelques jours à plusieurs semaines selon la météo et les autorisations.</p>
+          </article>
+        </div>
+        <p class="network-risks-note">Parades : multiplier les routes, diversifier les atterrissements, enterrer les câbles, surveiller les zones sensibles et coordonner les réparations entre pays.</p>
+      </section>
+
       <section class="network-ai-section" aria-labelledby="network-ai-title">
         <p class="network-kicker">DU RÉSEAU À L’INTELLIGENCE ARTIFICIELLE</p>
         <h2 id="network-ai-title">Quand une IA répond, le réseau fait le lien</h2>
@@ -174,6 +304,11 @@
           <span class="network-flow-arrow" aria-hidden="true">→</span>
           <article><span>03</span><h3>Un service IA</h3><p>Des serveurs traitent la requête ; la réponse emprunte à nouveau le réseau.</p></article>
         </div>
+        <div class="network-latency">
+          <p class="network-latency-label">LA DISTANCE SE MESURE EN MILLISECONDES</p>
+          <div class="network-latency-track" aria-hidden="true"><span class="nl-end"></span><span class="nl-packet"></span><span class="nl-end"></span></div>
+          <p>Dans la fibre, la lumière avance à environ 200 000 km/s : chaque tranche de 1 000 km ajoute environ 5 ms. Un trajet à travers un océan se compte donc en dizaines de millisecondes, avant même le temps de calcul de l’IA.</p>
+        </div>
       </section>
 
       <section class="network-sources-section" aria-labelledby="network-sources-title">
@@ -182,6 +317,7 @@
           <h2 id="network-sources-title">Explorer le réseau mondial</h2>
           <p>La carte de TeleGeography permet d’explorer les systèmes de câbles et les stations d’atterrissement. Les repères de résilience s’appuient sur les travaux de l’Union internationale des télécommunications.</p>
           <a class="network-source-secondary" href="https://www.itu.int/en/mediacentre/backgrounders/Pages/submarine-cable-resilience.aspx" target="_blank" rel="noopener noreferrer">UIT · Résilience des câbles sous-marins <span aria-hidden="true">↗</span></a>
+          <a class="network-source-secondary" href="https://www.iscpc.org/" target="_blank" rel="noopener noreferrer">ICPC · Protection des câbles sous-marins <span aria-hidden="true">↗</span></a>
         </div>
         <a class="network-source-card" href="https://www.submarinecablemap.com/" target="_blank" rel="noopener noreferrer">
           <span>TELEGEOGRAPHY <span>·</span> CARTE MONDIALE</span>

@@ -1549,6 +1549,74 @@ html { scroll-behavior: smooth; }
 .network-footer > a:last-child span { margin-left: 6px; }
 
 @keyframes corridor-flow { to { stroke-dashoffset: -170px; } }
+.networks-hero-stats { list-style: none; display: flex; flex-wrap: wrap; gap: 14px 28px; margin: 26px 0 0; padding: 0; }
+.networks-hero-stats li { display: grid; gap: 2px; max-width: 190px; font-size: .85rem; color: #dff4f0; }
+.networks-hero-stats strong { font-family: var(--display); font-size: 2rem; color: #fff; }
+.networks-ping { position: absolute; left: 50%; top: 50%; width: 40px; height: 40px; margin: -20px 0 0 -20px; border: 2px solid #b9e4df; border-radius: 50%; opacity: 0; animation: net-ping 3.6s ease-out infinite; pointer-events: none; }
+.networks-ping.ping-two { animation-delay: 1.2s; }
+.networks-ping.ping-three { animation-delay: 2.4s; }
+@keyframes net-ping { 0% { transform: scale(.4); opacity: .8; } 100% { transform: scale(4.5); opacity: 0; } }
+.map-hub circle:last-child { fill: #fff; stroke: #17344a; stroke-width: 1.5; }
+.map-hub-ring { fill: none; stroke: #c6ece6; stroke-width: 1.5; transform-box: fill-box; transform-origin: center; animation: net-ping 3s ease-out infinite; }
+.map-packet { fill: #fff; filter: drop-shadow(0 0 4px #c6ece6); }
+.network-map[data-focus] .corridor-main { opacity: .22; }
+.network-map[data-focus="atlantic"] .corridor-main.corridor-atlantic,
+.network-map[data-focus="pacific"] .corridor-main.corridor-pacific,
+.network-map[data-focus="south"] .corridor-main.corridor-south { opacity: 1; stroke-width: 6; }
+.network-map[data-focus="connector"] .corridor-secondary.corridor-connector { opacity: 1; stroke-width: 5; }
+.network-corridors { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 22px 0 14px; }
+.network-corridor-card { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border: 1px solid rgba(255,255,255,.35); border-radius: 14px; background: rgba(255,255,255,.1); color: #fff; font: inherit; text-align: left; cursor: pointer; transition: transform .2s, background .2s; }
+.network-corridor-card:hover, .network-corridor-card:focus-visible { transform: translateY(-3px); background: rgba(255,255,255,.2); }
+.network-corridor-card[aria-pressed="true"] { background: #fff; color: #17344a; }
+.cc-dot { width: 12px; height: 12px; border-radius: 50%; flex: none; background: #bce9dc; }
+.cc-pacific { background: #f1c888; } .cc-south { background: #f1a99b; } .cc-connector { background: #d0c5eb; }
+.network-corridor-detail { padding: 18px 22px; border-radius: 16px; background: rgba(255,255,255,.92); color: #17344a; }
+.network-corridor-detail p { margin: 0 0 8px; }
+.network-corridor-fact { font-family: var(--mono); font-size: .85rem; color: #245d95; }
+.cable-section { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; padding: 64px 6vw; background: #17344a; color: #fff; }
+.cable-copy h2 { font-family: var(--display); margin: 6px 0 14px; }
+.cable-legend { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 8px; }
+.cable-legend li { display: flex; gap: 12px; align-items: center; padding: 10px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,.15); transition: background .2s; outline-offset: 2px; }
+.cable-legend li:hover, .cable-legend li:focus-visible { background: rgba(255,255,255,.12); }
+.cable-legend li div { display: grid; font-size: .88rem; } .cable-legend li div span { color: #c6dde6; }
+.cl-swatch { width: 18px; height: 18px; border-radius: 50%; flex: none; }
+.cl-1, .cab-l1 { fill: #2a2f36; background: #2a2f36; } .cl-2, .cab-l2 { fill: #8a97a3; background: #8a97a3; stroke: #d5dde3; stroke-dasharray: 6 5; stroke-width: 3; }
+.cl-3, .cab-l3 { fill: #4f7fa8; background: #4f7fa8; } .cl-4, .cab-l4 { fill: #c8803f; background: #c8803f; }
+.cl-5, .cab-l5 { fill: #e9edf0; background: #e9edf0; } .cl-6 { background: #7fe3ff; }
+.cab-halo { fill: none; stroke: #7fe3ff; opacity: .25; }
+.cab-core { fill: #1b4560; } .cab-fibre { fill: #7fe3ff; animation: cab-glow 2s ease-in-out infinite; }
+.cab-fibre:nth-child(odd) { animation-delay: .6s; }
+@keyframes cab-glow { 50% { opacity: .35; } }
+.cable-art { width: 100%; max-width: 380px; justify-self: center; }
+.cable-art circle { transition: opacity .25s, filter .25s; }
+.cable-art[data-layer] circle, .cable-art[data-layer] .cab-l6 { opacity: .3; }
+.cable-art[data-layer="1"] .cab-l1, .cable-art[data-layer="2"] .cab-l2, .cable-art[data-layer="3"] .cab-l3,
+.cable-art[data-layer="4"] .cab-l4, .cable-art[data-layer="5"] .cab-l5, .cable-art[data-layer="6"] .cab-l6 { opacity: 1; filter: drop-shadow(0 0 8px #7fe3ff); }
+.cable-art[data-layer="6"] .cab-l6 circle { opacity: 1; }
+.network-risks-section { padding: 64px 6vw; background: #e9f3f6; color: #17344a; }
+.network-risks-section h2 { font-family: var(--display); margin: 6px 0 24px; }
+.network-risks-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.network-risks-grid article { padding: 20px; border-radius: 16px; background: #fff; box-shadow: 0 8px 24px rgba(23,52,74,.1); }
+.risk-index { font-family: var(--mono); color: #245d95; }
+.network-risks-note { margin-top: 20px; font-weight: 600; }
+.network-latency { margin-top: 28px; }
+.network-latency-label { font-family: var(--mono); font-size: .8rem; letter-spacing: .08em; }
+.network-latency-track { position: relative; height: 6px; margin: 18px 0; border-radius: 3px; background: rgba(255,255,255,.3); display: flex; justify-content: space-between; align-items: center; }
+.nl-end { width: 14px; height: 14px; border-radius: 50%; background: #fff; }
+.nl-packet { position: absolute; left: 0; top: -4px; width: 14px; height: 14px; border-radius: 50%; background: #7fe3ff; box-shadow: 0 0 12px #7fe3ff; animation: nl-move 2.4s ease-in-out infinite alternate; }
+@keyframes nl-move { to { left: calc(100% - 14px); } }
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s, transform .6s; }
+.reveal.is-visible { opacity: 1; transform: none; }
+@media (max-width: 900px) {
+  .network-corridors, .network-risks-grid { grid-template-columns: repeat(2, 1fr); }
+  .cable-section { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) { .network-corridors, .network-risks-grid { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) {
+  .networks-ping, .map-hub-ring, .cab-fibre, .nl-packet { animation: none; }
+  .map-packet { display: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .map-corridors path { animation: none; }
