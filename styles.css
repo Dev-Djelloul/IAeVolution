@@ -346,7 +346,7 @@ h1 span { color: var(--lime); }
 .network-node circle:nth-child(3n) { fill: #a8d6c8; }
 .scene-label rect { fill: rgba(18,27,31,.88); stroke: rgba(168,214,200,.32); }
 .scene-label circle { fill: var(--lime); filter: drop-shadow(0 0 5px rgba(168,214,200,.7)); }
-.scene-label text { fill: #bdc8bd; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 1px; }
+.scene-label text { fill: #bdc8bd; font-family: var(--mono); font-size: 9.5px; letter-spacing: 0; }
 
 .datacenter-scene { position: absolute; inset: 0; overflow: hidden; perspective: 950px; perspective-origin: 50% 48%; }
 .datacenter-stage { position: absolute; inset: 0; touch-action: pan-y; }
@@ -1924,3 +1924,43 @@ html { scroll-padding-top: 92px; }
 .platform-scan { fill: none; stroke: #a8d6c8; stroke-width: 2; stroke-dasharray: 30 520; opacity: .8; animation: platform-scan 6s linear infinite; filter: drop-shadow(0 0 5px rgba(168, 214, 200, .8)); }
 @keyframes platform-scan { to { stroke-dashoffset: -550; } }
 @media (prefers-reduced-motion: reduce) { .data-packet { display: none; } .platform-scan { animation: none !important; } }
+
+/* Illustrations des parcours */
+.journey-stage { display: grid; grid-template-columns: minmax(200px, 300px) minmax(0, 1fr); gap: 28px; align-items: center; }
+.journey-art { padding: 14px; border: 1px solid #2a3a46; border-radius: 14px; background: radial-gradient(circle at 50% 40%, rgba(168, 214, 200, .14), transparent 70%), #0d151c; }
+.ji { display: block; width: 100%; height: auto; fill: none; stroke: var(--lime); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
+.ji .ji-faint { stroke: rgba(168, 214, 200, .3); }
+.ji .ji-core { fill: rgba(168, 214, 200, .12); }
+.ji .ji-dash, .ji .ji-flow { stroke-dasharray: 5 5; animation: ji-flow 1.4s linear infinite; }
+.ji .ji-packet { fill: #d8fff1; stroke: none; filter: drop-shadow(0 0 5px rgba(168, 214, 200, .9)); }
+.ji .ji-pulse { fill: var(--lime); stroke: none; transform-box: fill-box; transform-origin: center; animation: ji-pulse 2.2s ease-in-out infinite; }
+.ji .ji-blink { animation: ji-blink 1.8s ease-in-out infinite; }
+.ji .ji-type { stroke-dasharray: 90; stroke-dashoffset: 90; animation: ji-type 3.4s ease-in-out infinite; }
+.ji .ji-die { fill: rgba(168, 214, 200, .08); animation: ji-die 3s ease-in-out infinite; }
+.ji .ji-chip { fill: rgba(168, 214, 200, .1); animation: ji-die 3.4s ease-in-out infinite; }
+.ji .ji-new { fill: rgba(168, 214, 200, .35); animation: ji-blink 1.2s ease-in-out infinite; }
+.ji .ji-bar { stroke-width: 8; stroke-dasharray: 130; stroke-dashoffset: 130; animation: ji-bar 3.6s ease-out infinite; }
+.ji .ji-check { stroke-dasharray: 40; stroke-dashoffset: 40; animation: ji-bar 3.6s ease-out infinite; }
+.ji .ji-beam { fill: rgba(168, 214, 200, .25); animation: ji-blink 1.4s ease-in-out infinite; }
+.ji .ji-bolt { fill: var(--lime); stroke: none; animation: ji-blink 1.1s ease-in-out infinite; }
+.ji .ji-heat { stroke: #e9b08b; stroke-dasharray: 8 6; animation: ji-rise 2s linear infinite; }
+.ji .ji-drop { stroke: #8fd3ff; fill: rgba(143, 211, 255, .25); animation: ji-drop 2.2s ease-in infinite; }
+.ji .ji-fan { transform-box: fill-box; transform-origin: center; animation: ji-spin 2.4s linear infinite; }
+.ji .ji-spin-a { stroke-width: 3; stroke-dasharray: 60 20; animation: ji-flow 1.6s linear infinite; }
+.ji .ji-scan { fill: rgba(168, 214, 200, .12); stroke: none; animation: ji-blink 2.6s ease-in-out infinite; }
+.ji .ji-box { stroke-dasharray: 6 4; animation: ji-flow 2s linear infinite; }
+.ji .ji-arm { stroke-width: 5; stroke-opacity: .7; }
+.ji .ji-zone { stroke-dasharray: 4 6; stroke: #e9b08b; animation: ji-flow 3s linear infinite; }
+.ji .ji-shield { fill: rgba(168, 214, 200, .15); transform-box: fill-box; transform-origin: center; animation: ji-pulse 2.6s ease-in-out infinite; }
+.ji .ji-d1 { animation-delay: -.5s; } .ji .ji-d2 { animation-delay: -1s; } .ji .ji-d3 { animation-delay: -1.5s; }
+@keyframes ji-flow { to { stroke-dashoffset: -20; } }
+@keyframes ji-pulse { 50% { opacity: .55; transform: scale(1.5); } }
+@keyframes ji-blink { 50% { opacity: .3; } }
+@keyframes ji-type { 0% { stroke-dashoffset: 90; } 50%, 85% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 90; } }
+@keyframes ji-die { 50% { fill: rgba(168, 214, 200, .38); } }
+@keyframes ji-bar { 0% { stroke-dashoffset: 130; } 40%, 85% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 130; } }
+@keyframes ji-rise { to { stroke-dashoffset: -28; } }
+@keyframes ji-drop { 0% { opacity: 0; transform: translateY(-8px); } 40% { opacity: 1; } 100% { opacity: 0; transform: translateY(10px); } }
+@keyframes ji-spin { to { transform: rotate(360deg); } }
+@media (max-width: 760px) { .journey-stage { grid-template-columns: 1fr; } .journey-art { max-width: 300px; } }
+@media (prefers-reduced-motion: reduce) { .ji * { animation: none !important; } .ji .ji-packet { display: none; } .ji .ji-type, .ji .ji-bar, .ji .ji-check { stroke-dashoffset: 0; } }

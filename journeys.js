@@ -1,3 +1,5 @@
+import { renderJourneyArt } from "./journey-art.js";
+
 const AUTO_DELAY = 4500;
 
 export function initJourneys() {
@@ -31,7 +33,7 @@ export function initJourneys() {
       });
       track.style.setProperty("--progress", steps.length > 1 ? current / (steps.length - 1) : 0);
       counter.textContent = String(current + 1);
-      stage.innerHTML = steps[current].querySelector(".journey-detail").innerHTML;
+      stage.innerHTML = `${renderJourneyArt(panel.id, current)}<div class="journey-text">${steps[current].querySelector(".journey-detail").innerHTML}</div>`;
       stage.style.animation = "none";
       void stage.offsetWidth;
       stage.style.animation = "";
