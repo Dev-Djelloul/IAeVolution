@@ -196,6 +196,7 @@
               <li><a href="#boussole"><strong>Notre boussole</strong><span>Les cinq axes d'entrée pour lire l'IA</span></a></li>
               <li><a href="#assistant"><strong>Assistant sourcé</strong><span>Poser une question, à l'écrit ou à la voix</span></a></li>
               <li><a href="#parcours-visuel"><strong>Parcours visuel</strong><span>Visite guidée : du courant au calcul</span></a></li>
+              <li><a href="#parcours-visuels"><strong>Parcours visuels animés</strong><span>Six trajets : question, puce, modèle, énergie, mot, robot</span></a></li>
               <li><a href="#parcours-apprentissage"><strong>Parcours d'apprentissage</strong><span>De débutant à expert</span></a></li>
               <li><a href="reseaux-mondiaux.html"><strong>Réseaux mondiaux</strong><span>Page dédiée : les connexions sous les océans</span></a></li>
             </ol>
@@ -629,6 +630,172 @@
         <div class="hero-foot">
           <span>UNE TECHNOLOGIE, MILLE PERSPECTIVES</span>
           <span class="hero-foot-right">OBSERVER · COMPRENDRE · EXPLORER <span aria-hidden="true">↓</span></span>
+        </div>
+      </section>
+
+      <section class="journeys-section" id="parcours-visuels" aria-labelledby="journeys-title">
+        <div class="journeys-inner">
+          <p class="eyebrow">PARCOURS VISUELS <span class="dossier-separator">/</span> SIX TRAJETS ANIMÉS</p>
+          <h2 id="journeys-title">Six trajets pour voir l'IA fonctionner</h2>
+          <p class="journeys-intro">De la question que vous tapez au calcul dans un centre de données, de la puce au robot : choisissez un trajet, avancez étape par étape ou laissez-le défiler. Ce sont des schémas pédagogiques, simplifiés et non à l'échelle.</p>
+          <div class="journey-tabs" role="tablist" aria-label="Choisir un parcours visuel">
+            <button class="journey-tab is-active" type="button" role="tab" id="journey-tab-requete" aria-selected="true" aria-controls="journey-requete" data-journey-tab="journey-requete"><span>01</span> Une question</button>
+            <button class="journey-tab" type="button" role="tab" id="journey-tab-puce" aria-selected="false" aria-controls="journey-puce" data-journey-tab="journey-puce" tabindex="-1"><span>02</span> Une puce</button>
+            <button class="journey-tab" type="button" role="tab" id="journey-tab-modele" aria-selected="false" aria-controls="journey-modele" data-journey-tab="journey-modele" tabindex="-1"><span>03</span> Un modèle</button>
+            <button class="journey-tab" type="button" role="tab" id="journey-tab-energie" aria-selected="false" aria-controls="journey-energie" data-journey-tab="journey-energie" tabindex="-1"><span>04</span> Énergie et chaleur</button>
+            <button class="journey-tab" type="button" role="tab" id="journey-tab-jeton" aria-selected="false" aria-controls="journey-jeton" data-journey-tab="journey-jeton" tabindex="-1"><span>05</span> Un mot</button>
+            <button class="journey-tab" type="button" role="tab" id="journey-tab-robot" aria-selected="false" aria-controls="journey-robot" data-journey-tab="journey-robot" tabindex="-1"><span>06</span> Un robot</button>
+          </div>
+
+          <article class="journey-panel" id="journey-requete" role="tabpanel" aria-labelledby="journey-tab-requete" data-journey>
+            <header class="journey-head">
+              <div>
+                <p class="eyebrow">PARCOURS 01 <span class="dossier-separator">/</span> 5 ÉTAPES</p>
+                <h3>Le trajet d'une question</h3>
+                <p>Ce qui se passe entre votre clavier et la réponse affichée.</p>
+              </div>
+              <p class="journey-counter" aria-live="polite">Étape <span data-journey-current>1</span> / 5</p>
+            </header>
+            <ol class="journey-track" style="--steps:5">
+              <li class="journey-step is-active"><button class="journey-node" type="button" aria-current="step"><span class="journey-node-index">01</span><span class="journey-node-name">Votre question</span></button><div class="journey-detail"><h4>Vous écrivez ou dictez</h4><p>Le texte de votre question est découpé en petits paquets de données, prêts à voyager sur Internet jusqu'au service d'IA.</p><p class="journey-fact"><strong>Texte → paquets</strong><span>Rien n'est calculé sur votre appareil : il sert de point de départ et d'arrivée.</span></p></div></li>
+              <li class="journey-step"><button class="journey-node" type="button"><span class="journey-node-index">02</span><span class="journey-node-name">Le réseau</span></button><div class="journey-detail"><h4>Fibre, antennes et câbles sous les océans</h4><p>Les paquets traversent des réseaux locaux, des fibres terrestres et, souvent, des câbles sous-marins pour atteindre une région de cloud.</p><p class="journey-fact"><strong>Terre et mer</strong><span>Une part importante du trafic entre continents passe par des câbles sous-marins.</span></p></div></li>
+              <li class="journey-step"><button class="journey-node" type="button"><span class="journey-node-index">03</span><span class="journey-node-name">Le centre de données</span></button><div class="journey-detail"><h4>Une machine disponible est choisie</h4><p>Un répartiteur de charge oriente la requête vers un serveur où le modèle est déjà chargé en mémoire, pour répondre sans attendre.</p><p class="journey-fact"><strong>Répartir la charge</strong><span>Des milliers de requêtes sont traitées en même temps sur des grappes de machines.</span></p></div></li>
+              <li class="journey-step"><button class="journey-node" type="button"><span class="journey-node-index">04</span><span class="journey-node-name">Les puces calculent</span></button><div class="journey-detail"><h4>Des accélérateurs prédisent la suite</h4><p>Des puces spécialisées effectuent d'énormes quantités d'opérations pour calculer, élément par élément, la réponse la plus probable.</p><p class="journey-fact"><strong>Puces · mémoire · stockage</strong><span>Les composants travaillent ensemble ; aucun ne suffit à lui seul.</span></p></div></li>
+              <li class="journey-step"><button class="journey-node" type="button"><span class="journey-node-index">05</span><span class="journey-node-name">La réponse revient</span></button><div class="journey-detail"><h4>Le texte s'affiche au fil de l'eau</h4><p>La réponse repart par le même réseau, souvent en flux continu : vous la lisez pendant qu'elle est encore produite. Elle reste à vérifier dans les sources.</p><p class="journey-fact"><strong>Quelques secondes</strong><span>Le temps total dépend du réseau, du modèle et de la longueur demandée.</span></p></div></li>
+            </ol>
+            <div class="journey-controls">
+              <button class="journey-btn" type="button" data-journey-prev>Précédent</button>
+              <button class="journey-btn journey-btn-primary" type="button" data-journey-play aria-pressed="false"><span data-play-label>Lecture automatique</span><span data-pause-label hidden>Pause</span></button>
+              <button class="journey-btn" type="button" data-journey-next>Suivant</button>
+              <a class="journey-link" href="https://www.oecd.org/en/publications/competition-in-artificial-intelligence-infrastructure_623d1874-en/full-report.html" target="_blank" rel="noopener noreferrer">Source : OCDE ↗</a>
+              <a class="journey-link journey-link-dossier" href="#dossier-data-centres">Lire le dossier ↗</a>
+            </div>
+          </article>
+
+          <article class="journey-panel" id="journey-puce" role="tabpanel" aria-labelledby="journey-tab-puce" data-journey hidden>
+            <header class="journey-head">
+              <div>
+                <p class="eyebrow">PARCOURS 02 <span class="dossier-separator">/</span> 5 ÉTAPES</p>
+                <h3>De la matière à la puce d'IA</h3>
+                <p>Une chaîne de fabrication longue, répartie entre de nombreux pays et acteurs.</p>
+              </div>
+              <p class="journey-counter" aria-live="polite">Étape <span data-journey-current>1</span> / 5</p>
+            </header>
+            <ol class="journey-track" style="--steps:5">
+              <li class="journey-step is-active"><button class="journey-node" type="button" aria-current="step"><span class="journey-node-index">01</span><span class="journey-node-name">Le silicium</span></button><div class="journey-detail"><h4>Du sable au cristal ultra-pur</h4><p>Le silicium est extrait, purifié, puis découpé en fines tranches circulaires appelées « wafers », support de milliers de puces.</p><p class="journey-fact"><strong>Pureté extrême</strong><span>Les procédés exigent une matière quasiment sans impureté.</span></p></div></li>
+              <li class="journey-step"><button class="journey-node" type="button"><span class="journey-node-index">02</span><span class="journey-node-name">La conception</span></button><div class="journey-detail"><h4>Des architectes dessinent les circuits</h4><p>Des équipes conçoivent l'architecture de la puce avec des logiciels spécialisés, puis valident le dessin par la simulation avant toute fabrication.</p><p class="journey-fact"><strong>Plusieurs années</strong><span>Concevoir un accélérateur est un projet de longue haleine.</span></p></div></li>
+              <li class="journey-step"><button class="journey-node" type="button"><span class="journey-node-index">03</span><span class="journey-node-name">La gravure</span></button><div class="journey-detail"><h4>Des motifs microscopiques en usine</h4><p>Dans des fonderies, la lumière grave les circuits couche après couche. Les procédés les plus avancés ne sont maîtrisés que par très peu d'acteurs.</p><p class="journey-fact"><strong>Quelques acteurs</strong><span>Cette concentration pèse sur la sécurité d'approvisionnement.</span></p></div></li>
+              <li class="journey-step"><button class="journey-node" type="button"><span class="journey-node-index">04</span><span class="journey-node-name">La mémoire</span></button><div class="journey-detail"><h4>Assembler puce et mémoire</h4><p>Les accélérateurs sont associés à de la mémoire à haute bande passante, empilée au plus près du calcul, grâce à des techniques d'assemblage avancées.</p><p class="journey-fact"><strong>Le goulot d'étranglement</strong><span>Déplacer les données coûte souvent autant que les calculer.</span></p></div></li>
+              <li class="journey-step"><button class="journey-node" type="button"><span class="journey-node-index">05</span><span class="journey-node-name">Le serveur</span></button><div class="journey-detail"><h4>Des cartes aux armoires</h4><p>Les puces sont montées sur des cartes, intégrées dans des serveurs, puis alignées en armoires dans un centre de données, reliées par des réseaux rapides.</p><p class="journey-fact"><strong>Puce → serveur → grappe</strong><span>Un modèle de grande taille mobilise de nombreuses puces à la fois.</span></p></div></li>
+            </ol>
+            <div class="journey-controls">
+              <button class="journey-btn" type="button" data-journey-prev>Précédent</button>
+              <button class="journey-btn journey-btn-primary" type="button" data-journey-play aria-pressed="false"><span data-play-label>Lecture automatique</span><span data-pause-label hidden>Pause</span></button>
+              <button class="journey-btn" type="button" data-journey-next>Suivant</button>
+              <a class="journey-link" href="https://www.oecd.org/en/publications/competition-in-artificial-intelligence-infrastructure_623d1874-en/full-report.html" target="_blank" rel="noopener noreferrer">Source : OCDE ↗</a>
+              <a class="journey-link journey-link-dossier" href="#dossier-data-centres">Lire le dossier ↗</a>
+            </div>
+          </article>
+
+          <article class="journey-panel" id="journey-modele" role="tabpanel" aria-labelledby="journey-tab-modele" data-journey hidden>
+            <header class="journey-head">
+              <div>
+                <p class="eyebrow">PARCOURS 03 <span class="dossier-separator">/</span> 5 ÉTAPES</p>
+                <h3>La vie d'un modèle d'IA</h3>
+                <p>De la collecte des données à la surveillance en service.</p>
+              </div>
+              <p class="journey-counter" aria-live="polite">Étape <span data-journey-current>1</span> / 5</p>
+            </header>
+            <ol class="journey-track" style="--steps:5">
+              <li class="journey-step is-active"><button class="journey-node" type="button" aria-current="step"><span class="journey-node-index">01</span><span class="journey-node-name">Les données</span></button><div class="journey-detail"><h4>Rassembler, nettoyer, documenter</h4><p>Les données d'entraînement sont collectées, filtrées et documentées. Leur qualité, leur origine et leurs droits d'usage conditionnent tout le reste.</p><p class="journey-fact"><strong>Qualité avant quantité</strong><span>Un biais présent dans les données se retrouve souvent dans le modèle.</span></p></div></li>
+              <li class="journey-step"><button class="journey-node" type="button"><span class="journey-node-index">02</span><span class="journey-node-name">L'entraînement</span></button><div class="journey-detail"><h4>Ajuster des milliards de paramètres</h4><p>Le modèle est ajusté pas à pas pour réduire ses erreurs sur les données. C'est l'étape qui mobilise le plus de puces et d'électricité.</p><p class="journey-fact"><strong>Calcul intensif</strong><span>L'entraînement se compte en semaines ou en mois sur de grandes grappes.</span></p></div></li>
+              <li class="journey-step"><button class="journey-node" type="button"><span class="journey-node-index">03</span><span class="journey-node-name">L'évaluation</span></button><div class="journey-detail"><h4>Mesurer sur des cas réels</h4><p>Le modèle est testé sur des tâches, des cas limites, plusieurs langues et des situations à risque, avant toute mise à disposition.</p><p class="journey-fact"><strong>Tester sur l'usage réel</strong><span>Un bon score de référence ne garantit pas un bon usage.</span></p></div></li>
+              <li class="journey-step"><button class="journey-node" type="button"><span class="journey-node-index">04</span><span class="journey-node-name">Le déploiement</span></button><div class="journey-detail"><h4>Passer de la recherche au service</h4><p>Le modèle est installé dans des centres de données ou sur des appareils, avec des garde-fous, des limites d'usage et des règles de conservation des données.</p><p class="journey-fact"><strong>Inférence</strong><span>Servir des millions de requêtes consomme aussi de l'énergie, en continu.</span></p></div></li>
+              <li class="journey-step"><button class="journey-node" type="button"><span class="journey-node-index">05</span><span class="journey-node-name">La surveillance</span></button><div class="journey-detail"><h4>Observer, corriger, retirer</h4><p>Une fois en service, le modèle est suivi : incidents, dérives, retours des utilisateurs. Il peut être mis à jour ou retiré.</p><p class="journey-fact"><strong>Un cycle, pas une ligne</strong><span>La fiabilité se construit sur tout le cycle de vie.</span></p></div></li>
+            </ol>
+            <div class="journey-controls">
+              <button class="journey-btn" type="button" data-journey-prev>Précédent</button>
+              <button class="journey-btn journey-btn-primary" type="button" data-journey-play aria-pressed="false"><span data-play-label>Lecture automatique</span><span data-pause-label hidden>Pause</span></button>
+              <button class="journey-btn" type="button" data-journey-next>Suivant</button>
+              <a class="journey-link" href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener noreferrer">Source : NIST AI RMF ↗</a>
+              <a class="journey-link journey-link-dossier" href="#dossier-ia-responsable">Lire le dossier ↗</a>
+            </div>
+          </article>
+
+          <article class="journey-panel" id="journey-energie" role="tabpanel" aria-labelledby="journey-tab-energie" data-journey hidden>
+            <header class="journey-head">
+              <div>
+                <p class="eyebrow">PARCOURS 04 <span class="dossier-separator">/</span> 5 ÉTAPES</p>
+                <h3>De l'électron à la chaleur</h3>
+                <p>Le chemin de l'énergie dans un centre de données.</p>
+              </div>
+              <p class="journey-counter" aria-live="polite">Étape <span data-journey-current>1</span> / 5</p>
+            </header>
+            <ol class="journey-track" style="--steps:5">
+              <li class="journey-step is-active"><button class="journey-node" type="button" aria-current="step"><span class="journey-node-index">01</span><span class="journey-node-name">Le réseau électrique</span></button><div class="journey-detail"><h4>Tout commence par le courant</h4><p>Le site est raccordé au réseau électrique. La puissance disponible et les délais de raccordement figurent parmi les premiers critères d'implantation.</p><p class="journey-fact"><strong>≈ 415 TWh</strong><span>consommés par les centres de données dans le monde en 2024 — pas par l'IA seule.</span></p></div></li>
+              <li class="journey-step"><button class="journey-node" type="button"><span class="journey-node-index">02</span><span class="journey-node-name">L'alimentation</span></button><div class="journey-detail"><h4>Transformer, convertir, sécuriser</h4><p>Postes de transformation, onduleurs et batteries convertissent et stabilisent le courant. Des groupes de secours assurent la continuité du service.</p><p class="journey-fact"><strong>Redondance</strong><span>Plusieurs chemins d'alimentation évitent qu'une panne n'arrête le site.</span></p></div></li>
+              <li class="journey-step"><button class="journey-node" type="button"><span class="journey-node-index">03</span><span class="journey-node-name">Le calcul</span></button><div class="journey-detail"><h4>L'électricité devient du calcul</h4><p>Les serveurs transforment l'énergie électrique en opérations : entraîner un modèle, ou répondre à une requête.</p><p class="journey-fact"><strong>Énergie → calcul</strong><span>L'efficacité des puces et des logiciels réduit l'énergie par opération.</span></p></div></li>
+              <li class="journey-step"><button class="journey-node" type="button"><span class="journey-node-index">04</span><span class="journey-node-name">La chaleur</span></button><div class="journey-detail"><h4>Presque tout finit en chaleur</h4><p>L'énergie consommée par les puces est dégagée sous forme de chaleur, qu'il faut évacuer en continu pour que les machines fonctionnent.</p><p class="journey-fact"><strong>Densité croissante</strong><span>Plus les armoires sont denses, plus elles chauffent.</span></p></div></li>
+              <li class="journey-step"><button class="journey-node" type="button"><span class="journey-node-index">05</span><span class="journey-node-name">Le refroidissement</span></button><div class="journey-detail"><h4>Évacuer, parfois valoriser</h4><p>Air, eau ou liquide en contact avec les puces : le choix dépend du climat, de la ressource locale et de la densité. La chaleur peut parfois être réutilisée.</p><p class="journey-fact"><strong>Climat et eau</strong><span>Le refroidissement influence les besoins locaux en énergie et en eau.</span></p></div></li>
+            </ol>
+            <div class="journey-controls">
+              <button class="journey-btn" type="button" data-journey-prev>Précédent</button>
+              <button class="journey-btn journey-btn-primary" type="button" data-journey-play aria-pressed="false"><span data-play-label>Lecture automatique</span><span data-pause-label hidden>Pause</span></button>
+              <button class="journey-btn" type="button" data-journey-next>Suivant</button>
+              <a class="journey-link" href="https://www.iea.org/reports/energy-and-ai" target="_blank" rel="noopener noreferrer">Source : AIE · Energy and AI ↗</a>
+              <a class="journey-link journey-link-dossier" href="#dossier-data-centres">Lire le dossier ↗</a>
+            </div>
+          </article>
+
+          <article class="journey-panel" id="journey-jeton" role="tabpanel" aria-labelledby="journey-tab-jeton" data-journey hidden>
+            <header class="journey-head">
+              <div>
+                <p class="eyebrow">PARCOURS 05 <span class="dossier-separator">/</span> 5 ÉTAPES</p>
+                <h3>Comment un modèle écrit un mot</h3>
+                <p>Le mécanisme d'un modèle de langage, du texte au jeton suivant.</p>
+              </div>
+              <p class="journey-counter" aria-live="polite">Étape <span data-journey-current>1</span> / 5</p>
+            </header>
+            <ol class="journey-track" style="--steps:5">
+              <li class="journey-step is-active"><button class="journey-node" type="button" aria-current="step"><span class="journey-node-index">01</span><span class="journey-node-name">Le texte</span></button><div class="journey-detail"><h4>Une phrase en entrée</h4><p>Le modèle reçoit votre question et, souvent, l'historique de la conversation : c'est le contexte dont il dispose pour répondre.</p><p class="journey-fact"><strong>Un contexte borné</strong><span>Le modèle ne lit qu'une quantité limitée de texte à la fois.</span></p></div></li>
+              <li class="journey-step"><button class="journey-node" type="button"><span class="journey-node-index">02</span><span class="journey-node-name">Les jetons</span></button><div class="journey-detail"><h4>Découper en morceaux de mots</h4><p>Le texte est découpé en « jetons » (tokens) : des mots, des fragments de mots ou des signes. Le modèle ne manipule pas les lettres directement.</p><p class="journey-fact"><strong>Texte → jetons</strong><span>Le coût et la longueur d'une réponse se comptent souvent en jetons.</span></p></div></li>
+              <li class="journey-step"><button class="journey-node" type="button"><span class="journey-node-index">03</span><span class="journey-node-name">Les vecteurs</span></button><div class="journey-detail"><h4>Des nombres qui portent du sens</h4><p>Chaque jeton est converti en une longue liste de nombres. Des jetons aux usages proches se retrouvent proches dans cet espace mathématique.</p><p class="journey-fact"><strong>Sens → géométrie</strong><span>C'est une représentation statistique, pas une compréhension humaine.</span></p></div></li>
+              <li class="journey-step"><button class="journey-node" type="button"><span class="journey-node-index">04</span><span class="journey-node-name">L'attention</span></button><div class="journey-detail"><h4>Peser ce qui compte dans le contexte</h4><p>Un mécanisme d'attention détermine, pour chaque jeton, quelles parties du contexte sont les plus utiles pour prédire la suite.</p><p class="journey-fact"><strong>Architecture Transformer</strong><span>Introduite en 2017, elle est au cœur de la plupart des modèles de langage actuels.</span></p></div></li>
+              <li class="journey-step"><button class="journey-node" type="button"><span class="journey-node-index">05</span><span class="journey-node-name">Le jeton suivant</span></button><div class="journey-detail"><h4>Tirer la suite, puis recommencer</h4><p>Le modèle calcule des probabilités pour le jeton suivant, en choisit un, l'ajoute au texte, et répète l'opération jusqu'à la fin de la réponse.</p><p class="journey-fact"><strong>Plausible n'est pas vrai</strong><span>La fluidité d'une réponse ne garantit pas son exactitude.</span></p></div></li>
+            </ol>
+            <div class="journey-controls">
+              <button class="journey-btn" type="button" data-journey-prev>Précédent</button>
+              <button class="journey-btn journey-btn-primary" type="button" data-journey-play aria-pressed="false"><span data-play-label>Lecture automatique</span><span data-pause-label hidden>Pause</span></button>
+              <button class="journey-btn" type="button" data-journey-next>Suivant</button>
+              <a class="journey-link" href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener noreferrer">Source : Attention Is All You Need ↗</a>
+              <a class="journey-link journey-link-dossier" href="#dossier-ia-generative">Lire le dossier ↗</a>
+            </div>
+          </article>
+
+          <article class="journey-panel" id="journey-robot" role="tabpanel" aria-labelledby="journey-tab-robot" data-journey hidden>
+            <header class="journey-head">
+              <div>
+                <p class="eyebrow">PARCOURS 06 <span class="dossier-separator">/</span> 5 ÉTAPES</p>
+                <h3>De la perception à l'action</h3>
+                <p>La boucle qui permet à un robot d'agir dans le monde physique.</p>
+              </div>
+              <p class="journey-counter" aria-live="polite">Étape <span data-journey-current>1</span> / 5</p>
+            </header>
+            <ol class="journey-track" style="--steps:5">
+              <li class="journey-step is-active"><button class="journey-node" type="button" aria-current="step"><span class="journey-node-index">01</span><span class="journey-node-name">Les capteurs</span></button><div class="journey-detail"><h4>Caméras, profondeur, contact</h4><p>Le robot perçoit son environnement avec des caméras, des capteurs de distance, des capteurs de force et d'orientation.</p><p class="journey-fact"><strong>Mesures imparfaites</strong><span>Lumière, bruit et poussière peuvent dégrader ce que le robot perçoit.</span></p></div></li>
+              <li class="journey-step"><button class="journey-node" type="button"><span class="journey-node-index">02</span><span class="journey-node-name">La perception</span></button><div class="journey-detail"><h4>Interpréter la scène</h4><p>Des modèles d'IA reconnaissent les objets, estiment les distances et localisent le robot. Cette étape transforme des mesures en une représentation exploitable.</p><p class="journey-fact"><strong>Incertitude</strong><span>Un robot raisonne sur des probabilités, jamais sur une certitude absolue.</span></p></div></li>
+              <li class="journey-step"><button class="journey-node" type="button"><span class="journey-node-index">03</span><span class="journey-node-name">La décision</span></button><div class="journey-detail"><h4>Choisir quoi faire</h4><p>Un planificateur choisit une action pour atteindre l'objectif : saisir, contourner, attendre. Il tient compte des règles de sécurité.</p><p class="journey-fact"><strong>Objectif + contraintes</strong><span>Le choix dépend de la tâche et des limites imposées.</span></p></div></li>
+              <li class="journey-step"><button class="journey-node" type="button"><span class="journey-node-index">04</span><span class="journey-node-name">La commande</span></button><div class="journey-detail"><h4>Traduire en mouvements</h4><p>Le contrôle convertit la décision en couples moteurs et en trajectoires, et corrige en continu l'écart entre le mouvement voulu et le mouvement réel.</p><p class="journey-fact"><strong>Boucle rapide</strong><span>Le réglage se refait plusieurs fois par seconde.</span></p></div></li>
+              <li class="journey-step"><button class="journey-node" type="button"><span class="journey-node-index">05</span><span class="journey-node-name">La sécurité</span></button><div class="journey-detail"><h4>Protéger les personnes</h4><p>Zones de sécurité, arrêt d'urgence, limitation de force et vitesse : la validation avant usage est indispensable, surtout près des humains.</p><p class="journey-fact"><strong>Valider avant d'agir</strong><span>Une analyse de risques précède tout déploiement.</span></p></div></li>
+            </ol>
+            <div class="journey-controls">
+              <button class="journey-btn" type="button" data-journey-prev>Précédent</button>
+              <button class="journey-btn journey-btn-primary" type="button" data-journey-play aria-pressed="false"><span data-play-label>Lecture automatique</span><span data-pause-label hidden>Pause</span></button>
+              <button class="journey-btn" type="button" data-journey-next>Suivant</button>
+              <a class="journey-link" href="https://www.osha.gov/robotics" target="_blank" rel="noopener noreferrer">Source : OSHA · Sécurité robotique ↗</a>
+              <a class="journey-link journey-link-dossier" href="#explorer">Explorer les dossiers ↗</a>
+            </div>
+          </article>
         </div>
       </section>
 

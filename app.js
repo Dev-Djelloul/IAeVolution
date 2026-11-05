@@ -1,4 +1,5 @@
 import { initFitTitles } from "./fit-titles.js";
+import { initJourneys } from "./journeys.js";
 import sourceCatalog from "./sources.json";
 import { getSuggestedAnswer } from "./assistant-locales.js";
 import {
@@ -2324,5 +2325,6 @@ document.addEventListener("keydown", (event) => {
 });
 
 renderTopics();
+initJourneys();
 initializeTranslation();
 initFitTitles();
