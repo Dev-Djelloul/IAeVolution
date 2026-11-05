@@ -1344,7 +1344,9 @@
     "Une puce": "A chip",
     "Valider avant d'agir": "Validate before acting",
     "Vous écrivez ou dictez": "You write or dictate",
-    "Zones de sécurité, arrêt d'urgence, limitation de force et vitesse : la validation avant usage est indispensable, surtout près des humains.": "Safety zones, emergency stop, force and speed limits: validation before use is essential, especially near humans."
+    "Zones de sécurité, arrêt d'urgence, limitation de force et vitesse : la validation avant usage est indispensable, surtout près des humains.": "Safety zones, emergency stop, force and speed limits: validation before use is essential, especially near humans.",
+    "Arrêter l'écoute": "Stop listening",
+    "Écouter ce parcours": "Listen to this journey"
   },
   "es": {
     "__IAEVAR0__ fiches sans revue datée": "Fichas de índice __IAEVAR0__ sin revisión fechada",
@@ -2691,7 +2693,9 @@
     "Une puce": "Un chip",
     "Valider avant d'agir": "Validar antes de actuar",
     "Vous écrivez ou dictez": "Usted escribe o dicta",
-    "Zones de sécurité, arrêt d'urgence, limitation de force et vitesse : la validation avant usage est indispensable, surtout près des humains.": "Zonas de seguridad, parada de emergencia, límites de fuerza y velocidad: es fundamental validar su uso antes de utilizarlos, especialmente cerca de personas."
+    "Zones de sécurité, arrêt d'urgence, limitation de force et vitesse : la validation avant usage est indispensable, surtout près des humains.": "Zonas de seguridad, parada de emergencia, límites de fuerza y velocidad: es fundamental validar su uso antes de utilizarlos, especialmente cerca de personas.",
+    "Arrêter l'écoute": "Deja de escuchar",
+    "Écouter ce parcours": "Escucha este viaje"
   },
   "nl": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ indexkaarten zonder gedateerde beoordeling",
@@ -4038,7 +4042,9 @@
     "Une puce": "Een chip",
     "Valider avant d'agir": "Controleer eerst of je actie onderneemt.",
     "Vous écrivez ou dictez": "Je schrijft of dicteert.",
-    "Zones de sécurité, arrêt d'urgence, limitation de force et vitesse : la validation avant usage est indispensable, surtout près des humains.": "Veiligheidszones, noodstops, kracht- en snelheidslimieten: controle vóór gebruik is essentieel, vooral in de buurt van mensen."
+    "Zones de sécurité, arrêt d'urgence, limitation de force et vitesse : la validation avant usage est indispensable, surtout près des humains.": "Veiligheidszones, noodstops, kracht- en snelheidslimieten: controle vóór gebruik is essentieel, vooral in de buurt van mensen.",
+    "Arrêter l'écoute": "Stop met luisteren",
+    "Écouter ce parcours": "Luister naar deze reis"
   },
   "de": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ Karteikarten ohne datierte Überprüfung",
@@ -5385,7 +5391,9 @@
     "Une puce": "Ein Chip",
     "Valider avant d'agir": "Vor dem Handeln prüfen.",
     "Vous écrivez ou dictez": "Sie schreiben oder diktieren",
-    "Zones de sécurité, arrêt d'urgence, limitation de force et vitesse : la validation avant usage est indispensable, surtout près des humains.": "Sicherheitszonen, Notstopp, Kraft- und Geschwindigkeitsbegrenzungen: Eine Überprüfung vor der Anwendung ist unerlässlich, insbesondere in der Nähe von Menschen."
+    "Zones de sécurité, arrêt d'urgence, limitation de force et vitesse : la validation avant usage est indispensable, surtout près des humains.": "Sicherheitszonen, Notstopp, Kraft- und Geschwindigkeitsbegrenzungen: Eine Überprüfung vor der Anwendung ist unerlässlich, insbesondere in der Nähe von Menschen.",
+    "Arrêter l'écoute": "Hör auf zuzuhören",
+    "Écouter ce parcours": "Hören Sie sich diese Reise an"
   },
   "zh-CN": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ 索引卡，无日期审核",
@@ -6732,7 +6740,9 @@
     "Une puce": "芯片",
     "Valider avant d'agir": "行动前请先验证。",
     "Vous écrivez ou dictez": "你写或口述",
-    "Zones de sécurité, arrêt d'urgence, limitation de force et vitesse : la validation avant usage est indispensable, surtout près des humains.": "安全区域、紧急停止、力和速度限制：使用前必须进行验证，尤其是在人多的地方。"
+    "Zones de sécurité, arrêt d'urgence, limitation de force et vitesse : la validation avant usage est indispensable, surtout près des humains.": "安全区域、紧急停止、力和速度限制：使用前必须进行验证，尤其是在人多的地方。",
+    "Arrêter l'écoute": "别听了",
+    "Écouter ce parcours": "聆听这段旅程"
   },
   "pt": {
     "__IAEVAR0__ fiches sans revue datée": "Fichas de índice __IAEVAR0__ sem revisão datada",
@@ -8079,7 +8089,9 @@
     "Une puce": "Um chip",
     "Valider avant d'agir": "Valide antes de agir",
     "Vous écrivez ou dictez": "Você escreve ou dita",
-    "Zones de sécurité, arrêt d'urgence, limitation de force et vitesse : la validation avant usage est indispensable, surtout près des humains.": "Zonas de segurança, parada de emergência, limites de força e velocidade: a validação antes do uso é essencial, especialmente perto de pessoas."
+    "Zones de sécurité, arrêt d'urgence, limitation de force et vitesse : la validation avant usage est indispensable, surtout près des humains.": "Zonas de segurança, parada de emergência, limites de força e velocidade: a validação antes do uso é essencial, especialmente perto de pessoas.",
+    "Arrêter l'écoute": "Pare de ouvir",
+    "Écouter ce parcours": "Ouça esta jornada"
   },
   "ar": {
     "__IAEVAR0__ fiches sans revue datée": "بطاقات فهرسة __IAEVAR0__ بدون مراجعة مؤرخة",
@@ -9426,7 +9438,9 @@
     "Une puce": "شريحة",
     "Valider avant d'agir": "تحقق من صحة البيانات قبل اتخاذ أي إجراء",
     "Vous écrivez ou dictez": "تكتب أو تملي",
-    "Zones de sécurité, arrêt d'urgence, limitation de force et vitesse : la validation avant usage est indispensable, surtout près des humains.": "مناطق الأمان، التوقف الطارئ، حدود القوة والسرعة: التحقق من صحة هذه الحدود قبل الاستخدام أمر ضروري، خاصة بالقرب من البشر."
+    "Zones de sécurité, arrêt d'urgence, limitation de force et vitesse : la validation avant usage est indispensable, surtout près des humains.": "مناطق الأمان، التوقف الطارئ، حدود القوة والسرعة: التحقق من صحة هذه الحدود قبل الاستخدام أمر ضروري، خاصة بالقرب من البشر.",
+    "Arrêter l'écoute": "توقف عن الاستماع",
+    "Écouter ce parcours": "استمع إلى هذه الرحلة"
   },
   "hi": {
     "__IAEVAR0__ fiches sans revue datée": "दिनांकित समीक्षा के बिना __IAEVAR0__ अनुक्रमणिका कार्ड",
@@ -10773,7 +10787,9 @@
     "Une puce": "एक टुकड़ा",
     "Valider avant d'agir": "कार्य करने से पहले पुष्टि करें",
     "Vous écrivez ou dictez": "आप लिखते हैं या बोलकर लिखवाते हैं",
-    "Zones de sécurité, arrêt d'urgence, limitation de force et vitesse : la validation avant usage est indispensable, surtout près des humains.": "सुरक्षा क्षेत्र, आपातकालीन स्टॉप, बल और गति सीमा: उपयोग से पहले सत्यापन आवश्यक है, खासकर मनुष्यों के पास।"
+    "Zones de sécurité, arrêt d'urgence, limitation de force et vitesse : la validation avant usage est indispensable, surtout près des humains.": "सुरक्षा क्षेत्र, आपातकालीन स्टॉप, बल और गति सीमा: उपयोग से पहले सत्यापन आवश्यक है, खासकर मनुष्यों के पास।",
+    "Arrêter l'écoute": "सुनना बंद करो",
+    "Écouter ce parcours": "इस यात्रा को सुनें"
   },
   "ja": {
     "__IAEVAR0__ fiches sans revue datée": "日付レビューのないインデックスカード __IAEVAR0__",
@@ -12120,7 +12136,9 @@
     "Une puce": "チップ",
     "Valider avant d'agir": "行動する前に検証する",
     "Vous écrivez ou dictez": "書くか、口述する",
-    "Zones de sécurité, arrêt d'urgence, limitation de force et vitesse : la validation avant usage est indispensable, surtout près des humains.": "安全区域、緊急停止、力と速度の制限：特に人の近くでは、使用前に検証することが不可欠です。"
+    "Zones de sécurité, arrêt d'urgence, limitation de force et vitesse : la validation avant usage est indispensable, surtout près des humains.": "安全区域、緊急停止、力と速度の制限：特に人の近くでは、使用前に検証することが不可欠です。",
+    "Arrêter l'écoute": "聞くのをやめる",
+    "Écouter ce parcours": "この旅を聴いてみてください"
   },
   "ru": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ индексные карточки без датированного обзора",
@@ -13467,7 +13485,9 @@
     "Une puce": "чип",
     "Valider avant d'agir": "Перед принятием решения проверьте все данные.",
     "Vous écrivez ou dictez": "Вы пишете или диктуете.",
-    "Zones de sécurité, arrêt d'urgence, limitation de force et vitesse : la validation avant usage est indispensable, surtout près des humains.": "Зоны безопасности, аварийная остановка, ограничения по силе и скорости: проверка перед использованием крайне важна, особенно вблизи людей."
+    "Zones de sécurité, arrêt d'urgence, limitation de force et vitesse : la validation avant usage est indispensable, surtout près des humains.": "Зоны безопасности, аварийная остановка, ограничения по силе и скорости: проверка перед использованием крайне важна, особенно вблизи людей.",
+    "Arrêter l'écoute": "Прекратите слушать",
+    "Écouter ce parcours": "Послушайте это путешествие"
   },
   "it": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ schede indice senza revisione datata",
@@ -14814,6 +14834,8 @@
     "Une puce": "Un chip",
     "Valider avant d'agir": "Verificare prima di agire",
     "Vous écrivez ou dictez": "Scrivi o detti",
-    "Zones de sécurité, arrêt d'urgence, limitation de force et vitesse : la validation avant usage est indispensable, surtout près des humains.": "Zone di sicurezza, arresto di emergenza, limiti di forza e di velocità: la validazione prima dell'uso è essenziale, soprattutto in prossimità di persone."
+    "Zones de sécurité, arrêt d'urgence, limitation de force et vitesse : la validation avant usage est indispensable, surtout près des humains.": "Zone di sicurezza, arresto di emergenza, limiti di forza e di velocità: la validazione prima dell'uso è essenziale, soprattutto in prossimità di persone.",
+    "Arrêter l'écoute": "Smetti di ascoltare",
+    "Écouter ce parcours": "Ascolta questo viaggio"
   }
 }
