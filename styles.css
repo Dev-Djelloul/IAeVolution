@@ -1736,3 +1736,8 @@ html { scroll-behavior: smooth; }
 .assistant-choice .segmented { align-items: stretch; }
 .assistant-choice .segmented span { display: flex; align-items: center; height: 100%; padding: 0 16px; }
 .assistant-choice-model select { line-height: 1; padding-top: 0; padding-bottom: 0; }
+
+.assistant-choice, .assistant-choice-model { display: block; }
+.assistant-choice legend, .assistant-choice-model > label { display: block; float: none; width: auto; height: 16px; margin: 0 0 6px; padding: 0; line-height: 16px; }
+.assistant-choice .segmented { display: inline-flex; margin: 0; }
+.assistant-choice-model select { display: block; margin: 0; }
