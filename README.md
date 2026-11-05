@@ -6,9 +6,18 @@ IAeVolution est un observatoire éditorial de l'IA, conçu pour rendre le sujet 
 utile et accessible. Le site propose une visite guidée, une boussole à cinq angles, sept
 dossiers thématiques, une chronologie historique filtrable et sourcée, un tableau de bord
 d'indicateurs datés et sourcés, un registre de sources et une page dédiée aux réseaux mondiaux.
-Les contenus sont éditorialisés et sourcés ; l'assistant documentaire effectue une recherche
-locale dans un corpus restreint, avec une commande vocale facultative fournie par le
-navigateur. Il ne fait pas appel à un modèle génératif.
+Les contenus sont éditorialisés et sourcés. L'assistant repère d'abord des passages dans le
+corpus local, puis demande à un modèle d'IA, via OpenRouter, de rédiger une réponse appuyée
+sur ces repères. Chaque réponse indique le modèle réellement utilisé, son éditeur, son coût
+estimé et son nombre de tokens. Le visiteur choisit le niveau (accessible ou expert), la
+longueur et le modèle ; la réponse peut être lue à voix haute avec une barre de progression.
+Une commande vocale facultative est fournie par le navigateur. Une réponse générée peut
+contenir des erreurs : elle doit être vérifiée dans les sources.
+
+**Confidentialité de l'assistant.** La question saisie (limitée à 600 caractères) et jusqu'à
+trois extraits du corpus sont envoyés au Worker Cloudflare, puis à OpenRouter et au
+fournisseur du modèle choisi. IAeVolution ne conserve ni les questions ni les réponses.
+Les débits sont limités à 12 requêtes par minute et par adresse IP.
 
 La reconnaissance vocale ne démarre qu'après une action sur le bouton du micro. Les
 navigateurs compatibles utilisent d'abord un modèle vocal local installé ; sinon, l'audio
@@ -68,9 +77,14 @@ npm run preview
 
 ## Déploiement Cloudflare
 
-Le site est servi comme un site statique par **Cloudflare Workers Static Assets** ;
-aucun serveur applicatif ni ressource Cloudflare supplémentaire n'est requis.
+Le site est servi par **Cloudflare Workers Static Assets**, avec un Worker (`worker.js`)
+qui expose uniquement `POST /api/assistant` et sert les fichiers statiques pour le reste.
 La configuration de déploiement est définie dans `wrangler.jsonc`.
+
+L'assistant exige le secret `OPENROUTER_API_KEY`, à déposer avec `npx wrangler secret put
+OPENROUTER_API_KEY` (jamais dans le code ni dans Git). Les modèles par défaut peuvent être
+remplacés par la variable `OPENROUTER_MODELS` (liste séparée par des virgules). Fixez une
+limite de dépense dans votre compte OpenRouter.
 
 Wrangler est installé comme dépendance du projet. Authentifiez-vous une seule fois sur votre compte Cloudflare :
 

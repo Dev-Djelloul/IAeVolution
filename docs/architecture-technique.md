@@ -216,14 +216,18 @@ commit ou d'une simple collecte automatique.
 
 ## Confidentialité, sûreté et fiabilité
 
+- L'assistant envoie la question et des extraits du corpus à OpenRouter puis au fournisseur
+  du modèle ; l'interface le signale et affiche le modèle, le coût et un avertissement.
+  La clé `OPENROUTER_API_KEY` reste un secret Cloudflare, jamais exposée au navigateur.
 - Les questions de l'assistant ne sont pas conservées par défaut ; ne stocker aucune
   conversation sans choix explicite, finalité annoncée et durée de conservation définie.
 - Avant l'activation du micro, expliquer la capture vocale et son traitement, demander une
   action claire et offrir une alternative texte. Le prototype indique que le fournisseur du
   navigateur peut traiter l'audio ; aucune capture ne démarre sans action explicite.
 - Le prototype vocal actuel ne transmet pas les transcriptions à IAeVolution : la recherche
-  reste locale au navigateur et aucune conversation n'est conservée. Toute évolution vers
-  une reconnaissance, synthèse ou génération côté serveur exigera une nouvelle évaluation
+  reste locale au navigateur et aucune conversation n'est conservée. La génération passe
+  par le Worker (`/api/assistant`, limite de débit, entrées bornées). Toute évolution vers
+  une reconnaissance ou synthèse côté serveur exigera une nouvelle évaluation
   des fournisseurs, coûts, limites et règles de conservation.
 - Présenter les résultats Web comme des contenus externes non vérifiés par défaut ; séparer
   clairement publicité éventuelle, résultats éditoriaux IAeVolution et résultats de recherche.
@@ -250,7 +254,7 @@ commit ou d'une simple collecte automatique.
 | 5. Recherche évaluée | Corpus approuvé, jeu de questions de référence et mesure des citations | Les réponses pertinentes citent les bonnes preuves et les cas inconnus s'abstiennent |
 | 6. Recherche Web contrôlée | Recherche Web explicite ou déclenchée par intention, résultats séparés du corpus interne | Sources accessibles et citées ; aucune affirmation de couverture exhaustive du Web |
 | 7. Assistant vocal | Prototype navigateur à la demande : transcription, recherche locale sourcée, lecture et saisie texte de repli | La compatibilité du navigateur, la confidentialité audio et la qualité de reconnaissance sont évaluées avant tout service vocal côté serveur |
-| 8. Génération contrôlée | Prototype RAG derrière l'API, désactivable et plafonné | Qualité, confidentialité, coûts et limites sont mesurés avant une ouverture plus large |
+| 8. Génération contrôlée | Livré : Worker `/api/assistant` vers OpenRouter, repli multi-modèles, niveau/longueur/modèle au choix, coût affiché, limite de débit ; suite possible : streaming, mémoire de conversation | Qualité, confidentialité, coûts et limites sont mesurés avant une ouverture plus large |
 
 ## Décisions à prendre avant l'étape 2
 
