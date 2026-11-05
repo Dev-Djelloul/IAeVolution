@@ -1150,7 +1150,8 @@
     "Progression de la lecture": "Reading progression",
     "Temps de lecture estimé": "Estimated reading time",
     "Temps restant": "Time remaining",
-    "Une question. Une IA. Des sources": "One question. One AI. Some sources"
+    "Une question. Une IA. Des sources": "One question. One AI. Some sources",
+    "Assistant": "Assistant"
   },
   "es": {
     "__IAEVAR0__ fiches sans revue datée": "Fichas de índice __IAEVAR0__ sin revisión fechada",
@@ -2303,7 +2304,8 @@
     "Progression de la lecture": "Progresión de lectura",
     "Temps de lecture estimé": "Tiempo estimado de lectura",
     "Temps restant": "Tiempo restante",
-    "Une question. Une IA. Des sources": "Una pregunta. Una IA. Algunas fuentes."
+    "Une question. Une IA. Des sources": "Una pregunta. Una IA. Algunas fuentes.",
+    "Assistant": "Asistente"
   },
   "nl": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ indexkaarten zonder gedateerde beoordeling",
@@ -3456,7 +3458,8 @@
     "Progression de la lecture": "Leesvoortgang",
     "Temps de lecture estimé": "Geschatte leestijd",
     "Temps restant": "Resterende tijd",
-    "Une question. Une IA. Des sources": "Eén vraag. Eén AI. Enkele bronnen."
+    "Une question. Une IA. Des sources": "Eén vraag. Eén AI. Enkele bronnen.",
+    "Assistant": "Assistent"
   },
   "de": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ Karteikarten ohne datierte Überprüfung",
@@ -4609,7 +4612,8 @@
     "Progression de la lecture": "Lesefortschritt",
     "Temps de lecture estimé": "Geschätzte Lesezeit",
     "Temps restant": "verbleibende Zeit",
-    "Une question. Une IA. Des sources": "Eine Frage. Eine KI. Einige Quellen"
+    "Une question. Une IA. Des sources": "Eine Frage. Eine KI. Einige Quellen",
+    "Assistant": "Assistent"
   },
   "zh-CN": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ 索引卡，无日期审核",
@@ -5762,7 +5766,8 @@
     "Progression de la lecture": "阅读进度",
     "Temps de lecture estimé": "预计阅读时间",
     "Temps restant": "剩余时间",
-    "Une question. Une IA. Des sources": "一个问题。一个人工智能。一些来源"
+    "Une question. Une IA. Des sources": "一个问题。一个人工智能。一些来源",
+    "Assistant": "助手"
   },
   "pt": {
     "__IAEVAR0__ fiches sans revue datée": "Fichas de índice __IAEVAR0__ sem revisão datada",
@@ -6915,7 +6920,8 @@
     "Progression de la lecture": "Progressão de leitura",
     "Temps de lecture estimé": "Tempo estimado de leitura",
     "Temps restant": "Tempo restante",
-    "Une question. Une IA. Des sources": "Uma pergunta. Uma IA. Algumas fontes."
+    "Une question. Une IA. Des sources": "Uma pergunta. Uma IA. Algumas fontes.",
+    "Assistant": "Assistente"
   },
   "ar": {
     "__IAEVAR0__ fiches sans revue datée": "بطاقات فهرسة __IAEVAR0__ بدون مراجعة مؤرخة",
@@ -8068,7 +8074,8 @@
     "Progression de la lecture": "التقدم في القراءة",
     "Temps de lecture estimé": "الوقت المقدر للقراءة",
     "Temps restant": "الوقت المتبقي",
-    "Une question. Une IA. Des sources": "سؤال واحد. ذكاء اصطناعي واحد. بعض المصادر"
+    "Une question. Une IA. Des sources": "سؤال واحد. ذكاء اصطناعي واحد. بعض المصادر",
+    "Assistant": "مساعد"
   },
   "hi": {
     "__IAEVAR0__ fiches sans revue datée": "दिनांकित समीक्षा के बिना __IAEVAR0__ अनुक्रमणिका कार्ड",
@@ -9221,7 +9228,8 @@
     "Progression de la lecture": "पठन प्रगति",
     "Temps de lecture estimé": "अनुमानित पठन समय",
     "Temps restant": "शेष समय",
-    "Une question. Une IA. Des sources": "एक सवाल। एक एआई। कुछ स्रोत।"
+    "Une question. Une IA. Des sources": "एक सवाल। एक एआई। कुछ स्रोत।",
+    "Assistant": "सहायक"
   },
   "ja": {
     "__IAEVAR0__ fiches sans revue datée": "日付レビューのないインデックスカード __IAEVAR0__",
@@ -10374,7 +10382,8 @@
     "Progression de la lecture": "読書の進捗状況",
     "Temps de lecture estimé": "推定読書時間",
     "Temps restant": "残り時間",
-    "Une question. Une IA. Des sources": "質問は1つ。AIは1つ。いくつかの情報源。"
+    "Une question. Une IA. Des sources": "質問は1つ。AIは1つ。いくつかの情報源。",
+    "Assistant": "アシスタント"
   },
   "ru": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ индексные карточки без датированного обзора",
@@ -11527,7 +11536,8 @@
     "Progression de la lecture": "Последовательность чтения",
     "Temps de lecture estimé": "Примерное время чтения",
     "Temps restant": "Осталось времени",
-    "Une question. Une IA. Des sources": "Один вопрос. Один ИИ. Несколько источников."
+    "Une question. Une IA. Des sources": "Один вопрос. Один ИИ. Несколько источников.",
+    "Assistant": "Помощник"
   },
   "it": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ schede indice senza revisione datata",
@@ -12680,6 +12690,7 @@
     "Progression de la lecture": "Progressione della lettura",
     "Temps de lecture estimé": "Tempo di lettura stimato",
     "Temps restant": "Tempo rimanente",
-    "Une question. Une IA. Des sources": "Una domanda. Un'IA. Alcune fonti"
+    "Une question. Une IA. Des sources": "Una domanda. Un'IA. Alcune fonti",
+    "Assistant": "Assistente"
   }
 }
