@@ -1,3 +1,4 @@
+import { initFitTitles } from "./fit-titles.js";
 import sourceCatalog from "./sources.json";
 import { getSuggestedAnswer } from "./assistant-locales.js";
 import {
@@ -2324,3 +2325,4 @@ document.addEventListener("keydown", (event) => {
 
 renderTopics();
 initializeTranslation();
+initFitTitles();

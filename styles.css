@@ -1804,3 +1804,6 @@ a.assistant-cite:hover, a.assistant-cite:focus-visible { background: #8fd0ff; co
 .assistant-ai-answer .assistant-model-card dt { color: #cfc4f5; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
 .assistant-ai-answer .assistant-model-card dd { margin: 4px 0 0; color: #fff; font-weight: 600; }
 .assistant-ai-answer .assistant-ai-caveat { margin-top: 0; }
+
+.fit-title { display: block; min-width: 0; max-width: 100% !important; white-space: nowrap; overflow: hidden; }
+.fit-title br { display: none; }

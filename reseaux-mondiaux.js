@@ -1,3 +1,4 @@
+import { initFitTitles } from "./fit-titles.js";
 const map = document.querySelector(".network-map");
 const mapModeButtons = [...document.querySelectorAll("[data-map-mode]")];
 const mapCaption = document.querySelector("#network-map-caption");
@@ -19,3 +20,4 @@ mapModeButtons.forEach((button) => {
     });
   });
 });
+initFitTitles();
