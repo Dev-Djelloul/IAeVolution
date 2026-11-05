@@ -1917,3 +1917,10 @@ html { scroll-padding-top: 92px; }
   .scene-halo, .scene-grid, .rack-lights, .building-glass, .building-side-glass, .scene-highlight, .scene-connector,
   .network-link, .network-node circle, .robot-sensor-ring, .scene-label circle, .robot-hotspot { animation: none !important; }
 }
+
+/* Flux de données */
+.data-flow-path { fill: none; stroke: rgba(168, 214, 200, .22); stroke-width: 1.2; stroke-dasharray: 2 5; }
+.data-packet { fill: #d8fff1; filter: drop-shadow(0 0 5px rgba(168, 214, 200, .95)); }
+.platform-scan { fill: none; stroke: #a8d6c8; stroke-width: 2; stroke-dasharray: 30 520; opacity: .8; animation: platform-scan 6s linear infinite; filter: drop-shadow(0 0 5px rgba(168, 214, 200, .8)); }
+@keyframes platform-scan { to { stroke-dashoffset: -550; } }
+@media (prefers-reduced-motion: reduce) { .data-packet { display: none; } .platform-scan { animation: none !important; } }

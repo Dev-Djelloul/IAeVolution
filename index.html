@@ -445,6 +445,21 @@
                 </g>
                 <circle class="scene-node node-pulse" cx="280" cy="123" r="4"></circle>
                 <path class="scene-connector" d="m280 123 47-39"></path>
+                <g class="data-flows" aria-hidden="true">
+                  <path id="flow-a" class="data-flow-path" d="m128 300 70-38 84-46"></path>
+                  <path id="flow-b" class="data-flow-path" d="m172 326 110-60 99-53"></path>
+                  <path id="flow-c" class="data-flow-path" d="m358 323-76-42-90-52"></path>
+                  <path id="flow-d" class="data-flow-path" d="m402 299-40-22-80-45"></path>
+                  <circle class="data-packet" r="3.2"><animateMotion dur="3.2s" repeatCount="indefinite"><mpath href="#flow-a"></mpath></animateMotion></circle>
+                  <circle class="data-packet" r="3.2"><animateMotion dur="3.2s" begin="-1.6s" repeatCount="indefinite"><mpath href="#flow-a"></mpath></animateMotion></circle>
+                  <circle class="data-packet" r="3.2"><animateMotion dur="3.8s" begin="-.6s" repeatCount="indefinite"><mpath href="#flow-b"></mpath></animateMotion></circle>
+                  <circle class="data-packet" r="3.2"><animateMotion dur="3.8s" begin="-2.5s" repeatCount="indefinite"><mpath href="#flow-b"></mpath></animateMotion></circle>
+                  <circle class="data-packet" r="3.2"><animateMotion dur="3.5s" begin="-1s" repeatCount="indefinite"><mpath href="#flow-c"></mpath></animateMotion></circle>
+                  <circle class="data-packet" r="3.2"><animateMotion dur="3.5s" begin="-2.7s" repeatCount="indefinite"><mpath href="#flow-c"></mpath></animateMotion></circle>
+                  <circle class="data-packet" r="3.2"><animateMotion dur="3s" begin="-.3s" repeatCount="indefinite"><mpath href="#flow-d"></mpath></animateMotion></circle>
+                  <circle class="data-packet" r="3.2"><animateMotion dur="3s" begin="-1.8s" repeatCount="indefinite"><mpath href="#flow-d"></mpath></animateMotion></circle>
+                </g>
+                <path class="platform-scan" d="m108 290 174-96 173 96-174 97-173-97Z"></path>
               </g>
               <g class="scene-layer" data-visual-scene="robotique">
                 <path class="robot-sensor-ring" d="M234 235a48 35 0 1 0 96 0 48 35 0 1 0-96 0Zm-10-2a58 43 0 1 0 116 0 58 43 0 1 0-116 0Z"></path>
@@ -512,6 +527,14 @@
                   <circle cx="163" cy="258" r="5"></circle><circle cx="388" cy="275" r="5"></circle>
                 </g>
                 <circle class="scene-node node-pulse" cx="287" cy="256" r="16"></circle>
+                <g class="data-flows" aria-hidden="true">
+                  <path id="net-a" class="data-flow-path" d="m157 302 68-71 62 25 54-66"></path>
+                  <path id="net-b" class="data-flow-path" d="m224 338 79-45 53 64 76-41"></path>
+                  <circle class="data-packet" r="3.2"><animateMotion dur="4s" repeatCount="indefinite"><mpath href="#net-a"></mpath></animateMotion></circle>
+                  <circle class="data-packet" r="3.2"><animateMotion dur="4s" begin="-2s" repeatCount="indefinite"><mpath href="#net-a"></mpath></animateMotion></circle>
+                  <circle class="data-packet" r="3.2"><animateMotion dur="4.5s" begin="-1s" repeatCount="indefinite"><mpath href="#net-b"></mpath></animateMotion></circle>
+                  <circle class="data-packet" r="3.2"><animateMotion dur="4.5s" begin="-3s" repeatCount="indefinite"><mpath href="#net-b"></mpath></animateMotion></circle>
+                </g>
               </g>
               <g class="scene-label" transform="translate(326 60)">
                 <rect width="143" height="34" rx="3"></rect>
