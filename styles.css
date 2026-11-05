@@ -1644,7 +1644,7 @@ html { scroll-behavior: smooth; }
 
 .geo-map { position: relative; max-width: 900px; margin: 0 auto 10px; border: 1px solid rgba(120, 170, 220, 0.25); border-radius: 6px; background: rgba(20, 40, 70, 0.35); }
 .geo-map svg { display: block; width: 100%; height: auto; }
-.geo-land polygon { fill: rgba(120, 170, 220, 0.22); stroke: rgba(150, 200, 250, 0.45); stroke-width: 0.5; }
+.geo-land path { fill: rgba(120, 170, 220, 0.22); stroke: rgba(150, 200, 250, 0.45); stroke-width: 1; }
 .geo-marker { position: absolute; display: flex; align-items: center; gap: 6px; padding: 4px 6px; transform: translate(-9px, -50%); border: 0; background: transparent; color: #e8f1fb; font: inherit; font-size: 0.75rem; cursor: pointer; }
 .geo-dot { width: 14px; height: 14px; flex: none; border: 2px solid #8fd0ff; border-radius: 50%; background: #245d95; box-shadow: 0 0 0 4px rgba(143, 208, 255, 0.2); }
 .geo-label { padding: 2px 6px; border-radius: 3px; background: rgba(10, 20, 36, 0.8); white-space: nowrap; }
@@ -1809,3 +1809,10 @@ a.assistant-cite:hover, a.assistant-cite:focus-visible { background: #8fd0ff; co
 .fit-title br { display: none; }
 .dossier-heading > div { min-width: 0; flex: 1 1 auto; }
 .dossier-version { flex: none; }
+
+.site-header { position: sticky; top: 0; z-index: 60; background: rgba(14, 21, 29, 0.94); backdrop-filter: blur(10px); }
+.networks-page .site-header { background: rgba(245, 247, 247, 0.95); }
+html { scroll-padding-top: 92px; }
+@media (max-width: 760px) { html { scroll-padding-top: 76px; } }
+.geo-land path { stroke-linejoin: round; }
+.map-region-labels text { paint-order: stroke; stroke: rgba(235, 245, 240, 0.8); stroke-width: 3px; }
