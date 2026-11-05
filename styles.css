@@ -1728,3 +1728,11 @@ html { scroll-behavior: smooth; }
 .assistant-progress { height: 6px; margin: 14px 0 6px; border-radius: 999px; background: rgba(143, 208, 255, 0.18); overflow: hidden; }
 .assistant-progress span { display: block; width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #8fd0ff, #b9a4ff); transition: width 0.3s linear; }
 .assistant-duration { display: block; color: #9fb0bd; font-size: 0.8125rem; }
+
+.assistant-settings { align-items: flex-start; }
+.assistant-choice { gap: 8px; }
+.assistant-choice legend, .assistant-choice > label { display: block; height: 16px; margin: 0; padding: 0; line-height: 16px; font-size: 0.74rem; opacity: 1; }
+.assistant-choice .segmented, .assistant-choice-model select { box-sizing: border-box; height: 46px; min-height: 46px; margin: 0; }
+.assistant-choice .segmented { align-items: stretch; }
+.assistant-choice .segmented span { display: flex; align-items: center; height: 100%; padding: 0 16px; }
+.assistant-choice-model select { line-height: 1; padding-top: 0; padding-bottom: 0; }
