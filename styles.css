@@ -1692,23 +1692,16 @@ html { scroll-behavior: smooth; }
 .assistant-switch input:checked + .switch-track { background: linear-gradient(135deg, #8fd0ff, #b9a4ff); }
 .assistant-switch input:checked + .switch-track::after { transform: translateX(18px); }
 .assistant-switch input:focus-visible + .switch-track { outline: 2px solid #fff; outline-offset: 3px; }
-.switch-label::before { content: attr(data-icon); margin-right: 6px; }
 .assistant-new-chat { display: inline-flex; align-items: center; gap: 10px; min-height: 38px; padding: 0 16px; border: 1px solid rgba(185, 164, 255, 0.5); border-radius: 999px; background: rgba(185, 164, 255, 0.12); color: #e4dcff; cursor: pointer; font: inherit; font-size: 0.82rem; font-weight: 600; }
 .assistant-new-chat[hidden] { display: none; }
 .assistant-new-chat:hover { background: rgba(185, 164, 255, 0.25); }
 .assistant-new-chat-count { padding: 2px 8px; border-radius: 999px; background: rgba(0, 0, 0, 0.3); color: #8fd0ff; font-size: 0.72rem; }
-.assistant-new-chat-label::before { content: attr(data-icon); margin-right: 6px; }
 
 .assistant-voice-button { display: inline-flex; align-items: center; gap: 8px; min-height: 42px; padding: 0 18px; border-radius: 999px; transition: transform 0.15s, border-color 0.2s, background 0.2s; }
 .assistant-voice-button:hover:not(:disabled) { transform: translateY(-1px); background: rgba(143, 208, 255, 0.16); }
 .assistant-voice-button:focus-visible { outline: 2px solid #8fd0ff; outline-offset: 3px; }
 #assistant-voice-start { border-color: transparent; background: linear-gradient(135deg, #8fd0ff, #b9a4ff); color: #14102e; }
-#assistant-voice-stop::before { content: "⏹️"; }
-#assistant-voice-stop-speaking::before { content: "🔇"; }
-#assistant-voice-install-local::before { content: "⬇️"; }
-.assistant-listen::before { content: "🔊"; }
 .assistant-voice-picker { padding: 8px 12px; border: 1px solid rgba(143, 208, 255, 0.25); border-radius: 999px; background: rgba(10, 20, 36, 0.4); width: fit-content; max-width: 100%; }
-.assistant-voice-picker label::before { content: "🗣️ "; }
 .assistant-voice-picker select { border-radius: 999px; }
 .assistant-ai-answer.is-streaming .assistant-ai-text::after { content: "▍"; margin-left: 2px; color: #8fd0ff; animation: assistant-caret 1s steps(2) infinite; }
 @keyframes assistant-caret { 50% { opacity: 0; } }
