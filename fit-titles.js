@@ -10,7 +10,10 @@ const fitTitle = (title) => {
   }
 };
 const fitAllTitles = () => fitTitles.forEach(fitTitle);
-fitTitles.forEach((title) => title.classList.add("fit-title"));
+fitTitles.forEach((title) => {
+  title.classList.add("fit-title");
+  for (let el = title.parentElement; el && el.tagName !== "BODY" && el.tagName !== "SECTION"; el = el.parentElement) el.style.minWidth = "0";
+});
 fitAllTitles();
 window.addEventListener("resize", fitAllTitles);
 document.fonts?.ready.then(fitAllTitles);

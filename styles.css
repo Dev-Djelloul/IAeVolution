@@ -1807,3 +1807,5 @@ a.assistant-cite:hover, a.assistant-cite:focus-visible { background: #8fd0ff; co
 
 .fit-title { display: block; min-width: 0; max-width: 100% !important; white-space: nowrap; overflow: hidden; }
 .fit-title br { display: none; }
+.dossier-heading > div { min-width: 0; flex: 1 1 auto; }
+.dossier-version { flex: none; }
