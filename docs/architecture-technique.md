@@ -254,7 +254,7 @@ commit ou d'une simple collecte automatique.
 | 5. Recherche évaluée | Corpus approuvé, jeu de questions de référence et mesure des citations | Les réponses pertinentes citent les bonnes preuves et les cas inconnus s'abstiennent |
 | 6. Recherche Web contrôlée | Recherche Web explicite ou déclenchée par intention, résultats séparés du corpus interne | Sources accessibles et citées ; aucune affirmation de couverture exhaustive du Web |
 | 7. Assistant vocal | Prototype navigateur à la demande : transcription, recherche locale sourcée, lecture et saisie texte de repli | La compatibilité du navigateur, la confidentialité audio et la qualité de reconnaissance sont évaluées avant tout service vocal côté serveur |
-| 8. Génération contrôlée | Livré : Worker `/api/assistant` vers OpenRouter, repli multi-modèles, niveau/longueur/modèle au choix, coût affiché, limite de débit ; suite possible : streaming, mémoire de conversation | Qualité, confidentialité, coûts et limites sont mesurés avant une ouverture plus large |
+| 8. Génération contrôlée | Livré : Worker `/api/assistant` vers OpenRouter, repli multi-modèles, niveau/longueur/modèle au choix, coût affiché, limite de débit ; streaming et mémoire de conversation livrés | Qualité, confidentialité, coûts et limites sont mesurés avant une ouverture plus large |
 
 ## Décisions à prendre avant l'étape 2
 
@@ -296,3 +296,11 @@ confidentialité et les budgets avec l'utilisateur.
 ## Streaming et mémoire de conversation
 
 `POST /api/assistant` accepte `stream: true` (le Worker relaie le flux SSE d'OpenRouter) et `history` (6 messages max, 700 caractères chacun, rôles `user`/`assistant`, nettoyés par `cleanHistory`). Le client tamponne les lignes `data:`, ignore les commentaires, rend le Markdown de façon progressive et garde l'historique en mémoire de page uniquement.
+
+## Aperçu des sources (`GET /api/preview`)
+
+Le Worker récupère `og:title`, `og:description`, `og:image`, l'icône et `site_name` d'une source pour la carte de survol. Garde-fous contre le SSRF : HTTPS public uniquement (IP, localhost et ports refusés, erreur 400), 4 redirections au plus, chacune revérifiée, lecture plafonnée à 256 Ko, limite de 40 requêtes par minute et par IP, cache 24 h (`caches.default`). Certains sites anti-robot ne renvoient que l'icône.
+
+## Historique des questions
+
+Les 10 dernières questions sont stockées côté navigateur (`localStorage`, clé `iaevolution-question-history`), jamais transmises à IAeVolution ; l'utilisateur peut les effacer.

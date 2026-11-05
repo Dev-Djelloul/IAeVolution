@@ -78,7 +78,7 @@ npm run preview
 ## Déploiement Cloudflare
 
 Le site est servi par **Cloudflare Workers Static Assets**, avec un Worker (`worker.js`)
-qui expose uniquement `POST /api/assistant` et sert les fichiers statiques pour le reste.
+qui expose uniquement `POST /api/assistant` et `GET /api/preview` et sert les fichiers statiques pour le reste.
 La configuration de déploiement est définie dans `wrangler.jsonc`.
 
 L'assistant exige le secret `OPENROUTER_API_KEY`, à déposer avec `npx wrangler secret put
@@ -126,3 +126,10 @@ Une prochaine étape pourra concevoir la collecte, la validation et l'historique
 
 - La réponse IA est reçue en streaming (SSE) et affichée au fil de l'eau ; le coût et le modèle apparaissent à la fin.
 - Les 3 derniers échanges sont renvoyés au modèle (champ `history`). Ils ne vivent qu'en mémoire de page, sans stockage ; le bouton « Nouvelle conversation » les efface. Ils sont transmis à OpenRouter avec la question.
+
+### Assistant : sources survolables, historique et organisation
+
+- Les renvois `[n]` ouvrent au survol une carte de source (logo, titre, description, URL, aperçu) alimentée par `GET /api/preview?url=` ; une liste « Sources » suit la réponse.
+- Les 10 dernières questions sont gardées dans le `localStorage` du navigateur (clé `iaevolution-question-history`) et ne sont jamais envoyées à IAeVolution ; « Effacer l'historique » les supprime.
+- Ordre de la section : question et réglages (niveau, longueur, modèle), panneau voix et confidentialité, suggestions, historique, résultats. La carte de réponse suit : titre et modèle, lecteur, texte, sources, détails du modèle, mise en garde.
+- Les titres principaux tiennent sur une ligne (`fit-titles.js` réduit la police si nécessaire), sauf « Lire l'IA en mouvement ».
