@@ -149,3 +149,7 @@ Une prochaine étape pourra concevoir la collecte, la validation et l'historique
 - Sections « Anatomie d'un câble » (coupe SVG à six couches, légende survolable), « Ce qui peut couper un câble », bandeau de latence, sources (UIT, ICPC, TeleGeography).
 - « Écouter la carte » lit la légende puis chaque corridor avec la synthèse vocale locale du navigateur (langue du site, voix choisie dans les réglages de l'assistant) ; rien n'est envoyé à un service.
 - La page charge désormais `translation.js` : le sélecteur de langue y fonctionne. Animations coupées avec `prefers-reduced-motion`.
+
+## Logo et favicon
+
+Le logo (`public/favicon.svg`) reprend la marque du site : tuile sombre, anneau teal, arc lime et trois barres ascendantes. Le dossier `public/` est copié à la racine de `dist` : `favicon.svg`, `favicon.ico` (16/32/48), `favicon-48.png` (multiple de 48 px, recommandé par Google), `apple-touch-icon.png`, `icon-192.png`, `icon-512.png` et `site.webmanifest`. Les balises `<link>` sont dans le `<head>` des deux pages.
