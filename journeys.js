@@ -44,9 +44,9 @@ export function initJourneys(voice = {}) {
 
     const speakCurrent = () => {
       window.clearTimeout(advance);
-      voice.speak(narration(), () => {
+      voice.speak(narration(), (spoken) => {
         if (!listening) return;
-        if (current >= steps.length - 1) {
+        if (!spoken || current >= steps.length - 1) {
           setListening(false);
           return;
         }

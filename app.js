@@ -665,7 +665,8 @@ async function speakJourney(text, onEnd) {
   };
   if (!window.speechSynthesis || !("SpeechSynthesisUtterance" in window)) return done(false);
   const locale = document.documentElement.lang || "fr";
-  const sources = text.map((part) => translateToFrench(part));
+  try {
+  const sources = await Promise.all(text.map((part) => translateToFrench(part)));
   const parts = await Promise.all(sources.map((part) => translateText(part, locale)));
   const translated = parts.some((part, index) => part !== sources[index]);
   const narration = parts.map((part) => part.replace(/[.!?…]*$/, "")).join(". ") + ".";
@@ -680,6 +681,9 @@ async function speakJourney(text, onEnd) {
   utterance.onerror = () => done(false);
   try {
     window.speechSynthesis.speak(utterance);
+  } catch {
+    done(false);
+  }
   } catch {
     done(false);
   }
