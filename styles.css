@@ -1875,3 +1875,45 @@ html { scroll-padding-top: 92px; }
   .journey-panel, .journey-stage, .journey-step.is-active .journey-node-index { animation: none; }
   .journey-track::after, .journey-node-index { transition: none; }
 }
+
+/* Embellissement de la scène */
+.scene-halo { animation: halo-breathe 6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes halo-breathe { 0%, 100% { opacity: .1; transform: scale(.94); } 50% { opacity: .26; transform: scale(1.08); } }
+.scene-grid { animation: grid-drift 14s linear infinite; }
+@keyframes grid-drift { 50% { opacity: .55; } }
+.rack-lights { stroke-dasharray: 5 4; animation: rack-blink 2.4s steps(2, end) infinite, rack-flow 3s linear infinite; }
+.rack-group .rack-lights:nth-of-type(2n) { animation-delay: -.8s; }
+.rack-group .rack-lights:nth-of-type(3n) { animation-delay: -1.5s; }
+@keyframes rack-blink { 0%, 100% { opacity: .95; } 50% { opacity: .45; } }
+@keyframes rack-flow { to { stroke-dashoffset: -18; } }
+.rack-group { transition: filter .3s ease; }
+.rack-group:hover { filter: drop-shadow(0 0 10px rgba(168, 214, 200, .5)); }
+.building-glass, .building-side-glass { animation: glass-shimmer 7s ease-in-out infinite; }
+.building-side-glass { animation-delay: -3s; }
+@keyframes glass-shimmer { 0%, 100% { filter: brightness(1); } 50% { filter: brightness(1.35) drop-shadow(0 0 6px rgba(168, 214, 200, .35)); } }
+.scene-highlight { stroke-dasharray: 24 300; animation: roof-sweep 5s linear infinite; }
+@keyframes roof-sweep { to { stroke-dashoffset: -324; } }
+.scene-connector { stroke-dasharray: 5 5; animation: connector-flow 1.6s linear infinite; }
+@keyframes connector-flow { to { stroke-dashoffset: -20; } }
+.network-link { stroke-dasharray: 6 8; animation: network-flow 4s linear infinite; }
+@keyframes network-flow { to { stroke-dashoffset: -56; } }
+.network-node circle { animation: node-twinkle 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.network-node circle:nth-child(2n) { animation-delay: -1.2s; }
+.network-node circle:nth-child(3n) { animation-delay: -2.4s; }
+@keyframes node-twinkle { 50% { opacity: .55; transform: scale(1.18); } }
+.robot-sensor-ring { transform-box: fill-box; transform-origin: center; animation: sensor-ring 5s ease-in-out infinite; }
+@keyframes sensor-ring { 0%, 100% { opacity: .5; transform: scale(.97); } 50% { opacity: 1; transform: scale(1.04); } }
+.scene-label rect { transition: stroke .3s ease; }
+.scene-label circle { animation: node-pulse 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.scene-canvas { transition: box-shadow .4s ease, border-color .4s ease; }
+.scene-canvas:hover { border-color: rgba(168, 214, 200, .6); box-shadow: 0 0 40px rgba(168, 214, 200, .12); }
+.scene-canvas .scene-art { transition: transform .5s ease, opacity .25s ease; }
+.scene-canvas:hover .scene-art { transform: scale(1.02); }
+.scene-switcher .scene-choice { transition: transform .2s ease, border-color .2s ease, background .2s ease; }
+.scene-switcher .scene-choice:hover { transform: translateY(-2px); border-color: var(--lime); }
+.robot-hotspot { animation: hotspot-ring 2.8s ease-out infinite; }
+@keyframes hotspot-ring { 0% { box-shadow: 0 0 0 0 rgba(168, 214, 200, .5); } 70%, 100% { box-shadow: 0 0 0 12px rgba(168, 214, 200, 0); } }
+@media (prefers-reduced-motion: reduce) {
+  .scene-halo, .scene-grid, .rack-lights, .building-glass, .building-side-glass, .scene-highlight, .scene-connector,
+  .network-link, .network-node circle, .robot-sensor-ring, .scene-label circle, .robot-hotspot { animation: none !important; }
+}
