@@ -133,3 +133,11 @@ Une prochaine étape pourra concevoir la collecte, la validation et l'historique
 - Les 10 dernières questions sont gardées dans le `localStorage` du navigateur (clé `iaevolution-question-history`) et ne sont jamais envoyées à IAeVolution ; « Effacer l'historique » les supprime.
 - Ordre de la section : question et réglages (niveau, longueur, modèle), panneau voix et confidentialité, suggestions, historique, résultats. La carte de réponse suit : titre et modèle, lecteur, texte, sources, détails du modèle, mise en garde.
 - Les titres principaux tiennent sur une ligne (`fit-titles.js` réduit la police si nécessaire), sauf « Lire l'IA en mouvement ».
+
+### Parcours visuels et scène du hero
+
+- Six parcours de cinq étapes (une question, une puce, un modèle, énergie et chaleur, un mot, un robot) dans `#parcours-visuels` : onglets au clavier, étapes, lecture automatique, source et lien vers un dossier (`journeys.js`).
+- Chaque étape a une illustration SVG animée sans texte (`journey-art.js`, 30 dessins) ; les animations sont figées avec `prefers-reduced-motion`.
+- « Écouter ce parcours » lit les étapes avec la synthèse vocale locale du navigateur, dans la langue du site et avec la voix choisie dans les réglages de l'assistant ; rien n'est envoyé à un service.
+- La scène du hero (maquette 3D CSS, vue illustrée SVG) porte des animations et des flux de données animés (`animateMotion`).
+- Les cartes du site sont de vraies cartes (Natural Earth, projection de Miller, `scripts/build-world-map.mjs`) et le menu de navigation reste visible au défilement.

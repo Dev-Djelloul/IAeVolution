@@ -304,3 +304,11 @@ Le Worker récupère `og:title`, `og:description`, `og:image`, l'icône et `site
 ## Historique des questions
 
 Les 10 dernières questions sont stockées côté navigateur (`localStorage`, clé `iaevolution-question-history`), jamais transmises à IAeVolution ; l'utilisateur peut les effacer.
+
+## Parcours visuels
+
+- `journeys.js` pilote les six parcours (`[data-journey]`) : onglets, étapes, lecture automatique de 4,5 s et écoute audio. Il reçoit de `app.js` les fonctions `speak` et `cancel`.
+- `journey-art.js` exporte `renderJourneyArt(journeyId, index)` : 30 illustrations SVG sans texte, donc sans traduction.
+- Écoute : `speakJourney` (`app.js`) traduit chaque partie de l'étape, choisit la voix locale préférée et enchaîne les étapes ; un jeton annule toute lecture périmée. Sans voix ou sans `speechSynthesis`, le bouton est masqué.
+- Limite connue : l'encadré d'étape reste dans l'ancienne langue après un changement de langue jusqu'au prochain clic.
+- Scène du hero : flux de données et balayages en SVG/CSS ; le texte SVG s'exprime en unités du viewBox avec `textLength` pour ne pas déborder.
