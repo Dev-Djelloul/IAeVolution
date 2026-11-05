@@ -1162,7 +1162,9 @@
     "Ouvrir la source": "Open the source",
     "Source": "Source",
     "Confidentialité et voix": "Privacy and voice",
-    "VOIX": "VOICE"
+    "VOIX": "VOICE",
+    "Carte du monde avec trois territoires documentés": "World map with three documented territories",
+    "Fond de carte Natural Earth (domaine public), projection de Miller ; les points sont indicatifs. Sélectionnez un territoire pour mettre en évidence sa fiche.": "Natural Earth base map (public domain), Miller projection; points are indicative. Select a territory to highlight its information sheet."
   },
   "es": {
     "__IAEVAR0__ fiches sans revue datée": "Fichas de índice __IAEVAR0__ sin revisión fechada",
@@ -2327,7 +2329,9 @@
     "Ouvrir la source": "Abrir el código fuente",
     "Source": "Fuente",
     "Confidentialité et voix": "Privacidad y voz",
-    "VOIX": "VOZ"
+    "VOIX": "VOZ",
+    "Carte du monde avec trois territoires documentés": "Mapa del mundo con tres territorios documentados.",
+    "Fond de carte Natural Earth (domaine public), projection de Miller ; les points sont indicatifs. Sélectionnez un territoire pour mettre en évidence sa fiche.": "Mapa base de Natural Earth (dominio público), proyección Miller; los puntos son indicativos. Seleccione un territorio para resaltar su ficha informativa."
   },
   "nl": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ indexkaarten zonder gedateerde beoordeling",
@@ -3492,7 +3496,9 @@
     "Ouvrir la source": "Open de bron",
     "Source": "Bron",
     "Confidentialité et voix": "Privacy en spraak",
-    "VOIX": "STEM"
+    "VOIX": "STEM",
+    "Carte du monde avec trois territoires documentés": "Wereldkaart met drie gedocumenteerde gebieden",
+    "Fond de carte Natural Earth (domaine public), projection de Miller ; les points sont indicatifs. Sélectionnez un territoire pour mettre en évidence sa fiche.": "Basiskaart van Natural Earth (openbaar domein), Miller-projectie; punten zijn indicatief. Selecteer een gebied om het bijbehorende informatieblad te markeren."
   },
   "de": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ Karteikarten ohne datierte Überprüfung",
@@ -4657,7 +4663,9 @@
     "Ouvrir la source": "Öffnen Sie den Quellcode",
     "Source": "Quelle",
     "Confidentialité et voix": "Privatsphäre und Stimme",
-    "VOIX": "STIMME"
+    "VOIX": "STIMME",
+    "Carte du monde avec trois territoires documentés": "Weltkarte mit drei dokumentierten Gebieten",
+    "Fond de carte Natural Earth (domaine public), projection de Miller ; les points sont indicatifs. Sélectionnez un territoire pour mettre en évidence sa fiche.": "Natürliche Erdkarte (gemeinfrei), Miller-Projektion; Punkte dienen nur zur Orientierung. Wählen Sie ein Gebiet aus, um das zugehörige Informationsblatt anzuzeigen."
   },
   "zh-CN": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ 索引卡，无日期审核",
@@ -5822,7 +5830,9 @@
     "Ouvrir la source": "打开源代码",
     "Source": "来源",
     "Confidentialité et voix": "隐私和语音",
-    "VOIX": "嗓音"
+    "VOIX": "嗓音",
+    "Carte du monde avec trois territoires documentés": "世界地图，标示了三个已记录的地区",
+    "Fond de carte Natural Earth (domaine public), projection de Miller ; les points sont indicatifs. Sélectionnez un territoire pour mettre en évidence sa fiche.": "自然地球底图（公共领域），米勒投影；图中点仅供参考。选择一个区域即可查看其信息表。"
   },
   "pt": {
     "__IAEVAR0__ fiches sans revue datée": "Fichas de índice __IAEVAR0__ sem revisão datada",
@@ -6987,7 +6997,9 @@
     "Ouvrir la source": "Abra a fonte",
     "Source": "Fonte",
     "Confidentialité et voix": "Privacidade e voz",
-    "VOIX": "VOZ"
+    "VOIX": "VOZ",
+    "Carte du monde avec trois territoires documentés": "Mapa-múndi com três territórios documentados",
+    "Fond de carte Natural Earth (domaine public), projection de Miller ; les points sont indicatifs. Sélectionnez un territoire pour mettre en évidence sa fiche.": "Mapa base do Natural Earth (domínio público), projeção de Miller; os pontos são indicativos. Selecione um território para destacar sua ficha informativa."
   },
   "ar": {
     "__IAEVAR0__ fiches sans revue datée": "بطاقات فهرسة __IAEVAR0__ بدون مراجعة مؤرخة",
@@ -8152,7 +8164,9 @@
     "Ouvrir la source": "افتح المصدر",
     "Source": "مصدر",
     "Confidentialité et voix": "الخصوصية والصوت",
-    "VOIX": "صوت"
+    "VOIX": "صوت",
+    "Carte du monde avec trois territoires documentés": "خريطة العالم بثلاثة أقاليم موثقة",
+    "Fond de carte Natural Earth (domaine public), projection de Miller ; les points sont indicatifs. Sélectionnez un territoire pour mettre en évidence sa fiche.": "خريطة أساسية من Natural Earth (ملكية عامة)، إسقاط ميلر؛ النقاط إرشادية. حدد منطقة لتسليط الضوء على ورقة معلوماتها."
   },
   "hi": {
     "__IAEVAR0__ fiches sans revue datée": "दिनांकित समीक्षा के बिना __IAEVAR0__ अनुक्रमणिका कार्ड",
@@ -9317,7 +9331,9 @@
     "Ouvrir la source": "स्रोत खोलें",
     "Source": "स्रोत",
     "Confidentialité et voix": "गोपनीयता और आवाज",
-    "VOIX": "आवाज़"
+    "VOIX": "आवाज़",
+    "Carte du monde avec trois territoires documentés": "विश्व मानचित्र जिसमें तीन प्रलेखित क्षेत्र दर्शाए गए हैं",
+    "Fond de carte Natural Earth (domaine public), projection de Miller ; les points sont indicatifs. Sélectionnez un territoire pour mettre en évidence sa fiche.": "प्राकृतिक पृथ्वी का आधार मानचित्र (सार्वजनिक डोमेन), मिलर प्रक्षेपण; बिंदु सांकेतिक हैं। किसी क्षेत्र की जानकारी देखने के लिए उसका चयन करें।"
   },
   "ja": {
     "__IAEVAR0__ fiches sans revue datée": "日付レビューのないインデックスカード __IAEVAR0__",
@@ -10482,7 +10498,9 @@
     "Ouvrir la source": "ソースを開く",
     "Source": "ソース",
     "Confidentialité et voix": "プライバシーと音声",
-    "VOIX": "声"
+    "VOIX": "声",
+    "Carte du monde avec trois territoires documentés": "記録された3つの地域を示す世界地図",
+    "Fond de carte Natural Earth (domaine public), projection de Miller ; les points sont indicatifs. Sélectionnez un territoire pour mettre en évidence sa fiche.": "Natural Earthの基本地図（パブリックドメイン）、ミラー図法。点は目安です。地域を選択すると、その地域の情報シートがハイライト表示されます。"
   },
   "ru": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ индексные карточки без датированного обзора",
@@ -11647,7 +11665,9 @@
     "Ouvrir la source": "Откройте исходный код",
     "Source": "Источник",
     "Confidentialité et voix": "Конфиденциальность и голос",
-    "VOIX": "ГОЛОС"
+    "VOIX": "ГОЛОС",
+    "Carte du monde avec trois territoires documentés": "Карта мира с тремя задокументированными территориями.",
+    "Fond de carte Natural Earth (domaine public), projection de Miller ; les points sont indicatifs. Sélectionnez un territoire pour mettre en évidence sa fiche.": "Базовая карта Natural Earth (общественное достояние), проекция Миллера; точки являются ориентировочными. Выберите территорию, чтобы выделить информационный лист о ней."
   },
   "it": {
     "__IAEVAR0__ fiches sans revue datée": "__IAEVAR0__ schede indice senza revisione datata",
@@ -12812,6 +12832,8 @@
     "Ouvrir la source": "Apri la fonte",
     "Source": "Fonte",
     "Confidentialité et voix": "Privacy e voce",
-    "VOIX": "VOCE"
+    "VOIX": "VOCE",
+    "Carte du monde avec trois territoires documentés": "Mappa del mondo con tre territori documentati",
+    "Fond de carte Natural Earth (domaine public), projection de Miller ; les points sont indicatifs. Sélectionnez un territoire pour mettre en évidence sa fiche.": "Mappa di base di Natural Earth (di pubblico dominio), proiezione Miller; i punti sono indicativi. Seleziona un territorio per evidenziare la relativa scheda informativa."
   }
 }
